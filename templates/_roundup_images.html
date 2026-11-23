@@ -9,13 +9,13 @@
     <img id="hero-story-image" class="hero-img" src="{{ slide.image.url if slide.image else fallback }}"
          alt="{{ slide.image_alt }}" data-fallback-src="{{ fallback }}" fetchpriority="high" decoding="async"
          {% if not slide.image %}data-image-fallback="true"{% endif %}>
-    <div id="hero-image-caption" class="text-muted" style="font-size:11.5px;margin-top:6px;">{{ slide.image_caption }}</div>
-    <div style="margin-top:12px;">
-      <span id="hero-story-kicker" class="card-kicker" style="font-size:11px;">{{ slide.kicker }}</span>
+    <div id="hero-image-caption" class="text-muted article-caption">{{ slide.image_caption }}</div>
+    <div class="roundup-copy">
+      <span id="hero-story-kicker" class="card-kicker hero-kicker">{{ slide.kicker }}</span>
       <h2 id="hero-story-title" class="hero-title" aria-live="polite">{{ slide.title }}</h2>
     </div>
   </a>
-  <div class="roundup-image-source" style="font-size:11.5px;height:20px;margin-top:6px;">
+  <div class="roundup-image-source">
     <a id="hero-image-source" {% if slide.image and slide.image.link %}href="{{ slide.image.link }}"{% else %}style="visibility:hidden;"{% endif %}
        target="_blank" rel="noopener noreferrer">{% if lang == 'zh' %}圖片來源與授權{% else %}Image source and licence{% endif %}</a>
   </div>
@@ -32,6 +32,6 @@
   {% endif %}
   <noscript><style>.roundup-carousel > .hero-story,.roundup-carousel > .hero-nav,.roundup-carousel > .hero-dots,.roundup-carousel > .roundup-image-source{display:none}</style>
     <p>{% if lang == 'zh' %}所有短訊配圖：{% else %}All brief images:{% endif %}</p>
-    {% for slide in slides %}<figure><img src="{{ slide.image.url if slide.image else fallback }}" alt="{{ slide.image_alt }}" loading="lazy" style="width:100%;height:auto;"><figcaption>{{ slide.title }} · {{ slide.image_caption }} {% if slide.image and slide.image.link %}<a href="{{ slide.image.link }}" rel="noopener noreferrer" target="_blank">{% if lang == 'zh' %}圖片來源與授權{% else %}Image source and licence{% endif %}</a>{% endif %}</figcaption></figure>{% endfor %}
+    {% for slide in slides %}<figure><img src="{{ slide.image.url if slide.image else fallback }}" alt="{{ slide.image_alt }}" loading="lazy" class="roundup-fallback-image"><figcaption>{{ slide.title }} · {{ slide.image_caption }} {% if slide.image and slide.image.link %}<a href="{{ slide.image.link }}" rel="noopener noreferrer" target="_blank">{% if lang == 'zh' %}圖片來源與授權{% else %}Image source and licence{% endif %}</a>{% endif %}</figcaption></figure>{% endfor %}
   </noscript>
 </div>

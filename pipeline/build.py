@@ -3792,6 +3792,8 @@ def render_usage_dashboard(env, build) -> int:
              if isinstance(v, dict)]
     ctx = {
         "base": BASE_PATH, "favicon": FAVICON, "build": build,
+        "usage_asset_version": hashlib.sha256(
+            (STATIC_DIR / "usage.css").read_bytes()).hexdigest()[:10],
         "rows": rows, "totals": totals, "daily": daily,
         "recent_runs": recent["runs"],
         "recent_models": recent["models"],

@@ -11,7 +11,7 @@ import json
 import re
 import sys
 import time
-from collections import Counter, defaultdict
+from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urlparse
@@ -128,7 +128,6 @@ def approved_image(article, candidate, reason, *, curated=True):
 
 def manual_known(article):
     t = headline(article)
-    op = " ".join(str(v) for v in (article.get("entities") or {}).get("organizations") or [])
     # Military image only if military subject is actually front and center.
     if MND_RE.search(t) and re.search(r"台|臺|Taiwan|PLA|Chinese|共機|共艦|擾", t, re.I):
         return KNOWN["taiwan-mnd"], "taiwan-mnd"

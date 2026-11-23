@@ -7,13 +7,13 @@
   <div class="home-grid">
     <div class="rail-left">
       {% if latest_brief %}
-      <a class="home-briefing-card" href="{{ latest_brief.url }}" style="display:block;border:2px solid var(--color-divider);border-left:6px solid var(--color-accent);padding:12px 14px;margin-bottom:20px;color:inherit;text-decoration:none;">
-        <span class="card-kicker" style="font-size:10px;">{{ t.brLatest }} <sup style="font-weight:800;color:var(--color-accent);">{{ t.brBeta }}</sup></span>
-        <div style="font-weight:800;font-size:15px;margin:6px 0 2px;">{{ latest_brief.label }}</div>
-        <div class="text-muted" style="font-size:12px;">{{ latest_brief.date_label }} · {{ latest_brief.total }} {{ t.brItems }}</div>
+      <a class="home-briefing-card" href="{{ latest_brief.url }}">
+        <span class="card-kicker home-briefing-kicker">{{ t.brLatest }} <sup class="home-briefing-beta">{{ t.brBeta }}</sup></span>
+        <div class="home-briefing-label">{{ latest_brief.label }}</div>
+        <div class="text-muted home-briefing-meta">{{ latest_brief.date_label }} · {{ latest_brief.total }} {{ t.brItems }}</div>
       </a>
       {% endif %}
-      <h6 style="display:flex;justify-content:space-between;align-items:baseline;margin:0 0 12px;">{{ t.flash }} <span style="color:var(--color-accent);font-size:10px;">● LIVE</span></h6>
+      <h6 class="rail-heading rail-heading--live">{{ t.flash }} <span class="live-indicator">● LIVE</span></h6>
       {% for f in flashes %}
       {% if f.url %}
       <a class="flash-row" href="{{ f.url }}"{% if f.external %} target="_blank" rel="noopener"{% endif %}>
@@ -33,15 +33,15 @@
       </div>
       {% endif %}
       {% else %}
-      <div class="flash-row"><span class="text-muted" style="font-size:12.5px;line-height:1.6;">{{ t.awaiting }}</span></div>
+      <div class="flash-row"><span class="text-muted flash-empty">{{ t.awaiting }}</span></div>
       {% endfor %}
       <div class="home-source-status">
-        <h6 style="margin:28px 0 12px;">{{ t.sourceStatus }}</h6>
+        <h6 class="rail-heading rail-heading--spaced">{{ t.sourceStatus }}</h6>
         {% for s in source_status %}
-        <div style="padding:7px 0;border-bottom:1px solid var(--color-divider);display:flex;align-items:center;gap:8px;font-size:12.5px;">
+        <div class="source-status-row">
           <span class="dot{% if not s.ok %} err{% endif %}"></span>
           <span{% if not s.ok %} class="text-muted"{% endif %}>{{ s.name }}</span>
-          <span class="text-muted" style="margin-left:auto;font-size:11.5px;">{{ s.ago }}</span>
+          <span class="text-muted source-status-age">{{ s.ago }}</span>
         </div>
         {% endfor %}
       </div>
@@ -58,15 +58,15 @@
         <img id="hero-story-image" class="hero-img"
              data-fallback-src="{{ base }}/assets/skytical-social.png?v={{ asset_version }}"
              src="{{ hero.image.url }}" alt="{{ hero.image.subject or '' }}">
-        <div id="hero-image-caption" class="text-muted" style="font-size:10.5px;margin-top:4px;"><b data-image-description style="color:var(--color-text);">{{ hero.image.subject }}</b>{% if hero.image.credit %} · © {{ hero.image.credit }}{% endif %}{% if hero.image.license %} · {{ hero.image.license }}{% endif %}{% if hero.image.provider %} · {{ hero.image.provider }}{% endif %}</div>
+        <div id="hero-image-caption" class="text-muted hero-caption"><b data-image-description class="hero-caption-subject">{{ hero.image.subject }}</b>{% if hero.image.credit %} · © {{ hero.image.credit }}{% endif %}{% if hero.image.license %} · {{ hero.image.license }}{% endif %}{% if hero.image.provider %} · {{ hero.image.provider }}{% endif %}</div>
         {% else %}
         <img id="hero-story-image" class="hero-img" data-image-fallback="true"
              data-fallback-src="{{ base }}/assets/skytical-social.png?v={{ asset_version }}"
              src="{{ base }}/assets/skytical-social.png?v={{ asset_version }}" alt="SKYTICAL">
-        <div id="hero-image-caption" class="text-muted" style="font-size:10.5px;margin-top:4px;">{% if html_lang.startswith('zh') %}暫無可驗證的事件或資料照片，先顯示 SKYTICAL 預設圖片。{% else %}No verified event or file photo is available yet; showing the SKYTICAL default image.{% endif %}</div>
+        <div id="hero-image-caption" class="text-muted hero-caption">{% if html_lang.startswith('zh') %}暫無可驗證的事件或資料照片，先顯示 SKYTICAL 預設圖片。{% else %}No verified event or file photo is available yet; showing the SKYTICAL default image.{% endif %}</div>
         {% endif %}
-        <div style="margin-top:16px;">
-          <span id="hero-story-kicker" class="card-kicker" style="font-size:11px;">{% if hero_candidates %}{{ hero_candidates[0].kicker }}{% else %}{{ hero.cat_label }}{% if html_lang.startswith('zh') %}-{{ t.topStory }}．{% else %} — {{ t.topStory }} · {% endif %}{{ hero.time }}{% endif %}</span>
+        <div class="hero-copy">
+          <span id="hero-story-kicker" class="card-kicker hero-kicker">{% if hero_candidates %}{{ hero_candidates[0].kicker }}{% else %}{{ hero.cat_label }}{% if html_lang.startswith('zh') %}-{{ t.topStory }}．{% else %} — {{ t.topStory }} · {% endif %}{{ hero.time }}{% endif %}</span>
           <h2 id="hero-story-title" class="hero-title" aria-live="polite">{{ hero.title }}</h2>
           {{ notification_summary(hero.display_summary, t.summaryLabel, 'hero') }}
         </div>
@@ -88,14 +88,14 @@
       </div>
       {% else %}
       <div class="grayscale hero-ph">
-        <span class="text-muted" style="font-family:monospace;font-size:11px;">{{ t.awaiting }}</span>
+        <span class="text-muted hero-ph-note">{{ t.awaiting }}</span>
       </div>
       {% endif %}
-      <hr class="hr" style="margin:20px 0 0;">
-      <div class="mobile-latest-head" style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;flex-wrap:wrap;gap:10px;">
-        <h6 style="margin:0;"><a href="{{ news_url }}" style="color:inherit;text-decoration:none;">{{ t.latest }} →</a></h6>
+      <hr class="hr feed-divider">
+      <div class="feed-head mobile-latest-head">
+        <h6 class="feed-head-title"><a href="{{ news_url }}" class="plain-link">{{ t.latest }} →</a></h6>
         {% if agg %}
-        <span class="text-muted" style="font-size:12px;letter-spacing:.02em;">{{ t.aggNote }}</span>
+        <span class="text-muted feed-head-note">{{ t.aggNote }}</span>
         {% else %}
         <span class="seg seg-cat">
           {% for key, label in cat_seg %}
@@ -119,7 +119,7 @@
         <span class="feed-time">{{ item.time }}</span>
         <span class="feed-category tag {{ item.tag_class }}">{{ item.cat_label }}{% if item.article_format == "brief" %} · {{ t.briefLabel }}{% elif item.article_format == "roundup" %} · {{ t.roundupLabel }}{% elif item.article_format == "announcement" %} · {{ t.announcementLabel }}{% endif %}</span>
         <span class="feed-copy">
-          <span style="display:block;font-size:15.5px;font-weight:700;line-height:1.4;letter-spacing:-.01em;">{{ item.title }}</span>
+          <span class="feed-title">{{ item.title }}</span>
         </span>
         {{ notification_summary(item.display_summary, t.summaryLabel, 'feed') }}
         <span class="feed-source text-muted">{{ item.source }}</span>
@@ -128,25 +128,25 @@
         {% endif %}
       </a>
       {% else %}
-      <div class="text-muted" style="padding:13px 0;border-top:1px solid var(--color-divider);font-size:12.5px;">{{ t.awaiting }}</div>
+      <div class="text-muted feed-empty">{{ t.awaiting }}</div>
       {% endfor %}
     </div>
     <div class="rail-right">
       <div class="home-operating-overview">
-      <h6 style="margin:0 0 12px;">{{ t.today }}</h6>
-      <div style="display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--color-divider);">
-        <a class="radar-stat-link" href="{{ radar_url }}" style="padding:12px;border-right:1px solid var(--color-divider);">
-          <div class="stat-value" style="font-size:24px;font-weight:800;color:var(--color-accent);letter-spacing:-.02em;">{{ stats.radar }}</div>
-          <div class="text-muted" style="font-size:11px;">{{ t.statRadar }}</div>
+      <h6 class="rail-heading">{{ t.today }}</h6>
+      <div class="stat-grid">
+        <a class="radar-stat-link stat-tile stat-tile--divided" href="{{ radar_url }}">
+          <div class="stat-value stat-value--accent">{{ stats.radar }}</div>
+          <div class="text-muted stat-label">{{ t.statRadar }}</div>
         </a>
-        <a class="radar-stat-link" href="{{ incidents_week_url }}" aria-label="{{ t.incWeeklySerious }}：{{ stats.serious }} {{ t.incCountLabel }}" style="padding:12px;">
-          <div class="stat-value{% if not stats.serious_available %} stat-unavailable{% endif %}" style="font-size:24px;font-weight:800;letter-spacing:-.02em;">{{ stats.serious }}</div>
-          <div class="text-muted" style="font-size:11px;">{{ t.statSerious }}</div>
+        <a class="radar-stat-link stat-tile" href="{{ incidents_week_url }}" aria-label="{{ t.incWeeklySerious }}：{{ stats.serious }} {{ t.incCountLabel }}">
+          <div class="stat-value{% if not stats.serious_available %} stat-unavailable{% endif %}">{{ stats.serious }}</div>
+          <div class="text-muted stat-label">{{ t.statSerious }}</div>
         </a>
-        <a class="radar-stat-link" href="https://www.flightaware.com/live/cancelled/today/" target="_blank" rel="noopener noreferrer" style="grid-column:1 / -1;padding:12px;border-top:1px solid var(--color-divider);">
-          <div style="font-size:14px;font-weight:800;">{% if html_lang.startswith('zh') %}全球延誤與取消{% else %}Worldwide delays and cancellations{% endif %}</div>
-          <div style="font-size:13px;margin-top:4px;color:var(--color-accent);">{% if html_lang.startswith('zh') %}查看即時統計{% else %}View live statistics{% endif %} ↗</div>
-          <div class="text-muted" style="font-size:11px;margin-top:4px;">{% if html_lang.startswith('zh') %}前往 FlightAware 查看（另開分頁）{% else %}View on FlightAware (opens in a new tab){% endif %}</div>
+        <a class="radar-stat-link stat-tile stat-tile--wide" href="https://www.flightaware.com/live/cancelled/today/" target="_blank" rel="noopener noreferrer">
+          <div class="stat-tile-title">{% if html_lang.startswith('zh') %}全球延誤與取消{% else %}Worldwide delays and cancellations{% endif %}</div>
+          <div class="stat-tile-action">{% if html_lang.startswith('zh') %}查看即時統計{% else %}View live statistics{% endif %} ↗</div>
+          <div class="text-muted stat-tile-note">{% if html_lang.startswith('zh') %}前往 FlightAware 查看（另開分頁）{% else %}View on FlightAware (opens in a new tab){% endif %}</div>
         </a>
       </div>
       </div>
@@ -178,43 +178,43 @@
         </div>
       </nav>
       {% if otp %}
-      <h6 style="margin:28px 0 12px;">{{ t.otp }}</h6>
+      <h6 class="rail-heading rail-heading--spaced">{{ t.otp }}</h6>
       {% for r in otp %}
-      <div style="padding:8px 0;border-bottom:1px solid var(--color-divider);">
-        <div style="display:flex;justify-content:space-between;font-size:13px;align-items:baseline;">
-          <span><span class="text-muted" style="font-weight:800;font-size:11px;">{{ r.rank }}</span>&nbsp; {{ r.airline }} <span class="text-muted" style="font-size:11px;">{{ r.code }}</span></span>
-          <span style="font-weight:800;">{{ r.pct }}%</span>
+      <div class="otp-row">
+        <div class="otp-row-head">
+          <span><span class="text-muted otp-rank">{{ r.rank }}</span>&nbsp; {{ r.airline }} <span class="text-muted otp-code">{{ r.code }}</span></span>
+          <span class="otp-pct">{{ r.pct }}%</span>
         </div>
-        <div style="height:3px;background:color-mix(in srgb,var(--color-text) 10%,transparent);margin-top:5px;"><div style="height:3px;background:var(--color-accent);width:{{ r.barw }};"></div></div>
+        <div class="otp-track"><div class="otp-bar" style="width:{{ r.barw }};"></div></div>
       </div>
       {% endfor %}
       {% endif %}
       {% if fleet %}
-      <h6 style="margin:28px 0 12px;">{{ t.fleet }}</h6>
-      <div style="font-size:12.5px;">
-        <div class="text-muted" style="font-size:11px;margin-bottom:6px;">{{ t.fleetDeliv }}</div>
+      <h6 class="rail-heading rail-heading--spaced">{{ t.fleet }}</h6>
+      <div class="fleet-panel">
+        <div class="text-muted fleet-caption">{{ t.fleetDeliv }}</div>
         {% for fb in fleet.bars %}
-        <div style="display:flex;align-items:center;gap:8px;padding:4px 0;">
-          <span style="width:52px;font-weight:700;">{{ fb.maker }}</span>
-          <div style="flex:1;height:14px;background:color-mix(in srgb,var(--color-text) 8%,transparent);"><div style="height:14px;background:{{ fb.color }};width:{{ fb.w }};"></div></div>
-          <span style="font-weight:800;width:32px;text-align:right;">{{ fb.n }}</span>
+        <div class="fleet-row">
+          <span class="fleet-maker">{{ fb.maker }}</span>
+          <div class="fleet-track"><div class="fleet-bar" style="background:{{ fb.color }};width:{{ fb.w }};"></div></div>
+          <span class="fleet-count">{{ fb.n }}</span>
         </div>
         {% endfor %}
-        <div style="display:flex;justify-content:space-between;border-top:1px solid var(--color-divider);margin-top:8px;padding-top:8px;">
-          <span class="text-muted">{{ t.fleetBacklog }}</span><span style="font-weight:700;">{{ fleet.backlog }}</span>
+        <div class="fleet-total fleet-total--first">
+          <span class="text-muted">{{ t.fleetBacklog }}</span><span class="fleet-total-value">{{ fleet.backlog }}</span>
         </div>
-        <div style="display:flex;justify-content:space-between;padding-top:4px;">
-          <span class="text-muted">{{ t.fleetOrders }}</span><span style="font-weight:700;">{{ fleet.orders }}</span>
+        <div class="fleet-total">
+          <span class="text-muted">{{ t.fleetOrders }}</span><span class="fleet-total-value">{{ fleet.orders }}</span>
         </div>
       </div>
       {% endif %}
       {% if delays %}
-      <h6 style="margin:28px 0 12px;">{{ t.delays }}</h6>
+      <h6 class="rail-heading rail-heading--spaced">{{ t.delays }}</h6>
       {% for d in delays %}
-      <div style="padding:7px 0;border-bottom:1px solid var(--color-divider);display:flex;align-items:center;gap:10px;font-size:12.5px;">
-        <span style="font-weight:800;width:36px;">{{ d.code }}</span>
-        <span class="text-muted" style="flex:1;min-width:0;">{{ d.name }}</span>
-        <span style="font-weight:700;">{{ d.pct }}%</span>
+      <div class="delay-row">
+        <span class="delay-code">{{ d.code }}</span>
+        <span class="text-muted delay-name">{{ d.name }}</span>
+        <span class="delay-pct">{{ d.pct }}%</span>
       </div>
       {% endfor %}
       {% endif %}

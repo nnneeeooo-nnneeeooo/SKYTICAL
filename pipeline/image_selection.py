@@ -152,8 +152,7 @@ def airline_matches(article, airline, image, evidence_text):
 def rejection_reason(article, raw, captions=None):
     from image_policy import (article_context_text, article_headline_text,
                               article_is_airport_operations, article_is_cabin_story,
-                              article_is_drone_story, article_is_incident,
-                              BAD_AIRLINE_INTERIOR_RE)
+                              article_is_drone_story, article_is_incident)
     import images
     if article.get("roundupKind") == "industry" and isinstance(raw, dict):
         from roundup_images import context
