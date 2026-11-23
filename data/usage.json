@@ -1,17 +1,17 @@
 {
-  "updatedUtc": "2026-11-23T03:30Z",
+  "updatedUtc": "2026-11-23T10:16Z",
   "trackingSinceUtc": "2026-09-12T01:05Z",
   "models": {
     "gemini:gemini-3.6-flash": {
-      "calls": 1137,
-      "inputTokens": 1779793,
-      "outputTokens": 2371406,
-      "unknownCalls": 841
+      "calls": 1141,
+      "inputTokens": 1793429,
+      "outputTokens": 2389953,
+      "unknownCalls": 843
     },
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
-      "calls": 1749,
-      "inputTokens": 7479232,
-      "outputTokens": 4087932,
+      "calls": 1750,
+      "inputTokens": 7486293,
+      "outputTokens": 4092023,
       "unknownCalls": 697
     },
     "wechat:Deepseek-v4-flash": {
@@ -21,9 +21,9 @@
       "unknownCalls": 152
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
-      "calls": 1331,
-      "inputTokens": 5645664,
-      "outputTokens": 4675245,
+      "calls": 1332,
+      "inputTokens": 5652718,
+      "outputTokens": 4677909,
       "unknownCalls": 525
     },
     "nvidia:nvidia/nemotron-3-super-120b-a12b": {
@@ -33,9 +33,9 @@
       "unknownCalls": 239
     },
     "gemini:gemini-3.5-flash": {
-      "calls": 714,
-      "inputTokens": 709595,
-      "outputTokens": 1047194,
+      "calls": 715,
+      "inputTokens": 717250,
+      "outputTokens": 1059628,
       "unknownCalls": 601
     },
     "openai:gpt-6": {
@@ -57,9 +57,9 @@
       "unknownCalls": 0
     },
     "groq:openai/gpt-oss-120b": {
-      "calls": 130,
-      "inputTokens": 369928,
-      "outputTokens": 118190,
+      "calls": 131,
+      "inputTokens": 376301,
+      "outputTokens": 119944,
       "unknownCalls": 69
     },
     "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8": {
@@ -69,27 +69,27 @@
       "unknownCalls": 36
     },
     "openai:gpt-6.1-terra": {
-      "calls": 151,
-      "inputTokens": 710314,
-      "outputTokens": 2488690,
+      "calls": 155,
+      "inputTokens": 729816,
+      "outputTokens": 2535837,
       "unknownCalls": 3
     },
     "openai:gpt-6.1-terra+search": {
-      "calls": 38,
-      "inputTokens": 1457375,
-      "outputTokens": 121741,
+      "calls": 40,
+      "inputTokens": 1536043,
+      "outputTokens": 128061,
       "unknownCalls": 0
     },
     "cloudflare:@cf/openai/gpt-oss-120b": {
-      "calls": 16,
+      "calls": 17,
       "inputTokens": 80606,
       "outputTokens": 57060,
-      "unknownCalls": 5
+      "unknownCalls": 6
     },
     "groq:qwen/qwen3.8-27b": {
-      "calls": 19,
-      "inputTokens": 53065,
-      "outputTokens": 12526,
+      "calls": 20,
+      "inputTokens": 59769,
+      "outputTokens": 14135,
       "unknownCalls": 11
     },
     "openrouter:inclusionai/ling-3.2-flash:free": {
@@ -99,9 +99,9 @@
       "unknownCalls": 6
     },
     "gemini:gemini-4-hydrogen": {
-      "calls": 8,
-      "inputTokens": 0,
-      "outputTokens": 0,
+      "calls": 10,
+      "inputTokens": 13174,
+      "outputTokens": 4371,
       "unknownCalls": 8
     },
     "gemini:gemini-3.8-flash": {
@@ -116,29 +116,41 @@
       "outputTokens": 7576,
       "unknownCalls": 9
     },
-    "gemini:gemini-3.1-flash-lite": {
-      "calls": 14,
-      "inputTokens": 42414,
-      "outputTokens": 11224,
-      "unknownCalls": 8
-    },
-    "gemini:gemma-4-31b-it": {
-      "calls": 7,
-      "inputTokens": 7069,
-      "outputTokens": 5745,
-      "unknownCalls": 6
-    },
-    "gemini:gemma-4-26b-a4b-it": {
-      "calls": 7,
-      "inputTokens": 21207,
-      "outputTokens": 6950,
-      "unknownCalls": 4
-    },
-    "nvidia:z-ai/glm-5.3-flash": {
-      "calls": 7,
+    "gemini:gemini-3.8-flash": {
+      "calls": 9,
       "inputTokens": 0,
       "outputTokens": 0,
+      "unknownCalls": 9
+    },
+    "gemini:gemini-3.5-flash-lite": {
+      "calls": 16,
+      "inputTokens": 42414,
+      "outputTokens": 9304,
+      "unknownCalls": 10
+    },
+    "gemini:gemini-3.1-flash-lite": {
+      "calls": 16,
+      "inputTokens": 49483,
+      "outputTokens": 13425,
+      "unknownCalls": 9
+    },
+    "gemini:gemma-4-31b-it": {
+      "calls": 8,
+      "inputTokens": 7069,
+      "outputTokens": 5745,
       "unknownCalls": 7
+    },
+    "gemini:gemma-4-26b-a4b-it": {
+      "calls": 8,
+      "inputTokens": 21207,
+      "outputTokens": 6950,
+      "unknownCalls": 5
+    },
+    "nvidia:z-ai/glm-5.3-flash": {
+      "calls": 8,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "unknownCalls": 8
     },
     "nvidia:mistralai/mistral-large-4-1t-a52b": {
       "calls": 4,
@@ -147,33 +159,33 @@
       "unknownCalls": 4
     },
     "nvidia:google/gemma-4-31b-it": {
-      "calls": 21,
+      "calls": 22,
       "inputTokens": 94169,
       "outputTokens": 24229,
-      "unknownCalls": 9
+      "unknownCalls": 10
     },
     "groq:openai/gpt-oss-20b": {
-      "calls": 6,
+      "calls": 7,
       "inputTokens": 31865,
       "outputTokens": 8515,
-      "unknownCalls": 1
+      "unknownCalls": 2
     },
     "cloudflare:@cf/qwen/qwen3.8-27b": {
-      "calls": 6,
+      "calls": 7,
       "inputTokens": 0,
       "outputTokens": 0,
-      "unknownCalls": 6
+      "unknownCalls": 7
     },
     "cloudflare:@cf/google/gemma-4-26b-a4b-it": {
-      "calls": 6,
+      "calls": 7,
       "inputTokens": 7004,
       "outputTokens": 8192,
-      "unknownCalls": 5
+      "unknownCalls": 6
     },
     "cloudflare:@cf/openai/gpt-oss-20b": {
-      "calls": 16,
-      "inputTokens": 97978,
-      "outputTokens": 84791,
+      "calls": 17,
+      "inputTokens": 104845,
+      "outputTokens": 92983,
       "unknownCalls": 2
     },
     "cloudflare:@cf/aisingapore/gemma-sea-lion-v4-27b-it": {
@@ -195,33 +207,33 @@
       "unknownCalls": 1
     },
     "openrouter:nvidia/nemotron-3.5-super-vl:free": {
-      "calls": 5,
-      "inputTokens": 35270,
-      "outputTokens": 66836,
+      "calls": 6,
+      "inputTokens": 42324,
+      "outputTokens": 83220,
       "unknownCalls": 0
     },
     "openrouter:nvidia/nemotron-3.5-lightning:free": {
-      "calls": 5,
-      "inputTokens": 28216,
-      "outputTokens": 65536,
+      "calls": 6,
+      "inputTokens": 35270,
+      "outputTokens": 81920,
       "unknownCalls": 1
     },
     "openrouter:google/gemma-4-31b-it:free": {
-      "calls": 9,
+      "calls": 10,
       "inputTokens": 0,
       "outputTokens": 0,
-      "unknownCalls": 9
+      "unknownCalls": 10
     },
     "openrouter:google/gemma-4-26b-a4b-it:free": {
-      "calls": 9,
+      "calls": 10,
       "inputTokens": 0,
       "outputTokens": 0,
-      "unknownCalls": 9
+      "unknownCalls": 10
     },
     "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free": {
-      "calls": 5,
-      "inputTokens": 7054,
-      "outputTokens": 16384,
+      "calls": 6,
+      "inputTokens": 14108,
+      "outputTokens": 32768,
       "unknownCalls": 4
     },
     "openrouter:particle-ai/particle-1:free": {
@@ -611,12 +623,413 @@
       "outputTokens": 621360
     },
     "2026-11-23": {
-      "calls": 35,
-      "inputTokens": 138694,
-      "outputTokens": 245225
+      "calls": 43,
+      "inputTokens": 171370,
+      "outputTokens": 296743
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-11-23T10:01Z",
+      "finishedUtc": "2026-11-23T10:01Z",
+      "workflow": "provider_probe",
+      "taskType": "article_probe",
+      "editorialTier": "niche",
+      "routeReason": "routine_development_or_military_test",
+      "paidFallbackAllowed": true,
+      "groupId": "free-provider-probe-h140-v1",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "Aerospace Global News",
+      "result": "probe_failed",
+      "articleId": null,
+      "finalStatus": "retry_pending",
+      "finalModel": "openrouter:google/gemma-4-31b-it:free",
+      "fallbackUsed": false,
+      "attemptCount": 1,
+      "httpCallCount": 1,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": null,
+        "promptAssembly": 366,
+        "drafting": 496,
+        "validation": null,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 497
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "openrouter",
+          "model": "google/gemma-4-31b-it:free",
+          "label": "openrouter:google/gemma-4-31b-it:free",
+          "startedUtc": "2026-11-23T10:01Z",
+          "durationMs": 496,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 128,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
+    {
+      "startedUtc": "2026-11-23T10:01Z",
+      "finishedUtc": "2026-11-23T10:01Z",
+      "workflow": "provider_probe",
+      "taskType": "article_probe",
+      "editorialTier": "niche",
+      "routeReason": "routine_development_or_military_test",
+      "paidFallbackAllowed": true,
+      "groupId": "free-provider-probe-h140-v1",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "Aerospace Global News",
+      "result": "probe_failed",
+      "articleId": null,
+      "finalStatus": "retry_pending",
+      "finalModel": "openrouter:google/gemma-4-26b-a4b-it:free",
+      "fallbackUsed": false,
+      "attemptCount": 1,
+      "httpCallCount": 1,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": null,
+        "promptAssembly": 2,
+        "drafting": 87,
+        "validation": null,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 87
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "openrouter",
+          "model": "google/gemma-4-26b-a4b-it:free",
+          "label": "openrouter:google/gemma-4-26b-a4b-it:free",
+          "startedUtc": "2026-11-23T10:01Z",
+          "durationMs": 87,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 84,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
+    {
+      "startedUtc": "2026-11-23T10:01Z",
+      "finishedUtc": "2026-11-23T10:08Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "editorialTier": "standard",
+      "routeReason": "taiwan_relevance",
+      "paidFallbackAllowed": true,
+      "groupId": "g-20261123-1000-1",
+      "eventId": null,
+      "sourceCount": 6,
+      "primarySource": "CAA Taiwan",
+      "result": "published",
+      "articleId": "a-us-army-mh47g-shimojishima-airport-use-20261123",
+      "finalStatus": "publish",
+      "finalModel": "openai:gpt-6.1-terra",
+      "fallbackUsed": false,
+      "attemptCount": 1,
+      "httpCallCount": 1,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 6020,
+        "promptAssembly": 3,
+        "drafting": 260025,
+        "validation": 1,
+        "factVerification": 0,
+        "evidenceBinding": 1,
+        "glossaryCheck": 0,
+        "fabricationCheck": 0,
+        "articleBuild": 35,
+        "total": 445717
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "openai",
+          "model": "gpt-6.1-terra",
+          "label": "openai:gpt-6.1-terra",
+          "startedUtc": "2026-11-23T10:01Z",
+          "durationMs": 260029,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 258797,
+          "repairDurationMs": 0,
+          "outcome": "success",
+          "failureClass": null,
+          "failureStage": null,
+          "failureMessage": null,
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
+    {
+      "startedUtc": "2026-11-23T10:01Z",
+      "finishedUtc": "2026-11-23T10:15Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "editorialTier": "standard",
+      "routeReason": "taiwan_relevance",
+      "paidFallbackAllowed": true,
+      "groupId": "g-20261123-1000-3",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "中央社 CNA",
+      "result": "published",
+      "articleId": "a-20261123-1000-marine-corps-to-use-attack-drone-in-dece",
+      "finalStatus": "publish",
+      "finalModel": "openai:gpt-6.1-terra",
+      "fallbackUsed": false,
+      "attemptCount": 1,
+      "httpCallCount": 1,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 5965,
+        "promptAssembly": 1,
+        "drafting": 389507,
+        "validation": 1,
+        "factVerification": 0,
+        "evidenceBinding": 0,
+        "glossaryCheck": 0,
+        "fabricationCheck": 0,
+        "articleBuild": 7,
+        "total": 847991
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "openai",
+          "model": "gpt-6.1-terra",
+          "label": "openai:gpt-6.1-terra",
+          "startedUtc": "2026-11-23T10:08Z",
+          "durationMs": 389511,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 388416,
+          "repairDurationMs": 0,
+          "outcome": "success",
+          "failureClass": null,
+          "failureStage": null,
+          "failureMessage": null,
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
+    {
+      "startedUtc": "2026-11-23T10:01Z",
+      "finishedUtc": "2026-11-23T10:15Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "editorialTier": "standard",
+      "routeReason": "taiwan_relevance",
+      "paidFallbackAllowed": true,
+      "groupId": "g-20261123-1000-4",
+      "eventId": null,
+      "sourceCount": 2,
+      "primarySource": "中央社 CNA",
+      "result": "editorial_protected",
+      "articleId": "a-taiwan-mnd-pla-activity-20261123",
+      "finalStatus": "editorial_protected",
+      "finalModel": null,
+      "fallbackUsed": false,
+      "attemptCount": 0,
+      "httpCallCount": 0,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 5999,
+        "promptAssembly": null,
+        "drafting": null,
+        "validation": null,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 842489
+      },
+      "attempts": [],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
+    {
+      "startedUtc": "2026-11-23T10:01Z",
+      "finishedUtc": "2026-11-23T10:16Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "editorialTier": "standard",
+      "routeReason": "ordinary_news",
+      "paidFallbackAllowed": true,
+      "groupId": "g-20261123-1000-11",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "Simple Flying",
+      "result": "retry_pending",
+      "articleId": null,
+      "finalStatus": "source_insufficient",
+      "finalModel": "gemini:gemini-4-hydrogen",
+      "fallbackUsed": false,
+      "attemptCount": 1,
+      "httpCallCount": 1,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 5889,
+        "promptAssembly": 1,
+        "drafting": 51785,
+        "validation": 0,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 888665
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "gemini",
+          "model": "gemini-4-hydrogen",
+          "label": "gemini:gemini-4-hydrogen",
+          "startedUtc": "2026-11-23T10:15Z",
+          "durationMs": 51786,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 51783,
+          "repairDurationMs": 0,
+          "outcome": "success",
+          "failureClass": null,
+          "failureStage": null,
+          "failureMessage": null,
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
+    {
+      "startedUtc": "2026-11-23T10:01Z",
+      "finishedUtc": "2026-11-23T10:16Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "editorialTier": "standard",
+      "routeReason": "ordinary_news",
+      "paidFallbackAllowed": true,
+      "groupId": "g-20261123-1000-12",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "Simple Flying",
+      "result": "retry_pending",
+      "articleId": null,
+      "finalStatus": "source_insufficient",
+      "finalModel": "gemini:gemini-4-hydrogen",
+      "fallbackUsed": false,
+      "attemptCount": 1,
+      "httpCallCount": 1,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 5931,
+        "promptAssembly": 1,
+        "drafting": 11005,
+        "validation": 0,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 894166
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "gemini",
+          "model": "gemini-4-hydrogen",
+          "label": "gemini:gemini-4-hydrogen",
+          "startedUtc": "2026-11-23T10:16Z",
+          "durationMs": 11005,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 11002,
+          "repairDurationMs": 0,
+          "outcome": "success",
+          "failureClass": null,
+          "failureStage": null,
+          "failureMessage": null,
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
     {
       "startedUtc": "2026-11-23T03:12Z",
       "finishedUtc": "2026-11-23T03:12Z",
@@ -70833,532 +71246,6 @@
           "disabledForRun": false
         }
       ],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-10-27T00:53Z",
-      "finishedUtc": "2026-10-27T01:10Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "editorialTier": "standard",
-      "routeReason": "ordinary_news",
-      "paidFallbackAllowed": false,
-      "groupId": "g-20261027-0053-12",
-      "eventId": null,
-      "sourceCount": 1,
-      "primarySource": "AeroTime",
-      "result": "retry_pending",
-      "articleId": null,
-      "finalStatus": "retry_pending",
-      "finalModel": null,
-      "fallbackUsed": false,
-      "attemptCount": 2,
-      "httpCallCount": 2,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 4464,
-        "promptAssembly": 6,
-        "drafting": 109825,
-        "validation": 1,
-        "factVerification": 0,
-        "evidenceBinding": 0,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
-        "articleBuild": null,
-        "total": 1027683
-      },
-      "attempts": [
-        {
-          "sequence": 1,
-          "provider": "nvidia",
-          "model": "nvidia/nemotron-3-ultra-550b-a55b",
-          "label": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-          "startedUtc": "2026-10-27T01:08Z",
-          "durationMs": 74557,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 74548,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "evidence_binding_failed",
-          "failureStage": "evidenceBinding",
-          "failureMessage": "headlineSupportedBy references a fact that did not verify",
-          "retryPlanned": true,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 2,
-          "provider": "nvidia",
-          "model": "nvidia/nemotron-3-ultra-550b-a55b",
-          "label": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-          "startedUtc": "2026-10-27T01:10Z",
-          "durationMs": 35272,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 35268,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "timeout",
-          "failureStage": "draft",
-          "failureMessage": "ReadTimeout",
-          "retryPlanned": false,
-          "disabledForRun": false
-        }
-      ],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-10-26T20:47Z",
-      "finishedUtc": "2026-10-26T20:47Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "editorialTier": "niche",
-      "routeReason": "routine_development_or_military_test",
-      "paidFallbackAllowed": false,
-      "groupId": "g-20261026-2046-3",
-      "eventId": null,
-      "sourceCount": 1,
-      "primarySource": "AeroTime",
-      "result": "already_published",
-      "articleId": "a-air-astana-787-9-flight-testing-20261025",
-      "finalStatus": "duplicate_existing",
-      "finalModel": null,
-      "fallbackUsed": false,
-      "attemptCount": 0,
-      "httpCallCount": 0,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 5505,
-        "promptAssembly": null,
-        "drafting": null,
-        "validation": null,
-        "factVerification": null,
-        "evidenceBinding": null,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
-        "articleBuild": null,
-        "total": 19102
-      },
-      "attempts": [],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-10-26T20:47Z",
-      "finishedUtc": "2026-10-26T20:51Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "editorialTier": "standard",
-      "routeReason": "ordinary_news",
-      "paidFallbackAllowed": false,
-      "groupId": "g-20261026-2046-4",
-      "eventId": null,
-      "sourceCount": 2,
-      "primarySource": "Simple Flying",
-      "result": "rejected",
-      "articleId": null,
-      "finalStatus": "reject",
-      "finalModel": "gemini:gemini-3.6-flash",
-      "fallbackUsed": false,
-      "attemptCount": 1,
-      "httpCallCount": 1,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 5223,
-        "promptAssembly": 1,
-        "drafting": 37676,
-        "validation": 0,
-        "factVerification": null,
-        "evidenceBinding": null,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
-        "articleBuild": null,
-        "total": 288453
-      },
-      "attempts": [
-        {
-          "sequence": 1,
-          "provider": "gemini",
-          "model": "gemini-3.6-flash",
-          "label": "gemini:gemini-3.6-flash",
-          "startedUtc": "2026-10-26T20:51Z",
-          "durationMs": 37676,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 37674,
-          "repairDurationMs": 0,
-          "outcome": "success",
-          "failureClass": null,
-          "failureStage": null,
-          "failureMessage": null,
-          "retryPlanned": false,
-          "disabledForRun": false
-        }
-      ],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-10-26T20:47Z",
-      "finishedUtc": "2026-10-26T20:54Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "editorialTier": "standard",
-      "routeReason": "ordinary_news",
-      "paidFallbackAllowed": false,
-      "groupId": "g-20261026-2046-5",
-      "eventId": null,
-      "sourceCount": 1,
-      "primarySource": "Simple Flying",
-      "result": "retry_pending",
-      "articleId": null,
-      "finalStatus": "retry_pending",
-      "finalModel": null,
-      "fallbackUsed": true,
-      "attemptCount": 3,
-      "httpCallCount": 3,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 5188,
-        "promptAssembly": 1,
-        "drafting": 171133,
-        "validation": 2,
-        "factVerification": null,
-        "evidenceBinding": null,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
-        "articleBuild": null,
-        "total": 449292
-      },
-      "attempts": [
-        {
-          "sequence": 1,
-          "provider": "gemini",
-          "model": "gemini-3.6-flash",
-          "label": "gemini:gemini-3.6-flash",
-          "startedUtc": "2026-10-26T20:51Z",
-          "durationMs": 5315,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 5314,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "http_error",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 503 code=UNAVAILABLE",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 2,
-          "provider": "nvidia",
-          "model": "nvidia/nemotron-3-ultra-550b-a55b",
-          "label": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-          "startedUtc": "2026-10-26T20:51Z",
-          "durationMs": 56128,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 56124,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "invalid_schema",
-          "failureStage": "validation",
-          "failureMessage": "publish_brief body does not meet brief contract (zh=164 content characters, en=58 words, paragraphs=3/3)",
-          "retryPlanned": true,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 3,
-          "provider": "nvidia",
-          "model": "nvidia/nemotron-3-ultra-550b-a55b",
-          "label": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-          "startedUtc": "2026-10-26T20:52Z",
-          "durationMs": 109693,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 109689,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "invalid_schema",
-          "failureStage": "validation",
-          "failureMessage": "publish_brief must have an empty decisionReason",
-          "retryPlanned": false,
-          "disabledForRun": false
-        }
-      ],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-10-26T20:47Z",
-      "finishedUtc": "2026-10-26T20:54Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "editorialTier": "standard",
-      "routeReason": "ordinary_news",
-      "paidFallbackAllowed": false,
-      "groupId": "g-20261026-2046-11",
-      "eventId": null,
-      "sourceCount": 1,
-      "primarySource": "Simple Flying",
-      "result": "rejected",
-      "articleId": null,
-      "finalStatus": "reject",
-      "finalModel": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-      "fallbackUsed": true,
-      "attemptCount": 2,
-      "httpCallCount": 2,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 5216,
-        "promptAssembly": 0,
-        "drafting": 13860,
-        "validation": 0,
-        "factVerification": null,
-        "evidenceBinding": null,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
-        "articleBuild": null,
-        "total": 458458
-      },
-      "attempts": [
-        {
-          "sequence": 1,
-          "provider": "gemini",
-          "model": "gemini-3.6-flash",
-          "label": "gemini:gemini-3.6-flash",
-          "startedUtc": "2026-10-26T20:54Z",
-          "durationMs": 182,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 181,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "quota",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 (free-tier quota exhausted?)",
-          "retryPlanned": false,
-          "disabledForRun": true
-        },
-        {
-          "sequence": 2,
-          "provider": "nvidia",
-          "model": "nvidia/nemotron-3-ultra-550b-a55b",
-          "label": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-          "startedUtc": "2026-10-26T20:54Z",
-          "durationMs": 13679,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 13676,
-          "repairDurationMs": 0,
-          "outcome": "success",
-          "failureClass": null,
-          "failureStage": null,
-          "failureMessage": null,
-          "retryPlanned": false,
-          "disabledForRun": false
-        }
-      ],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-10-26T20:46Z",
-      "finishedUtc": "2026-10-26T20:51Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "editorialTier": "urgent",
-      "routeReason": "safety_or_major_operational_event",
-      "paidFallbackAllowed": true,
-      "groupId": "g-20261026-2046-1",
-      "eventId": null,
-      "sourceCount": 3,
-      "primarySource": "The Aviation Herald",
-      "result": "published",
-      "articleId": "a-20261026-2046-three-event-aviation-safety-roundup-jet2",
-      "finalStatus": "publish",
-      "finalModel": "openai:gpt-6",
-      "fallbackUsed": true,
-      "attemptCount": 5,
-      "httpCallCount": 5,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 5216,
-        "promptAssembly": 4,
-        "drafting": 222549,
-        "validation": 3,
-        "factVerification": 0,
-        "evidenceBinding": 0,
-        "glossaryCheck": 0,
-        "fabricationCheck": 0,
-        "articleBuild": 1,
-        "total": 254333
-      },
-      "attempts": [
-        {
-          "sequence": 1,
-          "provider": "gemini",
-          "model": "gemini-3.6-flash",
-          "label": "gemini:gemini-3.6-flash",
-          "startedUtc": "2026-10-26T20:47Z",
-          "durationMs": 7848,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 7844,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "http_error",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 503 code=UNAVAILABLE",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 2,
-          "provider": "nvidia",
-          "model": "nvidia/nemotron-3-ultra-550b-a55b",
-          "label": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-          "startedUtc": "2026-10-26T20:47Z",
-          "durationMs": 35169,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 35165,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "invalid_schema",
-          "failureStage": "validation",
-          "failureMessage": "publish_brief must have an empty decisionReason",
-          "retryPlanned": true,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 3,
-          "provider": "nvidia",
-          "model": "nvidia/nemotron-3-ultra-550b-a55b",
-          "label": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-          "startedUtc": "2026-10-26T20:48Z",
-          "durationMs": 140430,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 140425,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "evidence_binding_failed",
-          "failureStage": "evidenceBinding",
-          "failureMessage": "F1 claim adds high-risk atom '737-800' not present in its own sourceQuote",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 4,
-          "provider": "wechat",
-          "model": "Deepseek-v4-flash",
-          "label": "wechat:Deepseek-v4-flash",
-          "startedUtc": "2026-10-26T20:50Z",
-          "durationMs": 1192,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 1192,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "quota",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 (credits exhausted?)",
-          "retryPlanned": false,
-          "disabledForRun": true
-        },
-        {
-          "sequence": 5,
-          "provider": "openai",
-          "model": "gpt-6",
-          "label": "openai:gpt-6",
-          "startedUtc": "2026-10-26T20:50Z",
-          "durationMs": 37920,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 37914,
-          "repairDurationMs": 0,
-          "outcome": "success",
-          "failureClass": null,
-          "failureStage": null,
-          "failureMessage": null,
-          "retryPlanned": false,
-          "disabledForRun": false
-        }
-      ],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-10-26T15:59Z",
-      "finishedUtc": "2026-10-26T15:59Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "editorialTier": "standard",
-      "routeReason": "ordinary_news",
-      "paidFallbackAllowed": false,
-      "groupId": "g-20261026-1559-1",
-      "eventId": null,
-      "sourceCount": 1,
-      "primarySource": "Simple Flying",
-      "result": "no_provider",
-      "articleId": null,
-      "finalStatus": "retry_pending",
-      "finalModel": null,
-      "fallbackUsed": false,
-      "attemptCount": 0,
-      "httpCallCount": 0,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 5308,
-        "promptAssembly": null,
-        "drafting": null,
-        "validation": null,
-        "factVerification": null,
-        "evidenceBinding": null,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
-        "articleBuild": null,
-        "total": 28788
-      },
-      "attempts": [],
       "resourceUsage": {
         "actualUsd": 0.0,
         "models": []
