@@ -3,10 +3,10 @@
   "routes": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
       "status": "waiting",
-      "untilUtc": "2026-11-23T00:06Z",
-      "checkedUtc": "2026-11-22T18:06Z",
+      "untilUtc": "2026-11-23T08:38Z",
+      "checkedUtc": "2026-11-23T02:38Z",
       "failureClass": "unexpected",
-      "diagnostic": "zh.body[2] contains Simplified Chinese characters",
+      "diagnostic": "publish_brief must have an empty decisionReason",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -147,8 +147,8 @@
     },
     "nvidia:z-ai/glm-5.3-flash": {
       "status": "waiting",
-      "checkedUtc": "2026-11-22T23:53Z",
       "untilUtc": "2026-11-23T05:53Z",
+      "checkedUtc": "2026-11-22T23:53Z",
       "failureClass": "timeout",
       "diagnostic": "ReadTimeout",
       "probeVersion": 3,
@@ -192,8 +192,8 @@
     },
     "nvidia:google/gemma-4-31b-it": {
       "status": "waiting",
-      "untilUtc": "2026-11-23T00:06Z",
-      "checkedUtc": "2026-11-22T18:06Z",
+      "untilUtc": "2026-11-23T08:38Z",
+      "checkedUtc": "2026-11-23T02:38Z",
       "failureClass": "timeout",
       "diagnostic": "ReadTimeout",
       "probeVersion": 3,
@@ -228,8 +228,8 @@
     },
     "cloudflare:@cf/qwen/qwen3.8-27b": {
       "status": "waiting",
-      "untilUtc": "2026-11-23T00:06Z",
-      "checkedUtc": "2026-11-22T18:06Z",
+      "checkedUtc": "2026-11-23T02:38Z",
+      "untilUtc": "2026-11-23T08:38Z",
       "failureClass": "http_error",
       "diagnostic": "HTTP 408",
       "probeVersion": 3,
@@ -246,8 +246,8 @@
     },
     "cloudflare:@cf/openai/gpt-oss-20b": {
       "status": "waiting",
-      "untilUtc": "2026-11-22T16:23Z",
-      "checkedUtc": "2026-11-22T10:23Z",
+      "untilUtc": "2026-11-23T08:38Z",
+      "checkedUtc": "2026-11-23T02:38Z",
       "failureClass": "truncated",
       "diagnostic": "response truncated (length)",
       "probeVersion": 3,
