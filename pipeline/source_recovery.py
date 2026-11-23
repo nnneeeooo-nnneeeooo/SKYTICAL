@@ -48,7 +48,7 @@ def _search(group):
     if not model_route_allowed("openai", MODEL):
         raise RuntimeError("Terra model route is disabled")
     from paid_budget import post
-    from providers import LUNA_HTTP_TIMEOUT, extract_json
+    from providers import OPENAI_HTTP_TIMEOUT, extract_json
     key = os.environ.get("OPENAI_API_KEY")
     if not key:
         raise RuntimeError("credentials unavailable")
@@ -71,7 +71,7 @@ def _search(group):
                     "https://api.openai.com/v1/responses", payload,
                     purpose="draft", model=MODEL,
                     headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"},
-                    timeout=LUNA_HTTP_TIMEOUT)
+                    timeout=OPENAI_HTTP_TIMEOUT)
     if response.status_code != 200:
         raise ValueError(f"search HTTP {response.status_code}")
     data = response.json()
