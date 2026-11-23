@@ -1,0 +1,43 @@
+name: schedule-relay
+
+# GitHub drops most schedule events for this repository. One long-lived job
+# dispatches the cron workflows listed in pipeline/schedule_relay.py on time
+# and starts its own successor; the cron below only restarts a broken chain.
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+    inputs:
+      since:
+        description: "Internal: epoch seconds covered by the previous relay run"
+        required: false
+        type: string
+      handoff_from:
+        description: "Internal: run id of the previous relay run"
+        required: false
+        type: string
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/schedule-relay.yml"
+      - "pipeline/schedule_relay.py"
+
+permissions:
+  contents: read
+  actions: write # workflow_dispatch for the relayed workflows and the successor
+
+jobs:
+  relay:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Relay due schedules
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          SINCE: ${{ inputs.since }}
+          HANDOFF_FROM: ${{ inputs.handoff_from }}
+        run: python3 -u pipeline/schedule_relay.py --since "$SINCE" --handoff-from "$HANDOFF_FROM"

@@ -1,6 +1,20 @@
 # SKYTICAL Open-source Scouting
 
-更新日期：2026-11-16
+更新日期：2026-11-23
+
+
+## 排程 workflow 準時觸發（2026-11-23）
+
+GitHub Actions 執行紀錄顯示 `hourly-update` 的 `schedule` 事件在 46 天內只送達 200 次（應約 1,090 次），其他排程 workflow 同樣短少；`workflow_dispatch` 則即時送達。以 GitHub repository metadata 比較可替代內建 cron 的觸發方式：
+
+| 專案 | 最近推送／Stars | 語言／授權 | 導入判斷 |
+| --- | --- | --- | --- |
+| [cron-job.org](https://github.com/pschlan/cron-job.org) | 2026-11-15／2,158 | JavaScript／GPL-2.0 | 免費託管的外部定時器，可直接呼叫 dispatch API；需要站方帳號與一組僅限本 repo Actions 的 token，列為第二層保險。 |
+| [Cloudflare Workers templates](https://github.com/cloudflare/templates) | 2026-11-20／2,182 | TypeScript／MIT | Cron Trigger 可定時呼叫 dispatch API，程式可入庫；同樣需要帳號與 token，並新增 Node 部署環境。 |
+| [workflow-dispatch](https://github.com/benc-uk/workflow-dispatch) | 2026-09-02／399 | TypeScript／MIT | 在 job 內觸發其他 workflow；只需一次 REST 呼叫，不值得新增第三方 action。 |
+| [repository-dispatch](https://github.com/peter-evans/repository-dispatch) | 2026-11-01／1,216 | TypeScript／MIT | 改用 `repository_dispatch` 事件；既有 workflow 已支援 `workflow_dispatch`，不需改事件型別。 |
+
+本次採用不需任何外部帳號的 repo 內接力：`schedule-relay` 以單一常駐 job 讀取 `hourly`、`briefing`、`radar-snapshot`、`rare-aircraft-monitor` 既有的 cron 行，到點用 `GITHUB_TOKEN` 呼叫 `workflow_dispatch`，執行 5 小時後交棒給下一輪。原有 cron 全部保留，作為接力中斷時的重啟來源；cron 行仍是唯一的排程設定，修改後最遲在下一次交棒生效。沒有複製第三方程式碼或新增依賴。外部定時器（cron-job.org 或 Cloudflare）待站方提供帳號後另案加入。
 
 
 ## 航空短訊逐則配圖與輪播（2026-11-16）
