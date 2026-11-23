@@ -13,6 +13,7 @@
   if (!spriteImage || !trail) return;
 
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var hover = window.matchMedia("(hover: hover) and (pointer: fine)");
   var frame = 0;
   var runId = 0;
   var playing = false;
@@ -43,7 +44,7 @@
   }
 
   function play() {
-    if (playing || reduced.matches || document.documentElement.dataset.theme === "8bit" ||
+    if (playing || reduced.matches || !hover.matches || document.documentElement.dataset.theme === "8bit" ||
         !spriteImage.complete || !spriteImage.naturalWidth) return;
     stop();
 

@@ -2,7 +2,7 @@
   .expanded-mobile-header .header-search-row{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"brand social" "search search" "settings settings";gap:8px 12px;padding:10px 12px}
   .expanded-mobile-header .header-search-row .brand-shell{grid-area:brand;display:block;width:100%;max-width:174px;margin:0}
   .expanded-mobile-header .header-search-row .brand-link{display:flex;width:100%;height:auto;max-width:none;aspect-ratio:50/11}
-  .expanded-mobile-header .header-search-row .brand-logo{width:100%;max-width:none;height:100%}
+  .expanded-mobile-header .header-search-row .brand-logo{max-width:100%;height:auto}
   .expanded-mobile-header .header-search-row .mobile-search-brand,.expanded-mobile-header .header-search-row .mobile-more,.expanded-mobile-header .header-search-row .nav-toggle{display:none}
   .expanded-mobile-header .header-search-row .header-social-links{grid-area:social;display:flex;gap:4px;margin:0}
   .expanded-mobile-header .header-search-row .header-social-links :is(a,button){width:44px;height:44px;flex:none;border-radius:50%}
