@@ -1,34 +1,34 @@
 {
   "version": 2,
-  "generatedUtc": "2026-11-23T17:30Z",
+  "generatedUtc": "2026-11-23T17:48Z",
   "targetDateTpe": "2026-11-24",
   "sourceWindow": "month_to_date",
   "generationMode": "llm",
-  "provider": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+  "provider": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
   "sourceArticleIds": [
     "a-air-niugini-b767-davao-engine-fire-20261122",
     "a-british-airways-777-200er-replacement-20261123",
     "a-qantas-a321xlr-replace-737-800-20261123",
-    "a-delta-trainee-first-officer-phone-taxi-dismissal-20261122",
-    "a-20261123-0849-boeing-777x-safety-design-prevents-takeo",
-    "a-20261123-industry-roundup-18"
+    "a-20261123-industry-roundup-12",
+    "a-20261123-industry-roundup-18",
+    "a-singapore-saf-forum-levy-20261123"
   ],
   "prompts": {
     "zh": [
-      "搜尋 Air Niugini 767 達沃",
-      "查詢 英航 777-200ER 換機",
-      "尋找 澳航 A321XLR 替換 737",
-      "了解 達美 見習副機師 事件",
-      "查看 波音 777X 折疊 安全",
-      "搜尋 LATAM A321XLR 客艙"
+      "巴布亞紐幾內亞航空 767 達沃",
+      "英航 777-200ER 換 A350-1000",
+      "澳航 A321XLR 取代 737-800",
+      "達美 波士頓 坦帕 航班",
+      "LATAM A321XLR 客艙 174 座",
+      "新加坡 SAF 徵費 經濟艙"
     ],
     "en": [
-      "Search Air Niugini 767 diversion to Davao",
-      "Find British Airways 777-200ER replacement plans",
-      "Look up Qantas A321XLR replacing 737-800",
-      "Read about Delta trainee first officer phone incident",
-      "Check Boeing 777X folded-wing takeoff safety",
-      "Explore LATAM A321XLR cabin design details"
+      "Air Niugini 767 Davao",
+      "British Airways 777-200ER replacement A350-1000",
+      "Qantas A321XLR replaces 737-800",
+      "Delta Boston Tampa flight",
+      "LATAM A321XLR cabin 174 seats",
+      "Singapore SAF levy economy fare"
     ]
   }
 }
