@@ -24,6 +24,8 @@ jobs:
     if: vars.FLIGHT_TRACKING_ENABLED == 'true'
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.ref }} # branch tip, not the trigger commit: a queued run must see the previous run's state
 
       - uses: actions/setup-python@v6
         with:
