@@ -2761,12 +2761,12 @@
         "https://simpleflying.com/true-boeing-747-8-787-dreamliner-powered-by-the-same-engine"
       ],
       "contentFailures": 0,
-      "serviceFailures": 2,
+      "serviceFailures": 3,
       "history": [],
-      "updatedUtc": "2026-11-21T18:09Z",
-      "failureClass": "source_insufficient",
+      "updatedUtc": "2026-11-24T15:25Z",
+      "failureClass": "provider_failure",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-22T00:09Z",
+      "nextRetryUtc": "2026-11-25T15:25Z",
       "title": "Is It True That The Boeing 747-8 & 787 Dreamliner Are Powered By The Same Engine?",
       "items": [
         {
@@ -3571,13 +3571,23 @@
         "https://simpleflying.com/ryanair-cancels-all-flights-to-5-destinations"
       ],
       "contentFailures": 0,
-      "serviceFailures": 1,
+      "serviceFailures": 2,
       "history": [],
-      "updatedUtc": "2026-11-24T13:16Z",
-      "failureClass": "provider_failure",
+      "updatedUtc": "2026-11-24T15:25Z",
+      "failureClass": "source_insufficient",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-24T15:16Z",
-      "title": "Ryanair Cancels All Flights To 5 Destinations: See Full List Now"
+      "nextRetryUtc": "2026-11-24T21:25Z",
+      "title": "Ryanair Cancels All Flights To 5 Destinations: See Full List Now",
+      "items": [
+        {
+          "url": "https://simpleflying.com/ryanair-cancels-all-flights-to-5-destinations/",
+          "title": "Ryanair Cancels All Flights To 5 Destinations: See Full List Now",
+          "summary": "The carrier has now entirely pulled out of two countries. Find out more here!",
+          "publishedUtc": "2026-11-24T13:00Z",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ]
     },
     "428bf424a1f68e12dcc234e5": {
       "sourceUrls": [
@@ -3761,6 +3771,32 @@
       "status": "waiting",
       "nextRetryUtc": "2026-11-24T17:13Z",
       "title": "French Navy receives third Falcon 2000 Albatros maritime surveillance aircraft"
+    },
+    "707117e074941e813329f93f": {
+      "sourceUrls": [
+        "https://www.aerotime.aero/articles/canadas-scout-fighter-drone-gains-12-partners-including-pratt-whitney"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-24T15:25Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-24T17:25Z",
+      "title": "Canada’s Scout fighter drone gains 12 partners, including Pratt & Whitney"
+    },
+    "ba120978afd84dade0a0386d": {
+      "sourceUrls": [
+        "https://www.easa.europa.eu/newsroom-and-events/news/easa-further-improves-refueleu-aviation-reporting-version-3-sustainability-portal"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-24T15:25Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-24T17:25Z",
+      "title": "EASA further improves ReFuelEU Aviation reporting with version 3 of the Sustainability Portal"
     }
   }
 }
