@@ -57,8 +57,8 @@
     },
     "gemini:gemini-3.5-flash": {
       "status": "waiting",
-      "checkedUtc": "2026-11-24T08:49Z",
       "untilUtc": "2026-11-24T14:49Z",
+      "checkedUtc": "2026-11-24T08:49Z",
       "failureClass": "timeout",
       "diagnostic": "ReadTimeout",
       "probeVersion": 3,
@@ -291,17 +291,8 @@
     },
     "openrouter:nvidia/nemotron-3.5-lightning:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-24T14:49Z",
-      "checkedUtc": "2026-11-24T08:49Z",
-      "failureClass": "truncated",
-      "diagnostic": "response truncated (length)",
-      "probeVersion": 3,
-      "schemaMode": null
-    },
-    "openrouter:nvidia/nemotron-3.5-lightning:free": {
-      "status": "waiting",
-      "untilUtc": "2026-11-24T07:17Z",
-      "checkedUtc": "2026-11-24T01:17Z",
+      "untilUtc": "2026-11-24T15:05Z",
+      "checkedUtc": "2026-11-24T09:05Z",
       "failureClass": "truncated",
       "diagnostic": "response truncated (length)",
       "probeVersion": 3,
@@ -309,8 +300,8 @@
     },
     "openrouter:google/gemma-4-31b-it:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-24T06:20Z",
-      "checkedUtc": "2026-11-24T06:19Z",
+      "untilUtc": "2026-11-24T09:06Z",
+      "checkedUtc": "2026-11-24T09:05Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
@@ -318,8 +309,8 @@
     },
     "openrouter:google/gemma-4-26b-a4b-it:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-24T06:20Z",
-      "checkedUtc": "2026-11-24T06:19Z",
+      "checkedUtc": "2026-11-24T09:05Z",
+      "untilUtc": "2026-11-24T09:06Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
