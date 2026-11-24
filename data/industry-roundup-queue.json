@@ -141,6 +141,178 @@
         "evidenceVersion": 2
       },
       "publishedExcerptId": null
+    },
+    {
+      "enqueuedUtc": "2026-11-24T11:59Z",
+      "routeReason": "verified_short_update",
+      "sourceGroupId": "g-20261124-1159-5",
+      "eventKey": "",
+      "article": {
+        "id": "a-20261124-1159-boeing-s-everett-built-737s-reportedly-a",
+        "publishedUtc": "2026-11-24T11:59Z",
+        "cat": "reg",
+        "primarySource": "AeroTime",
+        "image": null,
+        "sourceImageCandidates": [],
+        "zh": {
+          "title": "波音Everett廠製造的737據報納入生產證書",
+          "summary": "波音Everett廠製造的737據報納入生產證書，FAA稽覈進入最後階段。",
+          "body": [
+            "The Air Current於2026年11月23日報導，波音在Everett製造的737已納入該公司的PC700生產證書。報導指出，波音距離向客戶交付新North Line產線製造的737又近了一步。",
+            "The Air Current引述熟悉波音動態的人士指出，波音目前正進行聯邦航空總署（FAA）稽覈的最後步驟。FAA也對這條產線最初製造的數架飛機進行額外檢查。",
+            "波音表示，Everett製造的首架737 MAX於2026年10月下線。這條產線於2026年7月啟用。"
+          ]
+        },
+        "en": {
+          "title": "Boeing's Everett-built 737s reportedly added to production certificate",
+          "summary": "Boeing's Everett-built 737s were reportedly added to its production certificate; an FAA audit is in its final stages.",
+          "body": [
+            "The Air Current reported on November 23, 2026, that Boeing 737s built at Everett had been added to the company's PC700 production certificate. The report said Boeing had moved a step closer to customer deliveries of 737 aircraft built at its new North Line facility in Everett.",
+            "Citing people with knowledge of developments at Boeing, The Air Current said the manufacturer is moving through the final steps of a Federal Aviation Administration (FAA) audit. The FAA also conducted additional inspections on the first several aircraft built on the line.",
+            "Boeing said the first 737 MAX manufactured in Everett rolled off the assembly line in October 2026. The line opened in July 2026."
+          ]
+        },
+        "sources": [
+          {
+            "name": "AeroTime — Boeing moves closer to 737 MAX deliveries from new North Li…",
+            "url": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett"
+          }
+        ],
+        "articleFormat": "brief",
+        "sourcePublishedUtc": "2026-11-24T11:10Z",
+        "writer": "openai:gpt-6.1-terra",
+        "facts": [
+          {
+            "factId": "F1",
+            "claim": "On November 23, 2026, The Air Current reported that Everett-built 737s had been added to Boeing’s PC700 production certificate.",
+            "sourceQuote": "November 23, 2026, The Air Current reported that Everett-built 737s had been added to Boeing’s PC700 production certificate",
+            "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F2",
+            "claim": "Boeing has moved a step closer to customer deliveries of 737 aircraft built at its new North Line facility in Everett.",
+            "sourceQuote": "Boeing has moved a step closer to customer deliveries of 737 aircraft built at its new North Line facility in Everett",
+            "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F3",
+            "claim": "The Air Current, citing people with knowledge of developments at Boeing, reported that the company was moving through the final steps of an FAA audit.",
+            "sourceQuote": "The Air Current, which spoke with people with knowledge of developments at Boeing, the planemaker is currently moving through the final steps of the FAA audit",
+            "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F4",
+            "claim": "The FAA conducted additional inspections on the first several aircraft built on the line.",
+            "sourceQuote": "The FAA conducted additional inspections on the first several aircraft built on the line",
+            "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F5",
+            "claim": "Boeing announced that the first 737 MAX manufactured in Everett rolled off the assembly line in October 2026.",
+            "sourceQuote": "Boeing announced that the first 737 MAX manufactured in Everett had rolled off the assembly line in October 2026",
+            "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F6",
+            "claim": "The assembly line first opened in July 2026.",
+            "sourceQuote": "the assembly line was first opened in July 2026",
+            "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          }
+        ],
+        "riskFlags": [
+          "regulatory_action",
+          "unconfirmed_or_developing"
+        ],
+        "eventStatus": "confirmed",
+        "entities": {
+          "organizations": [
+            "Boeing",
+            "The Air Current",
+            "Federal Aviation Administration"
+          ],
+          "aircraft_models": [
+            "737",
+            "737 MAX"
+          ],
+          "locations": [
+            "Everett"
+          ],
+          "event_dates": [
+            "October 2026",
+            "July 2026"
+          ]
+        },
+        "entityEvidence": [
+          {
+            "entityType": "organizations",
+            "value": "Boeing",
+            "sourceQuote": "Boeing has moved a step closer to customer deliveries of 737 aircraft",
+            "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett"
+          },
+          {
+            "entityType": "organizations",
+            "value": "The Air Current",
+            "sourceQuote": "The Air Current reported that Everett-built 737s had been added to Boeing’s PC700 production certificate",
+            "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett"
+          },
+          {
+            "entityType": "organizations",
+            "value": "Federal Aviation Administration",
+            "sourceQuote": "Federal Aviation Administration (FAA) conformities",
+            "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett"
+          },
+          {
+            "entityType": "aircraft_models",
+            "value": "737",
+            "sourceQuote": "737 aircraft built at its new North Line facility in Everett, Washington",
+            "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett"
+          },
+          {
+            "entityType": "aircraft_models",
+            "value": "737 MAX",
+            "sourceQuote": "the first 737 MAX manufactured in Everett had rolled off the assembly line in October 2026",
+            "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett"
+          },
+          {
+            "entityType": "locations",
+            "value": "Everett",
+            "sourceQuote": "737 aircraft built at its new North Line facility in Everett, Washington",
+            "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett"
+          },
+          {
+            "entityType": "event_dates",
+            "value": "October 2026",
+            "sourceQuote": "the first 737 MAX manufactured in Everett had rolled off the assembly line in October 2026",
+            "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett"
+          },
+          {
+            "entityType": "event_dates",
+            "value": "July 2026",
+            "sourceQuote": "the assembly line was first opened in July 2026",
+            "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett"
+          }
+        ],
+        "evidenceVersion": 2
+      },
+      "publishedExcerptId": null
     }
   ],
   "history": [
