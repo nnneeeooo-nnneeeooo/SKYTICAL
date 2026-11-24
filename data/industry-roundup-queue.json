@@ -1111,6 +1111,382 @@
         }
       },
       "publishedExcerptId": "a-xiamen-airlines-50-boeing-737-max-8-order-20261124"
+    },
+    {
+      "enqueuedUtc": "2026-11-24T15:52Z",
+      "routeReason": "verified_short_update",
+      "sourceGroupId": "g-20261124-1552-1",
+      "eventKey": "",
+      "article": {
+        "id": "a-20261124-1552-singapore-airlines-flies-singapore-pm-on",
+        "publishedUtc": "2026-11-24T15:52Z",
+        "cat": "ops",
+        "primarySource": "AeroTime",
+        "image": null,
+        "sourceImageCandidates": [],
+        "zh": {
+          "title": "新加坡航空開航西雪梨國際機場（WSI） 總理黃循財搭乘首班機",
+          "summary": "新加坡航空首航西雪梨國際機場（WSI），11月23日抵達，總理黃循財搭乘",
+          "body": [
+            "新加坡航空已開辦每日飛往西雪梨國際機場（WSI）的航班。這座機場也稱 Nancy-Bird Walton Airport（WSI）。",
+            "首航航班SQ261由新加坡出發，於2026年11月23日晚間抵達機場，並獲水門禮迎接。新加坡總理黃循財搭乘這班班機。",
+            "每日航班使用空中巴士A350-900客機。返程航班SQ262於當地時間23時55分從西雪梨起飛，隔日5時15分抵達新加坡。機場全天候營運，使上述時刻安排成為可能。"
+          ]
+        },
+        "en": {
+          "title": "Singapore Airlines flies Singapore PM on its first Western Sydney International Airport (WSI) flight",
+          "summary": "Singapore Airlines’ first Western Sydney International Airport (WSI) flight landed November 23 with Singapore PM Lawrence Wong aboard.",
+          "body": [
+            "Singapore Airlines has launched daily flights to Western Sydney International Airport (WSI), also known as Nancy-Bird Walton Airport (WSI).",
+            "The inaugural service, SQ261, arrived from Singapore at the new airport on the evening of November 23, 2026, and was greeted with a water cannon salute. Singapore Prime Minister Lawrence Wong was on board.",
+            "The daily service uses an Airbus A350-900. The return flight, SQ262, departs Western Sydney at 23:55 local time and arrives in Singapore at 05:15 the next day. The schedule is possible because WSI operates around the clock."
+          ]
+        },
+        "sources": [
+          {
+            "name": "AeroTime — Singapore Airlines lands at Western Sydney with PM Lawrence…",
+            "url": "https://www.aerotime.aero/articles/singapore-airlines-lands-at-western-sydney-with-pm-lawrence-wong-on-first-flight"
+          }
+        ],
+        "articleFormat": "brief",
+        "sourcePublishedUtc": "2026-11-24T15:35Z",
+        "writer": "openai:gpt-6.1-terra",
+        "facts": [
+          {
+            "factId": "F1",
+            "claim": "Singapore Airlines launched daily flights to Western Sydney International Airport / Nancy-Bird Walton Airport (WSI).",
+            "sourceQuote": "Singapore Airlines (SIA) has launched daily flights to Western Sydney International Airport / Nancy-Bird Walton Airport (WSI)",
+            "sourceUrl": "https://www.aerotime.aero/articles/singapore-airlines-lands-at-western-sydney-with-pm-lawrence-wong-on-first-flight",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F2",
+            "claim": "Singapore Prime Minister Lawrence Wong was aboard the inaugural service.",
+            "sourceQuote": "with Singapore Prime Minister Lawrence Wong on board the inaugural service.",
+            "sourceUrl": "https://www.aerotime.aero/articles/singapore-airlines-lands-at-western-sydney-with-pm-lawrence-wong-on-first-flight",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F3",
+            "claim": "The inaugural service, SQ261 from Singapore, reached the new airport on the evening of November 23, 2026, and received a water cannon salute.",
+            "sourceQuote": "the inaugural service.\nFlight SQ261 from Singapore touched down at the new airport on the evening of November 23, 2026, and was greeted with a water cannon salute.",
+            "sourceUrl": "https://www.aerotime.aero/articles/singapore-airlines-lands-at-western-sydney-with-pm-lawrence-wong-on-first-flight",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F4",
+            "claim": "The daily service is operated by an Airbus A350-900.",
+            "sourceQuote": "The daily service is operated by an Airbus A350-900.",
+            "sourceUrl": "https://www.aerotime.aero/articles/singapore-airlines-lands-at-western-sydney-with-pm-lawrence-wong-on-first-flight",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F5",
+            "claim": "Return flight SQ262 departs Western Sydney at 23:55 local time and arrives in Singapore at 05:15 the next day.",
+            "sourceQuote": "The return flight, SQ262, departs Western Sydney at 23:55 local time and arrives in Singapore at 05:15 the next day",
+            "sourceUrl": "https://www.aerotime.aero/articles/singapore-airlines-lands-at-western-sydney-with-pm-lawrence-wong-on-first-flight",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F6",
+            "claim": "The reported schedule is possible because WSI operates around the clock.",
+            "sourceQuote": "That schedule is possible because WSI operates around the clock.",
+            "sourceUrl": "https://www.aerotime.aero/articles/singapore-airlines-lands-at-western-sydney-with-pm-lawrence-wong-on-first-flight",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          }
+        ],
+        "riskFlags": [],
+        "eventStatus": "confirmed",
+        "entities": {
+          "airlines": [
+            "Singapore Airlines"
+          ],
+          "aircraft_models": [
+            "Airbus A350-900"
+          ],
+          "airports": [
+            "Western Sydney International Airport",
+            "Nancy-Bird Walton Airport"
+          ],
+          "locations": [
+            "Singapore",
+            "Western Sydney"
+          ],
+          "flight_numbers": [
+            "SQ261",
+            "SQ262"
+          ],
+          "event_dates": [
+            "November 23, 2026"
+          ]
+        },
+        "entityEvidence": [
+          {
+            "entityType": "airlines",
+            "value": "Singapore Airlines",
+            "sourceQuote": "Singapore Airlines (SIA) has launched daily flights",
+            "sourceUrl": "https://www.aerotime.aero/articles/singapore-airlines-lands-at-western-sydney-with-pm-lawrence-wong-on-first-flight"
+          },
+          {
+            "entityType": "aircraft_models",
+            "value": "Airbus A350-900",
+            "sourceQuote": "The daily service is operated by an Airbus A350-900.",
+            "sourceUrl": "https://www.aerotime.aero/articles/singapore-airlines-lands-at-western-sydney-with-pm-lawrence-wong-on-first-flight"
+          },
+          {
+            "entityType": "airports",
+            "value": "Western Sydney International Airport",
+            "sourceQuote": "Western Sydney International Airport / Nancy-Bird Walton Airport (WSI)",
+            "sourceUrl": "https://www.aerotime.aero/articles/singapore-airlines-lands-at-western-sydney-with-pm-lawrence-wong-on-first-flight"
+          },
+          {
+            "entityType": "airports",
+            "value": "Nancy-Bird Walton Airport",
+            "sourceQuote": "Western Sydney International Airport / Nancy-Bird Walton Airport (WSI)",
+            "sourceUrl": "https://www.aerotime.aero/articles/singapore-airlines-lands-at-western-sydney-with-pm-lawrence-wong-on-first-flight"
+          },
+          {
+            "entityType": "locations",
+            "value": "Singapore",
+            "sourceQuote": "Flight SQ261 from Singapore touched down at the new airport",
+            "sourceUrl": "https://www.aerotime.aero/articles/singapore-airlines-lands-at-western-sydney-with-pm-lawrence-wong-on-first-flight"
+          },
+          {
+            "entityType": "locations",
+            "value": "Western Sydney",
+            "sourceQuote": "The return flight, SQ262, departs Western Sydney at 23:55 local time",
+            "sourceUrl": "https://www.aerotime.aero/articles/singapore-airlines-lands-at-western-sydney-with-pm-lawrence-wong-on-first-flight"
+          },
+          {
+            "entityType": "flight_numbers",
+            "value": "SQ261",
+            "sourceQuote": "Flight SQ261 from Singapore touched down at the new airport",
+            "sourceUrl": "https://www.aerotime.aero/articles/singapore-airlines-lands-at-western-sydney-with-pm-lawrence-wong-on-first-flight"
+          },
+          {
+            "entityType": "flight_numbers",
+            "value": "SQ262",
+            "sourceQuote": "The return flight, SQ262, departs Western Sydney at 23:55 local time",
+            "sourceUrl": "https://www.aerotime.aero/articles/singapore-airlines-lands-at-western-sydney-with-pm-lawrence-wong-on-first-flight"
+          },
+          {
+            "entityType": "event_dates",
+            "value": "November 23, 2026",
+            "sourceQuote": "Flight SQ261 from Singapore touched down at the new airport on the evening of November 23, 2026",
+            "sourceUrl": "https://www.aerotime.aero/articles/singapore-airlines-lands-at-western-sydney-with-pm-lawrence-wong-on-first-flight"
+          }
+        ],
+        "evidenceVersion": 2
+      },
+      "publishedExcerptId": null
+    },
+    {
+      "enqueuedUtc": "2026-11-24T15:52Z",
+      "routeReason": "verified_short_update",
+      "sourceGroupId": "g-20261124-1552-2",
+      "eventKey": "",
+      "article": {
+        "id": "a-20261124-1552-israels-transport-minister-approves-flyd",
+        "publishedUtc": "2026-11-24T15:52Z",
+        "cat": "reg",
+        "primarySource": "AeroTime",
+        "image": null,
+        "sourceImageCandidates": [],
+        "zh": {
+          "title": "以色列交通部長同意flydubai復航 仍待安全機關最後批准",
+          "summary": "flydubai杜拜至特拉維夫復航獲部長同意，仍待安全機關批准",
+          "body": [
+            "以色列交通部長Miri Regev於2026年11月24日同意flydubai恢復航班。該航空公司接近恢復由杜拜飛往特拉維夫的航班，但仍須取得以色列安全機關的最終批准。",
+            "以色列交通部表示，代表團已向Regev說明該公司在先前事件後採取的措施。",
+            "2026年9月30日，一架由杜拜飛往特拉維夫的flydubai波音737 MAX 8客機發出緊急應答機代碼後，改飛沙烏地阿拉伯。AeroTime報導，機長遭刺傷後仍打開駕駛艙門，讓乘客得以進入。"
+          ]
+        },
+        "en": {
+          "title": "Israel’s transport minister approves flydubai return, pending security clearance",
+          "summary": "flydubai’s resumption of flights from Dubai to Tel Aviv has ministerial approval, pending security clearance.",
+          "body": [
+            "Israel’s Transportation Minister Miri Regev approved the resumption of flydubai flights on November 24, 2026. The airline is close to resuming flights from Dubai to Tel Aviv, but final approval from Israeli security services is still required.",
+            "The Transportation Ministry said a delegation had presented Regev with the steps the company took after the incident.",
+            "On September 30, 2026, a flydubai Boeing 737 MAX 8 operating from Dubai to Tel Aviv diverted to Saudi Arabia after transmitting emergency transponder codes. AeroTime reported that the captain, who had been stabbed, opened the cockpit door, allowing passengers to enter the flight deck."
+          ]
+        },
+        "sources": [
+          {
+            "name": "AeroTime — flydubai close to Israel return following approval two mont…",
+            "url": "https://www.aerotime.aero/articles/flydubai-israel-return-approval-pilot-attack-tel-aviv"
+          }
+        ],
+        "articleFormat": "brief",
+        "sourcePublishedUtc": "2026-11-24T15:09Z",
+        "writer": "openai:gpt-6.1-terra",
+        "facts": [
+          {
+            "factId": "F1",
+            "claim": "flydubai is close to resuming flights from Dubai to Tel Aviv following approval by Israel’s Ministry of Transportation.",
+            "sourceQuote": "flydubai is close to resuming flights to Tel Aviv from Dubai following approval by Israel’s Ministry of Transportation",
+            "sourceUrl": "https://www.aerotime.aero/articles/flydubai-israel-return-approval-pilot-attack-tel-aviv",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F2",
+            "claim": "On November 24, 2026, Transportation Minister Miri Regev approved the resumption of flydubai flights.",
+            "sourceQuote": "On November 24, 2026, Transportation Minister Miri Regev approved the resumption of flydubai flights",
+            "sourceUrl": "https://www.aerotime.aero/articles/flydubai-israel-return-approval-pilot-attack-tel-aviv",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F3",
+            "claim": "Final approval will be needed from Israeli security services.",
+            "sourceQuote": "final approval will be needed by Israeli security services",
+            "sourceUrl": "https://www.aerotime.aero/articles/flydubai-israel-return-approval-pilot-attack-tel-aviv",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F4",
+            "claim": "The Transportation Ministry said a delegation presented Regev with steps the company had taken after the incident.",
+            "sourceQuote": "The delegation today presented Regev with the steps the company has taken in the wake of the incident,” the Transportation Ministry said",
+            "sourceUrl": "https://www.aerotime.aero/articles/flydubai-israel-return-approval-pilot-attack-tel-aviv",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F5",
+            "claim": "On September 30, 2026, a flydubai Boeing 737 MAX 8 operating from Dubai to Tel Aviv diverted to Saudi Arabia after transmitting emergency transponder codes.",
+            "sourceQuote": "September 30, 2026, a flydubai Boeing 737 MAX 8 operating from Dubai to Tel Aviv diverted to Saudi Arabia after transmitting emergency transponder codes",
+            "sourceUrl": "https://www.aerotime.aero/articles/flydubai-israel-return-approval-pilot-attack-tel-aviv",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F6",
+            "claim": "The captain, who had been stabbed, opened the cockpit door, allowing passengers to enter the flight deck.",
+            "sourceQuote": "being stabbed, the captain managed to open the cockpit door which allowed passengers to gain entry to the flight deck",
+            "sourceUrl": "https://www.aerotime.aero/articles/flydubai-israel-return-approval-pilot-attack-tel-aviv",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          }
+        ],
+        "riskFlags": [
+          "regulatory_action",
+          "casualties_or_injuries",
+          "unconfirmed_or_developing"
+        ],
+        "eventStatus": "confirmed",
+        "entities": {
+          "organizations": [
+            "Israel’s Ministry of Transportation",
+            "Israeli security services",
+            "AeroTime"
+          ],
+          "airlines": [
+            "flydubai"
+          ],
+          "aircraft_models": [
+            "Boeing 737 MAX 8"
+          ],
+          "locations": [
+            "Israel",
+            "Dubai",
+            "Tel Aviv",
+            "Saudi Arabia"
+          ],
+          "event_dates": [
+            "November 24, 2026",
+            "September 30, 2026"
+          ]
+        },
+        "entityEvidence": [
+          {
+            "entityType": "organizations",
+            "value": "Israel’s Ministry of Transportation",
+            "sourceQuote": "following approval by Israel’s Ministry of Transportation",
+            "sourceUrl": "https://www.aerotime.aero/articles/flydubai-israel-return-approval-pilot-attack-tel-aviv"
+          },
+          {
+            "entityType": "organizations",
+            "value": "Israeli security services",
+            "sourceQuote": "final approval will be needed by Israeli security services",
+            "sourceUrl": "https://www.aerotime.aero/articles/flydubai-israel-return-approval-pilot-attack-tel-aviv"
+          },
+          {
+            "entityType": "organizations",
+            "value": "AeroTime",
+            "sourceQuote": "appeared first on AeroTime",
+            "sourceUrl": "https://www.aerotime.aero/articles/flydubai-israel-return-approval-pilot-attack-tel-aviv"
+          },
+          {
+            "entityType": "airlines",
+            "value": "flydubai",
+            "sourceQuote": "flydubai is close to resuming flights to Tel Aviv from Dubai",
+            "sourceUrl": "https://www.aerotime.aero/articles/flydubai-israel-return-approval-pilot-attack-tel-aviv"
+          },
+          {
+            "entityType": "aircraft_models",
+            "value": "Boeing 737 MAX 8",
+            "sourceQuote": "a flydubai Boeing 737 MAX 8 operating from Dubai to Tel Aviv",
+            "sourceUrl": "https://www.aerotime.aero/articles/flydubai-israel-return-approval-pilot-attack-tel-aviv"
+          },
+          {
+            "entityType": "locations",
+            "value": "Israel",
+            "sourceQuote": "flydubai close to Israel return following approval",
+            "sourceUrl": "https://www.aerotime.aero/articles/flydubai-israel-return-approval-pilot-attack-tel-aviv"
+          },
+          {
+            "entityType": "locations",
+            "value": "Dubai",
+            "sourceQuote": "flights to Tel Aviv from Dubai",
+            "sourceUrl": "https://www.aerotime.aero/articles/flydubai-israel-return-approval-pilot-attack-tel-aviv"
+          },
+          {
+            "entityType": "locations",
+            "value": "Tel Aviv",
+            "sourceQuote": "flights to Tel Aviv from Dubai",
+            "sourceUrl": "https://www.aerotime.aero/articles/flydubai-israel-return-approval-pilot-attack-tel-aviv"
+          },
+          {
+            "entityType": "locations",
+            "value": "Saudi Arabia",
+            "sourceQuote": "diverted to Saudi Arabia after transmitting emergency transponder codes",
+            "sourceUrl": "https://www.aerotime.aero/articles/flydubai-israel-return-approval-pilot-attack-tel-aviv"
+          },
+          {
+            "entityType": "event_dates",
+            "value": "November 24, 2026",
+            "sourceQuote": "On November 24, 2026, Transportation Minister Miri Regev approved the resumption of flydubai flights",
+            "sourceUrl": "https://www.aerotime.aero/articles/flydubai-israel-return-approval-pilot-attack-tel-aviv"
+          },
+          {
+            "entityType": "event_dates",
+            "value": "September 30, 2026",
+            "sourceQuote": "On September 30, 2026, a flydubai Boeing 737 MAX 8",
+            "sourceUrl": "https://www.aerotime.aero/articles/flydubai-israel-return-approval-pilot-attack-tel-aviv"
+          }
+        ],
+        "evidenceVersion": 2
+      },
+      "publishedExcerptId": null
     }
   ],
   "history": [
