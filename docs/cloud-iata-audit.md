@@ -1,5 +1,10 @@
 # 雲端每四小時機場 IATA 檢查
 
+正式稽核目前已停用。`airport-iata-audit` 僅在相關 PR 執行離線測試，
+稽核程式、補查請求及既有 checkpoint 均保留。需要恢復時，可還原停用的提交。
+
+## 停用前的執行方式
+
 以 GitHub Actions 的 `airport-iata-audit` 執行，不依賴本機電腦或 Codex 開啟。
 使用網站既有 `OPENAI_API`、`OPENAI_MODEL_ID` secret，只有本流程的 Terra 呼叫
 固定 `max`，並與撰稿、70% 一般新聞審稿及雙語快報共用預算保護。
@@ -26,8 +31,7 @@
   已結算的 Terra API 共用帳本每日合計達到 US$2（臺灣時間）時，透過指派給儲存庫擁有者的 GitHub Issue 提醒，不會停止呼叫。其他專案的 API 支出不包含在帳本中。
 
 本機離線測試：`python -m pytest -q tests/test_iata_audit.py`、
-`python tests/test_airport_codes.py`。部署後第一個 push 作業會先驗證 secret
-設定，起始時間前不呼叫 Terra；首輪真實內容檢查由 04:00 排程開始。
+`python tests/test_airport_codes.py`。
 
 技術偵察沿用已比較的 promptfoo（固定樣本評測）與 Instructor（結構化輸出），
 並確認 mborsetti/airportsdata 在 2026-10-30 仍維護（169 stars、Python；GitHub

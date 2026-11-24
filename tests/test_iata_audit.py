@@ -1,6 +1,7 @@
 """Offline cloud scheduling, coverage, code verification and spend safety."""
 import copy
 import json
+import re
 import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -176,9 +177,11 @@ def test_cache_uses_visible_copy_not_image_or_timestamp():
     assert audit.digest(a) != audit.digest(b)
 
 
-def test_cloud_workflow_is_independent_and_does_not_build_or_deploy():
+def test_cloud_workflow_runs_validation_only_while_audit_is_paused():
     text = (audit.ROOT / ".github/workflows/iata-audit.yml").read_text(encoding="utf-8")
-    assert 'cron: "0 */4 * * *"' in text
+    events = text.split("\non:\n", 1)[1].split("\n\n", 1)[0]
+    assert re.findall(r"^  (\w+):", events, re.MULTILINE) == ["pull_request"]
+    assert "  audit:\n    if: ${{ false }}" in text
     assert "fetch-depth: 0" in text
     assert "secrets.OPENAI_API" in text and "secrets.OPENAI_MODEL_ID" not in text
     assert "pipeline/build.py" not in text and "deploy-pages" not in text
