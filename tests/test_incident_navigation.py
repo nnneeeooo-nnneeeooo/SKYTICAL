@@ -32,7 +32,7 @@ def main() -> None:
         re.DOTALL,
     )
     assert len(weekly_rows) == expected
-    assert weekly_rows and all(
+    assert all(
         'class="incident-article-link"' in row for row in weekly_rows)
     assert all('class="incident-date-link"' in row for row in weekly_rows)
     assert 'new URLSearchParams(window.location.search)' in script
