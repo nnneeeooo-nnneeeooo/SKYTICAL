@@ -2,8 +2,18 @@
   "schemaVersion": 1,
   "repository": "https://github.com/nnneeeooo-nnneeeooo/SKYTICAL",
   "historyStart": "2026-07-26",
-  "updatedThrough": "2026-11-23",
+  "updatedThrough": "2026-11-24",
   "entries": [
+    {
+      "date": "2026-11-24",
+      "kind": "system",
+      "commit": "acf4ef2a6d171fa512f8424e03abacea6dd906b2",
+      "zh": "Devin 每小時整點巡檢上線。Devin 現在每小時整點檢查網站是否如期更新。自動更新延遲或中斷時，Devin 會先查證原始來源，再刊出符合標準的航空新聞，每次最多一篇，並署名 Devin • Fable 5.2。每次巡檢也會檢視過去兩小時的報導，為缺少照片的文章配上與事件直接相關、授權可查證的圖片；找不到合適照片時，維持網站預設圖。其他自動更新流程已刊出的報導與圖片不會被覆蓋。",
+      "en": "Devin now checks the site every hour. At the top of each hour, Devin checks whether SKYTICAL has updated on schedule. When the automated update is late or has stopped, Devin verifies the original sources and publishes a qualifying aviation story, at most one per check, under the Devin • Fable 5.2 byline. Each check also reviews stories from the past two hours and adds a photo to any that lack one, using only images directly related to the event with verifiable reuse rights. Stories keep the site fallback when no suitable photo is found. Stories and photos already published by the other automated updates are not overwritten.",
+      "notice": {
+        "importance": "major"
+      }
+    },
     {
       "date": "2026-11-23",
       "kind": "system",
