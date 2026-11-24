@@ -3068,12 +3068,12 @@
         "https://simpleflying.com/endeavor-air-first-officers-reach-delta-air-lines-24-months-captain-no-extra-interview"
       ],
       "contentFailures": 0,
-      "serviceFailures": 4,
+      "serviceFailures": 5,
       "history": [],
-      "updatedUtc": "2026-11-24T11:38Z",
-      "failureClass": "source_insufficient",
+      "updatedUtc": "2026-11-24T20:35Z",
+      "failureClass": "provider_failure",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-24T17:38Z",
+      "nextRetryUtc": "2026-11-25T20:35Z",
       "title": "How Endeavor Air First Officers Reach Delta Air Lines After 24 Months As Captain With No Extra Interview",
       "items": [
         {
@@ -3593,12 +3593,12 @@
         "https://www.aerotime.aero/articles/canadas-scout-fighter-drone-gains-12-partners-including-pratt-whitney"
       ],
       "contentFailures": 0,
-      "serviceFailures": 1,
+      "serviceFailures": 2,
       "history": [],
-      "updatedUtc": "2026-11-24T15:25Z",
+      "updatedUtc": "2026-11-24T20:35Z",
       "failureClass": "provider_failure",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-24T17:25Z",
+      "nextRetryUtc": "2026-11-25T02:35Z",
       "title": "Canada’s Scout fighter drone gains 12 partners, including Pratt & Whitney"
     },
     "ba120978afd84dade0a0386d": {
@@ -4043,39 +4043,6 @@
         }
       ]
     },
-    "428bf424a1f68e12dcc234e5": {
-      "sourceUrls": [
-        "https://avherald.com/h?article=5483616c&opt=0",
-        "https://avherald.com/h?article=5484b733&opt=0",
-        "https://avherald.com/h?article=5484c66b&opt=0",
-        "https://avherald.com/h?article=5485d4bf",
-        "https://avherald.com/h?article=5485d4bf&opt=0",
-        "https://avherald.com/h?article=5485decd&opt=0",
-        "https://avherald.com/h?article=5485eb85&opt=0",
-        "https://avherald.com/h?article=5485fc49&opt=0"
-      ],
-      "contentFailures": 0,
-      "serviceFailures": 1,
-      "status": "waiting",
-      "history": [
-        {
-          "status": "waiting",
-          "contentFailures": 1,
-          "serviceFailures": 0,
-          "updatedUtc": "2026-11-24T17:07Z"
-        },
-        {
-          "status": "waiting",
-          "contentFailures": 0,
-          "serviceFailures": 1,
-          "updatedUtc": "2026-11-24T18:13Z"
-        }
-      ],
-      "updatedUtc": "2026-11-24T20:04Z",
-      "nextRetryUtc": "2026-11-24T22:04Z",
-      "failureClass": "provider_failure",
-      "title": "Incident: UPS B752 at Ontario on Nov 23rd 2026, engine shut down in flight"
-    },
     "743457b2a0f66598e9760370": {
       "sourceUrls": [
         "https://simpleflying.com/airbus-a350-survives-environmental-stress-longest-flights-world"
@@ -4245,6 +4212,72 @@
       "status": "waiting",
       "nextRetryUtc": "2026-11-24T22:31Z",
       "title": "Poland blames Russia for drone incursion as fears grow of Ukraine conflict escalation"
+    },
+    "428bf424a1f68e12dcc234e5": {
+      "sourceUrls": [
+        "https://avherald.com/h?article=5483616c&opt=0",
+        "https://avherald.com/h?article=5484b733&opt=0",
+        "https://avherald.com/h?article=5484c66b&opt=0",
+        "https://avherald.com/h?article=5485d4bf",
+        "https://avherald.com/h?article=5485d4bf&opt=0",
+        "https://avherald.com/h?article=5485decd&opt=0",
+        "https://avherald.com/h?article=5485eb85&opt=0",
+        "https://avherald.com/h?article=5485fc49",
+        "https://avherald.com/h?article=5485fc49&opt=0"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "status": "waiting",
+      "history": [
+        {
+          "status": "waiting",
+          "contentFailures": 1,
+          "serviceFailures": 0,
+          "updatedUtc": "2026-11-24T17:07Z"
+        },
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 1,
+          "updatedUtc": "2026-11-24T18:13Z"
+        },
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 1,
+          "updatedUtc": "2026-11-24T20:04Z"
+        }
+      ],
+      "updatedUtc": "2026-11-24T20:35Z",
+      "nextRetryUtc": "2026-11-24T22:35Z",
+      "failureClass": "provider_failure",
+      "title": "Incident: UPS B752 at Ontario on Nov 23rd 2026, engine shut down in flight"
+    },
+    "4d872b459699170f84827330": {
+      "sourceUrls": [
+        "https://www.geaerospace.com/news/press-releases/ge-aerospace-defense-systems-leadership-transition"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-24T20:35Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-24T22:35Z",
+      "title": "GE Aerospace Defense & Systems Leadership Transition"
+    },
+    "66b8a3b3376b29471d73c1d0": {
+      "sourceUrls": [
+        "https://www.reuters.com/business/autos-transportation/ge-aerospace-defense-unit-chief-amy-gowder-step-down-2026-11-23"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-24T20:35Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-24T22:35Z",
+      "title": "GE Aerospace defense unit chief Amy Gowder to step down"
     }
   }
 }
