@@ -17,7 +17,7 @@ ChatGPT 負責搜尋、讀取來源、查證與雙語撰稿；GitHub 保存文�
 5. 在 GitHub 的既有文章及正式網站搜尋索引檢查事件關鍵字、營運人、日期、主要來源 URL 與事件識別碼。跨語言、跨來源的同一事件也要去重。已收錄就跳過；本試作不改寫既有文章。每次最多新增一篇有充分可核實資訊的新聞，沒有合格新聞就結束。
 6. 寫中立的繁體中文與英文標題、完整句子摘要、至少兩段正文。正文逐段存成陣列；篇幅以已核實資訊為限，不補無關背景。保留原始來源 URL，不引用 Google News 中轉網址，不大量翻譯或搬運原文。配圖依 `AGENTS.md` 新聞配圖規則，主動蒐集並檢視直接相關、可合法使用的圖片，依關聯程度保留最多 5 張存入 `images`；`image = images[0]`。短訊彙整每則 1 張、整篇最多 3 張。每張保留來源、圖說、作者、授權與資料照／示意標示；無法確認圖片與事件的關係、授權或圖片內容時排除該張，全無合適圖片才使用 `image: null, images: []`。
 7. 讀取現有 `data/articles/scheduled-*.json` 作格式範例。新增檔案為 `data/articles/scheduled-<eventKey>.json`，一檔一篇，頂層為 `{"articles": [article]}`。`eventKey` 為穩定的小寫 ASCII 事件識別碼，包含營運人、事件與事件日期，不能用每次排程時間當事件識別碼。`id` 為固定 `a-<eventKey>`；重試保留原值。
-8. 文章必須包含 `publishedUtc`（實際首次入庫時間）、`sourcePublishedUtc`（來源時間，僅日期時使用當日 00:00:00Z）、`cat`（safety/reg/biz/ops/mil）、`primarySource`、`image`、`zh`、`en`、`sources`、`writer`、`writerModels`、`articleFormat: "full"`、`availableLanguages: ["zh", "en"]`、`entities`。兩個語言物件都包含非空 `title`、`summary` 與段落陣列 `body`。來源為 `{name, url}`。署名實際可確認的模型；無法確認精確型號時使用 `ChatGPT`，不得猜測。Devin 發布的稿件署名為 `Devin • <使用的模型>`，例如 `Devin • Fable 5.2`。`writer` 為 `scheduled:<writerModels[0]>`。
+8. 文章必須包含 `publishedUtc`（實際首次入庫時間）、`sourcePublishedUtc`（查證過的來源時間）、`sourceDateOnly`（只有日期時用來源日期 00:00:00Z，並把 `sourceDateOnly` 和 `sortDateOnly` 設為 `true`，來源有確切時間則把 `sourceDateOnly` 設為 `false`）、`sortUtc`（新獨立報導使用來源時間，產業動態整期彙整使用當期刊登時間）、`cat`（safety/reg/biz/ops/mil）、`primarySource`、`image`、`zh`、`en`、`sources`、`writer`、`writerModels`、`articleFormat: "full"`、`availableLanguages: ["zh", "en"]`、`entities`。兩個語言物件都包含非空 `title`、`summary` 與段落陣列 `body`。來源為 `{name, url}`。署名實際可確認的模型；無法確認精確型號時使用 `ChatGPT`，不得猜測。Devin 發布的稿件署名為 `Devin • <使用的模型>`，例如 `Devin • Fable 5.2`。`writer` 為 `scheduled:<writerModels[0]>`。
 9. 加入 `scheduledNews: {version: 1, eventKey, checkedUtc, facts: [{claim, sourceUrl}]}`，逐項記錄支持本文重要事實的來源。這是查證紀錄，程式只檢查格式與來源綁定，不會替你驗證事實真偽。
 10. 在可執行測試的環境跑 `python tests/test_scheduled_news.py`、`python pipeline/scheduled_news.py` 與 `python pipeline/build.py`，確認該篇中英文頁面及搜尋索引產出。沒有持久本機 checkout 時，以最新遠端材料建立暫存工作樹；不要聲稱執行未跑過的測試。無法執行必要驗證時保留草稿 PR 並回報阻礙，不合併。
 11. 檢查差異，只提交該篇資料，不改無關程式、不提交憑證、暫存檔或 `site/`。提交功能分支、建立並合併 PR。文章檔案異動會觸發 `manual-article-deploy`，不必另外呼叫外部模型生成。遇分支衝突先重讀最新文章並去重，不覆寫他人的變更。
@@ -28,7 +28,7 @@ ChatGPT 負責搜尋、讀取來源、查證與雙語撰稿；GitHub 保存文�
 
 - 一次執行確實產出、入庫並發布一篇附原始來源的中英文新聞。
 - 重跑同一事件不產生第二篇，查證時間與來源發布時間可追溯。
-- 每小時管線不改寫排程文章（含 `scheduledNews` 或 `writer` 為 `scheduled:` 開頭）；同一事件的後續報導由排程流程或人工更新。更新既有文章時保留 `id` 與 `publishedUtc`，加上 `updatedUtc`（更新時間）；`sourcePublishedUtc` 取所列來源最晚者、`scheduledNews.checkedUtc` 為重新查證時間，兩者不得晚於 `updatedUtc`。
+- 每小時管線不改寫排程文章（含 `scheduledNews` 或 `writer` 為 `scheduled:` 開頭）；同一事件的後續報導由排程流程或人工更新。更新既有文章時保留 `id`、`publishedUtc` 與 `sortUtc`，加上 `updatedUtc`（更新時間）；`sourcePublishedUtc` 取所列來源最晚者、`scheduledNews.checkedUtc` 為重新查證時間，兩者不得晚於 `updatedUtc`。只補圖或換圖時保留所有時間欄位。時間修正與驗證指令詳見 [發稿與配圖的時間規則](../AGENTS.md#發稿與配圖的時間規則)。
 - 缺來源、缺語言、未綁定查證紀錄、未來時間及重複識別碼由測試涵蓋。
 - 排程首輪必須查看真實執行結果，不能以手動試跑成功代替無人值守成功。
 

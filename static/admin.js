@@ -123,7 +123,7 @@
         const tree = [
           {path:record.path, mode:'100644', type:'blob', content:JSON.stringify(updated, null, 2) + '\n'},
           {path:record.overridePath, mode:'100644', type:'blob', content:JSON.stringify(edited, null, 2) + '\n'},
-          {path:'.github/deploy-trigger', mode:'100644', type:'blob', content:`Article content update\n${edited.id}\n${edited.updatedUtc}\n`},
+          {path:'.github/deploy-trigger', mode:'100644', type:'blob', content:`Article content update\n${edited.id}\n${new Date().toISOString()}\n`},
         ];
         if (imageSha) tree.push({path:uploaded.path, mode:'100644', type:'blob', sha:imageSha});
         const built = await this.request('/git/trees', {method:'POST', body:JSON.stringify({base_tree:head.tree.sha, tree})});
@@ -370,7 +370,7 @@
       };
       for (const lang of ['zh','en']) for (const [field,label] of [['title','標題'],['summary','摘要'],['body','內文']]) add(`${lang === 'zh' ? '中文' : '英文'}${label}`,original[lang]?.[field],pending[lang][field]);
       add('刊登時間（臺北）', core.toTaipei(original.publishedUtc), core.toTaipei(pending.publishedUtc));
-      add('排序時間（臺北）', core.toTaipei(original.sortUtc || original.publishedUtc), core.toTaipei(pending.sortUtc));
+      add('排序時間（臺北）', core.toTaipei(original.sortUtc || original.publishedUtc), core.toTaipei(pending.sortUtc || pending.publishedUtc));
       add('模型署名', original.writerModels || original.writer, pending.writerModels);
       add('主要來源',original.primarySource,pending.primarySource); add('文章來源',original.sources,pending.sources);
       add('圖片與來源',original.image,pending.image);

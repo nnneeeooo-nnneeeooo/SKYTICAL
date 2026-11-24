@@ -14,9 +14,17 @@
 - **新增功能、替換技術方案或重做子系統**：先在 GitHub 比對 3–5 個仍維護且直接相關的專案。依 [開源偵察的評估原則](docs/open-source-scouting.md#評估原則) 比較維護狀況、採用規模、語言與依賴、授權、可重用實作及導入成本。記錄值得追蹤的候選；確定導入時另開 issue 或 PR。小型文字、明確修正與設定變更直接處理。
 - **變更管線各階段的 JSON 資料格式**：先讀 [資料契約](pipeline/CONTRACTS.md)。
 
+## 發稿與配圖的時間規則
+
+適用於 Codex、GPT、Devin、Muse、Claude、人工私稿工作台與其他發稿代理。
+
+- 新獨立報導的 `publishedUtc` 是實際首次寫入正式文章資料的 UTC 時間。補刊時把查證後的原始來源時間存為 `sourcePublishedUtc`，以同一時間填入 `sortUtc`，讓首頁、搜尋與快訊依新聞時間排序。來源只有日期時，使用來源所列日期的 `00:00:00Z` 並設 `sourceDateOnly: true` 與 `sortDateOnly: true`，讀者只會看到日期。來源有明確時區與時分時轉為 UTC 並設 `sourceDateOnly: false`。來源時間無法查證時省略來源時間及精度，`sortUtc` 使用實際刊登時間。產業動態整期彙整用當期刊登時間排序。
+- 更新正文或新增已查證事實時，保留既有 `id`、`publishedUtc` 和 `sortUtc`，更新 `updatedUtc`。資料與圖片可同時首次入庫。既有文章只補圖、換圖或修正圖說時，保留 `publishedUtc`、`sortUtc`、`sortDateOnly`、`sourcePublishedUtc`、`sourceDateOnly`、`updatedUtc` 和查證時間原值，包含原本未填的欄位。補正歷史時間時，另做時間修訂並在 PR 附來源證據。
+- 提交前執行 `python pipeline/scheduled_news.py --chronology-base origin/main`。GitHub Actions 會在資料 PR 及排程發稿部署時檢查時間欄位。上線後抽查實際文章、首頁及搜尋，確認刊登資訊與新聞排序各自對應。
+
 ## 測試與上線
 
 1. 優先跑直接相關測試，使用專案 `.venv` 的 Python（Windows 為 `.venv/Scripts/python.exe`，Linux／macOS 為 `.venv/bin/python`）。單一功能用 `python -m pytest -q tests/test_<功能>.py`，前端用 `node tests/test_<功能>.js`；影響共用管線、資料契約或跨功能時跑 `python -m pytest -q`。
-2. PR 的自動回歸測試只在變更 [`hourly.yml`](.github/workflows/hourly.yml) `pull_request.paths` 所列路徑時執行。其餘變更（`data/`，以及多數 `templates/`、`static/`）合併前在本機驗證；文章與圖片照 [`manual-article-deploy.yml`](.github/workflows/manual-article-deploy.yml) 的步驟執行到 `python pipeline/build.py`，並在輸出確認該篇有產生頁面。
+2. 完整 PR 自動回歸測試在變更 [`hourly.yml`](.github/workflows/hourly.yml) `pull_request.paths` 所列路徑時執行。文章時間另有 `manual-article-deploy` 的 PR 檢查。其餘變更（含多數 `templates/`、`static/`）合併前在本機驗證；文章與圖片照 [`manual-article-deploy.yml`](.github/workflows/manual-article-deploy.yml) 的步驟執行到 `python pipeline/build.py`，並在輸出確認該篇有產生頁面。
 3. 檢查 staged diff，排除 `.env`、金鑰、token、憑證、`site/` 與其他產物。驗證通過後提交至功能分支，建立 PR 並合併到 `main`。
 4. 涉及網站發布時，等本次 `main` commit 的 GitHub Pages 工作完成並核對正式頁面。只改 `data/` 的 push 不觸發 `hourly-update`；`manual-article-deploy` 只在變更 `data/articles/scheduled-*.json` 或 `.github/deploy-trigger` 時執行，其餘資料變更要等下一次部署才上線。回覆列出修改、驗證、commit／PR 與適用的部署結果。

@@ -157,7 +157,7 @@
           {% for item in taiwan_focus %}
           <li>
             <a class="rail-story" href="{{ item.url }}">
-              <span class="rail-story-meta"><time datetime="{{ item.published_iso }}" title="{{ item.published_meta_ts }}">{{ item.time }}</time> · {{ item.cat_label }}</span>
+              <span class="rail-story-meta"><time datetime="{{ item.news_iso }}" title="{{ item.meta_ts }}">{{ item.time }}</time> · {{ item.cat_label }}</span>
               <span class="rail-story-title">{{ item.title }}</span>
               <span class="rail-story-source text-muted">{{ item.source }}</span>
             </a>

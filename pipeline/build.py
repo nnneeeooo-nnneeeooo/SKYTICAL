@@ -300,7 +300,7 @@ L = {
         "articleBylineLabel": "發布者",
         "publishedLabel": "SKYTICAL 發布", "lateIngestLabel": "補收錄",
         "modifiedLabel": "更新",
-        "sourceTimeLabel": "來源時間",
+        "sourceTimeLabel": "來源時間", "newsTimeLabel": "新聞時間",
         "metaColon": "：",
         "topicKicker": "Aviation Topics",
         "topicCount": "則相關新聞",
@@ -461,7 +461,7 @@ L = {
         "articleBylineLabel": "Published by",
         "publishedLabel": "SKYTICAL published", "lateIngestLabel": "Backfilled",
         "modifiedLabel": "Updated",
-        "sourceTimeLabel": "Source time",
+        "sourceTimeLabel": "Source time", "newsTimeLabel": "News timeline",
         "metaColon": ": ",
         "topicKicker": "Aviation Topics",
         "topicCount": "related stories",
@@ -1258,7 +1258,7 @@ def prep_article(raw):
         return None
     art_id = art_id.strip()
     try:
-        publication_dt = parse_iso(str(raw.get("publishedUtc")))
+        publication_dt = parse_iso(str(raw.get("publishedUtc"))).astimezone(timezone.utc)
     except (ValueError, TypeError):
         return None
     dt = publication_dt
@@ -1271,7 +1271,9 @@ def prep_article(raw):
             pass
     if raw.get("sortUtc"):
         try:
-            dt = parse_iso(str(raw["sortUtc"]))
+            candidate = parse_iso(str(raw["sortUtc"])).astimezone(timezone.utc)
+            if candidate <= publication_dt:
+                dt = candidate
         except (ValueError, TypeError):
             # Optional manual-placement metadata must not hide a valid article.
             dt = publication_dt
@@ -1349,12 +1351,13 @@ def prep_article(raw):
     gallery = article_image_gallery(raw, [raw.get("image"), *(raw.get("images") or [])])
     if gallery and not roundup_slots:
         image = gallery[0]
-    # Feeds use first site publication; source chronology stays separate.
-    display_dt = publication_dt
+    # The visible timeline uses the editorial sort stamp. Article metadata
+    # retains the actual first site publication and subsequent content update.
+    display_dt = dt
     source_dt = None
     if raw.get("sourcePublishedUtc"):
         try:
-            source_dt = parse_iso(str(raw["sourcePublishedUtc"]))
+            source_dt = parse_iso(str(raw["sourcePublishedUtc"])).astimezone(timezone.utc)
         except (ValueError, TypeError):
             pass
     tpe = display_dt.astimezone(TPE)
@@ -1367,18 +1370,26 @@ def prep_article(raw):
     # Date-only source stamps (FAA/CAA give no clock time -> 00:00Z) must
     # not render as a precise-looking "08:00" TPE: show the date instead.
     source_meta_ts = None
+    source_date_only = False
     if source_dt:
         source_tpe = source_dt.astimezone(TPE)
+        source_date_only = raw.get("sourceDateOnly",
+                                   source_dt.hour == source_dt.minute == source_dt.second == 0)
         source_meta_ts = (source_tpe.strftime("%Y-%m-%d")
-                          if source_dt.hour == 0 and source_dt.minute == 0 else
+                          if source_date_only else
                           f"{source_tpe:%Y-%m-%d} {clock_12(source_tpe)} UTC+8")
-    time_label = (clock_12(tpe) if tpe.date() == today_tpe
+    news_date_only = raw.get("sortDateOnly", source_date_only and display_dt == source_dt)
+    time_label = (clock_12(tpe) if tpe.date() == today_tpe and not news_date_only
                   else tpe.strftime("%m/%d"))
-    meta_ts = f"{tpe:%Y-%m-%d} {clock_12(tpe)} UTC+8"
+    meta_ts = (tpe.strftime("%Y-%m-%d") if news_date_only
+               else f"{tpe:%Y-%m-%d} {clock_12(tpe)} UTC+8")
     return {
         "id": art_id,
         "dt": dt,
         "news_dt": display_dt,
+        "news_iso": tpe.strftime("%Y-%m-%d") if news_date_only else iso_timestamp(display_dt),
+        "news_date_only": news_date_only,
+        "show_news_time": display_dt != publication_dt and display_dt != source_dt,
         "published_dt": publication_dt,
         "modified_dt": modified_dt,
         "published_iso": iso_timestamp(publication_dt),
@@ -1440,7 +1451,8 @@ def collect_articles():
     by_id = {}
     for a in arts:
         prev = by_id.get(a["id"])
-        if prev is None or a["dt"] > prev["dt"]:
+        if prev is None or (a["modified_dt"], a["published_dt"]) > (
+                prev["modified_dt"], prev["published_dt"]):
             by_id[a["id"]] = a
     public_ids = {}
     for internal_id in by_id:
@@ -1701,10 +1713,12 @@ def art_view(a, lang: str):
         url=page_url(lang, f"news/{a['id']}/"),
         writer_model=a["writer_model"],
         article_format=a["article_format"],
-        feed_day=a["published_dt"].astimezone(TPE).strftime("%Y-%m-%d"),
-        feed_day_label=(f'{a["published_dt"].astimezone(TPE).month} 月 '
-                        f'{a["published_dt"].astimezone(TPE).day} 日' if lang == "zh"
-                        else a["published_dt"].astimezone(TPE).strftime("%b %d, %Y")),
+        feed_day=a["news_dt"].astimezone(TPE).strftime("%Y-%m-%d"),
+        feed_day_label=(f'{a["news_dt"].astimezone(TPE).month} 月 '
+                        f'{a["news_dt"].astimezone(TPE).day} 日' if lang == "zh"
+                        else a["news_dt"].astimezone(TPE).strftime("%b %d, %Y")),
+        news_iso=a["news_iso"],
+        show_news_time=a["show_news_time"],
         published_iso=a["published_iso"],
         modified_iso=a["modified_iso"],
         published_meta_ts=a["published_meta_ts"],
@@ -1788,6 +1802,10 @@ _HERO_TIME_SENSITIVE_RE = re.compile(
 )
 
 
+def news_time(article):
+    return article.get("news_dt", article.get("published_dt"))
+
+
 def is_weather_airline_flight_story(article, now=None) -> bool:
     """Return True for fresh weather-driven national-airline changes.
 
@@ -1796,7 +1814,7 @@ def is_weather_airline_flight_story(article, now=None) -> bool:
     """
     if not isinstance(article, dict):
         return False
-    published = article.get("published_dt")
+    published = news_time(article)
     if published is None:
         return False
     now = now or now_utc()
@@ -1835,11 +1853,11 @@ def taiwan_focus_score(article, now=None) -> int:
     Only headline, summary and source fields participate.  This keeps a
     passing body mention from promoting an otherwise unrelated story.
     """
-    if not isinstance(article, dict) or article.get("published_dt") is None:
+    if not isinstance(article, dict) or news_time(article) is None:
         return 0
     now = now or now_utc()
     try:
-        age = now - article["published_dt"]
+        age = now - news_time(article)
     except TypeError:
         return 0
     if age < timedelta(0) or age > _HERO_FOCUS_FALLBACK_AGE:
@@ -1881,7 +1899,7 @@ def taiwan_sidebar_articles(articles, now=None):
     now = now or now_utc()
     recent = []
     for article in articles:
-        published = article.get("published_dt")
+        published = news_time(article)
         if (published is None
                 or not timedelta(0) <= now - published <= timedelta(days=7)):
             continue
@@ -1889,7 +1907,7 @@ def taiwan_sidebar_articles(articles, now=None):
         if (_HERO_TAIWAN_CARRIER_RE.search(text)
                 or _HERO_TAIWAN_PLACE_RE.search(text)):
             recent.append(article)
-    recent.sort(key=lambda article: article["published_dt"], reverse=True)
+    recent.sort(key=news_time, reverse=True)
     return recent[:5]
 
 
@@ -1901,8 +1919,8 @@ def taiwan_focus_articles(articles, now=None, limit=_HERO_FOCUS_LIMIT):
         score = taiwan_focus_score(article, now)
         if not score:
             continue
-        age = now - article["published_dt"]
-        scored.append((score, article["published_dt"], age, article))
+        age = now - news_time(article)
+        scored.append((score, news_time(article), age, article))
     scored.sort(key=lambda row: (row[0], row[1]), reverse=True)
     fresh = [row[3] for row in scored if row[2] <= _HERO_FOCUS_FRESH_AGE]
     if fresh:
@@ -1930,7 +1948,7 @@ def major_operational_articles(articles, now=None):
     now = now or now_utc()
     selected = []
     for article in articles:
-        published = article.get("published_dt")
+        published = news_time(article)
         if published is None or not is_major_operational_event(article):
             continue
         try:
@@ -1939,7 +1957,7 @@ def major_operational_articles(articles, now=None):
             continue
         if current:
             selected.append(article)
-    return sorted(selected, key=lambda a: a["published_dt"], reverse=True)
+    return sorted(selected, key=news_time, reverse=True)
 
 
 def headline_carousel_articles(articles, now=None, limit=_HERO_CAROUSEL_LIMIT,
@@ -1962,7 +1980,7 @@ def headline_carousel_articles(articles, now=None, limit=_HERO_CAROUSEL_LIMIT,
                 or article_id in selected_ids):
             continue
         article = by_id[article_id]
-        published = article.get("published_dt")
+        published = news_time(article)
         if published is None:
             continue
         try:
@@ -2442,8 +2460,9 @@ def agg_flashes(views):
     return out
 
 
-def prep_flashes(raw, known_ids):
+def prep_flashes(raw, known_ids, article_times=None):
     out = []
+    article_times = article_times or {}
     if not isinstance(raw, list):
         if raw is not None:
             print("build: flashes.json malformed — ignored")
@@ -2465,8 +2484,11 @@ def prep_flashes(raw, known_ids):
         if isinstance(aid, str) and aid not in known_ids:
             # A hidden/archived article must not leave an orphan ticker item.
             continue
+        dt, date_only = article_times.get(aid, (dt, False)) if isinstance(aid, str) else (dt, False)
         out.append({
-            "time": _honest_time_label(dt, False),
+            "time": (dt.astimezone(TPE).strftime("%m/%d") if date_only
+                     else _honest_time_label(dt, False)),
+            "dt": dt,
             "hot": bool(f.get("hot")),
             "pinned": bool(f.get("pinned")),
             "zh": zh, "en": en,
@@ -2477,9 +2499,7 @@ def prep_flashes(raw, known_ids):
                 or lang in f["availableLanguages"]
             ],
         })
-        if len(out) >= MAX_FLASHES:
-            break
-    return out
+    return sorted(out, key=lambda flash: flash["dt"], reverse=True)[:MAX_FLASHES]
 
 
 def flash_view(flashes, lang: str, priority_ids=None):
@@ -4216,7 +4236,10 @@ def main() -> int:
     articles = collect_articles()
     published_ids = {a["id"] for a in articles}
     flashes = prep_flashes(load_json(DATA_DIR / "flashes.json", None),
-                           published_ids)
+                           published_ids, {
+                               a["id"]: (a["news_dt"], a["news_date_only"])
+                               for a in articles if a["news_dt"] != a["published_dt"]
+                           })
     flashes = major_operational_flashes(flashes, articles, now)
     incidents = prep_incidents(load_json(DATA_DIR / "incidents.json", None))
     sources = merged_sources(load_json(DATA_DIR / "sources.json", []))
@@ -4341,7 +4364,7 @@ def main() -> int:
         for article in headline_articles:
             view = art_view(article, lang)
             view["focus"] = article["id"] in focus_ids
-            view["hero_date"] = article["published_dt"].astimezone(TPE).strftime("%m/%d")
+            view["hero_date"] = article["news_dt"].astimezone(TPE).strftime("%m/%d")
             headline_views.append(view)
         major_ids = {article["id"] for article in
                      major_operational_articles(lang_articles, now)}

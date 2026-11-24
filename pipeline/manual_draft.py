@@ -169,10 +169,15 @@ def _iso_second(value: datetime) -> str:
 
 
 def _safe_publication_time(value) -> datetime | None:
+    raw = str(value or "").strip()
     try:
-        parsed = parse_iso(str(value or "").strip())
-    except (TypeError, ValueError):
+        parsed = datetime.fromisoformat(raw.replace("Z", "+00:00"))
+    except ValueError:
         return None
+    if parsed.tzinfo is None:
+        if raw != parsed.date().isoformat():
+            return None
+        parsed = parsed.replace(tzinfo=timezone.utc)
     if parsed.year < 1990 or parsed > now_utc() + timedelta(days=1):
         return None
     return parsed.astimezone(timezone.utc)
@@ -285,9 +290,10 @@ def _html_publication_time(soup: BeautifulSoup) -> str:
             continue
         _jsonld_publication_values(parsed, candidates, [2_000])
     for candidate in candidates:
+        candidate = candidate.strip()
         parsed = _safe_publication_time(candidate)
         if parsed is not None:
-            return _iso_second(parsed)
+            return candidate if candidate == parsed.date().isoformat() else _iso_second(parsed)
     return ""
 
 
@@ -760,25 +766,28 @@ def _resolved_article_type(payload: dict, draft: dict,
 
 def _resolved_publication_time(payload: dict, group: dict,
                                detected: str,
-                               fallback: datetime) -> tuple[datetime, str]:
+                               fallback: datetime) -> tuple[datetime, str, bool]:
     if payload["publicationMode"] == "manual":
         return (
             _safe_publication_time(payload["publicationTimeUtc"]) or fallback,
             "manual",
+            False,
         )
     source_times = []
     for item in group.get("items") or []:
         if item.get("dateInferred"):
             continue
-        parsed = _safe_publication_time(item.get("publishedUtc"))
+        raw = item.get("publishedUtc")
+        parsed = _safe_publication_time(raw)
         if parsed is not None:
-            source_times.append(parsed)
+            source_times.append((parsed, raw == parsed.date().isoformat()))
     if source_times:
-        return max(source_times), "source_metadata"
+        latest, date_only = max(source_times, key=lambda value: (value[0], not value[1]))
+        return latest, "source_metadata", date_only
     model_time = _safe_publication_time(detected)
     if model_time is not None:
-        return model_time, "model_source_text"
-    return fallback, "generation_fallback"
+        return model_time, "model_source_text", detected == model_time.date().isoformat()
+    return fallback, "generation_fallback", False
 
 
 def _translation_prompt(payload: dict, group: dict) -> str:
@@ -858,7 +867,7 @@ def _operator_publication_bundle(job_id: str, payload: dict,
                                  group: dict, draft: dict,
                                  detected_time: str,
                                  fallback_time: datetime) -> dict:
-    publication_time, time_source = _resolved_publication_time(
+    publication_time, time_source, date_only = _resolved_publication_time(
         payload, group, detected_time, fallback_time
     )
     sort_time = publication_time
@@ -887,7 +896,7 @@ def _operator_publication_bundle(job_id: str, payload: dict,
     )
     article = {
         "id": article_id,
-        "publishedUtc": stamp,
+        "publishedUtc": _iso_second(fallback_time),
         "sortUtc": sort_stamp,
         "cat": draft["cat"],
         "primarySource": (
@@ -905,6 +914,9 @@ def _operator_publication_bundle(job_id: str, payload: dict,
     }
     if time_source != "generation_fallback":
         article["sourcePublishedUtc"] = stamp
+        article["sourceDateOnly"] = date_only
+        if date_only and sort_time == publication_time:
+            article["sortDateOnly"] = True
     flash = {
         "timeUtc": sort_stamp,
         "hot": payload["articleType"] == "flash",
@@ -917,6 +929,7 @@ def _operator_publication_bundle(job_id: str, payload: dict,
         "articleType": payload["articleType"],
         "publicationTimeUtc": stamp,
         "publicationTimeSource": time_source,
+        "publicationDateOnly": date_only,
         "articlePath": f"data/articles/manual-{job_id}.json",
         "article": article,
         "flash": flash,
@@ -930,12 +943,13 @@ def _publication_bundle(job_id: str, payload: dict, group: dict,
                         fallback_time: datetime) -> dict:
     article_type = _resolved_article_type(
         payload, draft, detected_type)
-    publication_time, time_source = _resolved_publication_time(
+    publication_time, time_source, date_only = _resolved_publication_time(
         payload, group, detected_time, fallback_time)
     bundle = {
         "articleType": article_type,
         "publicationTimeUtc": _iso_second(publication_time),
         "publicationTimeSource": time_source,
+        "publicationDateOnly": date_only,
         "articlePath": None,
         "article": None,
         "flash": None,
@@ -962,12 +976,15 @@ def _publication_bundle(job_id: str, payload: dict, group: dict,
             or publication_time
         )
     sort_stamp = _iso_second(sort_time)
-    article["publishedUtc"] = stamp
+    article["publishedUtc"] = _iso_second(fallback_time)
     article["sortUtc"] = sort_stamp
     if payload["writerModels"]:
         article["writerModels"] = payload["writerModels"]
     if time_source != "generation_fallback":
         article["sourcePublishedUtc"] = stamp
+        article["sourceDateOnly"] = date_only
+        if date_only and sort_time == publication_time:
+            article["sortDateOnly"] = True
     flash = build_flash(draft, article["id"], publication_time)
     flash["timeUtc"] = sort_stamp
     incident = build_incident(draft, group, article["id"])
@@ -1181,6 +1198,7 @@ def generate(job_id: str, payload: dict) -> dict:
         "detectedArticleType": publication["articleType"],
         "publicationTimeUtc": publication["publicationTimeUtc"],
         "publicationTimeSource": publication["publicationTimeSource"],
+        "publicationDateOnly": publication["publicationDateOnly"],
         "language": payload["language"],
         "operatorAuthored": payload["operatorAuthored"],
         "translationOnly": payload["translationOnly"],
