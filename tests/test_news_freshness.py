@@ -71,9 +71,18 @@ def main() -> None:
     assert "group: skytical-paid-api-${{ github.ref }}" in hourly
     assert "group: skytical-paid-api-${{ github.ref }}" in briefing
     assert hourly.count("group: skytical-pages-publish") == 1
-    refresh = hourly.index("- name: Refresh persisted retry and provider cooldown state")
-    assert refresh < hourly.index("- name: Run pipeline\n")
-    assert "for path in data/news-retry.json data/provider-health.json" in hourly
+    # A queued run must start from the branch tip, or its data commit replays
+    # hours-old files over manual edits; the site is built after the rebase.
+    update = hourly[hourly.index("\n  update:\n"):hourly.index("\n  deploy:\n")]
+    assert update.count("uses: actions/checkout@v5\n        with:") == 1
+    assert "ref: ${{ github.ref }}" in update
+    assert 'git checkout "origin/${GITHUB_REF_NAME}" -- "$path"' not in hourly
+    rebase = update.index('git pull --rebase -X theirs origin "${GITHUB_REF_NAME}"')
+    assert update.index("python pipeline/paid_budget_sync.py persist\n") < rebase
+    assert rebase < update.index("python pipeline/build.py")
+    for name in ("copilot.yml", "manual-draft.yml", "rare-aircraft-monitor.yml"):
+        text = (ROOT / ".github" / "workflows" / name).read_text(encoding="utf-8")
+        assert "ref: ${{ github.ref }}" in text, name
     assert briefing.count("group: skytical-pages-publish") == 1
 
     print("test_news_freshness: OK")
