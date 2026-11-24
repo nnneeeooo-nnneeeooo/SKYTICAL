@@ -75,10 +75,10 @@
     },
     "groq:qwen/qwen3.8-27b": {
       "status": "waiting",
-      "untilUtc": "2026-11-24T09:49Z",
-      "checkedUtc": "2026-11-24T03:49Z",
-      "failureClass": "quota",
-      "diagnostic": "HTTP 429 (credits exhausted?)",
+      "untilUtc": "2026-11-24T15:53Z",
+      "checkedUtc": "2026-11-24T09:53Z",
+      "failureClass": "unexpected",
+      "diagnostic": "zh.body[2] contains Simplified Chinese characters",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -300,8 +300,8 @@
     },
     "openrouter:google/gemma-4-31b-it:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-24T09:06Z",
-      "checkedUtc": "2026-11-24T09:05Z",
+      "untilUtc": "2026-11-24T09:54Z",
+      "checkedUtc": "2026-11-24T09:53Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
@@ -309,8 +309,8 @@
     },
     "openrouter:google/gemma-4-26b-a4b-it:free": {
       "status": "waiting",
-      "checkedUtc": "2026-11-24T09:05Z",
-      "untilUtc": "2026-11-24T09:06Z",
+      "checkedUtc": "2026-11-24T09:53Z",
+      "untilUtc": "2026-11-24T09:54Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
