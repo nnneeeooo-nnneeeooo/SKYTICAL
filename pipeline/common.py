@@ -39,6 +39,7 @@ USER_AGENT = (
 # Keep at most this many entries per source per fetch, and this many flashes.
 MAX_ITEMS_PER_SOURCE = 25
 MAX_FLASHES = 10
+MAX_INCIDENTS = 60
 # Articles shown on the home page feed.
 HOME_FEED_LIMIT = 30
 # Articles shown on each static news-index page.  Pagination keeps the index

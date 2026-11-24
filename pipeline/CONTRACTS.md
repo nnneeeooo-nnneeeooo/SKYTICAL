@@ -560,3 +560,29 @@ with independent cache keys and the component's own evidence. Missing or
 rejected images remain `null` and render a fallback slide. The article uses
 the same carousel implementation as the homepage. Safety roundups remain
 excluded from automatic single-event image selection.
+
+## Concurrent writes to published data  (data_merge.py)
+
+Editors, Devin, Meta Muse and the data workflows all push to `main`, and a
+workflow run can take over an hour. When a run replays its data commit on the
+branch tip, `data/articles/*.json`, `data/flashes.json` and
+`data/incidents.json` merge through `pipeline/data_merge.py` (a git merge
+driver named in `.gitattributes` and installed by the workflow), not by line:
+
+- An article or roundup item changed by one side only keeps that side.
+- The image fields (`image`, `images`, `imageSelection`,
+  `editorialImageLocked`) move as one group. The branch's group stays when the
+  branch changed it after the run started or holds `editorialImageLocked: true`.
+- All other fields move as one group too. The branch's text stays when the
+  branch changed it or the article is editorially managed; the run's redraft
+  of that article is dropped with a warning.
+- Articles added on either side are kept; an article removed on the branch
+  stays removed. Without a common ancestor the branch copy wins.
+- Flash and incident rows the run added go on top of the branch's rows.
+
+After the rebase, `data_merge.py guard <tip>` restores from the tip any locked
+image the working tree changed, any article it lost and any batch that no
+longer parses, and drops a flash or incident row the run added for a redraft
+that was not kept. Bot-owned caches and ledgers still resolve with `-X theirs`.
+A workflow that commits `data/articles` must install the driver before its
+rebase and run the guard after it (`tests/test_data_merge.py` checks this).
