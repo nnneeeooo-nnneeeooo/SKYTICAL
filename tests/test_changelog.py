@@ -158,9 +158,9 @@ def main() -> None:
     assert [group["date"] for group in zh["groups"]] \
         == sorted(set(dates), reverse=True)
     assert zh["groups"][0]["entries"][0]["title"].startswith(
-        "Devin Bots模型調整")
+        "Devin撰稿模型調整")
     assert en["groups"][0]["entries"][0]["title"].startswith(
-        "Devin Bots model change")
+        "Devin’s news writing model changes")
     assert en["groups"][-1]["entries"][-1]["title"].startswith(
         "Created SKYTICAL")
     linked = [entry for group in en["groups"] for entry in group["entries"]
