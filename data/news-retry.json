@@ -75,19 +75,6 @@
       "nextRetryUtc": null,
       "title": "Western Sydney Airport opens as first Jetstar flight hits the runway"
     },
-    "8aaaac2060901c3bf7383ae8": {
-      "sourceUrls": [
-        "https://simpleflying.com/american-airlines-replace-84-mile-chicago-bus-bombardier-crj700-travelers-flights-werent"
-      ],
-      "contentFailures": 2,
-      "serviceFailures": 0,
-      "history": [],
-      "updatedUtc": "2026-10-25T18:26Z",
-      "failureClass": "content_validation",
-      "status": "waiting",
-      "nextRetryUtc": "2026-10-26T00:26Z",
-      "title": "American Airlines Replaced Its 84-Mile Chicago Bus With Bombardier CRJ700 Jets After Travelers Booked 'Flights' That Weren't"
-    },
     "b9d425da7a277fd694ffb969": {
       "sourceUrls": [
         "https://simpleflying.com/delta-air-lines-boeing-787-10s-2031-airbus-a350-1000-carry-asia-bet"
@@ -3465,12 +3452,12 @@
         "https://simpleflying.com/air-force-base-cold-war-runway-rebuild"
       ],
       "contentFailures": 0,
-      "serviceFailures": 1,
+      "serviceFailures": 2,
       "history": [],
-      "updatedUtc": "2026-11-24T12:25Z",
-      "failureClass": "source_insufficient",
+      "updatedUtc": "2026-11-24T20:04Z",
+      "failureClass": "provider_failure",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-24T18:25Z",
+      "nextRetryUtc": "2026-11-25T02:04Z",
       "title": "5 Air Force Bases Spending Hundreds Of Millions To Rebuild Cold War-Era Runways",
       "items": [
         {
@@ -3986,12 +3973,12 @@
         "https://simpleflying.com/airport-thanksgiving-curb-2-lane-bypass-expected-last-2030"
       ],
       "contentFailures": 0,
-      "serviceFailures": 1,
+      "serviceFailures": 2,
       "history": [],
-      "updatedUtc": "2026-11-24T17:07Z",
+      "updatedUtc": "2026-11-24T20:04Z",
       "failureClass": "provider_failure",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-24T19:07Z",
+      "nextRetryUtc": "2026-11-25T02:04Z",
       "title": "Why This Airport's Thanksgiving Curb Is A 2-Lane Bypass Expected To Last Until 2030"
     },
     "89993468b7bfc986232b10b2": {
@@ -4033,31 +4020,6 @@
         }
       ]
     },
-    "428bf424a1f68e12dcc234e5": {
-      "sourceUrls": [
-        "https://avherald.com/h?article=5483616c&opt=0",
-        "https://avherald.com/h?article=5484b733&opt=0",
-        "https://avherald.com/h?article=5484c66b&opt=0",
-        "https://avherald.com/h?article=5485d4bf&opt=0",
-        "https://avherald.com/h?article=5485decd&opt=0",
-        "https://avherald.com/h?article=5485eb85&opt=0"
-      ],
-      "contentFailures": 0,
-      "serviceFailures": 1,
-      "status": "waiting",
-      "history": [
-        {
-          "status": "waiting",
-          "contentFailures": 1,
-          "serviceFailures": 0,
-          "updatedUtc": "2026-11-24T17:07Z"
-        }
-      ],
-      "updatedUtc": "2026-11-24T18:13Z",
-      "nextRetryUtc": "2026-11-24T20:13Z",
-      "failureClass": "provider_failure",
-      "title": "Incident: Wizz A21N near Barcelona on Nov 23rd 2026, engine problem"
-    },
     "46419c388a738720d23352fc": {
       "sourceUrls": [
         "https://simpleflying.com/delta-set-to-reveal-new-17-hour-route-next-week"
@@ -4093,6 +4055,65 @@
           "sourceKey": "simpleflying"
         }
       ]
+    },
+    "428bf424a1f68e12dcc234e5": {
+      "sourceUrls": [
+        "https://avherald.com/h?article=5483616c&opt=0",
+        "https://avherald.com/h?article=5484b733&opt=0",
+        "https://avherald.com/h?article=5484c66b&opt=0",
+        "https://avherald.com/h?article=5485d4bf",
+        "https://avherald.com/h?article=5485d4bf&opt=0",
+        "https://avherald.com/h?article=5485decd&opt=0",
+        "https://avherald.com/h?article=5485eb85&opt=0",
+        "https://avherald.com/h?article=5485fc49&opt=0"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "status": "waiting",
+      "history": [
+        {
+          "status": "waiting",
+          "contentFailures": 1,
+          "serviceFailures": 0,
+          "updatedUtc": "2026-11-24T17:07Z"
+        },
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 1,
+          "updatedUtc": "2026-11-24T18:13Z"
+        }
+      ],
+      "updatedUtc": "2026-11-24T20:04Z",
+      "nextRetryUtc": "2026-11-24T22:04Z",
+      "failureClass": "provider_failure",
+      "title": "Incident: UPS B752 at Ontario on Nov 23rd 2026, engine shut down in flight"
+    },
+    "743457b2a0f66598e9760370": {
+      "sourceUrls": [
+        "https://simpleflying.com/airbus-a350-survives-environmental-stress-longest-flights-world"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-24T20:04Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-24T22:04Z",
+      "title": "How The Airbus A350 Survives Environmental Stress During The Longest Flights In The World"
+    },
+    "b55beba83b84a3370eefa9e6": {
+      "sourceUrls": [
+        "https://simpleflying.com/westjet-cancels-3-international-routes"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-24T20:04Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-24T22:04Z",
+      "title": "WestJet Quietly Cancels 3 International Routes: See Full List Now"
     }
   }
 }
