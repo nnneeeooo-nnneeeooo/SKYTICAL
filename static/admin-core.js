@@ -25,8 +25,19 @@ globalThis.SkyticalAdmin = (() => {
       article[lang] = {...before, title, summary: fields[`${lang}-summary`].trim(), body};
     }
     if (!article.zh.title && !article.en.title) throw new Error("至少保留一種語言的文章。");
-    article.publishedUtc = toUtc(fields.published);
-    article.sortUtc = toUtc(fields.sort);
+    if (fields.published !== toTaipei(original.publishedUtc)) {
+      article.publishedUtc = toUtc(fields.published);
+    }
+    const previousSort = original.sortUtc || original.publishedUtc;
+    if (fields.sort !== toTaipei(previousSort)) {
+      article.sortUtc = toUtc(fields.sort);
+      delete article.sortDateOnly;
+    }
+    const chronologyChanged = article.publishedUtc !== original.publishedUtc
+      || article.sortUtc !== original.sortUtc;
+    if (chronologyChanged && Date.parse(article.sortUtc || article.publishedUtc) > Date.parse(article.publishedUtc)) {
+      throw new Error("排序時間須早於或等於首次刊登時間。");
+    }
     const models = [...new Set(fields.models.split(/[、,\n]/).map(s => s.trim()).filter(Boolean))];
     if (models.length > 5 || models.some(s => s.length > 100)) throw new Error("模型署名最多五個，每個最多 100 字。");
     article.writerModels = models;
@@ -41,13 +52,18 @@ globalThis.SkyticalAdmin = (() => {
         return {...previous, name,url};
       });
       if (!sources.length) throw new Error('請至少保留一個文章來源。');
-      article.sources = sources;
+      const originalLines = (original.sources || []).map(source =>
+        `${source.name || source.url} | ${source.url}`).join("\n");
+      if (fields.sources.trim() !== originalLines) article.sources = sources;
     }
+    const old = typeof original.image === 'string' ? {url: original.image} : original.image || {};
+    const imageChanged = fields['remove-image'] || ['url', 'subject', 'link', 'credit', 'license', 'kind'].some(
+      name => fields[`image-${name}`].trim() !== (old[name] || (name === 'kind' ? 'file_photo' : '')),
+    );
     if (fields['remove-image']) article.image = null;
-    else {
+    else if (imageChanged) {
       const url = webUrl(fields['image-url'].trim());
       if (url && !fields['image-subject'].trim()) throw new Error("請填寫圖片說明。");
-      const old = typeof original.image === 'object' && original.image ? original.image : {};
       const same = old.url === url;
       article.image = url ? {
         ...(same ? old : {}), url, subject: fields['image-subject'].trim(),
@@ -57,7 +73,7 @@ globalThis.SkyticalAdmin = (() => {
         provider: 'manual', curated: true,
       } : null;
     }
-    if (article.roundupKind === 'industry' && Array.isArray(article.roundupItems) && article.roundupItems.length) {
+    if (imageChanged && article.roundupKind === 'industry' && Array.isArray(article.roundupItems) && article.roundupItems.length) {
       // A cover edit changes its corresponding item, preserving every other
       // manually/GPT-assigned image rather than flattening the gallery.
       let index = article.roundupItems.findIndex(item => item.image?.url && item.image.url === original.image?.url);
@@ -67,7 +83,18 @@ globalThis.SkyticalAdmin = (() => {
     }
     article.editorialLocked = true;
     article.editorialImageLocked = true;
-    article.updatedUtc = now;
+    const contentChanged = ['zh', 'en'].some(lang => {
+      const before = original[lang] || {};
+      const after = article[lang];
+      return (before.title || "") !== after.title
+        || (before.summary || "") !== after.summary
+        || JSON.stringify(before.body || []) !== JSON.stringify(after.body);
+    }) || (original.primarySource || "") !== (article.primarySource || "")
+      || JSON.stringify(original.sources || []) !== JSON.stringify(article.sources || []);
+    if (chronologyChanged && (contentChanged || imageChanged)) {
+      throw new Error("請單獨送出時間修正，再另行更新正文或圖片。");
+    }
+    if (contentChanged) article.updatedUtc = now;
     article.revision = (Number(original.revision) || 1) + 1;
     article.availableLanguages = ['zh', 'en'].filter(lang => article[lang].title);
     return article;

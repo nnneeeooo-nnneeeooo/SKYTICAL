@@ -135,6 +135,12 @@ write.py is skipped (no API key) or fails on a group, the story remains
 (written by write.py, read by build.py; one batch file per pipeline hour,
 absent when nothing new that hour)
 
+`publishedUtc` is the actual first site publication and supplies article
+metadata and RSS. `sortUtc` is required for new manual and scheduled records
+and controls the visible news timeline, with `publishedUtc` as the fallback
+for legacy records. An update preserves both and stamps `updatedUtc` when
+editorial content changes. Image-only changes preserve all article clocks.
+
 ```jsonc
 {
   "articles": [
@@ -152,10 +158,11 @@ absent when nothing new that hour)
       "zh": {"title": "...", "summary": "...", "body": ["至少4段；合計>=500實質字元"]},
       "en": {"title": "...", "summary": "...", "body": ["at least 4 paragraphs; >=250 words"]},
       "sources": [{"name": "FAA — Statement", "url": "https://..."}],  // >=1, REQUIRED
-      "sourcePublishedUtc": "2026-07-23T04:00Z", // OPTIONAL newest source-provided
-                                            // publish time (never an inferred
-                                            // stamp); the site displays this,
-                                            // publishedUtc orders the archive
+      "sourcePublishedUtc": "2026-07-23T04:00Z", // verified source publication
+      "sourceDateOnly": false,             // true for date-only sources at 00:00Z
+      "sortUtc": "2026-07-23T04:00Z",      // timeline timestamp; use original
+                                            // verified source time for backfills
+      "sortDateOnly": false,               // true if the timeline uses a date only
       "writer": "gemini:gemini-2.5-flash",  // OPTIONAL provenance "provider:model";
                                             // absent on pre-multi-provider articles
       "facts": [                            // OPTIONAL machine-verified evidence:

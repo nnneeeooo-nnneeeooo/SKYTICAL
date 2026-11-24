@@ -8,7 +8,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "pipeline"))
-from scheduled_news import validate_article, validate_directory
+from scheduled_news import validate_article, validate_chronology, validate_directory
 
 NOW = datetime(2026, 10, 1, 8, tzinfo=timezone.utc)
 
@@ -29,6 +29,44 @@ def article():
 
 
 class ScheduledNewsTest(unittest.TestCase):
+    def test_manual_chronology_distinguishes_dates_and_keeps_image_times(self):
+        previous = article() | {
+            "sortUtc": "2026-09-30T00:00:00Z",
+            "sourceDateOnly": True,
+            "sortDateOnly": True,
+        }
+        validate_chronology(previous, manual=True, now=NOW)
+        for key in ("sortUtc", "sourceDateOnly", "sortDateOnly"):
+            with self.assertRaisesRegex(ValueError, key):
+                validate_chronology(
+                    {name: value for name, value in previous.items() if name != key},
+                    manual=True, now=NOW,
+                )
+        with self.assertRaisesRegex(ValueError, "sortUtc"):
+            validate_chronology(
+                previous | {"sortUtc": "2026-10-01T07:01:00Z"}, manual=True, now=NOW)
+        image_only = previous | {"image": {"url": "https://example.test/new.jpg"}}
+        validate_chronology(image_only, previous, manual=True, now=NOW)
+        for change in (
+            {"publishedUtc": "2026-10-01T07:05:00Z"},
+            {"sortUtc": "2026-10-01T00:00:00Z"},
+            {"sortDateOnly": False},
+            {"updatedUtc": "2026-10-01T07:59:00Z"},
+            {"scheduledNews": {**previous["scheduledNews"], "checkedUtc": "2026-10-01T07:01:00Z"}},
+        ):
+            with self.assertRaisesRegex(ValueError, "image-only"):
+                validate_chronology(image_only | change, previous, manual=True, now=NOW)
+        followup = previous | {
+            "zh": {**previous["zh"], "body": ["更新後正文。"]},
+            "updatedUtc": "2026-10-01T07:59:00Z",
+            "sourcePublishedUtc": "2026-10-01T07:40:00Z",
+            "sourceDateOnly": False,
+        }
+        validate_chronology(followup, previous, manual=True, now=NOW)
+        with self.assertRaisesRegex(ValueError, "content updates"):
+            validate_chronology(followup | {"sortUtc": "2026-10-01T00:00:00Z"},
+                                previous, manual=True, now=NOW)
+
     def test_valid_article(self):
         validate_article(article(), NOW)
 

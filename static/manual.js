@@ -327,10 +327,29 @@
     return response.json();
   }
 
-  async function writeRepoJson(path, value, message) {
+  async function writeManualArticle(path, article) {
     const current = await readRepoFile(path);
-    return writeRepoFile(
-      path, `${JSON.stringify(value, null, 2)}\n`, message, current.sha);
+    if (current.content) {
+      const rows = JSON.parse(current.content).articles;
+      if (rows?.length !== 1 || rows[0].id !== article.id) {
+        throw new Error("稿件路徑已被其他文章使用");
+      }
+      return {article: rows[0]};
+    }
+
+    const publishedUtc = new Date().toISOString();
+    const draftSort = article.sortUtc === article.publishedUtc && !article.sourcePublishedUtc
+      ? "" : article.sortUtc;
+    const sortUtc = draftSort || article.sourcePublishedUtc || publishedUtc;
+    if (Date.parse(sortUtc) > Date.parse(publishedUtc)
+        || Date.parse(article.sourcePublishedUtc) > Date.parse(publishedUtc)) {
+      throw new Error("來源與排序時間須早於或等於實際刊登時間");
+    }
+    const published = {...article, publishedUtc, sortUtc};
+    const data = JSON.stringify({articles: [published]}, null, 2);
+    const result = await writeRepoFile(
+      path, `${data}\n`, `publish manual article ${article.id}`, current.sha);
+    return {article: published, commit: result.commit};
   }
 
   async function updateCappedList(path, item, limit) {
@@ -348,10 +367,13 @@
     rows = [
       item,
       ...rows.filter(row => row?.articleId !== articleId),
-    ].slice(0, limit);
+    ];
+    if (path === "data/flashes.json") {
+      rows.sort((left, right) => Date.parse(right.timeUtc) - Date.parse(left.timeUtc));
+    }
     return writeRepoFile(
       path,
-      `${JSON.stringify(rows, null, 2)}\n`,
+      `${JSON.stringify(rows.slice(0, limit), null, 2)}\n`,
       `publish manual article ${articleId}`,
       current.sha,
     );
@@ -750,7 +772,7 @@
       : (language === "bilingual"
         ? block(secondaryTitle, secondaryBody) : empty);
     const now = new Date();
-    const publicationTime = manualPublicationUtc();
+    const sourceTime = manualPublicationUtc();
     const sortTime = manualSortUtc();
     const writerModels = writerModelLabels();
     const compact = now.toISOString()
@@ -779,8 +801,9 @@
     }));
     return {
       id: articleId,
-      publishedUtc: publicationTime,
-      sortUtc: sortTime,
+      publishedUtc: now.toISOString(),
+      sortUtc: sortTime || now.toISOString(),
+      ...(sourceTime ? {sourcePublishedUtc: sourceTime, sourceDateOnly: false} : {}),
       cat: category,
       primarySource: sources[0]?.name || "SKYTICAL",
       image: imageUrls[0] ? {
@@ -1051,7 +1074,9 @@
       ARTICLE_TYPE_LABELS[result.detectedArticleType] ||
       result.detectedArticleType || "—");
     text(els["review-time"],
-      publicationTimeLabel(result.publicationTimeUtc));
+      result.publicationDateOnly
+        ? result.publicationTimeUtc.slice(0, 10)
+        : publicationTimeLabel(result.publicationTimeUtc));
     text(els["review-time-source"],
       TIME_SOURCE_LABELS[result.publicationTimeSource] ||
       result.publicationTimeSource || "—");
@@ -1384,7 +1409,7 @@
       .replace(/[-:]/g, "").slice(0, 13).replace("T", "-")}`
       + `-${jobId.slice(0, 12)}`;
     const imageUrls = imageUrlsForArticle(previewId);
-    const article = manualArticle(jobId, imageUrls, previewId);
+    let article = manualArticle(jobId, imageUrls, previewId);
     const articlePath = `data/articles/manual-${jobId}.json`;
     const modelLabel = writerModelLabels().join("、");
     const outputTokens = manualUsageModels(article)[0].outputTokens;
@@ -1418,11 +1443,8 @@
       setWorkflowStep(1, "done");
       setWorkflowStep(2, "active");
       setState("備份文章與用量", "working");
-      const articleResult = await writeRepoJson(
-        articlePath,
-        {articles: [article]},
-        `publish manual article ${article.id}`,
-      );
+      const articleResult = await writeManualArticle(articlePath, article);
+      article = articleResult.article;
       latestCommit = articleResult.commit?.sha || latestCommit;
       addLog(`文章 JSON 已自動備份：${articlePath}`);
       const usageResult = await recordPublicationUsage(
@@ -1469,7 +1491,7 @@
 
   async function publishArticle() {
     const publication = lastResult?.publication;
-    const article = publication?.article;
+    let article = publication?.article;
     if (!article || !publication.articlePath) {
       text(els["publish-state"], "目前沒有可發布的文章資料。");
       return;
@@ -1505,16 +1527,14 @@
           kind: index === 0 ? "article_image" : "attachment",
         }));
       }
-      const articleResult = await writeRepoJson(
-        publication.articlePath,
-        {articles: [article]},
-        `publish manual article ${article.id}`,
-      );
+      const articleResult = await writeManualArticle(publication.articlePath, article);
+      article = articleResult.article;
       addLog(`文章 JSON 已寫入 ${publication.articlePath}`);
       latestCommit = articleResult.commit?.sha || latestCommit;
       if (publication.flash) {
         const result = await updateCappedList(
-          "data/flashes.json", publication.flash, 10);
+          "data/flashes.json",
+          {...publication.flash, timeUtc: article.sortUtc || article.publishedUtc}, 10);
         latestCommit = result.commit?.sha || latestCommit;
         addLog("首頁快訊資料已同步");
       }

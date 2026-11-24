@@ -8,12 +8,38 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import subprocess
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parent.parent
 ID_RE = re.compile(r"a-[A-Za-z0-9._-]+\Z")
+ARTICLE_CLOCKS = (
+    "publishedUtc", "sortUtc", "sortDateOnly", "sourcePublishedUtc", "sourceDateOnly", "updatedUtc",
+)
+IMAGE_FIELDS = ("image", "images", "attachments", "sourceImageCandidates", "imageContext")
+
+
+def _image_fields(row):
+    items = row.get("roundupItems") or []
+    return (
+        *(row.get(key) for key in IMAGE_FIELDS),
+        tuple(tuple(item.get(key) for key in IMAGE_FIELDS)
+              for item in items if isinstance(item, dict)),
+    )
+
+
+def _article_copy(row):
+    text_fields = ("title", "summary", "body")
+    return (
+        *(tuple((row.get(lang) or {}).get(key) or "" for key in text_fields)
+          for lang in ("zh", "en")),
+        row.get("primarySource"), row.get("sources") or [],
+        [{key: value for key, value in item.items()
+          if key not in IMAGE_FIELDS and key != "editorialImageLocked"}
+         for item in row.get("roundupItems") or [] if isinstance(item, dict)],
+    )
 
 
 def timestamp(value):
@@ -23,6 +49,105 @@ def timestamp(value):
     if result.tzinfo is None:
         raise ValueError("timestamp must include timezone")
     return result
+
+
+def validate_chronology(row, previous=None, *, manual=False, now=None):
+    """Check new or modified date fields without rewriting the legacy archive."""
+    now = now or datetime.now(timezone.utc)
+    changed = {key for key in ARTICLE_CLOCKS
+               if previous is None or row.get(key) != previous.get(key)}
+    if previous is not None:
+        check_time_changed = (
+            (row.get("scheduledNews") or {}).get("checkedUtc")
+            != (previous.get("scheduledNews") or {}).get("checkedUtc")
+            or row.get("checkedUtc") != previous.get("checkedUtc")
+        )
+        same_copy = _article_copy(row) == _article_copy(previous)
+        if same_copy and _image_fields(row) != _image_fields(previous):
+            if changed or check_time_changed:
+                raise ValueError("image-only edits must preserve article timestamps")
+        if not same_copy and changed.intersection({"publishedUtc", "sortUtc", "sortDateOnly"}):
+            raise ValueError("content updates must preserve first publication and sort time")
+        if not changed:
+            return
+    if manual and previous is None and not row.get("sortUtc"):
+        raise ValueError("new manual or scheduled articles require sortUtc")
+
+    publication = timestamp(row.get("publishedUtc"))
+    sort_time = timestamp(row["sortUtc"]) if row.get("sortUtc") else publication
+    update = timestamp(row["updatedUtc"]) if row.get("updatedUtc") else publication
+    source = timestamp(row["sourcePublishedUtc"]) if row.get("sourcePublishedUtc") else None
+    if sort_time > publication:
+        raise ValueError("sortUtc must be at or before publishedUtc")
+    if update < publication:
+        raise ValueError("updatedUtc must be at or after publishedUtc")
+    if source and source > update:
+        raise ValueError("sourcePublishedUtc must be at or before publication or update")
+    if update > now + timedelta(minutes=5):
+        raise ValueError("future publication or update time")
+    if "sourceDateOnly" in row and (type(row["sourceDateOnly"]) is not bool or source is None):
+        raise ValueError("sourceDateOnly requires a boolean and a source timestamp")
+    if manual and source and "sourceDateOnly" not in row and (
+            previous is None or "sourcePublishedUtc" in changed):
+        raise ValueError("sourceDateOnly must record the source's time precision")
+    if row.get("sourceDateOnly") and source.astimezone(timezone.utc).time() != datetime.min.time():
+        raise ValueError("date-only sources use 00:00:00Z on the reported date")
+    if "sortDateOnly" in row and (type(row["sortDateOnly"]) is not bool or not row.get("sortUtc")):
+        raise ValueError("sortDateOnly requires a boolean and a sort timestamp")
+    if row.get("sortDateOnly") and sort_time.astimezone(timezone.utc).time() != datetime.min.time():
+        raise ValueError("date-only timeline entries use 00:00:00Z on the reported date")
+    if manual and previous is None and row.get("sourceDateOnly") and sort_time == source:
+        if row.get("sortDateOnly") is not True:
+            raise ValueError("a date-only timeline entry must preserve sortDateOnly")
+
+
+def validate_chronology_diff(base):
+    def git(*args, check=True):
+        result = subprocess.run(["git", *args], cwd=ROOT, capture_output=True, text=True)
+        if check and result.returncode:
+            raise ValueError(result.stderr.strip())
+        return result.stdout if result.returncode == 0 else ""
+
+    directories = ("data/articles", "data/editorial-overrides")
+    paths = set(git("diff", "--name-only", base, "--", *directories).splitlines())
+    paths.update(git("ls-files", "--others", "--exclude-standard", "--", *directories).splitlines())
+
+    def rows(content):
+        data = json.loads(content) if content else {}
+        if isinstance(data, dict):
+            return {row["id"]: row for row in data.get("articles", [data])
+                    if isinstance(row, dict) and isinstance(row.get("id"), str)}
+        return {}
+
+    count = 0
+    for name in sorted(paths):
+        path = ROOT / name
+        if path.suffix != ".json" or not path.is_file():
+            continue
+        overriding = name.startswith("data/editorial-overrides/")
+        previous = rows(git("show", f"{base}:{name}", check=False))
+        for article_id, row in rows(path.read_text(encoding="utf-8")).items():
+            original = previous.get(article_id)
+            if overriding and original is None:
+                matches = git("grep", "-lF", "-e", f'"{article_id}"', base,
+                              "--", "data/articles", check=False)
+                for location in matches.splitlines():
+                    original = rows(git("show", location)).get(article_id)
+                    if original:
+                        break
+            if original == row or row.get("archived") is True:
+                continue
+            manual = (path.name.startswith(("manual-", "scheduled-"))
+                      or str(row.get("writer", "")).startswith(("manual:", "scheduled:"))
+                      or "scheduledNews" in row)
+            if original is None and not manual:
+                continue
+            try:
+                validate_chronology(row, original, manual=manual)
+            except ValueError as exc:
+                raise ValueError(f"{name} ({article_id}): {exc}") from exc
+            count += 1
+    return count
 
 
 def web_url(value):
@@ -140,8 +265,13 @@ def validate_directory(directory, now=None):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--articles-dir", type=Path, default=ROOT / "data/articles")
+    parser.add_argument("--chronology-base", help="validate changes from this Git ref")
     args = parser.parse_args()
     try:
+        if args.chronology_base:
+            count = validate_chronology_diff(args.chronology_base)
+            print(f"news chronology: {count} changed articles validated")
+            return
         count = validate_directory(args.articles_dir)
     except ValueError as exc:
         parser.exit(1, f"scheduled news validation failed: {exc}\n")

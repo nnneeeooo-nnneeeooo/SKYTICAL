@@ -6,21 +6,32 @@ const path = require('node:path');
 vm.runInThisContext(fs.readFileSync(path.join(__dirname, '../static/admin-core.js'), 'utf8'));
 const core = globalThis.SkyticalAdmin;
 const original = {
-  id:'a-test', publishedUtc:'2026-10-29T01:00Z', writer:'provider:actual-model', revision:4,
+  id:'a-test', publishedUtc:'2026-10-29T01:00:27Z', writer:'provider:actual-model', revision:4,
   zh:{title:'原標題', summary:'原摘要', body:['原內文']}, en:{title:'',summary:'',body:[]},
   sources:[{url:'https://example.com/story'}], opaque:{preserve:true},
   image:{url:'https://example.com/old.jpg', subject:'原圖', sourceCaption:'原圖證據'},
 };
 const fields = {
   'zh-title':'新標題', 'zh-summary':'新摘要', 'zh-body':'第一段\n\n第二段',
-  'en-title':'', 'en-summary':'', 'en-body':'', published:'2026-10-29T09:00', sort:'2026-10-29T10:00',
+  'en-title':'', 'en-summary':'', 'en-body':'', published:'2026-10-29T09:00', sort:'2026-10-29T09:00',
   models:'Model A、Model B', 'image-url':'https://example.com/new.jpg', 'image-subject':'新圖',
   'image-link':'https://example.com/source', 'image-credit':'攝影者', 'image-license':'授權',
   'image-kind':'file_photo', 'remove-image':false,
 };
 const edited = core.editArticle(original, fields, '2026-10-30T00:00:00.000Z');
-assert.equal(edited.publishedUtc, '2026-10-29T01:00:00.000Z');
-assert.equal(edited.sortUtc, '2026-10-29T02:00:00.000Z');
+assert.equal(edited.publishedUtc, original.publishedUtc);
+assert.equal(edited.sortUtc, undefined);
+assert.equal(edited.updatedUtc, '2026-10-30T00:00:00.000Z');
+const existing = {...original, updatedUtc:'2026-10-29T04:08:11Z',
+  sourcePublishedUtc:'2026-10-28T00:00:00Z', sourceDateOnly:true,
+  sortUtc:'2026-10-28T00:00:00Z', sortDateOnly:true};
+const imageOnly = core.editArticle(existing, {...fields, sort:'2026-10-28T08:00',
+  'zh-title':'原標題', 'zh-summary':'原摘要', 'zh-body':'原內文'}, edited.updatedUtc);
+for (const key of ['publishedUtc', 'updatedUtc', 'sortUtc', 'sortDateOnly', 'sourcePublishedUtc', 'sourceDateOnly']) {
+  assert.equal(imageOnly[key], existing[key]);
+}
+assert.equal(imageOnly.image.url, fields['image-url']);
+assert.throws(() => core.editArticle(original, {...fields, sort:'2026-10-29T10:00'}, edited.updatedUtc));
 assert.equal(edited.writer, original.writer);
 assert.deepEqual(edited.writerModels, ['Model A','Model B']);
 assert.equal(edited.editorialLocked, true);

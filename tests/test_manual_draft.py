@@ -147,6 +147,10 @@ def test_publication_detection_prompt_and_bundle():
         manual_draft._html_publication_time(soup)
         == "2026-07-30T02:11:12Z",
         "source metadata publication time is normalized to UTC seconds")
+    date_only = manual_draft.BeautifulSoup(
+        '<meta name="date" content="2026-07-30">', "html.parser")
+    check(manual_draft._html_publication_time(date_only) == "2026-07-30",
+          "a date-only source retains its original precision")
 
     payload = manual_draft.validate_payload({
         **sample_payload(),
@@ -237,7 +241,8 @@ def test_publication_detection_prompt_and_bundle():
     check(
         bundle["articlePath"]
         == "data/articles/manual-0123456789abcdef0123456789abcdef.json"
-        and bundle["article"]["publishedUtc"] == "2026-07-30T02:11:12Z"
+        and bundle["article"]["publishedUtc"] == "2026-07-31T01:02:03Z"
+        and bundle["article"]["sourcePublishedUtc"] == "2026-07-30T02:11:12Z"
         and bundle["article"]["sortUtc"] == "2026-07-29T12:00:00Z"
         and bundle["flash"]["timeUtc"] == "2026-07-29T12:00:00Z"
         and bundle["flash"]["articleId"] == bundle["article"]["id"]
@@ -331,8 +336,8 @@ def test_operator_authored_auto_source_time():
     check(
         bundle["publicationTimeUtc"] == "2026-07-30T13:45:00Z"
         and bundle["publicationTimeSource"] == "source_metadata"
-        and bundle["article"]["publishedUtc"]
-        == bundle["article"]["sortUtc"]
+        and bundle["article"]["publishedUtc"] == "2026-07-31T01:02:00Z"
+        and bundle["article"]["sourcePublishedUtc"] == bundle["article"]["sortUtc"]
         and bundle["article"]["zh"] == source_article
         and bundle["article"]["en"]["body"] == []
         and bundle["article"]["availableLanguages"] == ["zh"],
@@ -703,8 +708,9 @@ def test_manual_article_render_contract():
           and article["writer_model"] == "GPT 5.6 Sol、Gemini 3.6 Flash"
           and article["dt"]
           == datetime(2026, 7, 29, 12, 0, tzinfo=timezone.utc)
-          and article["meta_ts"] == "2026-07-31 8:00 PM UTC+8",
-          "manual sort time controls placement without changing display time")
+          and article["meta_ts"] == "2026-07-29 8:00 PM UTC+8"
+          and article["published_meta_ts"] == "2026-07-31 8:00 PM UTC+8",
+          "manual timeline label and real publication time are independent")
     legacy = dict(raw)
     legacy.pop("sortUtc")
     legacy_article = build.prep_article(legacy)
@@ -757,7 +763,7 @@ def test_static_security_contract():
         and 'id="publication-hour"' in html
         and 'id="publication-minute"' in html
         and 'id="publication-period"' in html
-        and '<label>文章時間' in html
+        and '<label>來源時間' in html
         and '<option value="auto" selected>自動偵測來源時間</option>'
         in html
         and 'id="manual-order-panel"' in html
@@ -773,10 +779,10 @@ def test_static_security_contract():
         and 'hour12: true' in js,
         "workbench exposes auto type, summary and 12-hour minute controls")
     check(
-        "publishedUtc: publicationTime" in js
+        "const publishedUtc = new Date().toISOString();" in js
         and "sortUtc: sortTime" in js
         and "function manualSortUtc()" in js
-        and "網站排序時間跟隨文章時間" in html,
+        and "網站排序時間跟隨來源時間" in html,
         "true manual mode saves independent article and website-order times")
     check(
         html.count("一鍵送出並發布到網站") == 1
@@ -837,7 +843,7 @@ def test_static_security_contract():
     check(
         "async function publishArticle()" in js
         and "async function publishManualArticle()" in js
-        and "writeRepoJson(" in js
+        and "writeManualArticle(" in js
         and "data\\/articles\\/manual-" in js
         and "data/flashes.json" in js
         and "data/incidents.json" in js

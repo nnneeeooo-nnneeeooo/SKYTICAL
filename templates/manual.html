@@ -154,18 +154,18 @@
               <option value="deep" selected>深度</option>
             </select>
           </label>
-          <label>文章時間
+          <label>來源時間
             <select id="publication-mode">
               <option value="auto" selected>自動偵測來源時間</option>
               <option value="manual">手動指定臺北時間</option>
             </select>
           </label>
           <div id="manual-time-panel" class="manual-time-panel" hidden>
-            <label>文章日期（UTC+8）
+            <label>來源日期（UTC+8）
               <input id="publication-date" type="date">
             </label>
-            <label>文章時間（UTC+8）
-              <span class="clock-selects" role="group" aria-label="文章時間">
+            <label>來源時間（UTC+8）
+              <span class="clock-selects" role="group" aria-label="來源時間">
                 <select id="publication-hour" aria-label="小時">
                   {% for hour in range(1, 13) %}
                   <option value="{{ hour }}">{{ hour }}</option>
@@ -187,9 +187,9 @@
           <div id="manual-order-panel" class="manual-order-panel" hidden>
             <label class="toggle-field">
               <input id="sort-follow-publication" type="checkbox" checked>
-              <span>網站排序時間跟隨文章時間</span>
+              <span>網站排序時間跟隨來源時間</span>
             </label>
-            <p class="field-help">取消勾選後，可讓較晚完成的稿件依事件脈絡排回指定日期與位置；不會改變文章本身顯示的時間。</p>
+            <p class="field-help">補刊稿可依來源時間排回新聞時間線。文章頁會另列本站實際首次刊登時間。</p>
             <div id="sort-time-fields" class="manual-time-panel" hidden>
               <label>排序日期（UTC+8）
                 <input id="sort-date" type="date">

@@ -30,8 +30,8 @@ PAT 以管理網址衍生的 AES-GCM 金鑰加密儲存在 localStorage；換瀏
 ## 編輯與發布契約
 
 - 保留文章 ID、來源、原始 writer 與未編輯欄位；顯示模型署名使用 writerModels。
-- 時間輸入固定臺北時間；儲存 UTC。publishedUtc 和 sortUtc 可分別編輯。
-- 發布增加 revision、updatedUtc，設 editorialLocked 和 editorialImageLocked。
+- 時間以臺北時間輸入，以 UTC 儲存。可單獨送出首次刊登時間或新聞排序時間的修正。
+- 發布增加 revision 並設 editorialLocked 和 editorialImageLocked。只有正文或文章來源有變更時才更新 updatedUtc。
   前者沿用自動撰稿保護，後者防止圖片自動補回或替換人工選圖。
 - 人工版本同時寫入獨立的 data/editorial-overrides/，建站與自動撰稿讀取時優先採用。
   即使先前啟動的自動流程稍後提交舊批次，也不會讓正式網站退回舊文章。

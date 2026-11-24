@@ -34,7 +34,8 @@ def test_news_chronology():
         article("no-source-time", "2026-09-29T08:00:00Z"),
         article("invalid-source-time", "2026-09-27T08:00:00Z", "invalid"),
         article("date-only-source", "2026-10-01T03:00:00Z",
-                "2026-09-26T00:00:00Z"),
+                "2026-09-26T00:00:00Z", "2026-09-26T00:00:00Z")
+        | {"sourceDateOnly": True, "sortDateOnly": True},
     ]
     with tempfile.TemporaryDirectory() as tmp:
         folder = Path(tmp)
@@ -42,19 +43,31 @@ def test_news_chronology():
         with patch.object(build, "ARTICLES_DIR", folder):
             collected = build.collect_articles()
     assert [a["id"] for a in collected] == [
-        "date-only-source", "older-late-generated", "newer-manual",
-        "no-source-time", "invalid-source-time",
+        "older-late-generated", "no-source-time", "invalid-source-time",
+        "date-only-source", "newer-manual",
     ]
-    assert collected[0]["meta_ts"] == "2026-10-01 11:00 AM UTC+8"
-    assert collected[0]["source_meta_ts"] == "2026-09-26"
-    assert collected[-1]["source_meta_ts"] is None
+    by_id = {a["id"]: a for a in collected}
+    date_only = by_id["date-only-source"]
+    assert date_only["meta_ts"] == date_only["source_meta_ts"] == "2026-09-26"
+    assert date_only["news_iso"] == "2026-09-26"
+    assert date_only["published_meta_ts"] == "2026-10-01 11:00 AM UTC+8"
+    assert by_id["invalid-source-time"]["source_meta_ts"] is None
     for prepared in collected:
         indexed = build.search_index_item(prepared, [])
         assert build.parse_iso(indexed["published"]) == prepared["news_dt"]
-    assert collected[2]["published_iso"] == "2026-09-30T08:50:00Z"
-    revised = rows[0] | {"updatedUtc": "2026-10-02T08:00:00Z"}
-    assert build.prep_article(revised)["news_dt"] == collected[1]["news_dt"]
-
+    assert by_id["newer-manual"]["published_iso"] == "2026-09-30T08:50:00Z"
+    revised = rows[-1] | {"updatedUtc": "2026-10-02T08:00:00Z",
+                          "sourcePublishedUtc": "2026-10-02T01:00:00Z",
+                          "sourceDateOnly": False}
+    followup = build.prep_article(revised)
+    assert followup["news_dt"] == date_only["news_dt"]
+    assert followup["news_iso"] == date_only["news_iso"]
+    assert followup["show_news_time"]
+    flashes = build.prep_flashes([
+        {"timeUtc": a["published_iso"], "articleId": a["id"], "zh": a["id"]}
+        for a in collected
+    ], set(by_id), {a["id"]: (a["news_dt"], a["news_date_only"]) for a in collected})
+    assert [flash["articleId"] for flash in flashes] == list(by_id)
 
 
 def test_wsi_opening_article_public_and_searchable():
