@@ -52,10 +52,15 @@ def validate_article(row, now=None):
     checked = timestamp(meta.get("checkedUtc"))
     publication = timestamp(row.get("publishedUtc"))
     source_time = timestamp(row.get("sourcePublishedUtc"))
-    if any(t > now + timedelta(minutes=5) for t in (checked, publication, source_time)):
+    # A follow-up keeps publishedUtc; its newer sources are bounded by updatedUtc.
+    latest = publication
+    if row.get("updatedUtc") is not None:
+        latest = max(publication, timestamp(row["updatedUtc"]))
+    if any(t > now + timedelta(minutes=5)
+           for t in (checked, publication, source_time, latest)):
         raise ValueError("future timestamp")
-    if source_time > publication or checked > publication + timedelta(minutes=5):
-        raise ValueError("source/check time after publication")
+    if source_time > latest or checked > latest + timedelta(minutes=5):
+        raise ValueError("source/check time after publication or update")
     if row.get("cat") not in {"safety", "reg", "biz", "ops", "mil", "feature"}:
         raise ValueError("invalid category")
     if row.get("availableLanguages") != ["zh", "en"]:

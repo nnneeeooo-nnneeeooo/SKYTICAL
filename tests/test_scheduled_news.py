@@ -58,6 +58,24 @@ class ScheduledNewsTest(unittest.TestCase):
             with self.assertRaises(ValueError):
                 validate_article(row, NOW)
 
+    def test_follow_up_sources_bounded_by_update_time(self):
+        row = article()
+        row["sourcePublishedUtc"] = "2026-10-01T07:30:00Z"
+        row["scheduledNews"]["checkedUtc"] = "2026-10-01T07:40:00Z"
+        with self.assertRaises(ValueError):
+            validate_article(row, NOW)
+        row["updatedUtc"] = "2026-10-01T07:40:00Z"
+        validate_article(row, NOW)
+        for change in ({"sourcePublishedUtc": "2026-10-01T07:41:00Z"},
+                       {"updatedUtc": "2026-10-01T09:00:00Z"},
+                       {"updatedUtc": "2026-10-01T07:40:00"},
+                       {"updatedUtc": "2026-09-30T00:00:00Z"}):
+            with self.assertRaises(ValueError):
+                validate_article(row | change, NOW)
+        row["scheduledNews"]["checkedUtc"] = "2026-10-01T07:46:00Z"
+        with self.assertRaises(ValueError):
+            validate_article(row, NOW)
+
     def test_duplicate_event_and_cross_pipeline_id(self):
         for duplicate_id in (True, False):
             with tempfile.TemporaryDirectory() as tmp:
