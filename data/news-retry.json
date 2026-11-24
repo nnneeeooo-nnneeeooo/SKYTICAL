@@ -3433,12 +3433,12 @@
         "https://www.reuters.com/markets/europe/spanish-airline-plus-ultra-suspends-last-active-route-amid-restructuring-2026-11-23"
       ],
       "contentFailures": 0,
-      "serviceFailures": 2,
+      "serviceFailures": 3,
       "history": [],
-      "updatedUtc": "2026-11-24T16:29Z",
+      "updatedUtc": "2026-11-24T23:23Z",
       "failureClass": "source_insufficient",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-24T22:29Z",
+      "nextRetryUtc": "2026-11-25T05:23Z",
       "title": "Spanish airline Plus Ultra suspends last active route amid restructuring",
       "items": [
         {
@@ -3937,19 +3937,6 @@
           "sourceKey": "simpleflying"
         }
       ]
-    },
-    "a1fd25e9d41cf1aa56bb0545": {
-      "sourceUrls": [
-        "https://simpleflying.com/faa-line-up-wait-operations-forever-delays"
-      ],
-      "contentFailures": 0,
-      "serviceFailures": 1,
-      "history": [],
-      "updatedUtc": "2026-11-24T20:14Z",
-      "failureClass": "provider_failure",
-      "status": "waiting",
-      "nextRetryUtc": "2026-11-24T22:14Z",
-      "title": "FAA Bans Line Up And Wait Operations “Forever,” With Even More Delays Expected"
     },
     "0d493bf35354578cd46c05e5": {
       "sourceUrls": [
@@ -4515,8 +4502,8 @@
         "https://www.ntsb.gov/_layouts/ntsb.aviation/Results.aspx?queryId=d46ded6a-42ab-4716-ae4b-59cccbaf35c1"
       ],
       "contentFailures": 0,
-      "serviceFailures": 0,
-      "status": "ready",
+      "serviceFailures": 1,
+      "status": "waiting",
       "history": [
         {
           "status": "waiting",
@@ -4531,8 +4518,78 @@
           "updatedUtc": "2026-11-24T17:46Z"
         }
       ],
-      "updatedUtc": "2026-11-24T23:02Z",
-      "nextRetryUtc": null
+      "updatedUtc": "2026-11-24T23:23Z",
+      "nextRetryUtc": "2026-11-25T05:23Z",
+      "failureClass": "source_insufficient",
+      "title": "- NTSB (.gov)",
+      "items": [
+        {
+          "url": "https://www.ntsb.gov/_layouts/ntsb.aviation/Results.aspx?queryId=d46ded6a-42ab-4716-ae4b-59cccbaf35c1",
+          "title": "- NTSB (.gov)",
+          "summary": "",
+          "publishedUtc": "2026-11-23T07:07Z",
+          "source": "NTSB",
+          "sourceKey": "ntsb"
+        },
+        {
+          "url": "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FPages%2Fbrief%2Easpx%3Fev%25255Fid%3D35471%26key%3D0",
+          "title": "- NTSB (.gov)",
+          "summary": "",
+          "publishedUtc": "2026-11-22T15:29Z",
+          "source": "NTSB",
+          "sourceKey": "ntsb"
+        },
+        {
+          "url": "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FEvents%2Fsymposia%2Ehtm",
+          "title": "- NTSB (.gov)",
+          "summary": "",
+          "publishedUtc": "2026-11-24T00:57Z",
+          "source": "NTSB",
+          "sourceKey": "ntsb"
+        },
+        {
+          "url": "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FScriptResource%2Eaxd%3Fd%3DdwY9oWetJoJoVpgL6Zq8OCGTHSVrSi6xCyU9ORLeNcMVpKQFNVDbn3pLYFVozyeAvxDyhE8G78I5sG0GNrbznWFdlguNwSGHzBVCb68WdXHHZTwXsNtjVlg71WqJxECRVuzXdOcup3lwpz3eUK05OSIEDGB%252DYvMk0jQsMNqtNR81%26t%3Dffffffffa1bf0f7b",
+          "title": "- NTSB (.gov)",
+          "summary": "",
+          "publishedUtc": "2026-11-21T03:40Z",
+          "source": "NTSB",
+          "sourceKey": "ntsb"
+        },
+        {
+          "url": "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FPages%2Fbrief%2Easpx%3Fev%25255Fid%3D27947%26key%3D0",
+          "title": "- NTSB (.gov)",
+          "summary": "",
+          "publishedUtc": "2026-11-20T00:55Z",
+          "source": "NTSB",
+          "sourceKey": "ntsb"
+        }
+      ]
+    },
+    "ae4787de2e95c18e343831b6": {
+      "sourceUrls": [
+        "https://simpleflying.com/american-airlines-chicago-lawsuit-turf-war-united"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-24T23:23Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-25T01:23Z",
+      "title": "American Airlines Drops Chicago Gate Lawsuit, But Doubles Down On Turf War With United"
+    },
+    "2a47b5987f3384ed40adc468": {
+      "sourceUrls": [
+        "https://www.aerotime.aero/articles/pentagon-us-automakers-military-drone-production"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-24T23:23Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-25T01:23Z",
+      "title": "Pentagon seeks to enlist US automakers in military drone production push"
     }
   }
 }
