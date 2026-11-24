@@ -12,10 +12,10 @@
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-24T20:52Z",
-      "checkedUtc": "2026-11-24T14:52Z",
+      "untilUtc": "2026-11-25T02:53Z",
+      "checkedUtc": "2026-11-24T20:53Z",
       "failureClass": "unexpected",
-      "diagnostic": "zh.body[0] contains Simplified Chinese characters",
+      "diagnostic": "zh.body[1] contains Simplified Chinese characters",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -57,10 +57,10 @@
     },
     "gemini:gemini-3.5-flash": {
       "status": "waiting",
-      "untilUtc": "2026-11-24T20:52Z",
-      "checkedUtc": "2026-11-24T14:52Z",
-      "failureClass": "http_error",
-      "diagnostic": "HTTP 503 code=UNAVAILABLE",
+      "checkedUtc": "2026-11-24T21:04Z",
+      "untilUtc": "2026-11-25T03:04Z",
+      "failureClass": "quota",
+      "diagnostic": "HTTP 429 (free-tier quota exhausted?)",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -92,13 +92,13 @@
       "schemaMode": null
     },
     "gemini:gemini-4-hydrogen": {
-      "status": "waiting",
-      "untilUtc": "2026-11-24T20:52Z",
-      "checkedUtc": "2026-11-24T14:52Z",
-      "failureClass": "http_error",
-      "diagnostic": "HTTP 503 code=UNAVAILABLE",
+      "status": "verified",
+      "untilUtc": "2026-11-25T20:53Z",
+      "checkedUtc": "2026-11-24T20:53Z",
+      "failureClass": null,
+      "diagnostic": null,
       "probeVersion": 3,
-      "schemaMode": null
+      "schemaMode": "prompt"
     },
     "gemini:gemini-3.8-flash": {
       "status": "waiting",
@@ -309,8 +309,8 @@
     },
     "openrouter:google/gemma-4-26b-a4b-it:free": {
       "status": "waiting",
-      "checkedUtc": "2026-11-24T20:49Z",
-      "untilUtc": "2026-11-24T20:50Z",
+      "untilUtc": "2026-11-24T20:54Z",
+      "checkedUtc": "2026-11-24T20:53Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
@@ -318,10 +318,10 @@
     },
     "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-24T20:52Z",
-      "checkedUtc": "2026-11-24T14:52Z",
-      "failureClass": "unexpected",
-      "diagnostic": "publish_brief body does not meet brief contract (zh=347 content characters, en=61 words, paragraphs=3/3)",
+      "untilUtc": "2026-11-25T02:53Z",
+      "checkedUtc": "2026-11-24T20:53Z",
+      "failureClass": "connection",
+      "diagnostic": "ConnectionError",
       "probeVersion": 3,
       "schemaMode": null
     },
