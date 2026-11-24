@@ -421,5 +421,52 @@
       "combo180": 0,
       "reg365": 0
     }
+  },
+  {
+    "eventId": "fw-5b593d3871a04f77",
+    "queuedUtc": "2026-11-24T10:55:12Z",
+    "notBeforeUtc": "2026-11-24T11:25:12Z",
+    "bootstrap": false,
+    "primaryProvider": "ADSB.lol",
+    "crossCheck": "confirmed_by_primary_only",
+    "airport": {
+      "icao": "RCTP",
+      "iata": "TPE",
+      "name_zh": "臺灣桃園國際機場",
+      "name_en": "Taiwan Taoyuan International Airport"
+    },
+    "aircraft": {
+      "hex": "758502",
+      "registration": "RP-C8963",
+      "type": "A320",
+      "type_name": "Airbus A320",
+      "callsign": "APG127"
+    },
+    "operator": {
+      "icao": "APG",
+      "iata": null,
+      "name": null,
+      "name_zh": null,
+      "country_or_region": null
+    },
+    "arrival": {
+      "status": "confirmed_arrival",
+      "firstSeenUtc": "2026-11-24T10:35:13Z",
+      "confirmedUtc": "2026-11-24T10:55:12Z",
+      "basis": "位於機場地理圍欄內且 alt_baro 為 ground",
+      "observations": 3
+    },
+    "rarity": {
+      "score": 60,
+      "reasons": [
+        "營運者 APG 非 RCTP 常態業者 (+35)",
+        "過去 180 天無相同營運者+機型+機場紀錄 (+25)",
+        "過去 365 天此註冊號未曾抵達 RCTP (+15)",
+        "常見機型 (-15)"
+      ],
+      "watchlisted": false,
+      "combo180": 0,
+      "reg365": 0
+    }
   }
 ]
