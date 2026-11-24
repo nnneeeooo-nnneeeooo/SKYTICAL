@@ -41,8 +41,10 @@ def build_notices(raw, station, *, today=None):
             importance == "minor" and notice.get("standalone") is True
         ):
             continue
-        sha, day = str(row.get("commit") or ""), str(row.get("date") or "")
-        if not SHA.fullmatch(sha) or sha in seen or not cutoff <= day <= end:
+        sha, day = row.get("commit", ""), str(row.get("date") or "")
+        if not cutoff <= day <= end:
+            continue
+        if sha is not None and (not isinstance(sha, str) or not SHA.fullmatch(sha) or sha in seen):
             continue
         if not all(isinstance(row.get(lang), str) and row[lang].strip() for lang in UI):
             continue
@@ -50,7 +52,8 @@ def build_notices(raw, station, *, today=None):
             datetime.strptime(day, "%Y-%m-%d")
         except ValueError:
             continue
-        seen.add(sha)
+        if sha is not None:
+            seen.add(sha)
         rows.append(row)
     rows.sort(key=lambda row: row["date"], reverse=True)
     result = {}
@@ -63,10 +66,22 @@ def build_notices(raw, station, *, today=None):
                 note = {"message": compact(message, lang), "email": email if re.fullmatch(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}", email) else ""}
         items = []
         for row in rows:
+            notice = row["notice"]
             copy = row[lang]
-            title = re.split(r"[，；。]", copy)[0] if lang == "zh" else copy.split(". ")[0].rstrip(".")
-            items.append({"date": row["date"], "title": compact(title, lang),
-                          "copy": compact(copy, lang)})
+            titles = notice.get("title")
+            title = titles.get(lang) if isinstance(titles, dict) else None
+            if isinstance(title, str) and title.strip():
+                copy = copy.removeprefix(title + "\n")
+            else:
+                first_line = copy.split("\n", 1)[0]
+                title = re.split(r"[，；。]", first_line)[0] if lang == "zh" else first_line.split(". ")[0].rstrip(".")
+            item = {"date": row["date"], "title": compact(title, lang),
+                    "copy": compact(copy, lang)}
+            if notice.get("highlight") is True:
+                item["highlight"] = True
+            if isinstance(notice.get("link"), dict):
+                item["link"] = notice["link"]
+            items.append(item)
         result[lang] = {"ui": labels, "station": note, "items": items}
     return result
 

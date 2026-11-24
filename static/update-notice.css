@@ -31,9 +31,10 @@ html:has(#site-update-notice[open]){overflow:hidden}
 #site-update-notice .update-heading{display:flex;align-items:center;gap:12px;margin-bottom:6px}
 #site-update-notice .update-date{display:inline-block;flex-shrink:0;padding:4px 8px;border-radius:3px;background:var(--date-bg);color:var(--date-ink);font-size:12px;font-weight:600;line-height:1.5;font-variant-numeric:tabular-nums;white-space:nowrap}
 #site-update-notice .update h3{flex:1;min-width:0;font-size:18px;line-height:1.5;margin:0;color:var(--notice-ink)}
-#site-update-notice .update p{margin:0;font-size:15px;line-height:1.8;color:var(--notice-ink)}
-#site-update-notice [data-notice-items]>.update:first-child h3{color:var(--feature)}
-#site-update-notice [data-notice-items]>.update:first-child .update-date{background:var(--feature-bg);color:var(--feature)}
+#site-update-notice .update p{margin:0;font-size:15px;line-height:1.8;color:var(--notice-ink);white-space:pre-line}
+#site-update-notice .update p a{color:var(--feature);font-weight:600;text-underline-offset:3px}
+#site-update-notice [data-notice-items]>.update:is(:first-child,.update-highlight) h3{color:var(--feature)}
+#site-update-notice [data-notice-items]>.update:is(:first-child,.update-highlight) .update-date{background:var(--feature-bg);color:var(--feature)}
 #site-update-notice .notice-footer{display:flex;justify-content:space-between;align-items:center;gap:20px;background:var(--footer-bg);padding:20px 36px 28px;flex-shrink:0}
 #site-update-notice .notice-footer a{color:var(--notice-ink);font-size:14px;text-underline-offset:5px}
 #site-update-notice .notice-primary{background:#b91f32;color:#fff;border:0;padding:14px 18px;font:700 15px/1.5 Archivo,"Noto Sans TC",system-ui,sans-serif;min-height:48px;display:flex;gap:22px;align-items:center;cursor:pointer;touch-action:manipulation}
