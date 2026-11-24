@@ -49,14 +49,19 @@ jobs:
           if ! git diff --cached --quiet; then
             git commit -m 'news: recover thin-source stories with Terra search'
             pushed=""
+            python pipeline/data_merge.py install
             for i in 1 2 3; do
               # Match hourly.yml: paid-ledger CAS commits can advance main
               # during drafting; prefer the completed replay's bot-owned data.
+              # Published data merges by article (data_merge.py).
               if ! git pull --rebase -X theirs origin main; then
                 git rebase --abort || true
                 sleep 5
                 continue
               fi
+              python pipeline/data_merge.py guard origin/main
+              git add data
+              git diff --cached --quiet || git commit -q -m 'news: keep protected edits'
               if git push origin HEAD:main; then
                 pushed=yes
                 break

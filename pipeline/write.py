@@ -56,6 +56,7 @@ from common import (
     CATEGORIES,
     DATA_DIR,
     MAX_FLASHES,
+    MAX_INCIDENTS,
     RAW_DIR,
     SITE_ORIGIN,
     group_has_material,
@@ -99,7 +100,6 @@ PREFERRED_ATTEMPT_SECONDS_WITH_FINAL_FALLBACK = 30
 MAX_DRAFT_SECONDS_PER_GROUP = 120
 PROVIDER_ROUTING_OVERHEAD_SECONDS = 5
 TRANSIENT_PLATFORM_FAILURE_LIMIT = 2
-MAX_INCIDENTS = 60
 SEEN_MAX_AGE_DAYS = 21
 SERIOUS_WINDOW_DAYS = 7
 SOURCE_TITLE_MAX = 60
@@ -2421,6 +2421,10 @@ def build_article(draft: dict, group: dict, now, used_ids: set, writer=None,
     if existing_article:
         article["updatedUtc"] = iso_minute(now)
         article["revision"] = int(existing_article.get("revision") or 1) + 1
+        # A redraft replaces the text only; the reviewed gallery stays locked.
+        for key in ("images", "editorialImageLocked"):
+            if key in existing_article:
+                article[key] = existing_article[key]
     source_dates = []
     for item in items:
         if item.get("dateInferred"):

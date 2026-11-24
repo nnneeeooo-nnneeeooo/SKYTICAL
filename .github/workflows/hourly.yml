@@ -26,6 +26,9 @@ on:
       - "templates/admin*.html"
       - "pipeline/public_article.py"
       - "pipeline/common.py"
+      - "pipeline/data_merge.py"
+      - "pipeline/roundup_images.py"
+      - ".gitattributes"
       - "pipeline/dedupe.py"
       - "pipeline/fulltext.py"
       - "pipeline/source_recovery.py"
@@ -125,6 +128,9 @@ jobs:
         run: |
           python tests/test_editorial_policy.py
           python tests/test_industry_roundup.py
+
+      - name: Test concurrent-write guards
+        run: python -m pytest -q tests/test_data_merge.py
 
       - name: Test provider cooldown persistence
         run: python tests/test_provider_health.py
@@ -229,11 +235,27 @@ jobs:
           if ! git diff --cached --quiet; then
             git commit -q -m "hourly update $(date -u +%FT%H:%M)"
           fi
-          if ! git pull --rebase -X theirs origin "${GITHUB_REF_NAME}"; then
+          # Articles, flashes and incidents merge by article through
+          # data_merge.py (.gitattributes); -X theirs settles only the
+          # bot-owned caches and ledgers.
+          python pipeline/data_merge.py install
+          replayed=""
+          for attempt in 1 2 3; do
+            if git pull --rebase -X theirs origin "${GITHUB_REF_NAME}"; then
+              replayed=yes
+              break
+            fi
             git rebase --abort || true
-            git fetch origin "${GITHUB_REF_NAME}"
-            git checkout "origin/${GITHUB_REF_NAME}" -- data/briefings || true
+            sleep 5
+          done
+          if [ -z "$replayed" ]; then
+            # Building from the run-start snapshot would deploy a site
+            # without the edits merged since, so stop before the build.
+            echo "::error::this run's data could not be replayed on ${GITHUB_REF_NAME}; nothing is built, deployed or pushed"
+            exit 1
           fi
+          # Locked photos and articles on the tip outrank this run's copy.
+          python pipeline/data_merge.py guard "origin/${GITHUB_REF_NAME}"
           python pipeline/build.py
           python pipeline/radar_snapshot.py --optional
 
@@ -309,13 +331,19 @@ jobs:
             git commit -m "hourly update $(date -u +%FT%H:%M)"
           fi
           pushed=""
+          python pipeline/data_merge.py install
           for i in 1 2 3; do
-            # -X theirs: where this run and the branch changed the same lines
-            # since the run started, the run's version is kept
+            # -X theirs: the run's version of bot-owned caches and ledgers is
+            # kept; published data merges by article (data_merge.py)
             if ! git pull --rebase -X theirs origin "${GITHUB_REF_NAME}"; then
               git rebase --abort || true
               sleep 5
               continue
+            fi
+            python pipeline/data_merge.py guard "origin/${GITHUB_REF_NAME}"
+            git add data
+            if ! git diff --cached --quiet; then
+              git commit -q -m "keep protected edits $(date -u +%FT%H:%M)"
             fi
             if [ -z "$(git rev-list -n 1 "origin/${GITHUB_REF_NAME}..HEAD")" ]; then
               echo "no changes to commit"

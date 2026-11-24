@@ -96,6 +96,15 @@ def item_images(article):
     return slots
 
 
+def cover_image(items):
+    """Top-level cover: the first slot that has an image."""
+    cover = next(((index, i["image"]) for index, i in enumerate(items)
+                  if isinstance(i, dict) and i.get("image")), None)
+    return ({**deepcopy(cover[1]), "roundupItemNumber": cover[0] + 1}
+            if cover and isinstance(cover[1], dict) else
+            cover[1] if cover else None)
+
+
 class ImageBatch:
     """Adapt existing image stages to nested slots and synchronize their writes."""
     def __init__(self, articles):
@@ -129,11 +138,7 @@ class ImageBatch:
             parents[id(parent)] = parent
         for parent in parents.values():
             parent.pop("imageSelection", None)
-            cover = next(((index, i["image"]) for index, i in enumerate(parent["roundupItems"])
-                          if i.get("image")), None)
-            parent["image"] = ({**deepcopy(cover[1]), "roundupItemNumber": cover[0] + 1}
-                               if cover and isinstance(cover[1], dict) else
-                               cover[1] if cover else None)
+            parent["image"] = cover_image(parent["roundupItems"])
         return self.source != self.before
 
 
