@@ -151,362 +151,6 @@
       "publishedExcerptId": null
     },
     {
-      "enqueuedUtc": "2026-11-24T11:59Z",
-      "routeReason": "verified_short_update",
-      "sourceGroupId": "g-20261124-1159-5",
-      "eventKey": "",
-      "article": {
-        "id": "a-20261124-1159-boeing-s-everett-built-737s-reportedly-a",
-        "publishedUtc": "2026-11-24T11:59Z",
-        "cat": "reg",
-        "primarySource": "AeroTime",
-        "image": null,
-        "sourceImageCandidates": [],
-        "zh": {
-          "title": "波音Everett廠製造的737據報納入生產證書",
-          "summary": "波音Everett廠製造的737據報納入生產證書，FAA稽覈進入最後階段。",
-          "body": [
-            "The Air Current於2026年11月23日報導，波音在Everett製造的737已納入該公司的PC700生產證書。報導指出，波音距離向客戶交付新North Line產線製造的737又近了一步。",
-            "The Air Current引述熟悉波音動態的人士指出，波音目前正進行聯邦航空總署（FAA）稽覈的最後步驟。FAA也對這條產線最初製造的數架飛機進行額外檢查。",
-            "波音表示，Everett製造的首架737 MAX於2026年10月下線。這條產線於2026年7月啟用。"
-          ]
-        },
-        "en": {
-          "title": "Boeing's Everett-built 737s reportedly added to production certificate",
-          "summary": "Boeing's Everett-built 737s were reportedly added to its production certificate; an FAA audit is in its final stages.",
-          "body": [
-            "The Air Current reported on November 23, 2026, that Boeing 737s built at Everett had been added to the company's PC700 production certificate. The report said Boeing had moved a step closer to customer deliveries of 737 aircraft built at its new North Line facility in Everett.",
-            "Citing people with knowledge of developments at Boeing, The Air Current said the manufacturer is moving through the final steps of a Federal Aviation Administration (FAA) audit. The FAA also conducted additional inspections on the first several aircraft built on the line.",
-            "Boeing said the first 737 MAX manufactured in Everett rolled off the assembly line in October 2026. The line opened in July 2026."
-          ]
-        },
-        "sources": [
-          {
-            "name": "AeroTime — Boeing moves closer to 737 MAX deliveries from new North Li…",
-            "url": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett"
-          }
-        ],
-        "articleFormat": "brief",
-        "sourcePublishedUtc": "2026-11-24T11:10Z",
-        "writer": "openai:gpt-6.1-terra",
-        "facts": [
-          {
-            "factId": "F1",
-            "claim": "On November 23, 2026, The Air Current reported that Everett-built 737s had been added to Boeing’s PC700 production certificate.",
-            "sourceQuote": "November 23, 2026, The Air Current reported that Everett-built 737s had been added to Boeing’s PC700 production certificate",
-            "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett",
-            "evidenceScope": "source",
-            "archiveEventId": null,
-            "archiveContext": false
-          },
-          {
-            "factId": "F2",
-            "claim": "Boeing has moved a step closer to customer deliveries of 737 aircraft built at its new North Line facility in Everett.",
-            "sourceQuote": "Boeing has moved a step closer to customer deliveries of 737 aircraft built at its new North Line facility in Everett",
-            "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett",
-            "evidenceScope": "source",
-            "archiveEventId": null,
-            "archiveContext": false
-          },
-          {
-            "factId": "F3",
-            "claim": "The Air Current, citing people with knowledge of developments at Boeing, reported that the company was moving through the final steps of an FAA audit.",
-            "sourceQuote": "The Air Current, which spoke with people with knowledge of developments at Boeing, the planemaker is currently moving through the final steps of the FAA audit",
-            "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett",
-            "evidenceScope": "source",
-            "archiveEventId": null,
-            "archiveContext": false
-          },
-          {
-            "factId": "F4",
-            "claim": "The FAA conducted additional inspections on the first several aircraft built on the line.",
-            "sourceQuote": "The FAA conducted additional inspections on the first several aircraft built on the line",
-            "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett",
-            "evidenceScope": "source",
-            "archiveEventId": null,
-            "archiveContext": false
-          },
-          {
-            "factId": "F5",
-            "claim": "Boeing announced that the first 737 MAX manufactured in Everett rolled off the assembly line in October 2026.",
-            "sourceQuote": "Boeing announced that the first 737 MAX manufactured in Everett had rolled off the assembly line in October 2026",
-            "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett",
-            "evidenceScope": "source",
-            "archiveEventId": null,
-            "archiveContext": false
-          },
-          {
-            "factId": "F6",
-            "claim": "The assembly line first opened in July 2026.",
-            "sourceQuote": "the assembly line was first opened in July 2026",
-            "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett",
-            "evidenceScope": "source",
-            "archiveEventId": null,
-            "archiveContext": false
-          }
-        ],
-        "riskFlags": [
-          "regulatory_action",
-          "unconfirmed_or_developing"
-        ],
-        "eventStatus": "confirmed",
-        "entities": {
-          "organizations": [
-            "Boeing",
-            "The Air Current",
-            "Federal Aviation Administration"
-          ],
-          "aircraft_models": [
-            "737",
-            "737 MAX"
-          ],
-          "locations": [
-            "Everett"
-          ],
-          "event_dates": [
-            "October 2026",
-            "July 2026"
-          ]
-        },
-        "entityEvidence": [
-          {
-            "entityType": "organizations",
-            "value": "Boeing",
-            "sourceQuote": "Boeing has moved a step closer to customer deliveries of 737 aircraft",
-            "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett"
-          },
-          {
-            "entityType": "organizations",
-            "value": "The Air Current",
-            "sourceQuote": "The Air Current reported that Everett-built 737s had been added to Boeing’s PC700 production certificate",
-            "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett"
-          },
-          {
-            "entityType": "organizations",
-            "value": "Federal Aviation Administration",
-            "sourceQuote": "Federal Aviation Administration (FAA) conformities",
-            "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett"
-          },
-          {
-            "entityType": "aircraft_models",
-            "value": "737",
-            "sourceQuote": "737 aircraft built at its new North Line facility in Everett, Washington",
-            "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett"
-          },
-          {
-            "entityType": "aircraft_models",
-            "value": "737 MAX",
-            "sourceQuote": "the first 737 MAX manufactured in Everett had rolled off the assembly line in October 2026",
-            "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett"
-          },
-          {
-            "entityType": "locations",
-            "value": "Everett",
-            "sourceQuote": "737 aircraft built at its new North Line facility in Everett, Washington",
-            "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett"
-          },
-          {
-            "entityType": "event_dates",
-            "value": "October 2026",
-            "sourceQuote": "the first 737 MAX manufactured in Everett had rolled off the assembly line in October 2026",
-            "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett"
-          },
-          {
-            "entityType": "event_dates",
-            "value": "July 2026",
-            "sourceQuote": "the assembly line was first opened in July 2026",
-            "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett"
-          }
-        ],
-        "evidenceVersion": 2
-      },
-      "publishedExcerptId": null
-    },
-    {
-      "enqueuedUtc": "2026-11-24T12:25Z",
-      "routeReason": "verified_short_update",
-      "sourceGroupId": "g-20261124-1225-4",
-      "eventKey": "",
-      "article": {
-        "id": "a-20261124-1225-singapore-airlines-cancels-airbus-a350-s",
-        "publishedUtc": "2026-11-24T12:25Z",
-        "cat": "ops",
-        "primarySource": "Simple Flying",
-        "image": null,
-        "sourceImageCandidates": [
-          {
-            "url": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/11/singapore-airlines-a350-900-landing-in-indonesia.jpg",
-            "sources": [
-              {
-                "url": "https://simpleflying.com/singapore-airlines-cancels-9-a350-routes/",
-                "name": "Simple Flying"
-              }
-            ]
-          }
-        ],
-        "zh": {
-          "title": "新加坡航空取消9條航線的空中巴士A350服務",
-          "summary": "新加坡航空取消9條航線的A350服務；客艙變動包括頭等艙回歸及改用窄體客機",
-          "body": [
-            "Simple Flying報導，新加坡航空在9條航線取消空中巴士A350服務。熱門旅遊航線與長程航段的客艙配置也出現變動，包括頭等艙回歸及改用窄體客機。",
-            "Aerospace Global News先前的一項獨立航線紀錄顯示，新加坡航空曾在新加坡至吉隆坡的航段使用空中巴士A350-900客機，這段航程的距離約為180英里（295公里）。"
-          ]
-        },
-        "en": {
-          "title": "Singapore Airlines cancels Airbus A350 service on nine routes",
-          "summary": "Singapore Airlines cancels A350 service on nine routes; cabin changes include first-class returns and shifts to narrowbody aircraft.",
-          "body": [
-            "According to Simple Flying, Singapore Airlines has canceled Airbus A350 service on nine routes. Popular tourist routes and long-haul sectors are seeing changes in cabin configurations, including the return of first class and shifts to narrowbody aircraft.",
-            "Separately, an earlier Aerospace Global News report noted that Singapore Airlines deployed Airbus A350-900 aircraft on the short route between Singapore and Kuala Lumpur. It put the distance between the two cities at around 180 miles (295 kilometers)."
-          ]
-        },
-        "sources": [
-          {
-            "name": "Simple Flying — Singapore Airlines Cancels 9 Airbus A350 Routes: See Full L…",
-            "url": "https://simpleflying.com/singapore-airlines-cancels-9-a350-routes/"
-          },
-          {
-            "name": "Archive: Aerospace Global News — From an 80-mile hop to a 19-hour marathon: The Airbus A350’... — a-20260812-0709-qatar-airways-deploys-airbus-a350-900-on",
-            "url": "https://aerospaceglobalnews.com/news/airbus-a350-shortest-longest-flights/"
-          }
-        ],
-        "articleFormat": "brief",
-        "sourcePublishedUtc": "2026-11-24T12:01Z",
-        "writer": "openai:gpt-6.1-terra",
-        "facts": [
-          {
-            "factId": "F1",
-            "claim": "新加坡航空取消9條航線的空中巴士A350服務。",
-            "sourceQuote": "Singapore Airlines Cancels 9 Airbus A350 Routes",
-            "sourceUrl": "https://simpleflying.com/singapore-airlines-cancels-9-a350-routes/",
-            "evidenceScope": "source",
-            "archiveEventId": null,
-            "archiveContext": false
-          },
-          {
-            "factId": "F2",
-            "claim": "熱門旅遊航線與長程航段的客艙配置出現變動。",
-            "sourceQuote": "Popular tourist routes and long haul sectors see cabin mixes shifted",
-            "sourceUrl": "https://simpleflying.com/singapore-airlines-cancels-9-a350-routes/",
-            "evidenceScope": "source",
-            "archiveEventId": null,
-            "archiveContext": false
-          },
-          {
-            "factId": "F3",
-            "claim": "客艙配置變動涉及頭等艙回歸。",
-            "sourceQuote": "cabin mixes shifted with First class returns",
-            "sourceUrl": "https://simpleflying.com/singapore-airlines-cancels-9-a350-routes/",
-            "evidenceScope": "source",
-            "archiveEventId": null,
-            "archiveContext": false
-          },
-          {
-            "factId": "F4",
-            "claim": "客艙配置變動涉及改用窄體客機。",
-            "sourceQuote": "cabin mixes shifted with First class returns and narrowbody downgrades",
-            "sourceUrl": "https://simpleflying.com/singapore-airlines-cancels-9-a350-routes/",
-            "evidenceScope": "source",
-            "archiveEventId": null,
-            "archiveContext": false
-          },
-          {
-            "factId": "F5",
-            "claim": "先前的紀錄顯示，新加坡航空曾使用A350-900執飛新加坡至吉隆坡，航程約180英里（295公里）。",
-            "sourceQuote": "Singapore Airlines and Ethiopian Airlines deploy their Airbus A350-900s on the short journey between Singapore and Kuala Lumpur, which is only around 180 miles (295km)",
-            "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-a350-shortest-longest-flights/",
-            "evidenceScope": "archive",
-            "archiveEventId": "a-20260812-0709-qatar-airways-deploys-airbus-a350-900-on",
-            "archiveContext": true
-          }
-        ],
-        "archiveContext": {
-          "archive_context_version": 1,
-          "context_id": "5f561e8261d20949",
-          "selected_events": [
-            {
-              "event_id": "a-20260812-0709-qatar-airways-deploys-airbus-a350-900-on",
-              "relationship_type": "programme_background",
-              "relationship_evidence": [
-                "same aircraft model: AIRBUS A350",
-                "same named core entity: airbus, singapore airlines",
-                "archive predates source by 105 day(s)"
-              ],
-              "relationship_tier": 2,
-              "confidence_score": 89,
-              "confidence_reason": "tier 2; 3 deterministic evidence item(s); 105 day(s) apart",
-              "event_date": "2026-08-11",
-              "source_name": "Aerospace Global News — From an 80-mile hop to a 19-hour marathon: The Airbus A350’...",
-              "source_url": "https://aerospaceglobalnews.com/news/airbus-a350-shortest-longest-flights/",
-              "facts": [
-                {
-                  "claim": "Ethiopian Airlines operates an Airbus A350 on a 60-mile leg between Geneva and Lyon as its shortest scheduled A350 service.",
-                  "source_quote": "Ethiopian Airlines’ leg from Geneva to Lyon comes in at just 60 miles and is the shortest A350 scheduled service.",
-                  "source_url": "https://aerospaceglobalnews.com/news/airbus-a350-shortest-longest-flights/",
-                  "source_name": "Aerospace Global News — From an 80-mile hop to a 19-hour marathon: The Airbus A350’..."
-                },
-                {
-                  "claim": "Singapore Airlines and Ethiopian Airlines deploy Airbus A350-900 aircraft on the route between Singapore and Kuala Lumpur over a distance of around 180 miles.",
-                  "source_quote": "Both Singapore Airlines and Ethiopian Airlines deploy their Airbus A350-900s on the short journey between Singapore and Kuala Lumpur, which is only around 180 miles (295km).",
-                  "source_url": "https://aerospaceglobalnews.com/news/airbus-a350-shortest-longest-flights/",
-                  "source_name": "Aerospace Global News — From an 80-mile hop to a 19-hour marathon: The Airbus A350’..."
-                }
-              ]
-            }
-          ]
-        },
-        "riskFlags": [],
-        "eventStatus": "confirmed",
-        "entities": {
-          "organizations": [
-            "Schiebel",
-            "Osiris Poland"
-          ],
-          "aircraft_models": [
-            "Camcopter S-100",
-            "Osiris HSCD-1"
-          ],
-          "locations": [
-            "Austria"
-          ]
-        },
-        "entityEvidence": [
-          {
-            "entityType": "organizations",
-            "value": "Schiebel",
-            "sourceQuote": "Schiebel, in partnership with Osiris Poland",
-            "sourceUrl": "https://aerospaceglobalnews.com/news/schiebel-s100-drone-mothership/"
-          },
-          {
-            "entityType": "organizations",
-            "value": "Osiris Poland",
-            "sourceQuote": "in partnership with Osiris Poland",
-            "sourceUrl": "https://aerospaceglobalnews.com/news/schiebel-s100-drone-mothership/"
-          },
-          {
-            "entityType": "aircraft_models",
-            "value": "Camcopter S-100",
-            "sourceQuote": "from its flagship Camcopter S-100",
-            "sourceUrl": "https://aerospaceglobalnews.com/news/schiebel-s100-drone-mothership/"
-          },
-          {
-            "entityType": "aircraft_models",
-            "value": "Osiris HSCD-1",
-            "sourceQuote": "The sUAS deployed was an Osiris HSCD-1 (High-Speed Camera Drone)",
-            "sourceUrl": "https://aerospaceglobalnews.com/news/schiebel-s100-drone-mothership/"
-          },
-          {
-            "entityType": "locations",
-            "value": "Austria",
-            "sourceQuote": "in a proof-of-concept demonstration in Austria",
-            "sourceUrl": "https://aerospaceglobalnews.com/news/schiebel-s100-drone-mothership/"
-          }
-        ],
-        "evidenceVersion": 2
-      },
-      "publishedExcerptId": null
-    },
-    {
       "enqueuedUtc": "2026-11-24T15:13Z",
       "routeReason": "published_short_excerpt",
       "sourceGroupId": "",
@@ -637,6 +281,556 @@
         }
       },
       "publishedExcerptId": "a-xiamen-airlines-50-boeing-737-max-8-order-20261124"
+    },
+    {
+      "enqueuedUtc": "2026-11-24T17:07Z",
+      "routeReason": "published_short_excerpt",
+      "sourceGroupId": "",
+      "eventKey": "",
+      "article": {
+        "id": "a-south-korea-ulleung-precautionary-alert-russian-aircraft-20261124",
+        "cat": "mil",
+        "articleFormat": "full",
+        "availableLanguages": [
+          "zh",
+          "en"
+        ],
+        "primarySource": "Yonhap News Agency",
+        "publishedUtc": "2026-11-24T16:36:25Z",
+        "sourcePublishedUtc": "2026-11-24T14:10:00Z",
+        "checkedUtc": "2026-11-24T16:36:25Z",
+        "writer": "scheduled:ChatGPT",
+        "writerModels": [
+          "ChatGPT"
+        ],
+        "sources": [
+          {
+            "name": "Yonhap News Agency",
+            "url": "https://en.yna.co.kr/view/AEN20261124002255315"
+          },
+          {
+            "name": "KBS WORLD",
+            "url": "https://rki.kbs.co.kr/service/news_view.htm?Seq_Code=205786&lang=e"
+          },
+          {
+            "name": "Associated Press",
+            "url": "https://apnews.com/article/a0347d1dda863d8189bbdf21c320ee3b"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/asia-pacific/south-korea-briefly-issues-evacuation-warning-after-russia-aircraft-enters-2026-11-23/"
+          }
+        ],
+        "entities": {
+          "aircraft": [],
+          "airports": [],
+          "operators": [],
+          "manufacturers": []
+        },
+        "image": {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/KOCIS_Port_Taeha%2C_Ulleungdo_%284925990346%29.jpg/1280px-KOCIS_Port_Taeha%2C_Ulleungdo_%284925990346%29.jpg",
+          "link": "https://commons.wikimedia.org/wiki/File:KOCIS_Port_Taeha%2C_Ulleungdo_%284925990346%29.jpg",
+          "credit": "Korea.net / Korean Culture and Information Service",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+          "kind": "file_photo",
+          "provider": "Wikimedia Commons",
+          "subject": "南韓鬱陵島台霞港，2010 年資料照。",
+          "subjectEn": "Taeha Port on South Korea’s Ulleung Island in 2010, file photo.",
+          "description": "Taeha Port on South Korea’s Ulleung Island in 2010, file photo.",
+          "photoYear": 2010,
+          "curated": true
+        },
+        "images": [
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/KOCIS_Port_Taeha%2C_Ulleungdo_%284925990346%29.jpg/1280px-KOCIS_Port_Taeha%2C_Ulleungdo_%284925990346%29.jpg",
+            "link": "https://commons.wikimedia.org/wiki/File:KOCIS_Port_Taeha%2C_Ulleungdo_%284925990346%29.jpg",
+            "credit": "Korea.net / Korean Culture and Information Service",
+            "license": "CC BY-SA 2.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+            "kind": "file_photo",
+            "provider": "Wikimedia Commons",
+            "subject": "南韓鬱陵島台霞港，2010 年資料照。",
+            "subjectEn": "Taeha Port on South Korea’s Ulleung Island in 2010, file photo.",
+            "description": "Taeha Port on South Korea’s Ulleung Island in 2010, file photo.",
+            "photoYear": 2010,
+            "curated": true
+          }
+        ],
+        "editorialImageLocked": true,
+        "zh": {
+          "title": "俄軍機接近南韓鬱陵島，當局短暫發布避難警報",
+          "summary": "南韓軍方通報，11 月 24 日多架俄羅斯軍機進入南韓防空識別區並接近鬱陵島。當局一度要求島上居民就地避難，約三分鐘後解除。",
+          "body": [
+            "南韓聯合參謀本部表示，多架俄羅斯軍機 11 月 24 日清晨進入南韓防空識別區並接近鬱陵島。當地居民於上午 7 時 52 分收到避難通知，當局在三分鐘後解除警報。",
+            "南韓軍方後續說明，已確認俄軍機進入防空識別區並接近領空。防空識別區是用來辨識接近航空器的區域，與主權領空範圍有別。南韓外交部也表示，已就此事向俄羅斯表達關切。"
+          ]
+        },
+        "en": {
+          "title": "South Korea briefly issues shelter alert on Ulleung Island as Russian aircraft approach",
+          "summary": "South Korea’s military said several Russian aircraft entered its air defence identification zone and approached Ulleung Island on Nov. 24. Authorities lifted a brief shelter alert for the island about three minutes after issuing it.",
+          "body": [
+            "South Korea’s Joint Chiefs of Staff said several Russian military aircraft entered the country’s air defence identification zone early on Nov. 24 and approached Ulleung Island. Residents received a shelter alert at 7:52 a.m. local time, and officials lifted it three minutes later.",
+            "The military later clarified that the aircraft had been detected in the identification zone near the edge of South Korean airspace. An air defence identification zone extends beyond sovereign airspace. South Korea’s foreign ministry said it raised the incident with Russia."
+          ]
+        },
+        "scheduledNews": {
+          "version": 1,
+          "eventKey": "south-korea-ulleung-precautionary-alert-russian-aircraft-20261124",
+          "checkedUtc": "2026-11-24T16:36:25Z",
+          "facts": [
+            {
+              "claim": "The JCS reported entry into the air defence identification zone near Ulleung Island and South Korea raised it with Russia.",
+              "sourceUrl": "https://en.yna.co.kr/view/AEN20261124002255315"
+            },
+            {
+              "claim": "The shelter alert began at about 7:52 a.m. and was lifted three minutes later.",
+              "sourceUrl": "https://apnews.com/article/a0347d1dda863d8189bbdf21c320ee3b"
+            }
+          ]
+        }
+      },
+      "publishedExcerptId": "a-south-korea-ulleung-precautionary-alert-russian-aircraft-20261124"
+    },
+    {
+      "enqueuedUtc": "2026-11-24T17:07Z",
+      "routeReason": "published_short_excerpt",
+      "sourceGroupId": "",
+      "eventKey": "",
+      "article": {
+        "id": "a-singapore-airlines-western-sydney-inaugural-20261123",
+        "cat": "ops",
+        "articleFormat": "full",
+        "availableLanguages": [
+          "zh",
+          "en"
+        ],
+        "primarySource": "西雪梨國際機場 WSI",
+        "publishedUtc": "2026-11-24T16:36:25Z",
+        "sourcePublishedUtc": "2026-11-24T00:00:00Z",
+        "checkedUtc": "2026-11-24T16:36:25Z",
+        "writer": "scheduled:ChatGPT",
+        "writerModels": [
+          "ChatGPT"
+        ],
+        "sources": [
+          {
+            "name": "西雪梨國際機場 WSI",
+            "url": "https://www.wsiairport.com.au/corporate/media-releases/singapore-airlines-set-bring-world-closer-western-sydney"
+          },
+          {
+            "name": "AeroTime",
+            "url": "https://www.aerotime.aero/articles/singapore-airlines-lands-at-western-sydney-with-pm-lawrence-wong-on-first-flight"
+          },
+          {
+            "name": "Australian Aviation",
+            "url": "https://australianaviation.com.au/2026/11/singapore-airlines-touches-down-in-western-sydney/"
+          }
+        ],
+        "entities": {
+          "aircraft": [
+            "Airbus A350-900"
+          ],
+          "airports": [
+            "Singapore Changi Airport",
+            "Western Sydney International Airport"
+          ],
+          "operators": [
+            "Singapore Airlines"
+          ],
+          "manufacturers": []
+        },
+        "image": {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/Singapore_Airlines_9V-SHR_run_SQ805%28China_Beijing_Capital_International_Airport_to_Singapore_Changi_Airport%29_10-08-2025.jpg/1280px-Singapore_Airlines_9V-SHR_run_SQ805%28China_Beijing_Capital_International_Airport_to_Singapore_Changi_Airport%29_10-08-2025.jpg",
+          "link": "https://commons.wikimedia.org/wiki/File:Singapore_Airlines_9V-SHR_run_SQ805%28China_Beijing_Capital_International_Airport_to_Singapore_Changi_Airport%29_10-08-2025.jpg",
+          "credit": "LN9267",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "kind": "file_photo",
+          "provider": "Wikimedia Commons",
+          "subject": "執飛首航的 9V-SHR，攝於 2025 年新加坡樟宜機場（資料照）。",
+          "subjectEn": "9V-SHR, the aircraft that operated the inaugural flight, photographed at Singapore Changi in 2025 (file photo).",
+          "description": "The same Airbus A350-900 was photographed on a different flight in 2025.",
+          "photoYear": 2025,
+          "curated": true
+        },
+        "images": [
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/Singapore_Airlines_9V-SHR_run_SQ805%28China_Beijing_Capital_International_Airport_to_Singapore_Changi_Airport%29_10-08-2025.jpg/1280px-Singapore_Airlines_9V-SHR_run_SQ805%28China_Beijing_Capital_International_Airport_to_Singapore_Changi_Airport%29_10-08-2025.jpg",
+            "link": "https://commons.wikimedia.org/wiki/File:Singapore_Airlines_9V-SHR_run_SQ805%28China_Beijing_Capital_International_Airport_to_Singapore_Changi_Airport%29_10-08-2025.jpg",
+            "credit": "LN9267",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+            "kind": "file_photo",
+            "provider": "Wikimedia Commons",
+            "subject": "執飛首航的 9V-SHR，攝於 2025 年新加坡樟宜機場（資料照）。",
+            "subjectEn": "9V-SHR, the aircraft that operated the inaugural flight, photographed at Singapore Changi in 2025 (file photo).",
+            "description": "The same Airbus A350-900 was photographed on a different flight in 2025.",
+            "photoYear": 2025,
+            "curated": true
+          }
+        ],
+        "editorialImageLocked": true,
+        "zh": {
+          "title": "新加坡航空開航西雪梨國際機場，首班由總理黃循財搭乘",
+          "summary": "新加坡航空 11 月 23 日開航樟宜機場至西雪梨國際機場，以空中巴士 A350-900 每天直飛。新加坡總理黃循財搭乘首班航班。",
+          "body": [
+            "新加坡航空首班 SQ261 於 11 月 23 日晚間抵達西雪梨國際機場（WSI）。機場表示，新加坡總理黃循財隨同國會代表團搭乘首班航班。",
+            "這條每日直飛航線使用空中巴士 A350-900。西雪梨機場全天營運，從當地出發的航班安排接近午夜起飛，隔天清晨抵達新加坡樟宜機場。"
+          ]
+        },
+        "en": {
+          "title": "Singapore Airlines begins daily Western Sydney flights with PM Lawrence Wong on the first service",
+          "summary": "Singapore Airlines began daily nonstop service between Changi and Western Sydney International Airport on Nov. 23. Singapore Prime Minister Lawrence Wong travelled on the inaugural Airbus A350-900 flight.",
+          "body": [
+            "Singapore Airlines flight SQ261 arrived at Western Sydney International Airport (WSI) on the evening of Nov. 23. The airport said Prime Minister Lawrence Wong travelled with a parliamentary delegation on the first flight.",
+            "The daily nonstop service uses an Airbus A350-900. Western Sydney Airport operates around the clock, allowing the Singapore-bound service to depart near midnight and reach Changi the following morning."
+          ]
+        },
+        "scheduledNews": {
+          "version": 1,
+          "eventKey": "singapore-airlines-western-sydney-inaugural-20261123",
+          "checkedUtc": "2026-11-24T16:36:25Z",
+          "facts": [
+            {
+              "claim": "The airport announced daily nonstop Changi service from Nov. 23 and identified Lawrence Wong as a passenger on the first flight.",
+              "sourceUrl": "https://www.wsiairport.com.au/corporate/media-releases/singapore-airlines-set-bring-world-closer-western-sydney"
+            },
+            {
+              "claim": "SQ261 arrived on Nov. 23 and the route uses the Airbus A350-900.",
+              "sourceUrl": "https://www.aerotime.aero/articles/singapore-airlines-lands-at-western-sydney-with-pm-lawrence-wong-on-first-flight"
+            },
+            {
+              "claim": "Australian Aviation identified the aircraft operating SQ261 as 9V-SHR.",
+              "sourceUrl": "https://australianaviation.com.au/2026/11/singapore-airlines-touches-down-in-western-sydney/"
+            }
+          ]
+        }
+      },
+      "publishedExcerptId": "a-singapore-airlines-western-sydney-inaugural-20261123"
+    },
+    {
+      "enqueuedUtc": "2026-11-24T17:07Z",
+      "routeReason": "published_short_excerpt",
+      "sourceGroupId": "",
+      "eventKey": "",
+      "article": {
+        "id": "a-poland-russian-drone-airspace-incursion-20261123",
+        "cat": "mil",
+        "articleFormat": "full",
+        "availableLanguages": [
+          "zh",
+          "en"
+        ],
+        "primarySource": "Polish Radio",
+        "publishedUtc": "2026-11-24T16:36:25Z",
+        "sourcePublishedUtc": "2026-11-24T09:00:00Z",
+        "checkedUtc": "2026-11-24T16:36:25Z",
+        "writer": "scheduled:ChatGPT",
+        "writerModels": [
+          "ChatGPT"
+        ],
+        "sources": [
+          {
+            "name": "Polish Radio",
+            "url": "https://www.polskieradio.pl/395/7784/Artykul/3756315%2Cpolish-official-says-russian-drone-incursion-was-deliberate"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://new.streetinsider.com/Reuters/Russian%2Bdrone%2Bbriefly%2Benters%2BPolish%2Bairspace%2C%2Bminister%2Bsays/27389378.html"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/business/aerospace-defense/russian-unmanned-aerial-vehicle-briefly-violated-polish-airspace-polish-armed-2026-11-23/"
+          }
+        ],
+        "entities": {
+          "aircraft": [],
+          "airports": [],
+          "operators": [],
+          "manufacturers": []
+        },
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/f/f3/E-3_Sentry_w_33_Bazie_Lotniczej_%2812%29.jpg",
+          "link": "https://commons.wikimedia.org/wiki/File:E-3_Sentry_w_33_Bazie_Lotniczej_%2812%29.jpg",
+          "credit": "Polish Ministry of National Defence",
+          "license": "Attribution (Polish Ministry of National Defence)",
+          "licenseUrl": "https://commons.wikimedia.org/wiki/Template:Attribution",
+          "kind": "file_photo",
+          "provider": "Wikimedia Commons",
+          "subject": "北約 E-3A 預警機在波蘭，2006 年資料照。",
+          "subjectEn": "NATO E-3A airborne early warning aircraft in Poland in 2006, file photo.",
+          "description": "NATO E-3A airborne early warning aircraft in Poland in 2006, file photo.",
+          "photoYear": 2006,
+          "curated": true
+        },
+        "images": [
+          {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/f/f3/E-3_Sentry_w_33_Bazie_Lotniczej_%2812%29.jpg",
+            "link": "https://commons.wikimedia.org/wiki/File:E-3_Sentry_w_33_Bazie_Lotniczej_%2812%29.jpg",
+            "credit": "Polish Ministry of National Defence",
+            "license": "Attribution (Polish Ministry of National Defence)",
+            "licenseUrl": "https://commons.wikimedia.org/wiki/Template:Attribution",
+            "kind": "file_photo",
+            "provider": "Wikimedia Commons",
+            "subject": "北約 E-3A 預警機在波蘭，2006 年資料照。",
+            "subjectEn": "NATO E-3A airborne early warning aircraft in Poland in 2006, file photo.",
+            "description": "NATO E-3A airborne early warning aircraft in Poland in 2006, file photo.",
+            "photoYear": 2006,
+            "curated": true
+          }
+        ],
+        "editorialImageLocked": true,
+        "zh": {
+          "title": "波蘭通報俄羅斯無人機短暫進入領空，北約準備增派預警機",
+          "summary": "波蘭軍方表示，11 月 23 日晚間一架俄羅斯無人機短暫進入波蘭領空。波蘭副國防部長認為這是蓄意行為，北約則準備加強支援。",
+          "body": [
+            "波蘭武裝部隊作戰司令部通報，11 月 23 日晚間一架俄羅斯無人機短暫進入波蘭領空。當時俄羅斯正對鄰近的烏克蘭西部發動攻擊。",
+            "波蘭副國防部長帕韋烏・扎萊夫斯基（Paweł Zalewski）隔天表示，他認為這次進入領空是蓄意行為。波蘭公共廣播電台報導，在近期一連串領空事件後，北約正準備增派空中預警機支援波蘭。"
+          ]
+        },
+        "en": {
+          "title": "Poland reports brief Russian drone incursion as NATO prepares early warning support",
+          "summary": "Poland’s military said a Russian drone briefly entered Polish airspace late on Nov. 23. A deputy defence minister said he believed the incursion was deliberate. NATO is preparing additional support.",
+          "body": [
+            "Poland’s Armed Forces Operational Command reported that a Russian drone briefly entered Polish airspace late on Nov. 23. Russia was attacking neighbouring western Ukraine at the time.",
+            "Polish Deputy Defence Minister Paweł Zalewski said the next day that he believed the incursion was deliberate. Polish Radio reported that NATO was preparing additional airborne early warning support after a series of airspace incidents."
+          ]
+        },
+        "scheduledNews": {
+          "version": 1,
+          "eventKey": "poland-russian-drone-airspace-incursion-20261123",
+          "checkedUtc": "2026-11-24T16:36:25Z",
+          "facts": [
+            {
+              "claim": "Poland’s Operational Command reported a brief Russian drone incursion late on Nov. 23.",
+              "sourceUrl": "https://www.polskieradio.pl/395/7784/Artykul/3756315%2Cpolish-official-says-russian-drone-incursion-was-deliberate"
+            },
+            {
+              "claim": "The deputy defence minister said he believed the incursion was deliberate and NATO was preparing reinforcement.",
+              "sourceUrl": "https://www.polskieradio.pl/395/7784/Artykul/3756315%2Cpolish-official-says-russian-drone-incursion-was-deliberate"
+            },
+            {
+              "claim": "Reuters independently reported the Polish military account.",
+              "sourceUrl": "https://new.streetinsider.com/Reuters/Russian%2Bdrone%2Bbriefly%2Benters%2BPolish%2Bairspace%2C%2Bminister%2Bsays/27389378.html"
+            }
+          ]
+        }
+      },
+      "publishedExcerptId": "a-poland-russian-drone-airspace-incursion-20261123"
+    },
+    {
+      "enqueuedUtc": "2026-11-24T17:07Z",
+      "routeReason": "published_short_excerpt",
+      "sourceGroupId": "",
+      "eventKey": "",
+      "article": {
+        "id": "a-airlines-aircraft-financing-higher-fuel-costs-20261124",
+        "cat": "biz",
+        "articleFormat": "full",
+        "availableLanguages": [
+          "zh",
+          "en"
+        ],
+        "primarySource": "Reuters",
+        "publishedUtc": "2026-11-24T16:36:25Z",
+        "sourcePublishedUtc": "2026-11-24T11:19:00Z",
+        "checkedUtc": "2026-11-24T16:36:25Z",
+        "writer": "scheduled:ChatGPT",
+        "writerModels": [
+          "ChatGPT"
+        ],
+        "sources": [
+          {
+            "name": "Reuters",
+            "url": "https://www.investing.com/news/stock-market-news/airlines-squeezed-by-high-fuel-costs-rethink-jet-financing-strategy-5047610"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/business/energy/airlines-squeezed-by-high-fuel-costs-rethink-jet-financing-strategy-2026-11-24"
+          }
+        ],
+        "entities": {
+          "aircraft": [],
+          "airports": [],
+          "operators": [
+            "Alaska Airlines"
+          ],
+          "manufacturers": []
+        },
+        "image": {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Boeing_737_MAX_9_-_Alaska_Airlines_-_N823AK.jpg/1280px-Boeing_737_MAX_9_-_Alaska_Airlines_-_N823AK.jpg",
+          "link": "https://commons.wikimedia.org/wiki/File:Boeing_737_MAX_9_-_Alaska_Airlines_-_N823AK.jpg",
+          "credit": "Oleg Yunakov",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "kind": "file_photo",
+          "provider": "Wikimedia Commons",
+          "subject": "阿拉斯加航空波音 737 MAX 9（N823AK），資料照。",
+          "subjectEn": "An Alaska Airlines Boeing 737 MAX 9, N823AK, file photo.",
+          "description": "An Alaska Airlines Boeing 737 MAX 9, N823AK, file photo.",
+          "curated": true
+        },
+        "images": [
+          {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Boeing_737_MAX_9_-_Alaska_Airlines_-_N823AK.jpg/1280px-Boeing_737_MAX_9_-_Alaska_Airlines_-_N823AK.jpg",
+            "link": "https://commons.wikimedia.org/wiki/File:Boeing_737_MAX_9_-_Alaska_Airlines_-_N823AK.jpg",
+            "credit": "Oleg Yunakov",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+            "kind": "file_photo",
+            "provider": "Wikimedia Commons",
+            "subject": "阿拉斯加航空波音 737 MAX 9（N823AK），資料照。",
+            "subjectEn": "An Alaska Airlines Boeing 737 MAX 9, N823AK, file photo.",
+            "description": "An Alaska Airlines Boeing 737 MAX 9, N823AK, file photo.",
+            "curated": true
+          }
+        ],
+        "editorialImageLocked": true,
+        "zh": {
+          "title": "燃油成本升高，航空公司評估飛機預付款融資與售後回租",
+          "summary": "路透社報導，部分航空公司正評估用融資支付新機預付款，或把現有飛機出售後租回，以保留現金。不同機構統計對售後回租是否普遍增加仍有分歧。",
+          "body": [
+            "路透社依申報資料分析，七家美國上市航空公司今年前九個月的營收合計比去年同期增加近 280 億美元，燃油支出增加近 170 億美元，合計營業利益下降 12%。在現金流受壓的情況下，有業者向出租商尋求新機預付款融資，也有業者考慮售後回租。",
+            "路透社引述阿拉斯加航空財務長表示，借款和售後回租是 2027 年的選項。Cirium Ascend 統計今年前十個月有 73 架飛機採售後回租，高於去年同期 46 架。航空顧問公司 IBA 則未觀察到明顯增加。"
+          ]
+        },
+        "en": {
+          "title": "Airlines weigh aircraft financing and leasebacks as fuel costs rise",
+          "summary": "Some airlines are looking at financing aircraft delivery deposits or selling and leasing back aircraft to preserve cash, Reuters reported. Industry data providers differ on whether sale-leasebacks have increased more broadly.",
+          "body": [
+            "Reuters analysed filings from seven publicly traded U.S. airlines and found that combined revenue rose nearly $28 billion year on year in the first nine months of 2026. Fuel expenses rose almost $17 billion and combined operating profit fell 12%. Some carriers have sought financing for aircraft pre-delivery payments or considered sale-leasebacks.",
+            "Reuters cited Alaska Air’s finance chief as saying borrowing and sale-leasebacks were among its options for 2027. Cirium Ascend counted 73 aircraft sold and leased back in the first ten months of the year, up from 46 a year earlier, while aviation consultancy IBA found no notable rise."
+          ]
+        },
+        "scheduledNews": {
+          "version": 1,
+          "eventKey": "airlines-aircraft-financing-higher-fuel-costs-20261124",
+          "checkedUtc": "2026-11-24T16:36:25Z",
+          "facts": [
+            {
+              "claim": "Reuters analysed seven publicly traded U.S. airlines, finding higher revenue and fuel expenses but a 12% fall in combined operating profit.",
+              "sourceUrl": "https://www.investing.com/news/stock-market-news/airlines-squeezed-by-high-fuel-costs-rethink-jet-financing-strategy-5047610"
+            },
+            {
+              "claim": "Reuters reported that Alaska Air was weighing options and Cirium Ascend and IBA differed on whether sale-leasebacks were increasing.",
+              "sourceUrl": "https://www.investing.com/news/stock-market-news/airlines-squeezed-by-high-fuel-costs-rethink-jet-financing-strategy-5047610"
+            }
+          ]
+        }
+      },
+      "publishedExcerptId": "a-airlines-aircraft-financing-higher-fuel-costs-20261124"
+    },
+    {
+      "enqueuedUtc": "2026-11-24T17:07Z",
+      "routeReason": "published_short_excerpt",
+      "sourceGroupId": "",
+      "eventKey": "",
+      "article": {
+        "id": "a-aeromexico-787-cabin-premium-economy-20261123",
+        "cat": "biz",
+        "articleFormat": "full",
+        "availableLanguages": [
+          "zh",
+          "en"
+        ],
+        "primarySource": "América Vuela — Aeroméxico announcement",
+        "publishedUtc": "2026-11-24T16:36:25Z",
+        "sourcePublishedUtc": "2026-11-24T00:00:00Z",
+        "checkedUtc": "2026-11-24T16:36:25Z",
+        "writer": "scheduled:ChatGPT",
+        "writerModels": [
+          "ChatGPT"
+        ],
+        "sources": [
+          {
+            "name": "América Vuela — Aeroméxico announcement",
+            "url": "https://infoaviacion.com.mx/vuela/comercial/aeromexico-anuncia-la-reconfiguracion-completa-de-su-flota-787-dreamliner/"
+          },
+          {
+            "name": "Aerospace Global News",
+            "url": "https://aerospaceglobalnews.com/news/aeromexico-dreamliner-new-cabins-premium-economy/"
+          }
+        ],
+        "entities": {
+          "aircraft": [
+            "Boeing 787-8",
+            "Boeing 787-9"
+          ],
+          "airports": [],
+          "operators": [
+            "Aeroméxico"
+          ],
+          "manufacturers": []
+        },
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/3/32/Aeromexico_%28Quetzalcoatl_Livery%29%2C_XA-ADL%2C_Boeing_787-9_Dreamliner_%2849593671391%29.jpg",
+          "link": "https://commons.wikimedia.org/wiki/File:Aeromexico_%28Quetzalcoatl_Livery%29%2C_XA-ADL%2C_Boeing_787-9_Dreamliner_%2849593671391%29.jpg",
+          "credit": "Anna Zvereva",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+          "kind": "file_photo",
+          "provider": "Wikimedia Commons",
+          "subject": "墨西哥航空波音 787-9（XA-ADL），2019 年資料照。",
+          "subjectEn": "Aeroméxico Boeing 787-9 XA-ADL in 2019, file photo.",
+          "description": "Aeroméxico Boeing 787-9 XA-ADL in 2019, file photo.",
+          "photoYear": 2019,
+          "curated": true
+        },
+        "images": [
+          {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/3/32/Aeromexico_%28Quetzalcoatl_Livery%29%2C_XA-ADL%2C_Boeing_787-9_Dreamliner_%2849593671391%29.jpg",
+            "link": "https://commons.wikimedia.org/wiki/File:Aeromexico_%28Quetzalcoatl_Livery%29%2C_XA-ADL%2C_Boeing_787-9_Dreamliner_%2849593671391%29.jpg",
+            "credit": "Anna Zvereva",
+            "license": "CC BY-SA 2.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+            "kind": "file_photo",
+            "provider": "Wikimedia Commons",
+            "subject": "墨西哥航空波音 787-9（XA-ADL），2019 年資料照。",
+            "subjectEn": "Aeroméxico Boeing 787-9 XA-ADL in 2019, file photo.",
+            "description": "Aeroméxico Boeing 787-9 XA-ADL in 2019, file photo.",
+            "photoYear": 2019,
+            "curated": true
+          }
+        ],
+        "editorialImageLocked": true,
+        "zh": {
+          "title": "墨西哥航空將改裝波音 787，787-9 首設獨立豪華經濟艙",
+          "summary": "墨西哥航空計畫在 2029 至 2031 年改裝波音 787 機隊。787-9 將增設獨立的豪華經濟艙及兩種商務艙套房。",
+          "body": [
+            "墨西哥航空公布波音 787 長程客艙改裝計畫，預計於 2029 至 2031 年間實施。787-9 將首次提供獨立的豪華經濟艙，商務艙提供兩種套房。",
+            "據 Aerospace Global News 報導，787-9 改裝後預計有 61 個高階艙等座位，合計商務艙與豪華經濟艙。較小的 787-8 將使用目前 787-9 的商務艙座椅。航空公司尚未公布豪華經濟艙的最終座位數或座椅尺寸。"
+          ]
+        },
+        "en": {
+          "title": "Aeroméxico plans 787 cabin overhaul with its first dedicated premium economy on the 787-9",
+          "summary": "Aeroméxico plans to overhaul its Boeing 787 cabins between 2029 and 2031. The 787-9 will gain a separate premium economy cabin and two types of business-class suite.",
+          "body": [
+            "Aeroméxico announced a long-haul cabin overhaul for its Boeing 787 fleet, with installation planned between 2029 and 2031. The 787-9 will get the airline’s first dedicated premium economy cabin as well as two types of business-class suite.",
+            "Aerospace Global News reported that the refurbished 787-9 is expected to have 61 seats across business class and premium economy. The smaller 787-8 will receive the business-class seats currently used on the 787-9. Aeroméxico has yet to publish final seat counts or dimensions for the premium economy cabin."
+          ]
+        },
+        "scheduledNews": {
+          "version": 1,
+          "eventKey": "aeromexico-787-cabin-premium-economy-20261123",
+          "checkedUtc": "2026-11-24T16:36:25Z",
+          "facts": [
+            {
+              "claim": "Aeroméxico announced a 787 cabin overhaul for 2029 to 2031.",
+              "sourceUrl": "https://infoaviacion.com.mx/vuela/comercial/aeromexico-anuncia-la-reconfiguracion-completa-de-su-flota-787-dreamliner/"
+            },
+            {
+              "claim": "The 787-9 will have two business-class suite types and dedicated premium economy, with 61 premium seats in total.",
+              "sourceUrl": "https://aerospaceglobalnews.com/news/aeromexico-dreamliner-new-cabins-premium-economy/"
+            },
+            {
+              "claim": "The 787-8 will receive the 787-9’s current business seats.",
+              "sourceUrl": "https://aerospaceglobalnews.com/news/aeromexico-dreamliner-new-cabins-premium-economy/"
+            }
+          ]
+        }
+      },
+      "publishedExcerptId": "a-aeromexico-787-cabin-premium-economy-20261123"
     }
   ],
   "history": [
@@ -818,6 +1012,21 @@
     {
       "articleId": "a-20261124-1225-trump-expects-china-to-buy-250-more-boei",
       "atUtc": "2026-11-24T12:25Z",
+      "reason": "already_published"
+    },
+    {
+      "articleId": "a-20261124-1159-boeing-s-everett-built-737s-reportedly-a",
+      "atUtc": "2026-11-24T17:07Z",
+      "reason": "already_published"
+    },
+    {
+      "articleId": "a-20261124-1225-singapore-airlines-cancels-airbus-a350-s",
+      "atUtc": "2026-11-24T17:07Z",
+      "reason": "already_published"
+    },
+    {
+      "articleId": "a-20261124-1707-trump-expects-china-to-buy-250-more-boei",
+      "atUtc": "2026-11-24T17:07Z",
       "reason": "already_published"
     }
   ]
