@@ -89,6 +89,11 @@ jobs:
       pages: write # configure-pages enablement
     steps:
       - uses: actions/checkout@v5
+        with:
+          # Branch tip, not the trigger commit: a queued run starts hours
+          # late, and replaying its data commit from the old base reverted
+          # manual edits made in between and rebuilt the site without them.
+          ref: ${{ github.ref }}
 
       - name: Enable GitHub Pages (build_type=workflow)
         uses: actions/configure-pages@v6
@@ -146,18 +151,6 @@ jobs:
           python tests/test_image_fallbacks.py
           python tests/test_volcano_images.py
           python tests/test_image_qa.py
-
-      - name: Refresh persisted retry and provider cooldown state
-        # A queued push run checks out its event SHA, which may predate the
-        # preceding run's data commit or a delayed Muse article. Keep code
-        # pinned, refresh the roundup queue and publication evidence too.
-        run: |
-          git fetch origin "${GITHUB_REF_NAME}"
-          for path in data/news-retry.json data/provider-health.json data/provider-routes.json data/news-search.json data/source-recovery.json data/luna-editorial.json data/industry-roundup-queue.json data/terra-images.json data/articles; do
-            if git cat-file -e "origin/${GITHUB_REF_NAME}:$path" 2>/dev/null; then
-              git checkout "origin/${GITHUB_REF_NAME}" -- "$path"
-            fi
-          done
 
       - name: Refresh shared paid API budget
         env:
@@ -223,11 +216,21 @@ jobs:
           # The saved Taipei date makes this one LLM-assisted refresh per day.
           # Missing/invalid model output falls back to published article titles.
           python pipeline/search_prompts.py --daily-if-due
-          # a briefing run may have committed newer briefing JSONs since this
-          # job checked out; deploys race (last wins), so refresh them before
-          # building or this deploy can put a stale briefing page back live
-          git fetch origin "${GITHUB_REF_NAME}"
-          git checkout "origin/${GITHUB_REF_NAME}" -- data/briefings || true
+          # Manual edits, briefings and code may have landed on the branch
+          # while this run was drafting; deploys race (last wins). Replay this
+          # run's data on the tip before building so the deploy keeps them.
+          # Nothing is pushed until the audits below pass.
+          git config user.name "skytical-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data
+          if ! git diff --cached --quiet; then
+            git commit -q -m "hourly update $(date -u +%FT%H:%M)"
+          fi
+          if ! git pull --rebase -X theirs origin "${GITHUB_REF_NAME}"; then
+            git rebase --abort || true
+            git fetch origin "${GITHUB_REF_NAME}"
+            git checkout "origin/${GITHUB_REF_NAME}" -- data/briefings || true
+          fi
           python pipeline/build.py
           python pipeline/radar_snapshot.py --optional
 
@@ -299,18 +302,21 @@ jobs:
           git config user.name "skytical-bot"
           git config user.email "bot@users.noreply.github.com"
           git add data
-          if git diff --cached --quiet; then
-            echo "no changes to commit"
-            exit 0
+          if ! git diff --cached --quiet; then
+            git commit -m "hourly update $(date -u +%FT%H:%M)"
           fi
-          git commit -m "hourly update $(date -u +%FT%H:%M)"
           pushed=""
           for i in 1 2 3; do
-            # -X theirs keeps the bot's replayed commit (data/ is bot-owned)
+            # -X theirs: where this run and the branch changed the same lines
+            # since the run started, the run's version is kept
             if ! git pull --rebase -X theirs origin "${GITHUB_REF_NAME}"; then
               git rebase --abort || true
               sleep 5
               continue
+            fi
+            if [ -z "$(git rev-list -n 1 "origin/${GITHUB_REF_NAME}..HEAD")" ]; then
+              echo "no changes to commit"
+              exit 0
             fi
             if git push; then
               pushed=yes
