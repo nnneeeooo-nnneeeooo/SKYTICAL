@@ -53,12 +53,22 @@
   for (const item of data.items) {
     if (!item || typeof item.title !== 'string' || typeof item.copy !== 'string') continue;
     const article = document.createElement('article'); article.className = 'update';
+    if (item.highlight === true) article.classList.add('update-highlight');
     const heading = document.createElement('div'); heading.className = 'update-heading';
     if (/^\d{4}-\d{2}-\d{2}$/.test(item.date)) {
       const date = document.createElement('time'); date.className = 'update-date'; date.dateTime = item.date; date.textContent = item.date.slice(5).replace('-', '/'); heading.append(date);
     }
     const title = document.createElement('h3'); title.textContent = item.title; heading.append(title);
-    const copy = document.createElement('p'); copy.textContent = item.copy.startsWith(item.title + '，') ? item.copy.slice(item.title.length + 1) : item.copy;
+    const copy = document.createElement('p');
+    const message = item.copy.startsWith(item.title + '，') ? item.copy.slice(item.title.length + 1) : item.copy;
+    const {label, href} = item.link || {};
+    const linkStart = typeof label === 'string' && label ? message.indexOf(label) : -1;
+    if (linkStart >= 0 && typeof href === 'string' && /^https:\/\/[^/\s]/i.test(href)) {
+      const link = document.createElement('a');
+      link.href = href;
+      link.textContent = label;
+      copy.append(message.slice(0, linkStart), link, message.slice(linkStart + label.length));
+    } else copy.textContent = message;
     article.append(heading, copy); dialog.querySelector('[data-notice-items]').append(article);
   }
   if (data.station && typeof data.station.message === 'string' && data.station.message.trim()) {

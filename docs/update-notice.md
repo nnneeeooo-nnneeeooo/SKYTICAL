@@ -13,7 +13,7 @@
 
 ## 內容維護
 
-pipeline/update_notice.py 在每次建站時讀取 config/changelog.json，整理近十四天內、日期與提交SHA有效且具中英文內容的紀錄。產生過程完全離線，不呼叫模型或GitHub API，也不依賴 checkout 是否具有完整Git歷史。
+pipeline/update_notice.py 在每次建站時讀取 config/changelog.json，整理近十四天內、日期有效且具中英文內容的紀錄。紀錄可附有效的提交 SHA，無對應提交的公告用 `commit: null`。產生過程完全離線，不呼叫模型或 GitHub API，也不依賴 checkout 是否具有完整 Git 歷史。
 
 維護公告時，逐項判斷讀者實際會感受到什麼差異、是否需要知道或採取行動，以及影響是否已由正式站或可靠紀錄證實。優先刊登新功能、重大介面或操作變更、影響讀者的服務中斷與恢復，以及需要主動通知的重大更正。敘述以讀者能做什麼、會遇到什麼或需要留意什麼為主。
 
@@ -22,6 +22,8 @@ pipeline/update_notice.py 在每次建站時讀取 config/changelog.json，整�
 符合門檻的功能更新獨立呈現；同主題只採最新說明，避免舊規則與新規則並列。符合門檻的小調整合併一項；合併項目使用最近更新日期，前端只顯示MM/DD。模型升級須同時符合更新紀錄及目前實際設定，相關能力與補查來源的描述也須有紀錄佐證。其他未識別的新功能沿用原有雙語文字，不自行杜撰效能提升。
 
 符合刊登門檻的紀錄可用選填 notice.importance 設為 major 或 minor，調整是否獨立呈現；讀者畫面隱藏分類標籤。通知會隨建站更新。
+
+`notice.highlight: true` 會使用重要公告配色。可用 `notice.title.zh` 與 `notice.title.en` 指定雙語標題。若內文第一行與指定標題相同，浮窗只顯示一次標題。`notice.link` 的 `label` 與 HTTPS `href` 可將內文第一次出現的指定文字轉成連結。
 
 config/station-note.json 分別維護 messages.zh、messages.en，enabled 可隱藏留言。來信地址沿用既有團隊頁公開地址，瀏覽器以安全DOM建立mailto連結，不插入原始HTML。文字中的neo使用翼標紅、橙、金色。static/neo-life.jpg 是使用者核准照片的臉部裁切，約30KB；不發布原始整張照片或本機Demo。
 

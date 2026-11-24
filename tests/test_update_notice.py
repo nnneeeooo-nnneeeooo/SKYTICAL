@@ -44,6 +44,17 @@ def main():
     assert data["en"]["station"]["email"] == "editor@example.com"
     assert "Team introduction" not in json.dumps(data)
     assert "More news photos" not in json.dumps(data)
+    raw = json.loads((ROOT / "config" / "changelog.json").read_text(encoding="utf-8"))
+    notices = build_notices(raw, {}, today=date(2026, 11, 25))
+    model, patrol, trial = notices["zh"]["items"][:3]
+    assert (model["date"], model["title"], model["highlight"]) == ("2026-11-25", "Devin Bots模型調整", True)
+    assert model["copy"].startswith("Devin Bots使用之模型")
+    assert "Devin • GPT 6.2 Astra。\n請搜尋「Devin」" in model["copy"]
+    assert patrol["title"] == "Devin每小時整點巡檢上線"
+    assert patrol["copy"].endswith("Devin • Fable 5.2")
+    assert trial["title"] == "Devin Bots加入SKYTICAL" and trial["highlight"]
+    assert trial["link"] == {"label": "Devin Bots", "href": "https://devin.ai/bots"}
+    assert notices["en"]["items"][1]["title"] == "Devin now checks the site every hour"
     actual = notice_data()
     for phrase in ("\u5718\u968a\u4ecb\u7d39\u66f4\u65b0", "\u8fd1\u671f\u65b0\u805e\u7167\u7247\u6301\u7e8c\u88dc\u9f4a", "team introduction", "more photos for recent news"):
         assert phrase.casefold() not in json.dumps(actual, ensure_ascii=False).casefold()
