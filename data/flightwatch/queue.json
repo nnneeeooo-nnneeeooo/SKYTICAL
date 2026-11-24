@@ -1,1 +1,48 @@
-[]
+[
+  {
+    "eventId": "fw-5f60947f556008f7",
+    "queuedUtc": "2026-11-24T00:15:11Z",
+    "notBeforeUtc": "2026-11-24T00:45:11Z",
+    "bootstrap": false,
+    "primaryProvider": "ADSB.lol",
+    "crossCheck": "confirmed_by_primary_only",
+    "airport": {
+      "icao": "RCTP",
+      "iata": "TPE",
+      "name_zh": "臺灣桃園國際機場",
+      "name_en": "Taiwan Taoyuan International Airport"
+    },
+    "aircraft": {
+      "hex": "780b92",
+      "registration": "B-2506",
+      "type": "B734",
+      "type_name": null,
+      "callsign": "CSS265"
+    },
+    "operator": {
+      "icao": "CSS",
+      "iata": null,
+      "name": null,
+      "name_zh": null,
+      "country_or_region": null
+    },
+    "arrival": {
+      "status": "confirmed_arrival",
+      "firstSeenUtc": "2026-11-24T00:00:14Z",
+      "confirmedUtc": "2026-11-24T00:15:11Z",
+      "basis": "位於機場地理圍欄內且 alt_baro 為 ground",
+      "observations": 4
+    },
+    "rarity": {
+      "score": 65,
+      "reasons": [
+        "營運者 CSS 非 RCTP 常態業者 (+35)",
+        "過去 365 天此註冊號未曾抵達 RCTP (+15)",
+        "機型 B734 非 RCTP 常見機型 (+15)"
+      ],
+      "watchlisted": false,
+      "combo180": 1,
+      "reg365": 0
+    }
+  }
+]
