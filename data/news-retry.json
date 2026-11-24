@@ -3519,49 +3519,28 @@
         }
       ]
     },
-    "428bf424a1f68e12dcc234e5": {
-      "sourceUrls": [
-        "https://avherald.com/h?article=5483616c&opt=0",
-        "https://avherald.com/h?article=5484b733&opt=0",
-        "https://avherald.com/h?article=5484c66b&opt=0"
-      ],
-      "contentFailures": 0,
-      "serviceFailures": 1,
-      "history": [],
-      "updatedUtc": "2026-11-24T14:13Z",
-      "failureClass": "provider_failure",
-      "status": "waiting",
-      "nextRetryUtc": "2026-11-24T16:13Z",
-      "title": "Incident: JAC AT72 at Kagoshima on Nov 22nd 2026, indication of flight control malfunction"
-    },
-    "b627603f471b9a51c9922b1c": {
-      "sourceUrls": [
-        "https://aerospaceglobalnews.com/news/xiamen-airlines-boeing-737-8-order",
-        "https://simpleflying.com/xiamen-airlines-order-50-boeing-737-max-8-7-4-billion",
-        "https://www.aerotime.aero/articles/xiamen-airlines-signs-deal-for-50-boeing-737-max-8-aircraft",
-        "https://www.reuters.com/world/asia-pacific/china-southern-airlines-unit-buy-50-boeing-737-8-aircraft-2026-11-24"
-      ],
-      "contentFailures": 0,
-      "serviceFailures": 1,
-      "history": [],
-      "updatedUtc": "2026-11-24T14:13Z",
-      "failureClass": "provider_failure",
-      "status": "waiting",
-      "nextRetryUtc": "2026-11-24T16:13Z",
-      "title": "Xiamen Airlines signs deal for 50 Boeing 737 MAX 8 aircraft"
-    },
     "eadfa85dcdf32fd24f21658f": {
       "sourceUrls": [
         "https://www.reuters.com/markets/europe/spanish-airline-plus-ultra-suspends-last-active-route-amid-restructuring-2026-11-23"
       ],
       "contentFailures": 0,
-      "serviceFailures": 1,
+      "serviceFailures": 2,
       "history": [],
-      "updatedUtc": "2026-11-24T14:13Z",
-      "failureClass": "provider_failure",
+      "updatedUtc": "2026-11-24T16:29Z",
+      "failureClass": "source_insufficient",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-24T16:13Z",
-      "title": "Spanish airline Plus Ultra suspends last active route amid restructuring"
+      "nextRetryUtc": "2026-11-24T22:29Z",
+      "title": "Spanish airline Plus Ultra suspends last active route amid restructuring",
+      "items": [
+        {
+          "url": "https://www.reuters.com/markets/europe/spanish-airline-plus-ultra-suspends-last-active-route-amid-restructuring-2026-11-23/",
+          "title": "Spanish airline Plus Ultra suspends last active route amid restructuring",
+          "summary": "",
+          "publishedUtc": "2026-11-23T20:11Z",
+          "source": "Reuters",
+          "sourceKey": "reuters"
+        }
+      ]
     },
     "d2b8d0718ce000068176d7d4": {
       "sourceUrls": [
@@ -4012,6 +3991,52 @@
           "publishedUtc": "2026-11-20T00:55Z",
           "source": "NTSB",
           "sourceKey": "ntsb"
+        }
+      ]
+    },
+    "fd108c1e28c7bab10bf771b2": {
+      "sourceUrls": [
+        "https://news.aa.com/news/news-details/2026/American-Airlines-to-bring-more-than-85-World-War-II-veterans-to-Hawaii-for-the-85th-anniversary-of-the-attack-on-Pearl-Harbor-COMM-MVI-11/default.aspx"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-24T16:29Z",
+      "failureClass": "source_insufficient",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-24T22:29Z",
+      "title": "American Airlines to bring more than 85 World War II veterans to Hawaii for 85th anniversary of the attack on Pearl Harbor",
+      "items": [
+        {
+          "url": "https://news.aa.com/news/news-details/2026/American-Airlines-to-bring-more-than-85-World-War-II-veterans-to-Hawaii-for-the-85th-anniversary-of-the-attack-on-Pearl-Harbor-COMM-MVI-11/default.aspx",
+          "title": "American Airlines to bring more than 85 World War II veterans to Hawaii for 85th anniversary of the attack on Pearl Harbor",
+          "summary": "",
+          "publishedUtc": "2026-11-24T16:16Z",
+          "source": "American Airlines",
+          "sourceKey": "americannews"
+        }
+      ]
+    },
+    "9b7fb872c493a07be4611456": {
+      "sourceUrls": [
+        "https://www.aviationwire.jp/archives/355094"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-24T16:29Z",
+      "failureClass": "source_insufficient",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-24T22:29Z",
+      "title": "羽田D滑走路、タイヤ破裂との因果関係不明 ゴムジョイント新構造へ＝最終とりまとめ",
+      "items": [
+        {
+          "url": "https://www.aviationwire.jp/archives/355094",
+          "title": "羽田D滑走路、タイヤ破裂との因果関係不明 ゴムジョイント新構造へ＝最終とりまとめ",
+          "summary": "",
+          "publishedUtc": "2026-11-24T09:03Z",
+          "source": "Aviation Wire",
+          "sourceKey": "japansafety"
         }
       ]
     }

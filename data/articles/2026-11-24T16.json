@@ -1,0 +1,634 @@
+{
+  "articles": [
+    {
+      "id": "a-20261124-1629-aviation-safety-roundup-four-independent",
+      "publishedUtc": "2026-11-24T16:29Z",
+      "cat": "safety",
+      "primarySource": "The Aviation Herald",
+      "sourceImageCandidates": [],
+      "zh": {
+        "title": "航空安全彙整：4起獨立事件包括Wizz飛機在巴塞隆納附近的引擎問題",
+        "summary": "Wizz飛機在巴塞隆納附近出現引擎問題；另有3起獨立事件",
+        "body": [
+          "The Aviation Herald列出的4起航空事件彼此獨立，沒有顯示相互關聯。",
+          "1. 2026年11月23日，Wizz的一架空中巴士A321neo（ICAO機型代碼A21N）在巴塞隆納附近發生引擎問題。",
+          "2. 2026年11月22日，JAC的一架AT72飛機在鹿兒島出現飛行控制故障指示。",
+          "3. 2026年11月22日，Seychelles的一架DHC-6 Twin Otter（ICAO機型代碼DHC6）在維多利亞降落時偏離跑道。",
+          "4. 2026年11月22日，TAP的一架空中巴士A321neo（ICAO機型代碼A21N）在馬德里附近時，機上出現煙氣。"
+        ]
+      },
+      "en": {
+        "title": "Aviation safety roundup: Four independent incidents include Wizz engine problem near Barcelona",
+        "summary": "Wizz aircraft has an engine problem near Barcelona; three other incidents are independent.",
+        "body": [
+          "The Aviation Herald lists four independent aviation incidents. No relationship between them is stated.",
+          "1. On November 23, 2026, a Wizz Airbus A321neo (ICAO type code A21N) experienced an engine problem near Barcelona.",
+          "2. On November 22, 2026, a JAC AT72 aircraft showed an indication of flight control malfunction at Kagoshima.",
+          "3. On November 22, 2026, a Seychelles DHC-6 Twin Otter (ICAO type code DHC6) had a runway excursion while landing at Victoria.",
+          "4. On November 22, 2026, a TAP Airbus A321neo (ICAO type code A21N) had fumes on board near Madrid."
+        ]
+      },
+      "sources": [
+        {
+          "name": "The Aviation Herald — Incident: Wizz A21N near Barcelona on Nov 23rd 2026, engine…",
+          "url": "https://avherald.com/h?article=5485d4bf&opt=0"
+        },
+        {
+          "name": "The Aviation Herald — Incident: JAC AT72 at Kagoshima on Nov 22nd 2026, indicatio…",
+          "url": "https://avherald.com/h?article=5483616c&opt=0"
+        },
+        {
+          "name": "The Aviation Herald — Incident: Seychelles DHC6 at Victoria on Nov 22nd 2026, run…",
+          "url": "https://avherald.com/h?article=5484b733&opt=0"
+        },
+        {
+          "name": "The Aviation Herald — Incident: TAP A21N near Madrid on Nov 22nd 2026, fumes on b…",
+          "url": "https://avherald.com/h?article=5484c66b&opt=0"
+        }
+      ],
+      "articleFormat": "roundup",
+      "sourcePublishedUtc": "2026-11-23T08:00Z",
+      "writer": "openai:gpt-6.1-terra",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "A Wizz A21N experienced an engine problem near Barcelona on November 23, 2026.",
+          "sourceQuote": "Incident: Wizz A21N near Barcelona on Nov 23rd 2026, engine problem",
+          "sourceUrl": "https://avherald.com/h?article=5485d4bf&opt=0",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "A JAC AT72 showed an indication of flight control malfunction at Kagoshima on November 22, 2026.",
+          "sourceQuote": "Incident: JAC AT72 at Kagoshima on Nov 22nd 2026, indication of flight control malfunction",
+          "sourceUrl": "https://avherald.com/h?article=5483616c&opt=0",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "A Seychelles DHC6 had a runway excursion on landing at Victoria on November 22, 2026.",
+          "sourceQuote": "Incident: Seychelles DHC6 at Victoria on Nov 22nd 2026, runway excursion on landing",
+          "sourceUrl": "https://avherald.com/h?article=5484b733&opt=0",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Fumes were present on board a TAP A21N near Madrid on November 22, 2026.",
+          "sourceQuote": "Incident: TAP A21N near Madrid on Nov 22nd 2026, fumes on board",
+          "sourceUrl": "https://avherald.com/h?article=5484c66b&opt=0",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [],
+      "eventStatus": "confirmed",
+      "entities": {
+        "airlines": [
+          "Wizz",
+          "JAC",
+          "Seychelles",
+          "TAP"
+        ],
+        "aircraft_models": [
+          "A21N",
+          "AT72",
+          "DHC6"
+        ],
+        "locations": [
+          "Barcelona",
+          "Kagoshima",
+          "Victoria",
+          "Madrid"
+        ],
+        "event_dates": [
+          "Nov 23rd 2026",
+          "Nov 22nd 2026"
+        ]
+      },
+      "entityEvidence": [
+        {
+          "entityType": "airlines",
+          "value": "Wizz",
+          "sourceQuote": "Incident: Wizz A21N near Barcelona on Nov 23rd 2026, engine problem",
+          "sourceUrl": "https://avherald.com/h?article=5485d4bf&opt=0"
+        },
+        {
+          "entityType": "airlines",
+          "value": "JAC",
+          "sourceQuote": "Incident: JAC AT72 at Kagoshima on Nov 22nd 2026, indication of flight control malfunction",
+          "sourceUrl": "https://avherald.com/h?article=5483616c&opt=0"
+        },
+        {
+          "entityType": "airlines",
+          "value": "Seychelles",
+          "sourceQuote": "Incident: Seychelles DHC6 at Victoria on Nov 22nd 2026, runway excursion on landing",
+          "sourceUrl": "https://avherald.com/h?article=5484b733&opt=0"
+        },
+        {
+          "entityType": "airlines",
+          "value": "TAP",
+          "sourceQuote": "Incident: TAP A21N near Madrid on Nov 22nd 2026, fumes on board",
+          "sourceUrl": "https://avherald.com/h?article=5484c66b&opt=0"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "A21N",
+          "sourceQuote": "Incident: Wizz A21N near Barcelona on Nov 23rd 2026, engine problem",
+          "sourceUrl": "https://avherald.com/h?article=5485d4bf&opt=0"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "AT72",
+          "sourceQuote": "Incident: JAC AT72 at Kagoshima on Nov 22nd 2026, indication of flight control malfunction",
+          "sourceUrl": "https://avherald.com/h?article=5483616c&opt=0"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "DHC6",
+          "sourceQuote": "Incident: Seychelles DHC6 at Victoria on Nov 22nd 2026, runway excursion on landing",
+          "sourceUrl": "https://avherald.com/h?article=5484b733&opt=0"
+        },
+        {
+          "entityType": "locations",
+          "value": "Barcelona",
+          "sourceQuote": "Incident: Wizz A21N near Barcelona on Nov 23rd 2026, engine problem",
+          "sourceUrl": "https://avherald.com/h?article=5485d4bf&opt=0"
+        },
+        {
+          "entityType": "locations",
+          "value": "Kagoshima",
+          "sourceQuote": "Incident: JAC AT72 at Kagoshima on Nov 22nd 2026, indication of flight control malfunction",
+          "sourceUrl": "https://avherald.com/h?article=5483616c&opt=0"
+        },
+        {
+          "entityType": "locations",
+          "value": "Victoria",
+          "sourceQuote": "Incident: Seychelles DHC6 at Victoria on Nov 22nd 2026, runway excursion on landing",
+          "sourceUrl": "https://avherald.com/h?article=5484b733&opt=0"
+        },
+        {
+          "entityType": "locations",
+          "value": "Madrid",
+          "sourceQuote": "Incident: TAP A21N near Madrid on Nov 22nd 2026, fumes on board",
+          "sourceUrl": "https://avherald.com/h?article=5484c66b&opt=0"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "Nov 23rd 2026",
+          "sourceQuote": "Incident: Wizz A21N near Barcelona on Nov 23rd 2026, engine problem",
+          "sourceUrl": "https://avherald.com/h?article=5485d4bf&opt=0"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "Nov 22nd 2026",
+          "sourceQuote": "Incident: JAC AT72 at Kagoshima on Nov 22nd 2026, indication of flight control malfunction",
+          "sourceUrl": "https://avherald.com/h?article=5483616c&opt=0"
+        }
+      ],
+      "evidenceVersion": 2
+    },
+    {
+      "id": "a-20261125-industry-roundup-00",
+      "publishedUtc": "2026-11-24T16:29Z",
+      "cat": "biz",
+      "articleFormat": "roundup",
+      "roundupKind": "industry",
+      "roundupItems": [
+        {
+          "articleId": "a-20261124-1138-nato-to-forward-deploy-one-awacs-aircraf",
+          "image": null,
+          "imageContext": {
+            "cat": "mil",
+            "zh": {
+              "title": "北約將前進部署一架預警機 供波蘭使用",
+              "summary": "北約將前進部署一架預警機供波蘭使用，波蘭並向盟國請求提供更多飛機。",
+              "body": [
+                "北大西洋公約組織（NATO）將前進部署一架空中預警與管制系統（AWACS）預警機。此前，三枚俄羅斯Kh-101巡弋飛彈於2026年11月20日進入波蘭領空。",
+                "波蘭國防部副部長 Paweł Zalewski 表示，這架預警機將提供波蘭使用。他也說，波蘭已向盟國請求提供更多飛機。",
+                "北約發言人 Allison Hart 在聲明中表示，歐洲盟軍最高司令 Alexus Grynkewich 已授權這項部署。北約未說明預警機將駐在哪裡，也未公佈部署將持續多久。"
+              ]
+            },
+            "en": {
+              "title": "NATO to forward-deploy one AWACS aircraft for use by Poland",
+              "summary": "NATO plans to forward-deploy an AWACS aircraft for Poland; Warsaw requested additional allied aircraft.",
+              "body": [
+                "NATO plans to forward-deploy one of its Airborne Warning and Control System (AWACS) aircraft after three Russian Kh-101 cruise missiles entered Polish airspace on November 20, 2026.",
+                "Polish Deputy Defence Minister Paweł Zalewski said the aircraft would be made available to Poland. He also said Warsaw had requested additional aircraft from its allies.",
+                "In a statement, NATO spokesperson Allison Hart said Supreme Allied Commander Europe General Alexus Grynkewich had authorized the deployment. NATO did not specify where the AWACS aircraft would be based or how long it would remain deployed."
+              ]
+            },
+            "sources": [
+              {
+                "name": "AeroTime — NATO to deploy AWACS aircraft as Russian airspace violation…",
+                "url": "https://www.aerotime.aero/articles/nato-awacs-deployment-poland-russian-missile-incursion"
+              }
+            ],
+            "entities": {
+              "organizations": [
+                "NATO"
+              ],
+              "locations": [
+                "Poland",
+                "Warsaw"
+              ],
+              "event_dates": [
+                "November 20, 2026"
+              ]
+            },
+            "sourceImageCandidates": [],
+            "sourcePublishedUtc": "2026-11-24T10:19Z"
+          },
+          "publishedExcerpt": false,
+          "eventKey": "",
+          "sourceUrls": [
+            "https://www.aerotime.aero/articles/nato-awacs-deployment-poland-russian-missile-incursion"
+          ]
+        },
+        {
+          "articleId": "a-20261124-1159-boeing-s-everett-built-737s-reportedly-a",
+          "image": {
+            "url": "https://www.aerotime.aero/images/2026/11/Boeing-rolls-out-first-737-MAX-built-in-Everett-1200x675.jpg",
+            "link": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett",
+            "subject": "737 MAX",
+            "sourceCaption": "Boeing",
+            "credit": "Boeing",
+            "license": null,
+            "provider": "AeroTime",
+            "kind": "event_photo",
+            "matched": "source:aerotime"
+          },
+          "imageContext": {
+            "cat": "reg",
+            "zh": {
+              "title": "波音Everett廠製造的737據報納入生產證書",
+              "summary": "波音Everett廠製造的737據報納入生產證書，FAA稽覈進入最後階段。",
+              "body": [
+                "The Air Current於2026年11月23日報導，波音在Everett製造的737已納入該公司的PC700生產證書。報導指出，波音距離向客戶交付新North Line產線製造的737又近了一步。",
+                "The Air Current引述熟悉波音動態的人士指出，波音目前正進行聯邦航空總署（FAA）稽覈的最後步驟。FAA也對這條產線最初製造的數架飛機進行額外檢查。",
+                "波音表示，Everett製造的首架737 MAX於2026年10月下線。這條產線於2026年7月啟用。"
+              ]
+            },
+            "en": {
+              "title": "Boeing's Everett-built 737s reportedly added to production certificate",
+              "summary": "Boeing's Everett-built 737s were reportedly added to its production certificate; an FAA audit is in its final stages.",
+              "body": [
+                "The Air Current reported on November 23, 2026, that Boeing 737s built at Everett had been added to the company's PC700 production certificate. The report said Boeing had moved a step closer to customer deliveries of 737 aircraft built at its new North Line facility in Everett.",
+                "Citing people with knowledge of developments at Boeing, The Air Current said the manufacturer is moving through the final steps of a Federal Aviation Administration (FAA) audit. The FAA also conducted additional inspections on the first several aircraft built on the line.",
+                "Boeing said the first 737 MAX manufactured in Everett rolled off the assembly line in October 2026. The line opened in July 2026."
+              ]
+            },
+            "sources": [
+              {
+                "name": "AeroTime — Boeing moves closer to 737 MAX deliveries from new North Li…",
+                "url": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett"
+              }
+            ],
+            "entities": {
+              "organizations": [
+                "Boeing",
+                "The Air Current",
+                "Federal Aviation Administration"
+              ],
+              "aircraft_models": [
+                "737",
+                "737 MAX"
+              ],
+              "locations": [
+                "Everett"
+              ],
+              "event_dates": [
+                "October 2026",
+                "July 2026"
+              ]
+            },
+            "sourceImageCandidates": [],
+            "sourcePublishedUtc": "2026-11-24T11:10Z"
+          },
+          "publishedExcerpt": false,
+          "eventKey": "",
+          "sourceUrls": [
+            "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett"
+          ],
+          "images": [
+            {
+              "url": "https://www.aerotime.aero/images/2026/11/Boeing-rolls-out-first-737-MAX-built-in-Everett-1200x675.jpg",
+              "link": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett",
+              "subject": "737 MAX",
+              "sourceCaption": "Boeing",
+              "credit": "Boeing",
+              "license": null,
+              "provider": "AeroTime",
+              "kind": "event_photo",
+              "matched": "source:aerotime"
+            }
+          ]
+        },
+        {
+          "articleId": "a-20261124-1225-singapore-airlines-cancels-airbus-a350-s",
+          "image": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Singapore_Airlines_Airbus_A350_9V-SMK_Singapore_2025_%2801%29.jpg/1280px-Singapore_Airlines_Airbus_A350_9V-SMK_Singapore_2025_%2801%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "link": "https://commons.wikimedia.org/wiki/Special:Redirect/page/161732606",
+            "credit": "Bahnfrend",
+            "license": "CC BY-SA 4.0",
+            "provider": "Wikimedia Commons",
+            "kind": "file_photo",
+            "matched": "Singapore Airlines Airbus A350",
+            "subject": "Singapore Airlines Airbus A350",
+            "description": "Singapore Airlines Airbus A350 9V-SMK Singapore 2025 (01)",
+            "photoYear": 2025
+          },
+          "imageContext": {
+            "cat": "ops",
+            "zh": {
+              "title": "新加坡航空取消9條航線的空中巴士A350服務",
+              "summary": "新加坡航空取消9條航線的A350服務；客艙變動包括頭等艙回歸及改用窄體客機",
+              "body": [
+                "Simple Flying報導，新加坡航空在9條航線取消空中巴士A350服務。熱門旅遊航線與長程航段的客艙配置也出現變動，包括頭等艙回歸及改用窄體客機。",
+                "Aerospace Global News先前的一項獨立航線紀錄顯示，新加坡航空曾在新加坡至吉隆坡的航段使用空中巴士A350-900客機，這段航程的距離約為180英里（295公里）。"
+              ]
+            },
+            "en": {
+              "title": "Singapore Airlines cancels Airbus A350 service on nine routes",
+              "summary": "Singapore Airlines cancels A350 service on nine routes; cabin changes include first-class returns and shifts to narrowbody aircraft.",
+              "body": [
+                "According to Simple Flying, Singapore Airlines has canceled Airbus A350 service on nine routes. Popular tourist routes and long-haul sectors are seeing changes in cabin configurations, including the return of first class and shifts to narrowbody aircraft.",
+                "Separately, an earlier Aerospace Global News report noted that Singapore Airlines deployed Airbus A350-900 aircraft on the short route between Singapore and Kuala Lumpur. It put the distance between the two cities at around 180 miles (295 kilometers)."
+              ]
+            },
+            "sources": [
+              {
+                "name": "Simple Flying — Singapore Airlines Cancels 9 Airbus A350 Routes: See Full L…",
+                "url": "https://simpleflying.com/singapore-airlines-cancels-9-a350-routes/"
+              },
+              {
+                "name": "Archive: Aerospace Global News — From an 80-mile hop to a 19-hour marathon: The Airbus A350’... — a-20260812-0709-qatar-airways-deploys-airbus-a350-900-on",
+                "url": "https://aerospaceglobalnews.com/news/airbus-a350-shortest-longest-flights/"
+              }
+            ],
+            "entities": {
+              "airlines": [
+                "Singapore Airlines"
+              ],
+              "aircraft_models": [
+                "Airbus A350"
+              ]
+            },
+            "sourceImageCandidates": [
+              {
+                "url": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/11/singapore-airlines-a350-900-landing-in-indonesia.jpg",
+                "sources": [
+                  {
+                    "url": "https://simpleflying.com/singapore-airlines-cancels-9-a350-routes/",
+                    "name": "Simple Flying"
+                  }
+                ]
+              }
+            ],
+            "sourcePublishedUtc": "2026-11-24T12:01Z"
+          },
+          "publishedExcerpt": false,
+          "eventKey": "",
+          "sourceUrls": [
+            "https://simpleflying.com/singapore-airlines-cancels-9-a350-routes"
+          ],
+          "images": [
+            {
+              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Singapore_Airlines_Airbus_A350_9V-SMK_Singapore_2025_%2801%29.jpg/1280px-Singapore_Airlines_Airbus_A350_9V-SMK_Singapore_2025_%2801%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+              "link": "https://commons.wikimedia.org/wiki/Special:Redirect/page/161732606",
+              "credit": "Bahnfrend",
+              "license": "CC BY-SA 4.0",
+              "provider": "Wikimedia Commons",
+              "kind": "file_photo",
+              "matched": "Singapore Airlines Airbus A350",
+              "subject": "Singapore Airlines Airbus A350",
+              "description": "Singapore Airlines Airbus A350 9V-SMK Singapore 2025 (01)",
+              "photoYear": 2025
+            }
+          ]
+        }
+      ],
+      "roundupWriters": [
+        {
+          "writer": "openai:gpt-6.1-terra",
+          "writerModels": []
+        },
+        {
+          "writer": "openai:gpt-6.1-terra",
+          "writerModels": []
+        },
+        {
+          "writer": "openai:gpt-6.1-terra",
+          "writerModels": []
+        }
+      ],
+      "primarySource": "Multiple aviation sources",
+      "image": {
+        "url": "https://www.aerotime.aero/images/2026/11/Boeing-rolls-out-first-737-MAX-built-in-Everett-1200x675.jpg",
+        "link": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett",
+        "subject": "737 MAX",
+        "sourceCaption": "Boeing",
+        "credit": "Boeing",
+        "license": null,
+        "provider": "AeroTime",
+        "kind": "event_photo",
+        "matched": "source:aerotime",
+        "roundupItemNumber": 2
+      },
+      "sourceImageCandidates": [],
+      "zh": {
+        "title": "航空短訊彙整：北約將前進部署一架預警機 供波蘭使用、波音Everett廠製造的737據報納入生產證書、新加坡航空取消9條航線的空中巴士A350服務",
+        "summary": "本期收錄3則獨立消息：北約將前進部署一架預警機 供波蘭使用、波音Everett廠製造的737據報納入生產證書、新加坡航空取消9條航線的空中巴士A350服務。",
+        "body": [
+          "本期彙整3則航空短訊，各則為獨立事件。",
+          "1. 北約將前進部署一架預警機 供波蘭使用\n北約將前進部署一架預警機供波蘭使用，波蘭並向盟國請求提供更多飛機。",
+          "2. 波音Everett廠製造的737據報納入生產證書\n波音Everett廠製造的737據報納入生產證書，FAA稽覈進入最後階段。",
+          "3. 新加坡航空取消9條航線的空中巴士A350服務\n新加坡航空取消9條航線的A350服務；客艙變動包括頭等艙回歸及改用窄體客機"
+        ]
+      },
+      "en": {
+        "title": "Aviation briefs: NATO to forward-deploy one AWACS aircraft for use by Poland; Boeing's Everett-built 737s reportedly added to production certificate; Singapore Airlines cancels Airbus A350 service on nine routes",
+        "summary": "3 independent updates: NATO to forward-deploy one AWACS aircraft for use by Poland; Boeing's Everett-built 737s reportedly added to production certificate; Singapore Airlines cancels Airbus A350 service on nine routes.",
+        "body": [
+          "3 independent aviation updates.",
+          "1. NATO to forward-deploy one AWACS aircraft for use by Poland\nNATO plans to forward-deploy an AWACS aircraft for Poland; Warsaw requested additional allied aircraft.",
+          "2. Boeing's Everett-built 737s reportedly added to production certificate\nBoeing's Everett-built 737s were reportedly added to its production certificate; an FAA audit is in its final stages.",
+          "3. Singapore Airlines cancels Airbus A350 service on nine routes\nSingapore Airlines cancels A350 service on nine routes; cabin changes include first-class returns and shifts to narrowbody aircraft."
+        ]
+      },
+      "sources": [
+        {
+          "name": "AeroTime — NATO to deploy AWACS aircraft as Russian airspace violation…",
+          "url": "https://www.aerotime.aero/articles/nato-awacs-deployment-poland-russian-missile-incursion"
+        },
+        {
+          "name": "AeroTime — Boeing moves closer to 737 MAX deliveries from new North Li…",
+          "url": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett"
+        },
+        {
+          "name": "Simple Flying — Singapore Airlines Cancels 9 Airbus A350 Routes: See Full L…",
+          "url": "https://simpleflying.com/singapore-airlines-cancels-9-a350-routes/"
+        },
+        {
+          "name": "Archive: Aerospace Global News — From an 80-mile hop to a 19-hour marathon: The Airbus A350’... — a-20260812-0709-qatar-airways-deploys-airbus-a350-900-on",
+          "url": "https://aerospaceglobalnews.com/news/airbus-a350-shortest-longest-flights/"
+        }
+      ],
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "NATO will forward-deploy one of its AWACS aircraft.",
+          "sourceQuote": "NATO will forward-deploy one of its Airborne Warning and Control System (AWACS) aircraft",
+          "sourceUrl": "https://www.aerotime.aero/articles/nato-awacs-deployment-poland-russian-missile-incursion",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Three Russian Kh-101 cruise missiles entered Polish airspace on November 20, 2026.",
+          "sourceQuote": "following the incursion of three Russian Kh-101 cruise missiles into Polish airspace on November 20, 2026",
+          "sourceUrl": "https://www.aerotime.aero/articles/nato-awacs-deployment-poland-russian-missile-incursion",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Polish Deputy Defence Minister Paweł Zalewski said the AWACS aircraft would be made available to Poland.",
+          "sourceQuote": "Polish Deputy Defence Minister Paweł Zalewski said the AWACS aircraft would be made available to Poland",
+          "sourceUrl": "https://www.aerotime.aero/articles/nato-awacs-deployment-poland-russian-missile-incursion",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Paweł Zalewski said Warsaw had requested additional aircraft from its allies.",
+          "sourceQuote": "Polish Deputy Defence Minister Paweł Zalewski said the AWACS aircraft would be made available to Poland and that Warsaw had requested additional aircraft from its allies",
+          "sourceUrl": "https://www.aerotime.aero/articles/nato-awacs-deployment-poland-russian-missile-incursion",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "NATO spokesperson Allison Hart said Supreme Allied Commander Europe General Alexus Grynkewich had authorized the deployment.",
+          "sourceQuote": "In a statement , NATO spokesperson Allison Hart said Supreme Allied Commander Europe (SACEUR) General Alexus Grynkewich had authorized the deployment",
+          "sourceUrl": "https://www.aerotime.aero/articles/nato-awacs-deployment-poland-russian-missile-incursion",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "NATO did not specify where the aircraft would be based or how long its deployment would last.",
+          "sourceQuote": "NATO did not specify where the aircraft would be based or how long it would remain deployed",
+          "sourceUrl": "https://www.aerotime.aero/articles/nato-awacs-deployment-poland-russian-missile-incursion",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F7",
+          "claim": "On November 23, 2026, The Air Current reported that Everett-built 737s had been added to Boeing’s PC700 production certificate.",
+          "sourceQuote": "November 23, 2026, The Air Current reported that Everett-built 737s had been added to Boeing’s PC700 production certificate",
+          "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F8",
+          "claim": "Boeing has moved a step closer to customer deliveries of 737 aircraft built at its new North Line facility in Everett.",
+          "sourceQuote": "Boeing has moved a step closer to customer deliveries of 737 aircraft built at its new North Line facility in Everett",
+          "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F9",
+          "claim": "The Air Current, citing people with knowledge of developments at Boeing, reported that the company was moving through the final steps of an FAA audit.",
+          "sourceQuote": "The Air Current, which spoke with people with knowledge of developments at Boeing, the planemaker is currently moving through the final steps of the FAA audit",
+          "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F10",
+          "claim": "The FAA conducted additional inspections on the first several aircraft built on the line.",
+          "sourceQuote": "The FAA conducted additional inspections on the first several aircraft built on the line",
+          "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F11",
+          "claim": "Boeing announced that the first 737 MAX manufactured in Everett rolled off the assembly line in October 2026.",
+          "sourceQuote": "Boeing announced that the first 737 MAX manufactured in Everett had rolled off the assembly line in October 2026",
+          "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F12",
+          "claim": "The assembly line first opened in July 2026.",
+          "sourceQuote": "the assembly line was first opened in July 2026",
+          "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-north-line-production-everett",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F13",
+          "claim": "新加坡航空取消9條航線的空中巴士A350服務。",
+          "sourceQuote": "Singapore Airlines Cancels 9 Airbus A350 Routes",
+          "sourceUrl": "https://simpleflying.com/singapore-airlines-cancels-9-a350-routes/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F14",
+          "claim": "熱門旅遊航線與長程航段的客艙配置出現變動。",
+          "sourceQuote": "Popular tourist routes and long haul sectors see cabin mixes shifted",
+          "sourceUrl": "https://simpleflying.com/singapore-airlines-cancels-9-a350-routes/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F15",
+          "claim": "客艙配置變動涉及頭等艙回歸。",
+          "sourceQuote": "cabin mixes shifted with First class returns",
+          "sourceUrl": "https://simpleflying.com/singapore-airlines-cancels-9-a350-routes/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F16",
+          "claim": "客艙配置變動涉及改用窄體客機。",
+          "sourceQuote": "cabin mixes shifted with First class returns and narrowbody downgrades",
+          "sourceUrl": "https://simpleflying.com/singapore-airlines-cancels-9-a350-routes/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "writer": "rules:verified-industry-roundup",
+      "generationMode": "verified-source-compilation",
+      "sourcePublishedUtc": "2026-11-24T12:01Z"
+    }
+  ]
+}
