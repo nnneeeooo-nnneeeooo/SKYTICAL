@@ -3542,32 +3542,6 @@
         }
       ]
     },
-    "23a72df24c06f6e59e055fee": {
-      "sourceUrls": [
-        "https://www.aerotime.aero/articles/aviation-security-insider-threat"
-      ],
-      "contentFailures": 1,
-      "serviceFailures": 0,
-      "history": [],
-      "updatedUtc": "2026-11-24T14:43Z",
-      "failureClass": "content_validation",
-      "status": "waiting",
-      "nextRetryUtc": "2026-11-24T16:43Z",
-      "title": "Aviation security’s next blind spot: The threat from within"
-    },
-    "c2b1df6e081f02be2e147725": {
-      "sourceUrls": [
-        "https://simpleflying.com/video/boeing-weighs-more-layoffs-as-737-max-output-boost-slows"
-      ],
-      "contentFailures": 1,
-      "serviceFailures": 0,
-      "history": [],
-      "updatedUtc": "2026-11-24T14:43Z",
-      "failureClass": "content_validation",
-      "status": "waiting",
-      "nextRetryUtc": "2026-11-24T16:43Z",
-      "title": "Boeing Weighs More Layoffs As 737 MAX Output Boost Slows"
-    },
     "f819a32f3b245a82afca57fb": {
       "sourceUrls": [
         "https://simpleflying.com/flydubai-israel-return-approval"
@@ -3955,8 +3929,8 @@
         "https://www.ntsb.gov/_layouts/ntsb.aviation/Results.aspx?queryId=d46ded6a-42ab-4716-ae4b-59cccbaf35c1"
       ],
       "contentFailures": 0,
-      "serviceFailures": 0,
-      "status": "ready",
+      "serviceFailures": 1,
+      "status": "waiting",
       "history": [
         {
           "status": "waiting",
@@ -3965,8 +3939,60 @@
           "updatedUtc": "2026-11-24T15:52Z"
         }
       ],
-      "updatedUtc": "2026-11-24T17:07Z",
-      "nextRetryUtc": null
+      "updatedUtc": "2026-11-24T17:46Z",
+      "nextRetryUtc": "2026-11-24T23:46Z",
+      "failureClass": "source_insufficient",
+      "title": "- NTSB (.gov)",
+      "items": [
+        {
+          "url": "https://www.ntsb.gov/_layouts/ntsb.aviation/Results.aspx?queryId=d46ded6a-42ab-4716-ae4b-59cccbaf35c1",
+          "title": "- NTSB (.gov)",
+          "summary": "",
+          "publishedUtc": "2026-11-23T07:07Z",
+          "source": "NTSB",
+          "sourceKey": "ntsb"
+        },
+        {
+          "url": "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FPages%2Fbrief%2Easpx%3Fev%25255Fid%3D35471%26key%3D0",
+          "title": "- NTSB (.gov)",
+          "summary": "",
+          "publishedUtc": "2026-11-22T15:29Z",
+          "source": "NTSB",
+          "sourceKey": "ntsb"
+        },
+        {
+          "url": "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FPages%2Fhome%2Easpx",
+          "title": "- NTSB (.gov)",
+          "summary": "",
+          "publishedUtc": "2026-11-24T13:49Z",
+          "source": "NTSB",
+          "sourceKey": "ntsb"
+        },
+        {
+          "url": "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FEvents%2Fsymposia%2Ehtm",
+          "title": "- NTSB (.gov)",
+          "summary": "",
+          "publishedUtc": "2026-11-24T00:57Z",
+          "source": "NTSB",
+          "sourceKey": "ntsb"
+        },
+        {
+          "url": "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FScriptResource%2Eaxd%3Fd%3DdwY9oWetJoJoVpgL6Zq8OCGTHSVrSi6xCyU9ORLeNcMVpKQFNVDbn3pLYFVozyeAvxDyhE8G78I5sG0GNrbznWFdlguNwSGHzBVCb68WdXHHZTwXsNtjVlg71WqJxECRVuzXdOcup3lwpz3eUK05OSIEDGB%252DYvMk0jQsMNqtNR81%26t%3Dffffffffa1bf0f7b",
+          "title": "- NTSB (.gov)",
+          "summary": "",
+          "publishedUtc": "2026-11-21T03:40Z",
+          "source": "NTSB",
+          "sourceKey": "ntsb"
+        },
+        {
+          "url": "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FPages%2Fbrief%2Easpx%3Fev%25255Fid%3D27947%26key%3D0",
+          "title": "- NTSB (.gov)",
+          "summary": "",
+          "publishedUtc": "2026-11-20T00:55Z",
+          "source": "NTSB",
+          "sourceKey": "ntsb"
+        }
+      ]
     },
     "428bf424a1f68e12dcc234e5": {
       "sourceUrls": [
@@ -4000,17 +4026,33 @@
     },
     "89993468b7bfc986232b10b2": {
       "sourceUrls": [
+        "https://www.embraer.com/umbraco/surface/SubscriberSurface/Subscribe",
         "https://www.embraer.com/umbraco/surface/latestfeed/GetFeedsListNew"
       ],
       "contentFailures": 0,
       "serviceFailures": 1,
-      "history": [],
-      "updatedUtc": "2026-11-24T17:07Z",
-      "failureClass": "source_insufficient",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-24T23:07Z",
+      "history": [
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 1,
+          "updatedUtc": "2026-11-24T17:07Z"
+        }
+      ],
+      "updatedUtc": "2026-11-24T17:46Z",
+      "nextRetryUtc": "2026-11-24T23:46Z",
+      "failureClass": "source_insufficient",
       "title": "- Embraer",
       "items": [
+        {
+          "url": "https://www.embraer.com/umbraco/surface/SubscriberSurface/Subscribe",
+          "title": "- Embraer",
+          "summary": "",
+          "publishedUtc": "2026-11-20T21:15Z",
+          "source": "Embraer 官方新聞室",
+          "sourceKey": "embraer"
+        },
         {
           "url": "https://www.embraer.com/umbraco/surface/latestfeed/GetFeedsListNew",
           "title": "- Embraer",
