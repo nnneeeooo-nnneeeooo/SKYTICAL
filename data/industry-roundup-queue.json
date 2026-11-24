@@ -313,6 +313,167 @@
         "evidenceVersion": 2
       },
       "publishedExcerptId": null
+    },
+    {
+      "enqueuedUtc": "2026-11-24T12:25Z",
+      "routeReason": "verified_short_update",
+      "sourceGroupId": "g-20261124-1225-4",
+      "eventKey": "",
+      "article": {
+        "id": "a-20261124-1225-singapore-airlines-cancels-airbus-a350-s",
+        "publishedUtc": "2026-11-24T12:25Z",
+        "cat": "ops",
+        "primarySource": "Simple Flying",
+        "image": null,
+        "sourceImageCandidates": [
+          {
+            "url": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/11/singapore-airlines-a350-900-landing-in-indonesia.jpg",
+            "sources": [
+              {
+                "url": "https://simpleflying.com/singapore-airlines-cancels-9-a350-routes/",
+                "name": "Simple Flying"
+              }
+            ]
+          }
+        ],
+        "zh": {
+          "title": "新加坡航空取消9條航線的空中巴士A350服務",
+          "summary": "新加坡航空取消9條航線的A350服務；客艙變動包括頭等艙回歸及改用窄體客機",
+          "body": [
+            "Simple Flying報導，新加坡航空在9條航線取消空中巴士A350服務。熱門旅遊航線與長程航段的客艙配置也出現變動，包括頭等艙回歸及改用窄體客機。",
+            "Aerospace Global News先前的一項獨立航線紀錄顯示，新加坡航空曾在新加坡至吉隆坡的航段使用空中巴士A350-900客機，這段航程的距離約為180英里（295公里）。"
+          ]
+        },
+        "en": {
+          "title": "Singapore Airlines cancels Airbus A350 service on nine routes",
+          "summary": "Singapore Airlines cancels A350 service on nine routes; cabin changes include first-class returns and shifts to narrowbody aircraft.",
+          "body": [
+            "According to Simple Flying, Singapore Airlines has canceled Airbus A350 service on nine routes. Popular tourist routes and long-haul sectors are seeing changes in cabin configurations, including the return of first class and shifts to narrowbody aircraft.",
+            "Separately, an earlier Aerospace Global News report noted that Singapore Airlines deployed Airbus A350-900 aircraft on the short route between Singapore and Kuala Lumpur. It put the distance between the two cities at around 180 miles (295 kilometers)."
+          ]
+        },
+        "sources": [
+          {
+            "name": "Simple Flying — Singapore Airlines Cancels 9 Airbus A350 Routes: See Full L…",
+            "url": "https://simpleflying.com/singapore-airlines-cancels-9-a350-routes/"
+          },
+          {
+            "name": "Archive: Aerospace Global News — From an 80-mile hop to a 19-hour marathon: The Airbus A350’... — a-20260812-0709-qatar-airways-deploys-airbus-a350-900-on",
+            "url": "https://aerospaceglobalnews.com/news/airbus-a350-shortest-longest-flights/"
+          }
+        ],
+        "articleFormat": "brief",
+        "sourcePublishedUtc": "2026-11-24T12:01Z",
+        "writer": "openai:gpt-6.1-terra",
+        "facts": [
+          {
+            "factId": "F1",
+            "claim": "新加坡航空取消9條航線的空中巴士A350服務。",
+            "sourceQuote": "Singapore Airlines Cancels 9 Airbus A350 Routes",
+            "sourceUrl": "https://simpleflying.com/singapore-airlines-cancels-9-a350-routes/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F2",
+            "claim": "熱門旅遊航線與長程航段的客艙配置出現變動。",
+            "sourceQuote": "Popular tourist routes and long haul sectors see cabin mixes shifted",
+            "sourceUrl": "https://simpleflying.com/singapore-airlines-cancels-9-a350-routes/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F3",
+            "claim": "客艙配置變動涉及頭等艙回歸。",
+            "sourceQuote": "cabin mixes shifted with First class returns",
+            "sourceUrl": "https://simpleflying.com/singapore-airlines-cancels-9-a350-routes/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F4",
+            "claim": "客艙配置變動涉及改用窄體客機。",
+            "sourceQuote": "cabin mixes shifted with First class returns and narrowbody downgrades",
+            "sourceUrl": "https://simpleflying.com/singapore-airlines-cancels-9-a350-routes/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F5",
+            "claim": "先前的紀錄顯示，新加坡航空曾使用A350-900執飛新加坡至吉隆坡，航程約180英里（295公里）。",
+            "sourceQuote": "Singapore Airlines and Ethiopian Airlines deploy their Airbus A350-900s on the short journey between Singapore and Kuala Lumpur, which is only around 180 miles (295km)",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-a350-shortest-longest-flights/",
+            "evidenceScope": "archive",
+            "archiveEventId": "a-20260812-0709-qatar-airways-deploys-airbus-a350-900-on",
+            "archiveContext": true
+          }
+        ],
+        "archiveContext": {
+          "archive_context_version": 1,
+          "context_id": "5f561e8261d20949",
+          "selected_events": [
+            {
+              "event_id": "a-20260812-0709-qatar-airways-deploys-airbus-a350-900-on",
+              "relationship_type": "programme_background",
+              "relationship_evidence": [
+                "same aircraft model: AIRBUS A350",
+                "same named core entity: airbus, singapore airlines",
+                "archive predates source by 105 day(s)"
+              ],
+              "relationship_tier": 2,
+              "confidence_score": 89,
+              "confidence_reason": "tier 2; 3 deterministic evidence item(s); 105 day(s) apart",
+              "event_date": "2026-08-11",
+              "source_name": "Aerospace Global News — From an 80-mile hop to a 19-hour marathon: The Airbus A350’...",
+              "source_url": "https://aerospaceglobalnews.com/news/airbus-a350-shortest-longest-flights/",
+              "facts": [
+                {
+                  "claim": "Ethiopian Airlines operates an Airbus A350 on a 60-mile leg between Geneva and Lyon as its shortest scheduled A350 service.",
+                  "source_quote": "Ethiopian Airlines’ leg from Geneva to Lyon comes in at just 60 miles and is the shortest A350 scheduled service.",
+                  "source_url": "https://aerospaceglobalnews.com/news/airbus-a350-shortest-longest-flights/",
+                  "source_name": "Aerospace Global News — From an 80-mile hop to a 19-hour marathon: The Airbus A350’..."
+                },
+                {
+                  "claim": "Singapore Airlines and Ethiopian Airlines deploy Airbus A350-900 aircraft on the route between Singapore and Kuala Lumpur over a distance of around 180 miles.",
+                  "source_quote": "Both Singapore Airlines and Ethiopian Airlines deploy their Airbus A350-900s on the short journey between Singapore and Kuala Lumpur, which is only around 180 miles (295km).",
+                  "source_url": "https://aerospaceglobalnews.com/news/airbus-a350-shortest-longest-flights/",
+                  "source_name": "Aerospace Global News — From an 80-mile hop to a 19-hour marathon: The Airbus A350’..."
+                }
+              ]
+            }
+          ]
+        },
+        "riskFlags": [],
+        "eventStatus": "confirmed",
+        "entities": {
+          "airlines": [
+            "Singapore Airlines"
+          ],
+          "aircraft_models": [
+            "Airbus A350"
+          ]
+        },
+        "entityEvidence": [
+          {
+            "entityType": "airlines",
+            "value": "Singapore Airlines",
+            "sourceQuote": "Singapore Airlines Cancels 9 Airbus A350 Routes",
+            "sourceUrl": "https://simpleflying.com/singapore-airlines-cancels-9-a350-routes/"
+          },
+          {
+            "entityType": "aircraft_models",
+            "value": "Airbus A350",
+            "sourceQuote": "Singapore Airlines Cancels 9 Airbus A350 Routes",
+            "sourceUrl": "https://simpleflying.com/singapore-airlines-cancels-9-a350-routes/"
+          }
+        ],
+        "evidenceVersion": 2
+      },
+      "publishedExcerptId": null
     }
   ],
   "history": [
@@ -489,6 +650,11 @@
     {
       "articleId": "a-20261124-0849-jetblue-a321neo-grounded-at-lax-after-la",
       "atUtc": "2026-11-24T08:49Z",
+      "reason": "already_published"
+    },
+    {
+      "articleId": "a-20261124-1225-trump-expects-china-to-buy-250-more-boei",
+      "atUtc": "2026-11-24T12:25Z",
       "reason": "already_published"
     }
   ]

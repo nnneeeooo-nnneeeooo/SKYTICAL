@@ -1,0 +1,205 @@
+{
+  "articles": [
+    {
+      "id": "a-20261124-1225-aviation-incident-roundup-four-separate",
+      "publishedUtc": "2026-11-24T12:25Z",
+      "cat": "safety",
+      "primarySource": "The Aviation Herald",
+      "sourceImageCandidates": [],
+      "zh": {
+        "title": "飛航安全彙整：4起獨立事件 JAC航機出現飛行控制故障指示",
+        "summary": "JAC航機在鹿兒島出現飛行控制故障指示；另有3起獨立事件",
+        "body": [
+          "以下為The Aviation Herald報導的4起獨立飛航事件，並無資料指出事件之間有關聯。",
+          "1. 2026年11月22日，JAC一架AT72型航機在鹿兒島出現飛行控制故障指示。",
+          "2. 2026年11月22日，Seychelles一架DHC-6 Twin Otter（ICAO機型代碼DHC6）在維多利亞降落時偏出跑道。",
+          "3. 2026年11月22日，TAP一架空中巴士A321neo（ICAO機型代碼A21N）在馬德里附近時，機上出現煙氣。",
+          "4. 2026年11月21日，Niugini一架波音767-300（ICAO機型代碼B763）在Davao附近出現引擎火警指示。"
+        ]
+      },
+      "en": {
+        "title": "Aviation incident roundup: Four separate events include a JAC flight-control malfunction indication",
+        "summary": "A JAC aircraft had a flight-control malfunction indication at Kagoshima; three other incidents were separate.",
+        "body": [
+          "The Aviation Herald reported these four independent aviation incidents; no relationship between them has been stated.",
+          "1. On November 22, 2026, a JAC AT72 aircraft showed an indication of a flight-control malfunction at Kagoshima.",
+          "2. On November 22, 2026, a Seychelles DHC-6 Twin Otter (ICAO type code DHC6) had a runway excursion on landing at Victoria.",
+          "3. On November 22, 2026, fumes were reported on board a TAP Airbus A321neo (ICAO type code A21N) near Madrid.",
+          "4. On November 21, 2026, a Niugini Boeing 767-300 (ICAO type code B763) showed an engine fire indication near Davao."
+        ]
+      },
+      "sources": [
+        {
+          "name": "The Aviation Herald — Incident: JAC AT72 at Kagoshima on Nov 22nd 2026, indicatio…",
+          "url": "https://avherald.com/h?article=5483616c&opt=0"
+        },
+        {
+          "name": "The Aviation Herald — Incident: Seychelles DHC6 at Victoria on Nov 22nd 2026, run…",
+          "url": "https://avherald.com/h?article=5484b733&opt=0"
+        },
+        {
+          "name": "The Aviation Herald — Incident: TAP A21N near Madrid on Nov 22nd 2026, fumes on b…",
+          "url": "https://avherald.com/h?article=5484c66b&opt=0"
+        },
+        {
+          "name": "The Aviation Herald — Incident: Niugini B763 near Davao on Nov 21st 2026, engine…",
+          "url": "https://avherald.com/h?article=5481e949&opt=0"
+        }
+      ],
+      "articleFormat": "roundup",
+      "sourcePublishedUtc": "2026-11-22T17:02Z",
+      "writer": "openai:gpt-6.1-terra",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "A JAC AT72 at Kagoshima had a flight-control malfunction indication on November 22, 2026.",
+          "sourceQuote": "Incident: JAC AT72 at Kagoshima on Nov 22nd 2026, indication of flight control malfunction",
+          "sourceUrl": "https://avherald.com/h?article=5483616c&opt=0",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "A Seychelles DHC6 had a runway excursion on landing at Victoria on November 22, 2026.",
+          "sourceQuote": "Incident: Seychelles DHC6 at Victoria on Nov 22nd 2026, runway excursion on landing",
+          "sourceUrl": "https://avherald.com/h?article=5484b733&opt=0",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "A TAP A21N had fumes on board near Madrid on November 22, 2026.",
+          "sourceQuote": "Incident: TAP A21N near Madrid on Nov 22nd 2026, fumes on board",
+          "sourceUrl": "https://avherald.com/h?article=5484c66b&opt=0",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "A Niugini B763 had an engine fire indication near Davao on November 21, 2026.",
+          "sourceQuote": "Incident: Niugini B763 near Davao on Nov 21st 2026, engine fire indication",
+          "sourceUrl": "https://avherald.com/h?article=5481e949&opt=0",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [],
+      "eventStatus": "confirmed",
+      "entities": {
+        "airlines": [
+          "JAC",
+          "Seychelles",
+          "TAP",
+          "Niugini"
+        ],
+        "aircraft_models": [
+          "AT72",
+          "DHC6",
+          "A21N",
+          "B763"
+        ],
+        "locations": [
+          "Kagoshima",
+          "Victoria",
+          "Madrid",
+          "Davao"
+        ],
+        "event_dates": [
+          "Nov 22nd 2026",
+          "Nov 21st 2026"
+        ]
+      },
+      "entityEvidence": [
+        {
+          "entityType": "airlines",
+          "value": "JAC",
+          "sourceQuote": "JAC AT72 at Kagoshima",
+          "sourceUrl": "https://avherald.com/h?article=5483616c&opt=0"
+        },
+        {
+          "entityType": "airlines",
+          "value": "Seychelles",
+          "sourceQuote": "Seychelles DHC6 at Victoria",
+          "sourceUrl": "https://avherald.com/h?article=5484b733&opt=0"
+        },
+        {
+          "entityType": "airlines",
+          "value": "TAP",
+          "sourceQuote": "TAP A21N near Madrid",
+          "sourceUrl": "https://avherald.com/h?article=5484c66b&opt=0"
+        },
+        {
+          "entityType": "airlines",
+          "value": "Niugini",
+          "sourceQuote": "Niugini B763 near Davao",
+          "sourceUrl": "https://avherald.com/h?article=5481e949&opt=0"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "AT72",
+          "sourceQuote": "JAC AT72 at Kagoshima",
+          "sourceUrl": "https://avherald.com/h?article=5483616c&opt=0"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "DHC6",
+          "sourceQuote": "Seychelles DHC6 at Victoria",
+          "sourceUrl": "https://avherald.com/h?article=5484b733&opt=0"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "A21N",
+          "sourceQuote": "TAP A21N near Madrid",
+          "sourceUrl": "https://avherald.com/h?article=5484c66b&opt=0"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "B763",
+          "sourceQuote": "Niugini B763 near Davao",
+          "sourceUrl": "https://avherald.com/h?article=5481e949&opt=0"
+        },
+        {
+          "entityType": "locations",
+          "value": "Kagoshima",
+          "sourceQuote": "JAC AT72 at Kagoshima",
+          "sourceUrl": "https://avherald.com/h?article=5483616c&opt=0"
+        },
+        {
+          "entityType": "locations",
+          "value": "Victoria",
+          "sourceQuote": "Seychelles DHC6 at Victoria",
+          "sourceUrl": "https://avherald.com/h?article=5484b733&opt=0"
+        },
+        {
+          "entityType": "locations",
+          "value": "Madrid",
+          "sourceQuote": "TAP A21N near Madrid",
+          "sourceUrl": "https://avherald.com/h?article=5484c66b&opt=0"
+        },
+        {
+          "entityType": "locations",
+          "value": "Davao",
+          "sourceQuote": "Niugini B763 near Davao",
+          "sourceUrl": "https://avherald.com/h?article=5481e949&opt=0"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "Nov 22nd 2026",
+          "sourceQuote": "on Nov 22nd 2026",
+          "sourceUrl": "https://avherald.com/h?article=5483616c&opt=0"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "Nov 21st 2026",
+          "sourceQuote": "on Nov 21st 2026",
+          "sourceUrl": "https://avherald.com/h?article=5481e949&opt=0"
+        }
+      ],
+      "evidenceVersion": 2
+    }
+  ]
+}
