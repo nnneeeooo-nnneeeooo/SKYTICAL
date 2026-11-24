@@ -28,7 +28,7 @@ ChatGPT 負責搜尋、讀取來源、查證與雙語撰稿；GitHub 保存文�
 
 - 一次執行確實產出、入庫並發布一篇附原始來源的中英文新聞。
 - 重跑同一事件不產生第二篇，查證時間與來源發布時間可追溯。
-- 每小時管線不改寫排程文章（含 `scheduledNews` 或 `writer` 為 `scheduled:` 開頭）；同一事件的後續報導由排程流程或人工更新。
+- 每小時管線不改寫排程文章（含 `scheduledNews` 或 `writer` 為 `scheduled:` 開頭）；同一事件的後續報導由排程流程或人工更新。更新既有文章時保留 `id` 與 `publishedUtc`，加上 `updatedUtc`（更新時間）；`sourcePublishedUtc` 取所列來源最晚者、`scheduledNews.checkedUtc` 為重新查證時間，兩者不得晚於 `updatedUtc`。
 - 缺來源、缺語言、未綁定查證紀錄、未來時間及重複識別碼由測試涵蓋。
 - 排程首輪必須查看真實執行結果，不能以手動試跑成功代替無人值守成功。
 
