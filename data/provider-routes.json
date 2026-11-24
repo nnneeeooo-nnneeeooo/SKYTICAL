@@ -3,10 +3,10 @@
   "routes": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
       "status": "waiting",
-      "untilUtc": "2026-11-24T20:13Z",
-      "checkedUtc": "2026-11-24T14:13Z",
+      "untilUtc": "2026-11-25T02:14Z",
+      "checkedUtc": "2026-11-24T20:14Z",
       "failureClass": "unexpected",
-      "diagnostic": "F1 claim date is not supported by its sourceQuote",
+      "diagnostic": "entity value '13 June to 8 October 2026' is not verbatim in its sourceQuote",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -48,10 +48,10 @@
     },
     "gemini:gemini-3.6-flash": {
       "status": "waiting",
-      "untilUtc": "2026-11-24T20:13Z",
-      "checkedUtc": "2026-11-24T14:13Z",
-      "failureClass": "http_error",
-      "diagnostic": "HTTP 503 code=UNAVAILABLE",
+      "untilUtc": "2026-11-25T02:14Z",
+      "checkedUtc": "2026-11-24T20:14Z",
+      "failureClass": "unexpected",
+      "diagnostic": "zh.body[0] contains Simplified Chinese characters",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -192,8 +192,8 @@
     },
     "nvidia:google/gemma-4-31b-it": {
       "status": "unavailable",
-      "checkedUtc": "2026-11-24T20:11Z",
       "untilUtc": "2026-11-25T20:11Z",
+      "checkedUtc": "2026-11-24T20:11Z",
       "failureClass": "model_unavailable",
       "diagnostic": "HTTP 410",
       "probeVersion": 3,
@@ -282,8 +282,8 @@
     },
     "openrouter:nvidia/nemotron-3.5-super-vl:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-24T20:13Z",
-      "checkedUtc": "2026-11-24T14:13Z",
+      "untilUtc": "2026-11-25T02:14Z",
+      "checkedUtc": "2026-11-24T20:14Z",
       "failureClass": "truncated",
       "diagnostic": "response truncated (length)",
       "probeVersion": 3,
@@ -309,8 +309,8 @@
     },
     "openrouter:google/gemma-4-26b-a4b-it:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-24T20:05Z",
-      "checkedUtc": "2026-11-24T20:04Z",
+      "checkedUtc": "2026-11-24T20:14Z",
+      "untilUtc": "2026-11-24T20:15Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
