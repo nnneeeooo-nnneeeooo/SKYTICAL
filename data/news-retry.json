@@ -88,19 +88,6 @@
       "nextRetryUtc": "2026-10-26T00:26Z",
       "title": "American Airlines Replaced Its 84-Mile Chicago Bus With Bombardier CRJ700 Jets After Travelers Booked 'Flights' That Weren't"
     },
-    "2965db5fffcfe12739b59c44": {
-      "sourceUrls": [
-        "https://simpleflying.com/no-engine-one-power-airbus-most-fuel-efficient-widebody"
-      ],
-      "contentFailures": 1,
-      "serviceFailures": 1,
-      "history": [],
-      "updatedUtc": "2026-10-25T17:54Z",
-      "failureClass": "provider_failure",
-      "status": "waiting",
-      "nextRetryUtc": "2026-10-25T19:54Z",
-      "title": "Why No Engine Other Than One Can Power Airbus' Most Fuel-Efficient Widebody"
-    },
     "b9d425da7a277fd694ffb969": {
       "sourceUrls": [
         "https://simpleflying.com/delta-air-lines-boeing-787-10s-2031-airbus-a350-1000-carry-asia-bet"
@@ -3245,12 +3232,12 @@
         "https://simpleflying.com/5-widebody-aircraft-define-commercial-aviation-2026"
       ],
       "contentFailures": 0,
-      "serviceFailures": 2,
+      "serviceFailures": 3,
       "history": [],
-      "updatedUtc": "2026-11-24T10:52Z",
-      "failureClass": "source_insufficient",
+      "updatedUtc": "2026-11-24T18:13Z",
+      "failureClass": "provider_failure",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-24T16:52Z",
+      "nextRetryUtc": "2026-11-25T18:13Z",
       "title": "5 Widebody Aircraft That Define Commercial Aviation In 2026",
       "items": [
         {
@@ -3419,12 +3406,12 @@
         "https://simpleflying.com/alaska-airlines-boeing-737-catering-truck-collision-new-york-jfk-wing-damage"
       ],
       "contentFailures": 0,
-      "serviceFailures": 1,
+      "serviceFailures": 2,
       "history": [],
-      "updatedUtc": "2026-11-24T09:53Z",
-      "failureClass": "source_insufficient",
+      "updatedUtc": "2026-11-24T18:13Z",
+      "failureClass": "provider_failure",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-24T15:53Z",
+      "nextRetryUtc": "2026-11-25T00:13Z",
       "title": "Alaska Airlines Boeing 737 Collides With Catering Truck At JFK, Wing Damage Halts Flight",
       "items": [
         {
@@ -3994,23 +3981,6 @@
         }
       ]
     },
-    "428bf424a1f68e12dcc234e5": {
-      "sourceUrls": [
-        "https://avherald.com/h?article=5483616c&opt=0",
-        "https://avherald.com/h?article=5484b733&opt=0",
-        "https://avherald.com/h?article=5484c66b&opt=0",
-        "https://avherald.com/h?article=5485d4bf&opt=0",
-        "https://avherald.com/h?article=5485decd&opt=0"
-      ],
-      "contentFailures": 1,
-      "serviceFailures": 0,
-      "history": [],
-      "updatedUtc": "2026-11-24T17:07Z",
-      "failureClass": "content_validation",
-      "status": "waiting",
-      "nextRetryUtc": "2026-11-24T19:07Z",
-      "title": "Incident: Wizz A21N near Barcelona on Nov 23rd 2026, engine problem"
-    },
     "8ea52836d2419f5240d44e51": {
       "sourceUrls": [
         "https://simpleflying.com/airport-thanksgiving-curb-2-lane-bypass-expected-last-2030"
@@ -4060,6 +4030,67 @@
           "publishedUtc": "2026-11-24T14:21Z",
           "source": "Embraer 官方新聞室",
           "sourceKey": "embraer"
+        }
+      ]
+    },
+    "428bf424a1f68e12dcc234e5": {
+      "sourceUrls": [
+        "https://avherald.com/h?article=5483616c&opt=0",
+        "https://avherald.com/h?article=5484b733&opt=0",
+        "https://avherald.com/h?article=5484c66b&opt=0",
+        "https://avherald.com/h?article=5485d4bf&opt=0",
+        "https://avherald.com/h?article=5485decd&opt=0",
+        "https://avherald.com/h?article=5485eb85&opt=0"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "status": "waiting",
+      "history": [
+        {
+          "status": "waiting",
+          "contentFailures": 1,
+          "serviceFailures": 0,
+          "updatedUtc": "2026-11-24T17:07Z"
+        }
+      ],
+      "updatedUtc": "2026-11-24T18:13Z",
+      "nextRetryUtc": "2026-11-24T20:13Z",
+      "failureClass": "provider_failure",
+      "title": "Incident: Wizz A21N near Barcelona on Nov 23rd 2026, engine problem"
+    },
+    "46419c388a738720d23352fc": {
+      "sourceUrls": [
+        "https://simpleflying.com/delta-set-to-reveal-new-17-hour-route-next-week"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-24T18:13Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-24T20:13Z",
+      "title": "Delta Air Lines Set To Reveal New 17-Hour Nonstop Route Next Week: See Map Now"
+    },
+    "41a6ffca6a336b91c79efda4": {
+      "sourceUrls": [
+        "https://simpleflying.com/largest-us-air-force-bomber-jet-engines"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-24T18:13Z",
+      "failureClass": "source_insufficient",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-25T00:13Z",
+      "title": "The US Air Force Bolted Jet Engines Onto Its Largest-Ever Bomber, But It Still Wasn't Enough To Save It",
+      "items": [
+        {
+          "url": "https://simpleflying.com/largest-us-air-force-bomber-jet-engines/",
+          "title": "The US Air Force Bolted Jet Engines Onto Its Largest-Ever Bomber, But It Still Wasn't Enough To Save It",
+          "summary": "One of the overlooked and innovative engineering aspects of the B-36 Peacemaker was its use of four turbojets to supplement its six piston engines.",
+          "publishedUtc": "2026-11-24T18:00Z",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
         }
       ]
     }
