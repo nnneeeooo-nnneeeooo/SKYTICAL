@@ -64,9 +64,9 @@ def main() -> None:
     for slug in build.TOPICS:
         assert (f"{build.SITE_ORIGIN}{build.BASE_PATH}/topics/{slug}/"
                 in locations)
+    articles = build.collect_articles()
     localized_zh_count = sum(
-        "zh" in article["available_languages"]
-        for article in build.collect_articles()
+        "zh" in article["available_languages"] for article in articles
     )
     expected_zh_pages = max(
         1, math.ceil(localized_zh_count / build.NEWS_PAGE_SIZE))
@@ -74,8 +74,7 @@ def main() -> None:
         assert (f"{build.SITE_ORIGIN}{build.BASE_PATH}/news/page/2/"
                 in locations)
     localized_en_count = sum(
-        "en" in article["available_languages"]
-        for article in build.collect_articles()
+        "en" in article["available_languages"] for article in articles
     )
     expected_en_pages = max(
         1, math.ceil(localized_en_count / build.NEWS_PAGE_SIZE))
@@ -169,7 +168,10 @@ def main() -> None:
         assert en_page_two.count('class="feed-row"') <= build.NEWS_PAGE_SIZE
 
     article_paths = list((ROOT / "site" / "news").glob("*/index.html"))
-    article = article_paths[0].read_text(encoding="utf-8")
+    source_dated = next(row for row in articles
+                        if "zh" in row["available_languages"] and row["source_meta_ts"])
+    article_path = ROOT / "site" / "news" / build.public_article_id(source_dated["id"])
+    article = (article_path / "index.html").read_text(encoding="utf-8")
     article_entities = _schema_entities(article)
     article_schema = next(
         entity for entity in article_entities
@@ -180,6 +182,7 @@ def main() -> None:
     assert article_schema["@type"] == "NewsArticle"
     assert article_schema["headline"]
     assert article_schema["datePublished"].endswith("Z")
+    assert article_schema["datePublished"] == source_dated["published_iso"]
     assert article_schema["dateModified"].endswith("Z")
     assert article_schema["inLanguage"] == "zh-Hant-TW"
     assert article_schema["author"]["name"] == "SKYTICAL"
