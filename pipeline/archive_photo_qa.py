@@ -155,6 +155,8 @@ def main():
                 continue
             if str(a["publishedUtc"])[:10]<CUTOFF:
                 continue
+            if a.get("editorialImageLocked") is True:
+                continue
             image=a.get("image") or {}
             method=str(image.get("matched") or "") if isinstance(image,dict) else ""
             # Earlier archive bank assignment used loose model-only matches;

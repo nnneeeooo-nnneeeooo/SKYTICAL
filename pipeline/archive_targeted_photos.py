@@ -138,7 +138,7 @@ def main():
         a=next((x for x in data.get("articles") or [] if x.get("id")==issue.get("id")),None)
         if a is None:
             continue
-        if a.get("image"):
+        if a.get("image") or a.get("editorialImageLocked") is True:
             stats["already_resolved"]+=1
             continue
         found=False

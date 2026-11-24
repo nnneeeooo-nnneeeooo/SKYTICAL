@@ -79,6 +79,9 @@ def headline(article):
     return " ".join(str((article.get(k) or {}).get("title") or "") for k in ("zh", "en"))
 
 def usable_existing(article):
+    # An editor's lock settles the image, including a deliberate "no image".
+    if article.get("editorialImageLocked") is True:
+        return True
     raw = article.get("image")
     if isinstance(raw, dict) and raw.get("url"):
         # Do not overwrite prior human curation, even when the selection filter
