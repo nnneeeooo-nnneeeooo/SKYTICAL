@@ -8,7 +8,8 @@ article.  Two guards replace that for published data:
   batch by article ID and field group instead of by line: whatever the branch
   changed since the run started stays, the run keeps what the branch left alone.
 * ``guard`` runs after the rebase and restores, from the branch tip, any locked
-  image, article or batch the run's working tree no longer carries.
+  image, article or batch the run's working tree no longer carries.  It also
+  drops a flash or incident the run added for a redraft the merge did not keep.
 """
 from __future__ import annotations
 
@@ -210,17 +211,45 @@ def _restore_images(tip, row, notes, label, *, locked=False) -> bool:
     return changed
 
 
+def _drop_orphan_rows(rev, root, written, notes) -> None:
+    """A flash or incident the run added for a redraft that was not kept."""
+    for name, cap in PREPEND_CAPS.items():
+        path = Path(root) / name
+        try:
+            rows = _load(path)
+            tip = json.loads(_git("show", f"{rev}:{name}", root=root))
+        except (OSError, ValueError, subprocess.CalledProcessError):
+            continue
+        if not isinstance(rows, list) or not isinstance(tip, list):
+            continue
+        added = [row for row in rows if row not in tip]
+        kept = [row for row in added
+                if not isinstance(row, dict) or not isinstance(row.get("articleId"), str)
+                or row["articleId"] in written]
+        if len(kept) != len(added):
+            save_json(path, (kept + tip)[:cap])
+            notes.append(f"{name}: dropped {len(added) - len(kept)} row(s) "
+                         "announcing a redraft that was not kept")
+
+
 def guard(rev: str, root=ROOT) -> list[str]:
     """Restore what ``rev`` protects and the working tree changed or lost."""
     notes = []
+    written = set()   # articles the tree adds or whose text differs from rev
     listing = _git("diff", "--name-status", "--no-renames", rev, "--",
                    "data/articles", root=root)
     for line in listing.splitlines():
         status, name = line.split("\t", 1)
-        if status == "A" or not name.endswith(".json"):
+        if not name.endswith(".json"):
+            continue
+        path = Path(root) / name
+        if status == "A":
+            try:
+                written.update(row["id"] for row in _articles(_load(path), name))
+            except (OSError, ValueError):
+                pass
             continue
         tip = json.loads(_git("show", f"{rev}:{name}", root=root))
-        path = Path(root) / name
         try:
             batch = _load(path)
             rows = _articles(batch, name)
@@ -229,16 +258,20 @@ def guard(rev: str, root=ROOT) -> list[str]:
             notes.append(f"{name}: unreadable batch replaced with the branch copy")
             continue
         by_id = {row["id"]: row for row in rows}
+        tip_by_id = {row["id"]: row for row in _articles(tip, name)}
         changed = False
-        for row in _articles(tip, name):
+        for row in tip_by_id.values():
             if row["id"] not in by_id:
                 rows.append(row)
                 notes.append(f"{row['id']}: restored the missing article")
                 changed = True
             else:
                 changed |= _restore_images(row, by_id[row["id"]], notes, row["id"])
+        written.update(row["id"] for row in rows if row["id"] not in tip_by_id
+                       or _split(row)[1] != _split(tip_by_id[row["id"]])[1])
         if changed:
             save_json(path, batch)
+    _drop_orphan_rows(rev, root, written, notes)
     return notes
 
 

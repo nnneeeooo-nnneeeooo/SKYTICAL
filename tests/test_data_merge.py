@@ -206,6 +206,7 @@ def repos(tmp_path):
     (editor / ".gitattributes").write_bytes((ROOT / ".gitattributes").read_bytes())
     write_json(editor, BATCH, batch(roundup(), story()))
     write_json(editor, "data/flashes.json", [{"articleId": "a-roundup", "zh": "短訊"}])
+    write_json(editor, "data/incidents.json", [])
     write_json(editor, "data/usage.json", {"calls": 1})
     git(editor, "add", "-A")
     git(editor, "commit", "-qm", "base")
@@ -317,6 +318,38 @@ def test_guard_restores_lost_articles_and_unreadable_batches(repos):
     (run / BATCH).write_text("<<<<<<< HEAD\n", encoding="utf-8")
     assert any("unreadable" in note for note in data_merge.guard("origin/main", root=run))
     assert read_json(run, BATCH) == read_json(editor, BATCH)
+
+
+def test_dropped_redraft_takes_its_flash_and_incident_with_it(repos):
+    editor, run = repos
+    edited = read_json(editor, BATCH)
+    article(edited, "a-story")["zh"]["title"] = "人工修正"
+    push_edit(editor, edited)
+    payload = read_json(run, BATCH)
+    article(payload, "a-story").update(zh={"title": "模型改寫", "body": ["新內文"]}, revision=2)
+    payload["articles"].append(story("a-new"))
+    write_json(run, BATCH, payload)
+    old_flash = {"articleId": "a-roundup", "zh": "短訊"}
+    write_json(run, "data/flashes.json", [{"articleId": "a-story", "zh": "模型改寫"},
+                                          {"articleId": "a-new", "zh": "新"}, old_flash])
+    write_json(run, "data/incidents.json", [{"articleId": "a-story", "sev": "inc"}])
+    _, report = commit_and_rebase(run)
+    assert article(read_json(run, BATCH), "a-story")["zh"]["title"] == "人工修正"
+    assert read_json(run, "data/flashes.json") == [{"articleId": "a-new", "zh": "新"}, old_flash]
+    assert read_json(run, "data/incidents.json") == []
+    assert report.count("announcing a redraft that was not kept") == 2
+
+
+def test_kept_redraft_keeps_its_flash(repos):
+    _, run = repos
+    payload = read_json(run, BATCH)
+    article(payload, "a-story").update(zh={"title": "模型改寫", "body": ["新內文"]}, revision=2)
+    write_json(run, BATCH, payload)
+    flashes = [{"articleId": "a-story", "zh": "模型改寫"}, {"articleId": "a-roundup", "zh": "短訊"}]
+    write_json(run, "data/flashes.json", flashes)
+    _, report = commit_and_rebase(run)
+    assert read_json(run, "data/flashes.json") == flashes
+    assert "data_merge" not in report
 
 
 def test_guard_leaves_ordinary_pipeline_changes_alone(repos):

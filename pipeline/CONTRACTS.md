@@ -582,6 +582,7 @@ driver named in `.gitattributes` and installed by the workflow), not by line:
 
 After the rebase, `data_merge.py guard <tip>` restores from the tip any locked
 image the working tree changed, any article it lost and any batch that no
-longer parses. Bot-owned caches and ledgers still resolve with `-X theirs`.
+longer parses, and drops a flash or incident row the run added for a redraft
+that was not kept. Bot-owned caches and ledgers still resolve with `-X theirs`.
 A workflow that commits `data/articles` must install the driver before its
 rebase and run the guard after it (`tests/test_data_merge.py` checks this).
