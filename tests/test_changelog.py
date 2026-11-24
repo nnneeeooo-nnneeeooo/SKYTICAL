@@ -21,8 +21,8 @@ def main() -> None:
     assert raw["schemaVersion"] == 1
     assert raw["repository"] == "https://github.com/nnneeeooo-nnneeeooo/SKYTICAL"
     assert raw["historyStart"] == "2026-07-26"
-    assert raw["updatedThrough"] == "2026-11-23"
-    assert len(raw["entries"]) == 117
+    assert raw["updatedThrough"] == "2026-11-24"
+    assert len(raw["entries"]) == 118
 
     historical = [row["commit"] for row in raw["entries"]
                   if row["commit"] is not None]
@@ -72,7 +72,7 @@ def main() -> None:
             pass
         else:
             raise AssertionError(f"unsafe public archive accepted: {changed}")
-    assert len(historical) == 116
+    assert len(historical) == 117
     assert len(set(historical)) == len(historical)
     assert all(re.fullmatch(r"[0-9a-f]{40}", sha) for sha in historical)
     assert sum(row["commit"] is None for row in raw["entries"]) == 1
@@ -81,7 +81,8 @@ def main() -> None:
         "zh": "新增彩蛋。",
         "en": "Added an Easter egg.",
     }
-    assert [row["commit"] for row in raw["entries"][:16]] == [
+    assert [row["commit"] for row in raw["entries"][:17]] == [
+        "acf4ef2a6d171fa512f8424e03abacea6dd906b2",
         "26eb0dbefdab81209fd77ed0b40f6798602b5c18",
         "4344e3c0f7922392cf724594fd1057d77af20601",
         "01a1b9bf8f6b24a5025af141482b6765edb28d61",
@@ -153,13 +154,13 @@ def main() -> None:
         raw, "zh", build.L["zh"]["changeKinds"])
     en = build.changelog_view(
         raw, "en", build.L["en"]["changeKinds"])
-    assert zh["count"] == en["count"] == 117
+    assert zh["count"] == en["count"] == 118
     assert [group["date"] for group in zh["groups"]] \
         == sorted(set(dates), reverse=True)
     assert zh["groups"][0]["entries"][0]["title"].startswith(
-        "Devin Bots 加入 SKYTICAL")
+        "Devin 每小時整點巡檢上線")
     assert en["groups"][0]["entries"][0]["title"].startswith(
-        "Devin Bots join SKYTICAL for a one-month trial")
+        "Devin now checks the site every hour")
     assert en["groups"][-1]["entries"][-1]["title"].startswith(
         "Created SKYTICAL")
     linked = [entry for group in en["groups"] for entry in group["entries"]
@@ -212,8 +213,8 @@ def main() -> None:
         assert f'href="{expected_path}"' in html
         assert t["footerChangelog"] in html
         assert t["changeNotice"] in html
-        assert len(re.findall(r'class="changelog-entry"', html)) == 117
-        assert len(re.findall(r'class="changelog-commit"', html)) == 116
+        assert len(re.findall(r'class="changelog-entry"', html)) == 118
+        assert len(re.findall(r'class="changelog-commit"', html)) == 117
         assert 'href="https://github.com/nnneeeooo-nnneeeooo/SKYTICAL/commit/' not in html
         assert "javascript:alert" not in html
 
