@@ -1,6 +1,148 @@
 {
   "lastEdition": "2026-11-24-18",
-  "items": [],
+  "items": [
+    {
+      "enqueuedUtc": "2026-11-24T11:38Z",
+      "routeReason": "verified_short_update",
+      "sourceGroupId": "g-20261124-1138-2",
+      "eventKey": "",
+      "article": {
+        "id": "a-20261124-1138-nato-to-forward-deploy-one-awacs-aircraf",
+        "publishedUtc": "2026-11-24T11:38Z",
+        "cat": "mil",
+        "primarySource": "AeroTime",
+        "image": null,
+        "sourceImageCandidates": [],
+        "zh": {
+          "title": "北約將前進部署一架預警機 供波蘭使用",
+          "summary": "北約將前進部署一架預警機供波蘭使用，波蘭並向盟國請求提供更多飛機。",
+          "body": [
+            "北大西洋公約組織（NATO）將前進部署一架空中預警與管制系統（AWACS）預警機。此前，三枚俄羅斯Kh-101巡弋飛彈於2026年11月20日進入波蘭領空。",
+            "波蘭國防部副部長 Paweł Zalewski 表示，這架預警機將提供波蘭使用。他也說，波蘭已向盟國請求提供更多飛機。",
+            "北約發言人 Allison Hart 在聲明中表示，歐洲盟軍最高司令 Alexus Grynkewich 已授權這項部署。北約未說明預警機將駐在哪裡，也未公佈部署將持續多久。"
+          ]
+        },
+        "en": {
+          "title": "NATO to forward-deploy one AWACS aircraft for use by Poland",
+          "summary": "NATO plans to forward-deploy an AWACS aircraft for Poland; Warsaw requested additional allied aircraft.",
+          "body": [
+            "NATO plans to forward-deploy one of its Airborne Warning and Control System (AWACS) aircraft after three Russian Kh-101 cruise missiles entered Polish airspace on November 20, 2026.",
+            "Polish Deputy Defence Minister Paweł Zalewski said the aircraft would be made available to Poland. He also said Warsaw had requested additional aircraft from its allies.",
+            "In a statement, NATO spokesperson Allison Hart said Supreme Allied Commander Europe General Alexus Grynkewich had authorized the deployment. NATO did not specify where the AWACS aircraft would be based or how long it would remain deployed."
+          ]
+        },
+        "sources": [
+          {
+            "name": "AeroTime — NATO to deploy AWACS aircraft as Russian airspace violation…",
+            "url": "https://www.aerotime.aero/articles/nato-awacs-deployment-poland-russian-missile-incursion"
+          }
+        ],
+        "articleFormat": "brief",
+        "sourcePublishedUtc": "2026-11-24T10:19Z",
+        "writer": "openai:gpt-6.1-terra",
+        "facts": [
+          {
+            "factId": "F1",
+            "claim": "NATO will forward-deploy one of its AWACS aircraft.",
+            "sourceQuote": "NATO will forward-deploy one of its Airborne Warning and Control System (AWACS) aircraft",
+            "sourceUrl": "https://www.aerotime.aero/articles/nato-awacs-deployment-poland-russian-missile-incursion",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F2",
+            "claim": "Three Russian Kh-101 cruise missiles entered Polish airspace on November 20, 2026.",
+            "sourceQuote": "following the incursion of three Russian Kh-101 cruise missiles into Polish airspace on November 20, 2026",
+            "sourceUrl": "https://www.aerotime.aero/articles/nato-awacs-deployment-poland-russian-missile-incursion",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F3",
+            "claim": "Polish Deputy Defence Minister Paweł Zalewski said the AWACS aircraft would be made available to Poland.",
+            "sourceQuote": "Polish Deputy Defence Minister Paweł Zalewski said the AWACS aircraft would be made available to Poland",
+            "sourceUrl": "https://www.aerotime.aero/articles/nato-awacs-deployment-poland-russian-missile-incursion",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F4",
+            "claim": "Paweł Zalewski said Warsaw had requested additional aircraft from its allies.",
+            "sourceQuote": "Polish Deputy Defence Minister Paweł Zalewski said the AWACS aircraft would be made available to Poland and that Warsaw had requested additional aircraft from its allies",
+            "sourceUrl": "https://www.aerotime.aero/articles/nato-awacs-deployment-poland-russian-missile-incursion",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F5",
+            "claim": "NATO spokesperson Allison Hart said Supreme Allied Commander Europe General Alexus Grynkewich had authorized the deployment.",
+            "sourceQuote": "In a statement , NATO spokesperson Allison Hart said Supreme Allied Commander Europe (SACEUR) General Alexus Grynkewich had authorized the deployment",
+            "sourceUrl": "https://www.aerotime.aero/articles/nato-awacs-deployment-poland-russian-missile-incursion",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F6",
+            "claim": "NATO did not specify where the aircraft would be based or how long its deployment would last.",
+            "sourceQuote": "NATO did not specify where the aircraft would be based or how long it would remain deployed",
+            "sourceUrl": "https://www.aerotime.aero/articles/nato-awacs-deployment-poland-russian-missile-incursion",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          }
+        ],
+        "riskFlags": [
+          "unconfirmed_or_developing"
+        ],
+        "eventStatus": "planned",
+        "entities": {
+          "organizations": [
+            "NATO"
+          ],
+          "locations": [
+            "Poland",
+            "Warsaw"
+          ],
+          "event_dates": [
+            "November 20, 2026"
+          ]
+        },
+        "entityEvidence": [
+          {
+            "entityType": "organizations",
+            "value": "NATO",
+            "sourceQuote": "NATO will forward-deploy one of its Airborne Warning and Control System (AWACS) aircraft",
+            "sourceUrl": "https://www.aerotime.aero/articles/nato-awacs-deployment-poland-russian-missile-incursion"
+          },
+          {
+            "entityType": "locations",
+            "value": "Poland",
+            "sourceQuote": "the AWACS aircraft would be made available to Poland",
+            "sourceUrl": "https://www.aerotime.aero/articles/nato-awacs-deployment-poland-russian-missile-incursion"
+          },
+          {
+            "entityType": "locations",
+            "value": "Warsaw",
+            "sourceQuote": "Warsaw had requested additional aircraft from its allies",
+            "sourceUrl": "https://www.aerotime.aero/articles/nato-awacs-deployment-poland-russian-missile-incursion"
+          },
+          {
+            "entityType": "event_dates",
+            "value": "November 20, 2026",
+            "sourceQuote": "three Russian Kh-101 cruise missiles into Polish airspace on November 20, 2026",
+            "sourceUrl": "https://www.aerotime.aero/articles/nato-awacs-deployment-poland-russian-missile-incursion"
+          }
+        ],
+        "evidenceVersion": 2
+      },
+      "publishedExcerptId": null
+    }
+  ],
   "history": [
     {
       "articleId": "a-20261107-1615-us-air-force-divests-three-a-29c-super-t",
