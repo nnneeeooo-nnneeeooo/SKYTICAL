@@ -3389,7 +3389,7 @@
         "https://avherald.com/h?article=5484c66b&opt=0"
       ],
       "contentFailures": 0,
-      "serviceFailures": 1,
+      "serviceFailures": 2,
       "status": "waiting",
       "history": [
         {
@@ -3423,9 +3423,9 @@
           "updatedUtc": "2026-11-23T07:06Z"
         }
       ],
-      "updatedUtc": "2026-11-24T00:24Z",
-      "nextRetryUtc": "2026-11-24T06:24Z",
-      "failureClass": "source_insufficient",
+      "updatedUtc": "2026-11-24T06:25Z",
+      "nextRetryUtc": "2026-11-24T12:25Z",
+      "failureClass": "provider_failure",
       "title": "Incident: JAC AT72 at Kagoshima on Nov 22nd 2026, indication of flight control malfunction",
       "items": [
         {
@@ -3600,6 +3600,29 @@
       "status": "waiting",
       "nextRetryUtc": "2026-11-24T08:19Z",
       "title": "A Japanese WWII Bomber & A Crashed Continental Boeing 727: The Unlikely Wrecks Hidden In A Pacific Jungle"
+    },
+    "bccd84b16bfbd18f9726d7f6": {
+      "sourceUrls": [
+        "https://simpleflying.com/united-airlines-most-frequent-boeing-777-200-flights-2026"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-24T06:25Z",
+      "failureClass": "source_insufficient",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-24T12:25Z",
+      "title": "United Airlines’ Most Frequent Boeing 777-200 Flights In 2026",
+      "items": [
+        {
+          "url": "https://simpleflying.com/united-airlines-most-frequent-boeing-777-200-flights-2026/",
+          "title": "United Airlines’ Most Frequent Boeing 777-200 Flights In 2026",
+          "summary": "Europe, Hawaii, and inter-US hubs boast the most frequent United 777-200/ER city pairings in 2026.",
+          "publishedUtc": "2026-11-24T06:00Z",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ]
     }
   }
 }
