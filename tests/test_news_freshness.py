@@ -77,8 +77,9 @@ def main() -> None:
     assert update.count("uses: actions/checkout@v5\n        with:") == 1
     assert "ref: ${{ github.ref }}" in update
     assert 'git checkout "origin/${GITHUB_REF_NAME}" -- "$path"' not in hourly
-    assert (update.index('git pull --rebase -X theirs origin "${GITHUB_REF_NAME}"')
-            < update.index("python pipeline/build.py"))
+    rebase = update.index('git pull --rebase -X theirs origin "${GITHUB_REF_NAME}"')
+    assert update.index("python pipeline/paid_budget_sync.py persist\n") < rebase
+    assert rebase < update.index("python pipeline/build.py")
     for name in ("copilot.yml", "manual-draft.yml", "rare-aircraft-monitor.yml"):
         text = (ROOT / ".github" / "workflows" / name).read_text(encoding="utf-8")
         assert "ref: ${{ github.ref }}" in text, name

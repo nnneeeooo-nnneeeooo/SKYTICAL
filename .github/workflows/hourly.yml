@@ -220,6 +220,9 @@ jobs:
           # while this run was drafting; deploys race (last wins). Replay this
           # run's data on the tip before building so the deploy keeps them.
           # Nothing is pushed until the audits below pass.
+          # Persist the ledger first: the branch still holds this run's last
+          # reservation, and the rebase would merge it back in as unsettled.
+          python pipeline/paid_budget_sync.py persist
           git config user.name "skytical-bot"
           git config user.email "bot@users.noreply.github.com"
           git add data
