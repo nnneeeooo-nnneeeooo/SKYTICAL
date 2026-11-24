@@ -14103,7 +14103,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-24T21:57:05.998334+00:00"
+      "checked_utc": "2026-11-24T22:09:07.347276+00:00"
     },
     "a-20261118-0629-us-lawmakers-reach-civil-aircraft-traffi": {
       "status": "none",
@@ -14177,7 +14177,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-24T21:57:05.998334+00:00"
+      "checked_utc": "2026-11-24T22:09:07.347276+00:00"
     },
     "a-20261120-1037-china-airlines-earns-11th-straight-apex": {
       "status": "none",
@@ -14203,7 +14203,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-24T21:57:05.998334+00:00"
+      "checked_utc": "2026-11-24T22:09:07.347276+00:00"
     },
     "a-us-airlines-route-changes-20261119": {
       "status": "matched",
@@ -14267,7 +14267,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-24T21:57:05.998334+00:00"
+      "checked_utc": "2026-11-24T22:09:07.347276+00:00"
     },
     "a-20261122-industry-roundup-12-image-1": {
       "status": "none",
@@ -14304,7 +14304,7 @@
         "kind": "file_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-24T21:57:05.998334+00:00"
+      "checked_utc": "2026-11-24T22:09:07.347276+00:00"
     },
     "a-20261123-industry-roundup-00-image-1": {
       "status": "matched",
@@ -14366,7 +14366,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-24T21:57:05.998334+00:00"
+      "checked_utc": "2026-11-24T22:09:07.347276+00:00"
     },
     "a-20261124-industry-roundup-18-image-2": {
       "status": "none",
@@ -14403,7 +14403,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-24T21:57:05.998334+00:00"
+      "checked_utc": "2026-11-24T22:09:07.347276+00:00"
     },
     "a-20261125-industry-roundup-00-image-3": {
       "status": "matched",
@@ -14436,6 +14436,18 @@
         "photoYear": 2021
       },
       "checked_utc": "2026-11-24T21:04:31.224338+00:00"
+    },
+    "a-20261124-2159-major-us-east-coast-storm-threatens-than": {
+      "status": "none",
+      "attempts": 1,
+      "rejection_reasons": [
+        "source-photo:organization-mismatch",
+        "lookup_official_source_photo:no-result",
+        "lookup_commons:no-result",
+        "topic_image:no-result"
+      ],
+      "checked_utc": "2026-11-24T22:09:07.347276+00:00",
+      "next_retry_utc": "2026-11-25T04:09:07.347276+00:00"
     }
   },
   "sources": {
@@ -18423,6 +18435,12 @@
       "rejection_reason": null,
       "parser_version": 5,
       "next_retry_utc": "2026-11-24T23:03:30.277675+00:00"
+    },
+    "https://www.aerotime.aero/articles/east-coast-storm-thanksgiving-flights-2026": {
+      "image": null,
+      "rejection_reason": "organization-mismatch",
+      "parser_version": 5,
+      "next_retry_utc": "2026-11-25T04:09:07.347276+00:00"
     }
   }
 }
