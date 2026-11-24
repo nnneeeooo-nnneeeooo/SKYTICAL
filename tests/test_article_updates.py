@@ -170,6 +170,40 @@ def test_roundup_revises_only_an_article_covering_the_same_events() -> None:
         {**group, "groupKind": "event"}, [scheduled, partial]) == scheduled
 
 
+def test_recurring_report_edition_does_not_revise_an_earlier_one() -> None:
+    def tally(title: str, day: str) -> dict:
+        return {"id": "g-tally", "updateCandidate": True, "items": [{
+            "title": title, "source": "中央社 CNA",
+            "url": f"https://www.cna.com.tw/news/aipl/{day}0036.aspx"}]}
+
+    def record(article_id: str, zh: str, sources: list[dict]) -> dict:
+        article = {"id": article_id, "zh": {"title": zh}, "sources": sources}
+        return {"article": article,
+                "urls": {write.norm_url(s["url"]) for s in sources},
+                "titles": write._article_titles(article)}
+
+    earlier = "https://www.cna.com.tw/news/aipl/202609150031.aspx"
+    rolled = record("a-july-tally", "國防部偵獲8架共機與7艘共艦擾台", [
+        {"name": "中央社 CNA — 9艘共艦3架次共機擾台 國軍嚴密監控",
+         "url": "https://www.cna.com.tw/news/aipl/202608300015.aspx"},
+        {"name": "中央社 CNA — 7艘共艦7架次共機擾台 國軍嚴密監控",
+         "url": earlier}])
+    # Scheduled briefs cite the publisher without its headline.
+    scheduled = record("a-scheduled-tally", "11艘共艦 17架次共機擾台 國軍嚴密監控",
+                       [{"name": "中央社 CNA", "url":
+                         "https://www.cna.com.tw/news/aipl/202611220020.aspx"}])
+    today = tally("9艘共艦3架次共機擾台 國軍嚴密監控", "20261124")
+    assert write._match_existing_article(today, [rolled, scheduled]) is None
+    # The same story is still found through its URL or another outlet.
+    revisit = tally("7艘共艦7架次共機擾台 國軍持續監控", "20260915")
+    revisit["items"][0]["url"] = earlier
+    assert write._match_existing_article(revisit, [rolled, scheduled]) == rolled
+    other = {"id": "g-other", "updateCandidate": True, "items": [{
+        "title": "7艘共艦7架次共機擾台 國軍嚴密監控應處", "source": "自由時報",
+        "url": "https://news.ltn.com.tw/news/politics/breakingnews/1"}]}
+    assert write._match_existing_article(other, [rolled, scheduled]) == rolled
+
+
 def test_persistence_preserves_manual_edit_made_after_update_was_drafted() -> None:
     path = DATA / "articles" / "editorial-protection.json"
     protected = {

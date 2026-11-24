@@ -34,6 +34,7 @@ from __future__ import annotations
 import json
 import re
 import time
+from collections import Counter
 from datetime import timedelta
 from difflib import SequenceMatcher
 from pathlib import Path
@@ -2663,12 +2664,44 @@ def _group_source_urls(group: dict) -> set[str]:
     }
 
 
-def _title_match_score(group_titles: list[str], record: dict) -> float:
-    return max(
-        (SequenceMatcher(None, current, previous).ratio()
-         for current in group_titles for previous in record["titles"]),
-        default=0.0,
-    )
+_TITLE_NUMBER_RE = re.compile(r"\d+")
+
+
+def _different_edition(current: str, previous: str) -> bool:
+    """Each headline carries a figure the other lacks."""
+    a = Counter(_TITLE_NUMBER_RE.findall(current))
+    b = Counter(_TITLE_NUMBER_RE.findall(previous))
+    return bool(a - b) and bool(b - a)
+
+
+def _title_only_match_score(group: dict, record: dict) -> float:
+    """Headline similarity that may tie a group to an article sharing no URL.
+
+    A recurring report (a daily tally, a monthly delivery count) reuses its
+    headline for every edition. Another story from a publisher the article
+    already cites, or a headline whose figures differ, is the next edition
+    and must not replace the earlier one.
+    """
+    cited: dict[str, set[str]] = {}
+    for source in record["article"].get("sources") or []:
+        name = str(source.get("name") or "") if isinstance(source, dict) else ""
+        if " — " in name and not name.startswith("Archive:"):
+            publisher, title = name.split(" — ", 1)
+            cited.setdefault(_norm_title(title), set()).add(publisher.strip())
+    best = 0.0
+    for item in group.get("items") or []:
+        if not isinstance(item, dict):
+            continue
+        current = _norm_title(str(item.get("title") or ""))
+        publisher = str(item.get("source") or "").strip()
+        if not current:
+            continue
+        for previous in record["titles"]:
+            if (publisher in cited.get(previous, ())
+                    or _different_edition(current, previous)):
+                continue
+            best = max(best, SequenceMatcher(None, current, previous).ratio())
+    return best
 
 
 def _same_scheduled_headline(group_titles: list[str], record: dict) -> bool:
@@ -2737,7 +2770,7 @@ def _match_existing_article(group: dict, records: list[dict]):
     for record in records:
         if record["article"].get("roundupKind") == "industry":
             continue
-        score = _title_match_score(group_titles, record)
+        score = _title_only_match_score(group, record)
         if score >= 0.75 and score > best_score:
             best, best_score = record, score
     return best
