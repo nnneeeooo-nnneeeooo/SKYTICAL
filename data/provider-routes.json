@@ -12,8 +12,8 @@
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-24T07:17Z",
-      "checkedUtc": "2026-11-24T01:17Z",
+      "untilUtc": "2026-11-24T14:49Z",
+      "checkedUtc": "2026-11-24T08:49Z",
       "failureClass": "unexpected",
       "diagnostic": "zh.body[1] contains Simplified Chinese characters",
       "probeVersion": 3,
@@ -57,10 +57,10 @@
     },
     "gemini:gemini-3.5-flash": {
       "status": "waiting",
-      "untilUtc": "2026-11-24T07:50Z",
-      "checkedUtc": "2026-11-24T01:50Z",
-      "failureClass": "quota",
-      "diagnostic": "HTTP 429 (free-tier quota exhausted?)",
+      "checkedUtc": "2026-11-24T08:49Z",
+      "untilUtc": "2026-11-24T14:49Z",
+      "failureClass": "timeout",
+      "diagnostic": "ReadTimeout",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -93,10 +93,10 @@
     },
     "gemini:gemini-4-hydrogen": {
       "status": "waiting",
-      "untilUtc": "2026-11-24T07:38Z",
-      "checkedUtc": "2026-11-24T01:38Z",
-      "failureClass": "quota",
-      "diagnostic": "HTTP 429 (free-tier quota exhausted?)",
+      "untilUtc": "2026-11-24T14:49Z",
+      "checkedUtc": "2026-11-24T08:49Z",
+      "failureClass": "http_error",
+      "diagnostic": "HTTP 503 code=UNAVAILABLE",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -291,10 +291,10 @@
     },
     "openrouter:nvidia/nemotron-3.5-lightning:free": {
       "status": "waiting",
-      "checkedUtc": "2026-11-24T07:44Z",
-      "untilUtc": "2026-11-24T13:44Z",
-      "failureClass": "connection",
-      "diagnostic": "ConnectionError",
+      "untilUtc": "2026-11-24T14:49Z",
+      "checkedUtc": "2026-11-24T08:49Z",
+      "failureClass": "truncated",
+      "diagnostic": "response truncated (length)",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -327,10 +327,10 @@
     },
     "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-24T07:17Z",
-      "checkedUtc": "2026-11-24T01:17Z",
-      "failureClass": "connection",
-      "diagnostic": "ConnectionError",
+      "untilUtc": "2026-11-24T14:49Z",
+      "checkedUtc": "2026-11-24T08:49Z",
+      "failureClass": "truncated",
+      "diagnostic": "response truncated (length)",
       "probeVersion": 3,
       "schemaMode": null
     },
