@@ -1829,6 +1829,337 @@
         "evidenceVersion": 2
       },
       "publishedExcerptId": null
+    },
+    {
+      "enqueuedUtc": "2026-11-25T20:48Z",
+      "routeReason": "verified_short_update",
+      "sourceGroupId": "g-20261125-2047-1",
+      "eventKey": "",
+      "article": {
+        "id": "a-20261125-2048-us-proposes-10-tariff-on-finished-aircra",
+        "publishedUtc": "2026-11-25T20:48Z",
+        "cat": "reg",
+        "primarySource": "AeroTime",
+        "image": null,
+        "sourceImageCandidates": [],
+        "zh": {
+          "title": "美國擬對自巴西進口的成品航空器課10%關稅",
+          "summary": "美國提議對自巴西進口的成品航空器課10%關稅，巴西航空工業正評估提案。",
+          "body": [
+            "美國提議對自巴西進口的成品航空器課徵10%關稅。AeroTime報導，這項提案可能使巴西航空工業（Embraer）面臨較高成本。提案於2026年11月25日公佈，涵蓋多類成品航空器，包括飛機與直升機。",
+            "美國貿易代表署（USTR）希望取消2026年7月給予成品航空器的關稅豁免。巴西航空工業告訴路透社，正在評估這項提案，並支持維持航太貿易免關稅。",
+            "公眾意見徵詢期將於11月27日開始，持續至12月30日。美國貿易代表署已安排於2027年1月14日舉行聽證會，討論關稅。"
+          ]
+        },
+        "en": {
+          "title": "US proposes 10% tariff on finished aircraft imported from Brazil",
+          "summary": "US proposes 10% tariff on finished aircraft imported from Brazil; Embraer is reviewing the plan.",
+          "body": [
+            "The United States has proposed a 10% tariff on finished aircraft imported from Brazil. AeroTime reports that the proposal puts Embraer at risk of higher costs. Announced on November 25, 2026, the proposal would cover several categories of finished aircraft, including airplanes and helicopters.",
+            "The Office of the US Trade Representative (USTR) wants to end an exemption for finished aircraft that it granted in July 2026. Embraer told Reuters that it was reviewing the proposal and supported keeping aerospace trade tariff-free.",
+            "The public comment period is scheduled to open November 27 and run through December 30. The USTR has scheduled a hearing to discuss the tariffs on January 14, 2027."
+          ]
+        },
+        "sources": [
+          {
+            "name": "AeroTime — US proposes 10% tariff on Brazilian aircraft, putting Embra…",
+            "url": "https://www.aerotime.aero/articles/us-10-percent-tariff-brazilian-aircraft-embraer"
+          }
+        ],
+        "articleFormat": "brief",
+        "sourcePublishedUtc": "2026-11-25T19:56Z",
+        "writer": "openai:gpt-6.1-terra",
+        "facts": [
+          {
+            "factId": "F1",
+            "claim": "The United States proposed a 10% tariff on finished aircraft imported from Brazil, putting Embraer at risk of higher costs.",
+            "sourceQuote": "The United States proposed a 10% tariff on finished aircraft imported from Brazil, putting Embraer at risk of higher costs",
+            "sourceUrl": "https://www.aerotime.aero/articles/us-10-percent-tariff-brazilian-aircraft-embraer",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F2",
+            "claim": "The proposal was announced on November 25, 2026, and would apply to several categories of finished aircraft, including airplanes and helicopters.",
+            "sourceQuote": "The new proposal, announced on November 25, 2026, would apply a 10% duty to several categories of finished aircraft, including airplanes and helicopters.",
+            "sourceUrl": "https://www.aerotime.aero/articles/us-10-percent-tariff-brazilian-aircraft-embraer",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F3",
+            "claim": "The USTR wants to end a tariff exemption for finished aircraft that it granted in July 2026.",
+            "sourceQuote": "The Office of the US Trade Representative (USTR) wants to end an exemption for finished aircraft that it granted in July 2026, when Washington imposed a 25% tariff",
+            "sourceUrl": "https://www.aerotime.aero/articles/us-10-percent-tariff-brazilian-aircraft-embraer",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F4",
+            "claim": "Embraer told Reuters it was reviewing the proposal and supported keeping aerospace trade tariff-free.",
+            "sourceQuote": "Embraer told Reuters it was reviewing the proposal and supported keeping aerospace trade tariff-free.",
+            "sourceUrl": "https://www.aerotime.aero/articles/us-10-percent-tariff-brazilian-aircraft-embraer",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F5",
+            "claim": "The public comment period opens November 27 and runs through December 30.",
+            "sourceQuote": "The public comment period opens November 27 and runs through December 30.",
+            "sourceUrl": "https://www.aerotime.aero/articles/us-10-percent-tariff-brazilian-aircraft-embraer",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F6",
+            "claim": "USTR has scheduled a hearing to discuss the tariffs for January 14, 2027.",
+            "sourceQuote": "USTR has scheduled a hearing to discuss the tariffs for January 14, 2027.",
+            "sourceUrl": "https://www.aerotime.aero/articles/us-10-percent-tariff-brazilian-aircraft-embraer",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          }
+        ],
+        "riskFlags": [
+          "regulatory_action",
+          "financial_or_order_claim",
+          "unconfirmed_or_developing"
+        ],
+        "eventStatus": "planned",
+        "entities": {
+          "organizations": [
+            "Office of the US Trade Representative",
+            "Embraer",
+            "Reuters",
+            "AeroTime"
+          ],
+          "locations": [
+            "United States",
+            "Brazil"
+          ],
+          "event_dates": [
+            "November 25, 2026",
+            "July 2026",
+            "November 27",
+            "December 30",
+            "January 14, 2027"
+          ]
+        },
+        "entityEvidence": [
+          {
+            "entityType": "organizations",
+            "value": "Office of the US Trade Representative",
+            "sourceQuote": "The Office of the US Trade Representative (USTR) wants to end an exemption for finished aircraft that it granted in July 2026",
+            "sourceUrl": "https://www.aerotime.aero/articles/us-10-percent-tariff-brazilian-aircraft-embraer"
+          },
+          {
+            "entityType": "organizations",
+            "value": "Embraer",
+            "sourceQuote": "Embraer told Reuters it was reviewing the proposal and supported keeping aerospace trade tariff-free.",
+            "sourceUrl": "https://www.aerotime.aero/articles/us-10-percent-tariff-brazilian-aircraft-embraer"
+          },
+          {
+            "entityType": "organizations",
+            "value": "Reuters",
+            "sourceQuote": "Embraer told Reuters it was reviewing the proposal and supported keeping aerospace trade tariff-free.",
+            "sourceUrl": "https://www.aerotime.aero/articles/us-10-percent-tariff-brazilian-aircraft-embraer"
+          },
+          {
+            "entityType": "organizations",
+            "value": "AeroTime",
+            "sourceQuote": "appeared first on AeroTime",
+            "sourceUrl": "https://www.aerotime.aero/articles/us-10-percent-tariff-brazilian-aircraft-embraer"
+          },
+          {
+            "entityType": "locations",
+            "value": "United States",
+            "sourceQuote": "The United States proposed a 10% tariff on finished aircraft imported from Brazil",
+            "sourceUrl": "https://www.aerotime.aero/articles/us-10-percent-tariff-brazilian-aircraft-embraer"
+          },
+          {
+            "entityType": "locations",
+            "value": "Brazil",
+            "sourceQuote": "The United States proposed a 10% tariff on finished aircraft imported from Brazil",
+            "sourceUrl": "https://www.aerotime.aero/articles/us-10-percent-tariff-brazilian-aircraft-embraer"
+          },
+          {
+            "entityType": "event_dates",
+            "value": "November 25, 2026",
+            "sourceQuote": "The new proposal, announced on November 25, 2026, would apply a 10% duty to several categories of finished aircraft, including airplanes and helicopters.",
+            "sourceUrl": "https://www.aerotime.aero/articles/us-10-percent-tariff-brazilian-aircraft-embraer"
+          },
+          {
+            "entityType": "event_dates",
+            "value": "July 2026",
+            "sourceQuote": "The Office of the US Trade Representative (USTR) wants to end an exemption for finished aircraft that it granted in July 2026",
+            "sourceUrl": "https://www.aerotime.aero/articles/us-10-percent-tariff-brazilian-aircraft-embraer"
+          },
+          {
+            "entityType": "event_dates",
+            "value": "November 27",
+            "sourceQuote": "The public comment period opens November 27 and runs through December 30.",
+            "sourceUrl": "https://www.aerotime.aero/articles/us-10-percent-tariff-brazilian-aircraft-embraer"
+          },
+          {
+            "entityType": "event_dates",
+            "value": "December 30",
+            "sourceQuote": "The public comment period opens November 27 and runs through December 30.",
+            "sourceUrl": "https://www.aerotime.aero/articles/us-10-percent-tariff-brazilian-aircraft-embraer"
+          },
+          {
+            "entityType": "event_dates",
+            "value": "January 14, 2027",
+            "sourceQuote": "USTR has scheduled a hearing to discuss the tariffs for January 14, 2027.",
+            "sourceUrl": "https://www.aerotime.aero/articles/us-10-percent-tariff-brazilian-aircraft-embraer"
+          }
+        ],
+        "evidenceVersion": 2
+      },
+      "publishedExcerptId": null
+    },
+    {
+      "enqueuedUtc": "2026-11-25T20:48Z",
+      "routeReason": "verified_short_update",
+      "sourceGroupId": "g-20261125-2047-3",
+      "eventKey": "",
+      "article": {
+        "id": "a-20261125-2048-british-royal-air-force-reportedly-shelt",
+        "publishedUtc": "2026-11-25T20:48Z",
+        "cat": "mil",
+        "primarySource": "AeroTime",
+        "image": null,
+        "sourceImageCandidates": [],
+        "zh": {
+          "title": "英國皇家空軍據報夜間將軍機移入遮蔽處 防範潛在無人機威脅",
+          "summary": "英國皇家空軍據報夜間將軍機移入機庫與掩體，防範潛在無人機威脅。",
+          "body": [
+            "《泰晤士報》2026年11月25日報導，英國皇家空軍（RAF）正因無人機活動可能構成威脅，在夜間將基地內的軍機移入遮蔽處。",
+            "報導指出，軍機正於夜間移入機庫及加固掩體；皇家空軍也在架設Kevlar防無人機網，以保護室外易受威脅的裝備。",
+            "Sky News報導，這些防護網用於保護位於跑道附近或防護資源不足基地內的飛機。這類防護網據報在烏克蘭廣泛使用。"
+          ]
+        },
+        "en": {
+          "title": "British Royal Air Force reportedly shelters aircraft overnight amid possible drone threat",
+          "summary": "The RAF reportedly moves aircraft into hangars and hardened shelters overnight amid possible drone threats.",
+          "body": [
+            "On November 25, 2026, The Times reported that the British Royal Air Force (RAF) is moving military aircraft at its bases under cover overnight because of the possible threat posed by drone activity.",
+            "The Times said the aircraft are being moved into hangars and hardened shelters at night. The Royal Air Force is also erecting Kevlar anti-drone nets to protect vulnerable platforms outside.",
+            "Sky News said the nets are being used to protect aircraft near runways or at bases that lack protective resources. The nets are also widely used in Ukraine, the report said."
+          ]
+        },
+        "sources": [
+          {
+            "name": "AeroTime — RAF moves aircraft undercover overnight over possible drone…",
+            "url": "https://www.aerotime.aero/articles/raf-moves-aircraft-undercover-overnight-over-possible-drone-threats-reports"
+          }
+        ],
+        "articleFormat": "brief",
+        "sourcePublishedUtc": "2026-11-25T15:00Z",
+        "writer": "openai:gpt-6.1-terra",
+        "facts": [
+          {
+            "factId": "F1",
+            "claim": "The British Royal Air Force is reportedly moving military aircraft under cover overnight at its bases because of a possible threat from drone activity.",
+            "sourceQuote": "The British Royal Air Force (RAF) is moving military aircraft at its bases undercover overnight due to the possible threat posed by drone activity",
+            "sourceUrl": "https://www.aerotime.aero/articles/raf-moves-aircraft-undercover-overnight-over-possible-drone-threats-reports",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F2",
+            "claim": "On November 25, 2026, The Times reported that the RAF was moving aircraft to hangars and hardened shelters at night.",
+            "sourceQuote": "On November 25, 2026, The Times wrote that the RAF was moving aircraft to hangars and hardened shelters at night",
+            "sourceUrl": "https://www.aerotime.aero/articles/raf-moves-aircraft-undercover-overnight-over-possible-drone-threats-reports",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F3",
+            "claim": "The Times reported that the RAF was erecting Kevlar anti-drone nets to protect vulnerable platforms outside.",
+            "sourceQuote": "The Times wrote that the RAF was moving aircraft to hangars and hardened shelters at night as well as erecting Kevlar anti-drone nets to protect vulnerable platforms outside",
+            "sourceUrl": "https://www.aerotime.aero/articles/raf-moves-aircraft-undercover-overnight-over-possible-drone-threats-reports",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F4",
+            "claim": "The nets are being used to protect aircraft positioned near runways.",
+            "sourceQuote": "The nets, which are widely used in Ukraine, are being used to protect aircraft while positioned near runways",
+            "sourceUrl": "https://www.aerotime.aero/articles/raf-moves-aircraft-undercover-overnight-over-possible-drone-threats-reports",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F5",
+            "claim": "Sky News reported measures being used to protect aircraft near runways or at bases that lack protective resources.",
+            "sourceQuote": "being used to protect aircraft while positioned near runways or at bases that lack protective resources, according to Sky News",
+            "sourceUrl": "https://www.aerotime.aero/articles/raf-moves-aircraft-undercover-overnight-over-possible-drone-threats-reports",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F6",
+            "claim": "The nets are widely used in Ukraine.",
+            "sourceQuote": "The nets, which are widely used in Ukraine",
+            "sourceUrl": "https://www.aerotime.aero/articles/raf-moves-aircraft-undercover-overnight-over-possible-drone-threats-reports",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          }
+        ],
+        "riskFlags": [
+          "unconfirmed_or_developing"
+        ],
+        "eventStatus": "unknown",
+        "entities": {
+          "organizations": [
+            "British Royal Air Force",
+            "The Times",
+            "Sky News"
+          ],
+          "locations": [
+            "Ukraine"
+          ]
+        },
+        "entityEvidence": [
+          {
+            "entityType": "organizations",
+            "value": "British Royal Air Force",
+            "sourceQuote": "The British Royal Air Force (RAF) is moving military aircraft at its bases undercover overnight",
+            "sourceUrl": "https://www.aerotime.aero/articles/raf-moves-aircraft-undercover-overnight-over-possible-drone-threats-reports"
+          },
+          {
+            "entityType": "organizations",
+            "value": "The Times",
+            "sourceQuote": "On November 25, 2026, The Times wrote",
+            "sourceUrl": "https://www.aerotime.aero/articles/raf-moves-aircraft-undercover-overnight-over-possible-drone-threats-reports"
+          },
+          {
+            "entityType": "organizations",
+            "value": "Sky News",
+            "sourceQuote": "according to Sky News",
+            "sourceUrl": "https://www.aerotime.aero/articles/raf-moves-aircraft-undercover-overnight-over-possible-drone-threats-reports"
+          },
+          {
+            "entityType": "locations",
+            "value": "Ukraine",
+            "sourceQuote": "The nets, which are widely used in Ukraine",
+            "sourceUrl": "https://www.aerotime.aero/articles/raf-moves-aircraft-undercover-overnight-over-possible-drone-threats-reports"
+          }
+        ],
+        "evidenceVersion": 2
+      },
+      "publishedExcerptId": null
     }
   ],
   "history": [
