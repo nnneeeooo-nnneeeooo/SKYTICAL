@@ -30,8 +30,12 @@ def test_private_route_and_token_free_app_asset(monkeypatch):
     template = env.get_template("traffic-dashboard.html")
     entry = template.render(**pages[1][1])
     app = template.render(**pages[2][1])
-    assert f'content="0;url={url}"' in entry
+    assert 'http-equiv="refresh"' not in entry
+    assert f'href="{url}" target="_blank" rel="noopener noreferrer"' in entry
+    assert 'GA4 備用連線設定' in entry
+    assert 'https://accounts.google.com/gsi/client' in entry
     assert 'data-traffic-transport="apps-script"' in app
+    assert "開啟 Google 私人儀表板" not in app
     assert 'https://accounts.google.com/gsi/client' not in app
     assert 'http-equiv="Content-Security-Policy"' not in app  # HtmlService owns iframe/RPC policy
     assert 'noindex,nofollow,noarchive,nosnippet' in app

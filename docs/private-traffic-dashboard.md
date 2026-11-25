@@ -6,11 +6,11 @@
 
 部署時使用該目錄的 `Code.gs` 與 `appsscript.json`，在指令碼屬性設定既有的 `GA4_PROPERTY_ID`。權限限定為 GA4 唯讀與讀取本站固定 UI 位址所需的外部連線；不包含 Drive、Gmail 或寫入 Analytics 的權限。Analytics Data 進階服務由 manifest 啟用。首次需完成 Google 授權；之後可持續使用，但 Google 帳號登出、權限撤銷或組織政策要求重新驗證時仍需登入。
 
-確認部署的存取權為僅限自己、實際報表可讀取，以及重新開啟不再顯示應用程式授權畫面後，將正式 `/exec` 網址設定為 repository Actions variable `SKYTICAL_TRAFFIC_APP_URL`。建站只接受 `https://script.google.com/macros/s/<部署ID>/exec` 格式，原私人入口會自動開啟 Google 保護的版本；無效或未設定時保留以下瀏覽器 OAuth 備用路徑。hourly、briefing 與 manual-article-deploy 都會帶入這項設定，避免後續部署恢復舊入口。
+確認部署的存取權為僅限自己、實際報表可讀取，以及重新開啟不再顯示應用程式授權畫面後，將正式 `/exec` 網址設定為 repository Actions variable `SKYTICAL_TRAFFIC_APP_URL`。建站只接受 `https://script.google.com/macros/s/<部署ID>/exec` 格式。可從原私人入口點選「開啟 Google 私人儀表板（新分頁）」，並在原分頁使用瀏覽器 OAuth 備用連線。hourly、briefing 與 manual-article-deploy 都會帶入這項設定。
 
 後端從本站的 `assets/traffic-dashboard-app.html` 取得共用 UI，後續介面更新可沿用一般 GitHub Pages 部署。該資產只有介面，不包含 GA4 資源 ID、報表資料或權杖；從公開網址直接開啟無法取得私人報表。報表後端僅接受固定 GA4 資源與受限的唯讀指標、維度、來源篩選及最多 366 天的日期範圍。
 
-以下為未啟用 Google 代管後端時的備用連線方式；瀏覽器 Token Client 不具跨天自動更新授權的能力。備用流程已移除每次強制 `prompt=consent` 的行為，讓既有 Google 授權可依官方流程重用。
+以下為瀏覽器備用連線方式。瀏覽器 Token Client 不具跨天自動更新授權的能力。備用流程已移除每次強制 `prompt=consent` 的行為，讓既有 Google 授權可依官方流程重用。
 
 原本私人補稿臺網址（\`/m/<私人網址權杖>/\`）現在提供 GA4 流量儀表板；舊補稿頁保留在同一網址下的 \`draft/\`。網站由 GitHub Pages 靜態託管，沒有私有伺服器，因此報表必須使用 Google OAuth 認證，**網址本身不能當作登入防護**。
 
@@ -33,6 +33,7 @@
 
 ## 故障排除
 
+- 平板顯示 Google「目前無法開啟這個檔案」：將 `/exec` 網址直接貼到 Safari 私密視窗或 Chrome 無痕分頁的網址列，並只登入部署儀表板的 Google 帳號。[Apps Script 多帳號說明](https://developers.google.com/apps-script/guides/support/troubleshooting#issues_with_multiple_google_accounts)
 - \`origin_mismatch\`：檢查 Google Cloud OAuth 網頁用戶端的 Authorized JavaScript origins 是否為 \`https://skytical.tech\`。
 - \`403 PERMISSION_DENIED\`：確認 Google Cloud 已啟用 Data API、登入帳號能檢視 GA4 資源，以及數字 Property ID 正確。
 - 應用程式尚未驗證：Google Cloud 同意畫面設定為測試模式，並將自己加入測試使用者。勿為了繞過限制開放給所有訪客。
