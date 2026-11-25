@@ -3345,12 +3345,12 @@
         "https://www.reuters.com/markets/europe/spanish-airline-plus-ultra-suspends-last-active-route-amid-restructuring-2026-11-23"
       ],
       "contentFailures": 0,
-      "serviceFailures": 4,
+      "serviceFailures": 5,
       "history": [],
-      "updatedUtc": "2026-11-25T05:46Z",
+      "updatedUtc": "2026-11-25T12:35Z",
       "failureClass": "source_insufficient",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-25T11:46Z",
+      "nextRetryUtc": "2026-11-25T18:35Z",
       "title": "Spanish airline Plus Ultra suspends last active route amid restructuring",
       "items": [
         {
@@ -4179,63 +4179,6 @@
       "status": "waiting",
       "nextRetryUtc": "2026-11-24T22:53Z",
       "title": "New tally of India’s Rafale fighters revives dispute over losses in clashes with Pakistan News"
-    },
-    "b55beba83b84a3370eefa9e6": {
-      "sourceUrls": [
-        "https://simpleflying.com/air-canada-axes-8-international-routes",
-        "https://simpleflying.com/allegiant-air-ditches-26-nonstop-routes",
-        "https://simpleflying.com/breeze-airways-launches-6-new-cities-9-routes",
-        "https://simpleflying.com/westjet-cancels-3-international-routes"
-      ],
-      "contentFailures": 0,
-      "serviceFailures": 3,
-      "status": "waiting",
-      "history": [
-        {
-          "status": "waiting",
-          "contentFailures": 0,
-          "serviceFailures": 1,
-          "updatedUtc": "2026-11-24T20:04Z"
-        }
-      ],
-      "updatedUtc": "2026-11-25T10:51Z",
-      "nextRetryUtc": "2026-11-25T16:51Z",
-      "failureClass": "source_insufficient",
-      "title": "Breeze Airways Adds 6 New Cities & 9 Routes: See Full List Now",
-      "items": [
-        {
-          "url": "https://simpleflying.com/breeze-airways-launches-6-new-cities-9-routes/",
-          "title": "Breeze Airways Adds 6 New Cities & 9 Routes: See Full List Now",
-          "summary": "Breeze Airways will add six destinations and nine routes, as Tampa overtakes Raleigh-Durham atop its expanding network.",
-          "publishedUtc": "2026-11-24T16:50Z",
-          "source": "Simple Flying",
-          "sourceKey": "simpleflying"
-        },
-        {
-          "url": "https://simpleflying.com/westjet-cancels-3-international-routes/",
-          "title": "WestJet Quietly Cancels 3 International Routes: See Full List Now",
-          "summary": "Tulum’s airport faces another thinning of connections as carriers consolidate service to Cancun and prioritize demand.",
-          "publishedUtc": "2026-11-24T19:00Z",
-          "source": "Simple Flying",
-          "sourceKey": "simpleflying"
-        },
-        {
-          "url": "https://simpleflying.com/allegiant-air-ditches-26-nonstop-routes/",
-          "title": "Allegiant Air Ditches 26 Nonstop Routes: See Full List Now",
-          "summary": "All were served in the first three months of 2026, but won't have flights in this period in 2027. Find them here!",
-          "publishedUtc": "2026-11-24T20:00Z",
-          "source": "Simple Flying",
-          "sourceKey": "simpleflying"
-        },
-        {
-          "url": "https://simpleflying.com/air-canada-axes-8-international-routes/",
-          "title": "Air Canada Axes 8 International Routes: See Full List Now",
-          "summary": "Two are long-haul and six are to the US. Find out more here!",
-          "publishedUtc": "2026-11-24T21:00Z",
-          "source": "Simple Flying",
-          "sourceKey": "simpleflying"
-        }
-      ]
     },
     "3d6dbb14bf0e5651463179ce": {
       "sourceUrls": [
@@ -5085,6 +5028,70 @@
       "status": "waiting",
       "nextRetryUtc": "2026-11-25T13:46Z",
       "title": "K2 Aviation strengthens portfolio with purchase of six Boeing aircraft from SMBC"
+    },
+    "b55beba83b84a3370eefa9e6": {
+      "sourceUrls": [
+        "https://simpleflying.com/air-canada-axes-8-international-routes",
+        "https://simpleflying.com/allegiant-air-ditches-26-nonstop-routes",
+        "https://simpleflying.com/breeze-airways-launches-6-new-cities-9-routes",
+        "https://simpleflying.com/emirates-axes-14-airbus-a350-routes-from-dubai",
+        "https://simpleflying.com/westjet-cancels-3-international-routes"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 0,
+      "status": "ready",
+      "history": [
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 1,
+          "updatedUtc": "2026-11-24T20:04Z"
+        },
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 3,
+          "updatedUtc": "2026-11-25T10:51Z"
+        }
+      ],
+      "updatedUtc": "2026-11-25T12:34Z",
+      "nextRetryUtc": null
+    },
+    "baf0a08488c181be2a401fa9": {
+      "sourceUrls": [
+        "https://simpleflying.com/premium-demand-rewritten-airline-operations"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-25T12:35Z",
+      "failureClass": "source_insufficient",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-25T18:35Z",
+      "title": "In The Air & On The Ground: How Premium Demand Has Rewritten Airline Operations",
+      "items": [
+        {
+          "url": "https://simpleflying.com/premium-demand-rewritten-airline-operations/",
+          "title": "In The Air & On The Ground: How Premium Demand Has Rewritten Airline Operations",
+          "summary": "The race to 'premiumize' that is defining global airline strategy today.",
+          "publishedUtc": "2026-11-25T12:00Z",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ]
+    },
+    "c9e65beefafd421b3822428f": {
+      "sourceUrls": [
+        "https://www.aerotime.aero/articles/romanian-f16-sea-drone-russian-flight-ban-black-sea"
+      ],
+      "contentFailures": 1,
+      "serviceFailures": 0,
+      "history": [],
+      "updatedUtc": "2026-11-25T12:35Z",
+      "failureClass": "content_validation",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-25T14:35Z",
+      "title": "Russia issued flight ban ahead of Romanian F-16 strike on Black Sea drone"
     }
   }
 }
