@@ -127,19 +127,6 @@
       "nextRetryUtc": "2026-10-26T12:17Z",
       "title": "Emirates Boss Names 3 US Cities That Could Land Their First Nonstop Flights To Dubai"
     },
-    "be3e6a470e855b79c66f8b5f": {
-      "sourceUrls": [
-        "https://simpleflying.com/klm-canceling-own-flights-early-march-maintenance-delays-dont-happen-gate"
-      ],
-      "contentFailures": 1,
-      "serviceFailures": 0,
-      "history": [],
-      "updatedUtc": "2026-10-26T08:46Z",
-      "failureClass": "content_validation",
-      "status": "waiting",
-      "nextRetryUtc": "2026-10-26T10:46Z",
-      "title": "KLM Is Canceling Its Own Flights Until Early March So Maintenance Delays Don't Happen At The Gate"
-    },
     "641ceb5d66e2d372f8c8f805": {
       "sourceUrls": [
         "https://www.aerotime.aero/articles/amac-aerospace-companies-see-strong-demand-across-key-services"
@@ -4704,12 +4691,12 @@
         "https://simpleflying.com/us-army-restart-washington-dc-helicopter-training-flights-2-years-crash"
       ],
       "contentFailures": 0,
-      "serviceFailures": 1,
+      "serviceFailures": 2,
       "history": [],
-      "updatedUtc": "2026-11-25T02:27Z",
+      "updatedUtc": "2026-11-25T08:48Z",
       "failureClass": "source_insufficient",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-25T08:27Z",
+      "nextRetryUtc": "2026-11-25T14:48Z",
       "title": "US Army Moves To Restart Washington DC Helicopter Training Flights 2 Years After Deadly Crash",
       "items": [
         {
@@ -4734,29 +4721,6 @@
       "status": "waiting",
       "nextRetryUtc": "2026-11-25T06:38Z",
       "title": "Embraer’s Raul Villaron on why Asia Pacific will need 2,500+ small jets by 2045"
-    },
-    "1556a1f7e4bb524fbf28ab06": {
-      "sourceUrls": [
-        "https://www.sanyonews.jp/article/1981834?kw=43"
-      ],
-      "contentFailures": 0,
-      "serviceFailures": 1,
-      "history": [],
-      "updatedUtc": "2026-11-25T02:27Z",
-      "failureClass": "source_insufficient",
-      "status": "waiting",
-      "nextRetryUtc": "2026-11-25T08:27Z",
-      "title": "空自機の空港滑走路閉鎖に抗議 那覇市議会、民間専用を要求",
-      "items": [
-        {
-          "url": "https://www.sanyonews.jp/article/1981834?kw=43",
-          "title": "空自機の空港滑走路閉鎖に抗議 那覇市議会、民間専用を要求",
-          "summary": "",
-          "publishedUtc": "2026-11-24T21:54Z",
-          "source": "山陽新聞",
-          "sourceKey": "japansafety"
-        }
-      ]
     },
     "9b7fb872c493a07be4611456": {
       "sourceUrls": [
@@ -5074,6 +5038,38 @@
       "status": "waiting",
       "nextRetryUtc": "2026-11-25T08:46Z",
       "title": "Shanghai, Incheon, Burgas and Huesca win 2026 ACI Airport Innovation Awards"
+    },
+    "1556a1f7e4bb524fbf28ab06": {
+      "sourceUrls": [
+        "https://www.sanyonews.jp/article/1981834?kw=%E3%81%A6",
+        "https://www.sanyonews.jp/article/1981834?kw=43"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 0,
+      "status": "ready",
+      "history": [
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 1,
+          "updatedUtc": "2026-11-25T02:27Z"
+        }
+      ],
+      "updatedUtc": "2026-11-25T08:48Z",
+      "nextRetryUtc": null
+    },
+    "f9292832af2467192004ec05": {
+      "sourceUrls": [
+        "https://www.cna.com.tw/news/afe/202611250195.aspx"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-25T08:48Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-25T10:48Z",
+      "title": "航空供應鏈瓶頸延續 長榮航太：明年逾8成維修已排定"
     }
   }
 }
