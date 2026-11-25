@@ -21,10 +21,10 @@
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "untilUtc": "2026-11-25T20:48Z",
-      "checkedUtc": "2026-11-25T14:48Z",
+      "untilUtc": "2026-11-26T03:46Z",
+      "checkedUtc": "2026-11-25T21:46Z",
       "failureClass": "unexpected",
-      "diagnostic": "publish_brief body does not meet brief contract (zh=149 content characters, en=63 words, paragraphs=2/2)",
+      "diagnostic": "verified factId values must be sequential F1..Fn",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -147,8 +147,8 @@
     },
     "nvidia:z-ai/glm-5.3-flash": {
       "status": "waiting",
-      "checkedUtc": "2026-11-25T20:48Z",
       "untilUtc": "2026-11-26T02:48Z",
+      "checkedUtc": "2026-11-25T20:48Z",
       "failureClass": "timeout",
       "diagnostic": "ReadTimeout",
       "probeVersion": 3,
@@ -219,10 +219,10 @@
     },
     "groq:openai/gpt-oss-20b": {
       "status": "waiting",
-      "untilUtc": "2026-11-25T20:48Z",
-      "checkedUtc": "2026-11-25T14:48Z",
+      "untilUtc": "2026-11-26T03:46Z",
+      "checkedUtc": "2026-11-25T21:46Z",
       "failureClass": "unexpected",
-      "diagnostic": "F2 claim date is not supported by its sourceQuote",
+      "diagnostic": "entity lacks verified evidence: event_dates='2026-06-13'",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -300,8 +300,8 @@
     },
     "openrouter:google/gemma-4-31b-it:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-25T20:17Z",
-      "checkedUtc": "2026-11-25T20:16Z",
+      "untilUtc": "2026-11-25T21:47Z",
+      "checkedUtc": "2026-11-25T21:46Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
@@ -309,8 +309,8 @@
     },
     "openrouter:google/gemma-4-26b-a4b-it:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-25T20:17Z",
-      "checkedUtc": "2026-11-25T20:16Z",
+      "checkedUtc": "2026-11-25T21:46Z",
+      "untilUtc": "2026-11-25T21:47Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
