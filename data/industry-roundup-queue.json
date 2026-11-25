@@ -1295,6 +1295,167 @@
         "evidenceVersion": 2
       },
       "publishedExcerptId": null
+    },
+    {
+      "enqueuedUtc": "2026-11-25T02:27Z",
+      "routeReason": "verified_short_update",
+      "sourceGroupId": "g-20261125-0227-12",
+      "eventKey": "",
+      "article": {
+        "id": "a-20261125-0227-pentagon-in-early-talks-with-general-mot",
+        "publishedUtc": "2026-11-25T02:27Z",
+        "cat": "mil",
+        "primarySource": "AeroTime",
+        "image": null,
+        "sourceImageCandidates": [],
+        "zh": {
+          "title": "報導：五角大廈與通用汽車、福特汽車初步洽談軍用無人機零件供應",
+          "summary": "五角大廈據報與通用汽車、福特汽車初步洽談軍用無人機零件供應，尚未達成協議。",
+          "body": [
+            "AeroTime引述《華爾街日報》報導，五角大廈正與通用汽車、福特汽車及其他製造商初步洽談，討論為軍用無人機供應零件。討論中的方案擬由汽車企業向無人機製造商供應零組件，相關談判尚未達成協議。",
+            "《華爾街日報》另報導，通用汽車正在評估是否製造無人機馬達。AeroTime指出，五角大廈官員也曾與福特及加拿大汽車零件供應商Magna International的高層會晤。",
+            "福特向路透社表示，該公司與五角大廈的討論重點是軍用車輛及衛星相關工作。",
+            "五角大廈的Drone Dominance計畫提出，到2027年需要超過20萬架航空器。"
+          ]
+        },
+        "en": {
+          "title": "Pentagon in early talks with General Motors and Ford on military drone parts: report",
+          "summary": "Pentagon is reportedly in early military drone-parts talks with General Motors and Ford; no agreement has been reached.",
+          "body": [
+            "The Pentagon is in preliminary talks with General Motors, Ford Motor Company and other manufacturers about supplying parts for military drones, according to a Wall Street Journal report cited by AeroTime. Under the arrangement being discussed, automotive companies would supply components to drone makers; the talks have not yet produced an agreement.",
+            "The Journal reported that GM is considering whether to make drone motors. Pentagon officials have also met executives from Ford and Canadian auto-parts supplier Magna International, AeroTime reported.",
+            "Ford told Reuters that its discussions with the Pentagon focused on military vehicles and satellite work.",
+            "The Pentagon's Drone Dominance program calls for more than 200,000 aircraft by 2027."
+          ]
+        },
+        "sources": [
+          {
+            "name": "AeroTime — Pentagon seeks to enlist US automakers in military drone pr…",
+            "url": "https://www.aerotime.aero/articles/pentagon-us-automakers-military-drone-production"
+          }
+        ],
+        "articleFormat": "brief",
+        "sourcePublishedUtc": "2026-11-24T22:14Z",
+        "writer": "openai:gpt-6.1-terra",
+        "facts": [
+          {
+            "factId": "F1",
+            "claim": "The Wall Street Journal reported that the Pentagon is in preliminary talks with General Motors, Ford Motor Company and other manufacturers about supplying parts for military drones.",
+            "sourceQuote": "Pentagon is in preliminary talks with General Motors, Ford Motor Company and other manufacturers about supplying parts for military drones, according to a Wall Street Journal report.",
+            "sourceUrl": "https://www.aerotime.aero/articles/pentagon-us-automakers-military-drone-production",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F2",
+            "claim": "Talks on an arrangement for automotive companies to supply components to drone makers have not yet produced an agreement.",
+            "sourceQuote": "Under the arrangement being discussed, automotive companies would supply components to drone makers. The talks have yet to produce an agreement.",
+            "sourceUrl": "https://www.aerotime.aero/articles/pentagon-us-automakers-military-drone-production",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F3",
+            "claim": "The Journal reported that GM is weighing whether to make drone motors.",
+            "sourceQuote": "GM is weighing whether to make drone motors, the Journal reported.",
+            "sourceUrl": "https://www.aerotime.aero/articles/pentagon-us-automakers-military-drone-production",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F4",
+            "claim": "Pentagon officials have met with executives from Ford and Canadian auto parts supplier Magna International.",
+            "sourceQuote": "Pentagon officials have also met with executives from Ford and Canadian auto parts supplier Magna International.",
+            "sourceUrl": "https://www.aerotime.aero/articles/pentagon-us-automakers-military-drone-production",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F5",
+            "claim": "Ford told Reuters that its discussions with the Pentagon focused on military vehicles and satellite work.",
+            "sourceQuote": "Ford told Reuters that its discussions with the Pentagon focused on military vehicles and satellite work.",
+            "sourceUrl": "https://www.aerotime.aero/articles/pentagon-us-automakers-military-drone-production",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F6",
+            "claim": "The Pentagon's Drone Dominance program calls for more than 200,000 aircraft by 2027.",
+            "sourceQuote": "The Pentagon has already begun placing large orders for small drones. Its Drone Dominance program calls for more than 200,000 aircraft by 2027",
+            "sourceUrl": "https://www.aerotime.aero/articles/pentagon-us-automakers-military-drone-production",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          }
+        ],
+        "riskFlags": [
+          "financial_or_order_claim",
+          "unconfirmed_or_developing"
+        ],
+        "eventStatus": "preliminary",
+        "entities": {
+          "organizations": [
+            "Pentagon",
+            "General Motors",
+            "Ford Motor Company",
+            "Magna International",
+            "Wall Street Journal",
+            "Reuters",
+            "AeroTime"
+          ]
+        },
+        "entityEvidence": [
+          {
+            "entityType": "organizations",
+            "value": "Pentagon",
+            "sourceQuote": "The Pentagon is in preliminary talks with General Motors",
+            "sourceUrl": "https://www.aerotime.aero/articles/pentagon-us-automakers-military-drone-production"
+          },
+          {
+            "entityType": "organizations",
+            "value": "General Motors",
+            "sourceQuote": "with General Motors, Ford Motor Company and other manufacturers",
+            "sourceUrl": "https://www.aerotime.aero/articles/pentagon-us-automakers-military-drone-production"
+          },
+          {
+            "entityType": "organizations",
+            "value": "Ford Motor Company",
+            "sourceQuote": "with General Motors, Ford Motor Company and other manufacturers",
+            "sourceUrl": "https://www.aerotime.aero/articles/pentagon-us-automakers-military-drone-production"
+          },
+          {
+            "entityType": "organizations",
+            "value": "Magna International",
+            "sourceQuote": "Canadian auto parts supplier Magna International",
+            "sourceUrl": "https://www.aerotime.aero/articles/pentagon-us-automakers-military-drone-production"
+          },
+          {
+            "entityType": "organizations",
+            "value": "Wall Street Journal",
+            "sourceQuote": "according to a Wall Street Journal report",
+            "sourceUrl": "https://www.aerotime.aero/articles/pentagon-us-automakers-military-drone-production"
+          },
+          {
+            "entityType": "organizations",
+            "value": "Reuters",
+            "sourceQuote": "Ford told Reuters that its discussions with the Pentagon focused on military vehicles and satellite work",
+            "sourceUrl": "https://www.aerotime.aero/articles/pentagon-us-automakers-military-drone-production"
+          },
+          {
+            "entityType": "organizations",
+            "value": "AeroTime",
+            "sourceQuote": "appeared first on AeroTime",
+            "sourceUrl": "https://www.aerotime.aero/articles/pentagon-us-automakers-military-drone-production"
+          }
+        ],
+        "evidenceVersion": 2
+      },
+      "publishedExcerptId": null
     }
   ],
   "history": [
