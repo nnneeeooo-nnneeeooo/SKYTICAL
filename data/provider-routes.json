@@ -192,10 +192,10 @@
     },
     "nvidia:google/gemma-4-31b-it": {
       "status": "unavailable",
-      "untilUtc": "2026-11-25T20:11Z",
-      "checkedUtc": "2026-11-24T20:11Z",
+      "untilUtc": "2026-11-26T20:16Z",
+      "checkedUtc": "2026-11-25T20:16Z",
       "failureClass": "model_unavailable",
-      "diagnostic": "HTTP 410",
+      "diagnostic": "model absent from account catalog",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -300,8 +300,8 @@
     },
     "openrouter:google/gemma-4-31b-it:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-25T19:47Z",
-      "checkedUtc": "2026-11-25T19:46Z",
+      "untilUtc": "2026-11-25T20:17Z",
+      "checkedUtc": "2026-11-25T20:16Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
@@ -309,8 +309,8 @@
     },
     "openrouter:google/gemma-4-26b-a4b-it:free": {
       "status": "waiting",
-      "checkedUtc": "2026-11-25T19:46Z",
-      "untilUtc": "2026-11-25T19:47Z",
+      "checkedUtc": "2026-11-25T20:16Z",
+      "untilUtc": "2026-11-25T20:17Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,

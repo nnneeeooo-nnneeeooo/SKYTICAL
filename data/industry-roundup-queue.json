@@ -1725,6 +1725,110 @@
         "evidenceVersion": 2
       },
       "publishedExcerptId": null
+    },
+    {
+      "enqueuedUtc": "2026-11-25T20:16Z",
+      "routeReason": "verified_short_update",
+      "sourceGroupId": "g-20261125-2016-1",
+      "eventKey": "",
+      "article": {
+        "id": "a-20261125-2016-united-airlines-greenland-flights-only-4",
+        "publishedUtc": "2026-11-25T20:16Z",
+        "cat": "biz",
+        "primarySource": "Simple Flying",
+        "image": null,
+        "sourceImageCandidates": [
+          {
+            "url": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/11/united_737_1920x1080.jpg",
+            "sources": [
+              {
+                "url": "https://simpleflying.com/united-airlines-rare-arctic-flights-46pc-full/",
+                "name": "Simple Flying"
+              }
+            ]
+          }
+        ],
+        "zh": {
+          "title": "聯合航空格陵蘭航班載客率僅46% 需求受限",
+          "summary": "聯合航空格陵蘭航班載客率低，基礎設施與高旅費限制需求",
+          "body": [
+            "聯合航空經營罕見的北極航線飛往格陵蘭，根據 Simple Flying 的報導，航班的載客率僅為 46%，遠低於預期。",
+            "航空公司指出，低載客率主要源於格陵蘭的旅遊基礎設施有限，且度假成本高昂，這兩項因素共同抑制了旅客需求，使航班難以吸引足夠乘客。此外，旅客對於高昂的度假費用持保留態度，進一步削弱需求。",
+            "此情況突顯了在偏遠北極地區營運航線時，必須克服當地旅遊環境與成本的雙重障礙。"
+          ]
+        },
+        "en": {
+          "title": "United Airlines' Greenland Flights Only 46% Full, Demand Limited",
+          "summary": "United's Greenland flights are only 46% full, limited by infrastructure and high vacation costs",
+          "body": [
+            "United Airlines operates rare Arctic flights to Greenland. Simple Flying reports that the load factor on these routes is only 46%, far below expectations.",
+            "The airline says the low occupancy stems from limited tourism infrastructure in Greenland and the high cost of vacation travel. These factors together suppress passenger demand, making it difficult for the flights to attract enough travelers. Moreover, travelers remain hesitant about the steep vacation expenses, further weakening demand.",
+            "The situation highlights the challenges of operating remote Arctic routes where local tourism facilities and costs present dual obstacles."
+          ]
+        },
+        "sources": [
+          {
+            "name": "Simple Flying — United Airlines' Rare Arctic Flights Only 46% Full: Here's…",
+            "url": "https://simpleflying.com/united-airlines-rare-arctic-flights-46pc-full/"
+          }
+        ],
+        "articleFormat": "brief",
+        "sourcePublishedUtc": "2026-11-25T16:50Z",
+        "writer": "cloudflare:@cf/openai/gpt-oss-120b",
+        "facts": [
+          {
+            "factId": "F1",
+            "claim": "United Airlines' Arctic flights to Greenland are only 46% full.",
+            "sourceQuote": "United Airlines' Rare Arctic Flights Only 46% Full: Here's Why",
+            "sourceUrl": "https://simpleflying.com/united-airlines-rare-arctic-flights-46pc-full/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F2",
+            "claim": "The flights are struggling to attract passengers because limited tourism infrastructure and high vacation costs constrain demand.",
+            "sourceQuote": "United Airlines' Greenland flights are struggling to attract passengers as limited tourism infrastructure and high vacation costs constrain demand.",
+            "sourceUrl": "https://simpleflying.com/united-airlines-rare-arctic-flights-46pc-full/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          }
+        ],
+        "riskFlags": [],
+        "eventStatus": "confirmed",
+        "entities": {
+          "airlines": [
+            "United Airlines"
+          ],
+          "locations": [
+            "Greenland",
+            "Arctic"
+          ]
+        },
+        "entityEvidence": [
+          {
+            "entityType": "airlines",
+            "value": "United Airlines",
+            "sourceQuote": "United Airlines' Rare Arctic Flights Only 46% Full: Here's Why",
+            "sourceUrl": "https://simpleflying.com/united-airlines-rare-arctic-flights-46pc-full/"
+          },
+          {
+            "entityType": "locations",
+            "value": "Greenland",
+            "sourceQuote": "United Airlines' Greenland flights are struggling to attract passengers as limited tourism infrastructure and high vacation costs constrain demand.",
+            "sourceUrl": "https://simpleflying.com/united-airlines-rare-arctic-flights-46pc-full/"
+          },
+          {
+            "entityType": "locations",
+            "value": "Arctic",
+            "sourceQuote": "United Airlines' Rare Arctic Flights Only 46% Full: Here's Why",
+            "sourceUrl": "https://simpleflying.com/united-airlines-rare-arctic-flights-46pc-full/"
+          }
+        ],
+        "evidenceVersion": 2
+      },
+      "publishedExcerptId": null
     }
   ],
   "history": [
