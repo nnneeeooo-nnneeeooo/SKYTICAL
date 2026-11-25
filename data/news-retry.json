@@ -3479,12 +3479,12 @@
         "https://www.aerotime.aero/articles/spains-plus-ultra-may-have-operated-final-flight-ceased-operations"
       ],
       "contentFailures": 1,
-      "serviceFailures": 1,
+      "serviceFailures": 2,
       "history": [],
-      "updatedUtc": "2026-11-24T20:27Z",
+      "updatedUtc": "2026-11-24T23:38Z",
       "failureClass": "provider_failure",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-24T22:27Z",
+      "nextRetryUtc": "2026-11-25T05:38Z",
       "title": "Spain’s Plus Ultra may have operated final flight, ceased operations"
     },
     "2a14b5d67ed6018fb6338d87": {
@@ -3943,13 +3943,23 @@
         "https://simpleflying.com/how-much-flight-airline-pilots-actually-hand-fly"
       ],
       "contentFailures": 0,
-      "serviceFailures": 1,
+      "serviceFailures": 2,
       "history": [],
-      "updatedUtc": "2026-11-24T20:14Z",
-      "failureClass": "provider_failure",
+      "updatedUtc": "2026-11-24T23:38Z",
+      "failureClass": "source_insufficient",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-24T22:14Z",
-      "title": "Here's How Much Of A Flight Airline Pilots Actually Hand-Fly"
+      "nextRetryUtc": "2026-11-25T05:38Z",
+      "title": "Here's How Much Of A Flight Airline Pilots Actually Hand-Fly",
+      "items": [
+        {
+          "url": "https://simpleflying.com/how-much-flight-airline-pilots-actually-hand-fly/",
+          "title": "Here's How Much Of A Flight Airline Pilots Actually Hand-Fly",
+          "summary": "Find out how much pilots actually fly themselves and how often the autopilot is used.",
+          "publishedUtc": "2026-11-24T18:00Z",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ]
     },
     "ea91fbb49fc9179bab1bedfc": {
       "sourceUrls": [
@@ -4590,6 +4600,75 @@
       "status": "waiting",
       "nextRetryUtc": "2026-11-25T01:23Z",
       "title": "Pentagon seeks to enlist US automakers in military drone production push"
+    },
+    "00fc6c76fb273ca5b4abda74": {
+      "sourceUrls": [
+        "https://www.reuters.com/world/us/faa-issues-ground-stop-chicago-ohare-international-airport-2026-11-24"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-24T23:38Z",
+      "failureClass": "source_insufficient",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-25T05:38Z",
+      "title": "Radar issue delaying flights at Chicago O'Hare airport",
+      "items": [
+        {
+          "url": "https://www.reuters.com/world/us/faa-issues-ground-stop-chicago-ohare-international-airport-2026-11-24/",
+          "title": "Radar issue delaying flights at Chicago O'Hare airport",
+          "summary": "",
+          "publishedUtc": "2026-11-24T22:46Z",
+          "source": "Reuters",
+          "sourceKey": "reuters"
+        }
+      ]
+    },
+    "43b43491b211e1c222ce3a33": {
+      "sourceUrls": [
+        "https://www.sanyonews.jp/article/1948986?rct=global_syakai_c&kw=%E3%81%82%E3%81%A83"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-24T23:38Z",
+      "failureClass": "source_insufficient",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-25T05:38Z",
+      "title": "日航機、関空に緊急着陸 オイル漏れ、滑走路閉鎖",
+      "items": [
+        {
+          "url": "https://www.sanyonews.jp/article/1948986?rct=global_syakai_c&kw=%E3%81%82%E3%81%A83",
+          "title": "日航機、関空に緊急着陸 オイル漏れ、滑走路閉鎖",
+          "summary": "",
+          "publishedUtc": "2026-11-24T18:24Z",
+          "source": "山陽新聞",
+          "sourceKey": "japansafety"
+        }
+      ]
+    },
+    "a677b8ffec7ee97968520042": {
+      "sourceUrls": [
+        "https://news.aa.com/news/news-details/2026/American-Airlines-is-serving-up-deals-miles-and-a-little-extra-dressing-this-Cyber-Week-AADV-11/default.aspx"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-24T23:38Z",
+      "failureClass": "source_insufficient",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-25T05:38Z",
+      "title": "American Airlines is serving up deals, miles and a little extra dressing this Cyber Week",
+      "items": [
+        {
+          "url": "https://news.aa.com/news/news-details/2026/American-Airlines-is-serving-up-deals-miles-and-a-little-extra-dressing-this-Cyber-Week-AADV-11/default.aspx",
+          "title": "American Airlines is serving up deals, miles and a little extra dressing this Cyber Week",
+          "summary": "",
+          "publishedUtc": "2026-11-23T05:33Z",
+          "source": "American Airlines",
+          "sourceKey": "americannews"
+        }
+      ]
     }
   }
 }
