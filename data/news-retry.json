@@ -88,19 +88,6 @@
       "nextRetryUtc": "2026-10-28T12:37Z",
       "title": "The airlines with the most economy-class legroom ranked News"
     },
-    "513c5566c87f0bc86b0a6d86": {
-      "sourceUrls": [
-        "https://simpleflying.com/airbus-new-clean-sheet-feighter-challenge-boeing-dominance-cargo-sector"
-      ],
-      "contentFailures": 2,
-      "serviceFailures": 0,
-      "history": [],
-      "updatedUtc": "2026-10-25T23:41Z",
-      "failureClass": "content_validation",
-      "status": "waiting",
-      "nextRetryUtc": "2026-10-26T05:41Z",
-      "title": "How Airbus' New Clean Sheet Freighter Challenges Boeing’s Dominance In The Cargo Sector"
-    },
     "e888a4d26201072d07da4582": {
       "sourceUrls": [
         "https://aerospaceglobalnews.com/news/worlds-all-premium-luxury-airlines"
@@ -3897,12 +3884,12 @@
         "https://simpleflying.com/largest-us-air-force-bomber-jet-engines"
       ],
       "contentFailures": 0,
-      "serviceFailures": 1,
+      "serviceFailures": 2,
       "history": [],
-      "updatedUtc": "2026-11-24T18:13Z",
+      "updatedUtc": "2026-11-25T00:28Z",
       "failureClass": "source_insufficient",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-25T00:13Z",
+      "nextRetryUtc": "2026-11-25T06:28Z",
       "title": "The US Air Force Bolted Jet Engines Onto Its Largest-Ever Bomber, But It Still Wasn't Enough To Save It",
       "items": [
         {
@@ -4445,13 +4432,23 @@
         "https://simpleflying.com/where-to-spot-air-france-airbus-a318"
       ],
       "contentFailures": 0,
-      "serviceFailures": 1,
+      "serviceFailures": 2,
       "history": [],
-      "updatedUtc": "2026-11-24T22:11Z",
-      "failureClass": "provider_failure",
+      "updatedUtc": "2026-11-25T00:28Z",
+      "failureClass": "source_insufficient",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-25T00:11Z",
-      "title": "Where To Spot The Air France Airbus A318 Before It Finally Retires"
+      "nextRetryUtc": "2026-11-25T06:28Z",
+      "title": "Where To Spot The Air France Airbus A318 Before It Finally Retires",
+      "items": [
+        {
+          "url": "https://simpleflying.com/where-to-spot-air-france-airbus-a318/",
+          "title": "Where To Spot The Air France Airbus A318 Before It Finally Retires",
+          "summary": "This is where Air France is flying its final Airbus A318s before retirement.",
+          "publishedUtc": "2026-11-24T22:00Z",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ]
     },
     "428bf424a1f68e12dcc234e5": {
       "sourceUrls": [
@@ -4669,6 +4666,55 @@
           "sourceKey": "americannews"
         }
       ]
+    },
+    "8889322017e80242fe2c7c96": {
+      "sourceUrls": [
+        "https://simpleflying.com/us-military-pacific-airport-expansion-guam"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-25T00:28Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-25T02:28Z",
+      "title": "Why The US Military Is Expanding A Remote Pacific Airport To Reduce Its Reliance On Guam"
+    },
+    "1b49ccd993bdc89448cb4e15": {
+      "sourceUrls": [
+        "https://txbiz.tv-tokyo.co.jp/wbs/news/post_87830"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-25T00:28Z",
+      "failureClass": "source_insufficient",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-25T06:28Z",
+      "title": "ＪＡＬ機羽田に緊急着陸",
+      "items": [
+        {
+          "url": "https://txbiz.tv-tokyo.co.jp/wbs/news/post_87830",
+          "title": "ＪＡＬ機羽田に緊急着陸",
+          "summary": "",
+          "publishedUtc": "2026-11-22T14:25Z",
+          "source": "テレ東BIZ",
+          "sourceKey": "japansafety"
+        }
+      ]
+    },
+    "1c076b45d536d2bfd9fd6123": {
+      "sourceUrls": [
+        "https://www.geaerospace.com/news/articles/anton-groom-ge-aerospaces-new-chief-data-and-ai-officer-looking-few-good-problems-solve"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-25T00:28Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-25T02:28Z",
+      "title": "Anton Groom, GE Aerospace’s New Chief Data and AI Officer, Is Looking for a Few Good Problems to Solve"
     }
   }
 }
