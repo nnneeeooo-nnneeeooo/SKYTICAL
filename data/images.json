@@ -14177,7 +14177,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-25T22:01:14.479539+00:00"
+      "checked_utc": "2026-11-25T23:09:00.540276+00:00"
     },
     "a-20261120-1037-china-airlines-earns-11th-straight-apex": {
       "status": "none",
@@ -14203,7 +14203,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-25T22:01:14.479539+00:00"
+      "checked_utc": "2026-11-25T23:09:00.540276+00:00"
     },
     "a-us-airlines-route-changes-20261119": {
       "status": "matched",
@@ -14267,7 +14267,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-25T22:01:14.479539+00:00"
+      "checked_utc": "2026-11-25T23:09:00.540276+00:00"
     },
     "a-20261122-industry-roundup-12-image-1": {
       "status": "none",
@@ -14304,7 +14304,7 @@
         "kind": "file_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-25T22:01:14.479539+00:00"
+      "checked_utc": "2026-11-25T23:09:00.540276+00:00"
     },
     "a-20261123-industry-roundup-00-image-1": {
       "status": "matched",
@@ -14366,7 +14366,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-25T22:01:14.479539+00:00"
+      "checked_utc": "2026-11-25T23:09:00.540276+00:00"
     },
     "a-20261124-industry-roundup-18-image-2": {
       "status": "none",
@@ -14586,7 +14586,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-25T22:01:14.479539+00:00"
+      "checked_utc": "2026-11-25T23:09:00.540276+00:00"
     },
     "a-20261125-industry-roundup-18-image-1": {
       "status": "matched",
@@ -14628,7 +14628,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-25T22:01:14.479539+00:00"
+      "checked_utc": "2026-11-25T23:09:00.540276+00:00"
     },
     "a-20261126-industry-roundup-00-image-1": {
       "status": "none",
@@ -14668,6 +14668,45 @@
         "photoYear": 2018
       },
       "checked_utc": "2026-11-25T17:14:25.202645+00:00"
+    },
+    "a-20261126-industry-roundup-06-image-1": {
+      "status": "none",
+      "attempts": 1,
+      "rejection_reasons": [
+        "source-candidate:missing-source-evidence",
+        "lookup_official_source_photo:no-result",
+        "lookup_commons:no-result",
+        "topic_image:no-result"
+      ],
+      "checked_utc": "2026-11-25T23:09:00.540276+00:00",
+      "next_retry_utc": "2026-11-26T05:09:00.540276+00:00"
+    },
+    "a-20261126-industry-roundup-06-image-2": {
+      "status": "none",
+      "attempts": 1,
+      "rejection_reasons": [
+        "source-photo:no-event-photo",
+        "lookup_official_source_photo:no-result",
+        "topic_image:no-result"
+      ],
+      "checked_utc": "2026-11-25T23:09:00.540276+00:00",
+      "next_retry_utc": "2026-11-26T05:09:00.540276+00:00"
+    },
+    "a-20261126-industry-roundup-06-image-3": {
+      "status": "matched",
+      "image": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9c/Virgin_Atlantic_Airbus_A330-900neo_G-VLDY_on_final_approach_to_Boston_June_2024_1.jpg/1280px-Virgin_Atlantic_Airbus_A330-900neo_G-VLDY_on_final_approach_to_Boston_June_2024_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "link": "https://commons.wikimedia.org/wiki/Special:Redirect/page/185791575",
+        "credit": "4300streetcar",
+        "license": "CC BY 4.0",
+        "provider": "Wikimedia Commons",
+        "kind": "file_photo",
+        "matched": "Virgin Atlantic Airbus A330neo",
+        "subject": "Virgin Atlantic Airbus A330neo",
+        "description": "Virgin Atlantic Airbus A330-900neo G-VLDY on final approach to Boston June 2024 1",
+        "photoYear": 2024
+      },
+      "checked_utc": "2026-11-25T23:09:00.540276+00:00"
     }
   },
   "sources": {
@@ -18677,6 +18716,12 @@
       "rejection_reason": null,
       "parser_version": 5,
       "next_retry_utc": "2026-11-25T16:27:44.916164+00:00"
+    },
+    "https://www.aerotime.aero/articles/pentagon-us-automakers-military-drone-production": {
+      "image": null,
+      "rejection_reason": "no-event-photo",
+      "parser_version": 5,
+      "next_retry_utc": "2026-11-26T05:09:00.540276+00:00"
     }
   }
 }
