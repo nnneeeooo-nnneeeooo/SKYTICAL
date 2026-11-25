@@ -1366,6 +1366,211 @@
         "evidenceVersion": 2
       },
       "publishedExcerptId": null
+    },
+    {
+      "enqueuedUtc": "2026-11-25T05:22Z",
+      "routeReason": "verified_short_update",
+      "sourceGroupId": "g-20261125-0522-3",
+      "eventKey": "",
+      "article": {
+        "id": "a-20261125-0522-virgin-atlantic-plans-airbus-a330neo-fli",
+        "publishedUtc": "2026-11-25T05:22Z",
+        "cat": "ops",
+        "primarySource": "Aerospace Global News",
+        "image": null,
+        "sourceImageCandidates": [
+          {
+            "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/11/G-VEII_London_Heathrow_November_12th_2025.jpg",
+            "sources": [
+              {
+                "url": "https://aerospaceglobalnews.com/news/exclusive-virgin-atlantic-manchester-expansion/",
+                "name": "Aerospace Global News"
+              }
+            ]
+          }
+        ],
+        "zh": {
+          "title": "Virgin Atlantic擬2027年3月在曼徹斯特引進空中巴士A330neo",
+          "summary": "Virgin Atlantic擬2027年3月在曼徹斯特引進A330neo。",
+          "body": [
+            "Virgin Atlantic計畫自2027年3月起，在曼徹斯特的航線引進空中巴士A330neo，初期用於紐約（JFK）航班。6月起，該機型也將投入奧蘭多航班。",
+            "該公司調整曼徹斯特航網，決定自明年夏季起暫停拉斯維加斯航線。根據向航空分析公司Cirium申報的時刻資料，紐約航班明年4月至6月將由每日1班增至每週10班。奧蘭多航班在假期尖峯期間將達每週最多17班。",
+            "另外，Virgin Atlantic表示，倫敦希斯洛機場（LHR）的容量限制使其目前無法在該機場進一步擴張。"
+          ]
+        },
+        "en": {
+          "title": "Virgin Atlantic plans Airbus A330neo flights from Manchester in March 2027",
+          "summary": "Virgin Atlantic plans A330neo service from Manchester starting in March 2027.",
+          "body": [
+            "Virgin Atlantic plans to introduce the Airbus A330neo at its Manchester hub from March 2027, starting on flights to New York (JFK). From June, the aircraft is also set to be deployed on flights to Orlando.",
+            "The airline has decided to suspend its Las Vegas route from Manchester starting next summer. Schedules filed with aviation analytics firm Cirium show that New York flights are due to rise from daily to 10 a week between April and June next year. Orlando flights will reach up to 17 a week during the holiday peak.",
+            "Separately, Virgin Atlantic says capacity limits at London Heathrow Airport (LHR) mean it cannot expand further there."
+          ]
+        },
+        "sources": [
+          {
+            "name": "Aerospace Global News — Exclusive: Virgin Atlantic CEO talks Manchester expansion a…",
+            "url": "https://aerospaceglobalnews.com/news/exclusive-virgin-atlantic-manchester-expansion/"
+          }
+        ],
+        "articleFormat": "brief",
+        "sourcePublishedUtc": "2026-11-21T00:00Z",
+        "writer": "openai:gpt-6.1-terra",
+        "facts": [
+          {
+            "factId": "F1",
+            "claim": "Virgin Atlantic plans to introduce the Airbus A330neo at its Manchester hub from March 2027, starting on New York-JFK flights.",
+            "sourceQuote": "Virgin Atlantic will be introducing the Airbus A330neo at its Manchester hub from March 2027, debuting on its New York-JFK flights.",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/exclusive-virgin-atlantic-manchester-expansion/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F2",
+            "claim": "From June, the Airbus A330neo is also due to be deployed on flights to Orlando.",
+            "sourceQuote": "the Airbus A330neo at its Manchester hub from March 2027, debuting on its New York-JFK flights. From June, the aircraft will also be deployed on flights to Orlando",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/exclusive-virgin-atlantic-manchester-expansion/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F3",
+            "claim": "Virgin Atlantic decided to suspend its Las Vegas route in its Manchester network from next summer.",
+            "sourceQuote": "Virgin Atlantic made adjustments to its Manchester network. It decided to suspend its Las Vegas route as of next summer",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/exclusive-virgin-atlantic-manchester-expansion/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F4",
+            "claim": "According to schedules filed with Cirium, New York-JFK flights will rise from daily to 10 a week between April and June next year.",
+            "sourceQuote": "Next year, flights to New York-JFK will rise from daily to 10x weekly between April and June, according to schedules filed with aviation analytics firm Cirium.",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/exclusive-virgin-atlantic-manchester-expansion/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F5",
+            "claim": "Orlando flights will reach up to 17 a week during the holiday peak.",
+            "sourceQuote": "Orlando flights will reach up to 17x weekly catering to high leisure demand during the holiday peak.",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/exclusive-virgin-atlantic-manchester-expansion/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F6",
+            "claim": "Virgin Atlantic says it is unable to expand further because of LHR's capacity constraints.",
+            "sourceQuote": "Virgin Atlantic , the airport’s second-largest operator after British Airways , has grown considerably in recent years. However, the operator now says it is unable to expand further as it is limited by LHR’s capacity",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/exclusive-virgin-atlantic-manchester-expansion/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          }
+        ],
+        "riskFlags": [],
+        "eventStatus": "planned",
+        "entities": {
+          "organizations": [
+            "Cirium"
+          ],
+          "airlines": [
+            "Virgin Atlantic"
+          ],
+          "aircraft_models": [
+            "Airbus A330neo"
+          ],
+          "airports": [
+            "London Heathrow Airport",
+            "New York-JFK"
+          ],
+          "locations": [
+            "Manchester",
+            "Orlando",
+            "Las Vegas"
+          ],
+          "event_dates": [
+            "March 2027",
+            "next summer"
+          ]
+        },
+        "entityEvidence": [
+          {
+            "entityType": "organizations",
+            "value": "Cirium",
+            "sourceQuote": "according to schedules filed with aviation analytics firm Cirium",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/exclusive-virgin-atlantic-manchester-expansion/"
+          },
+          {
+            "entityType": "airlines",
+            "value": "Virgin Atlantic",
+            "sourceQuote": "Virgin Atlantic will be introducing the Airbus A330neo",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/exclusive-virgin-atlantic-manchester-expansion/"
+          },
+          {
+            "entityType": "aircraft_models",
+            "value": "Airbus A330neo",
+            "sourceQuote": "the Airbus A330neo at its Manchester hub",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/exclusive-virgin-atlantic-manchester-expansion/"
+          },
+          {
+            "entityType": "airports",
+            "value": "London Heathrow Airport",
+            "sourceQuote": "London Heathrow Airport (LHR)",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/exclusive-virgin-atlantic-manchester-expansion/"
+          },
+          {
+            "entityType": "airports",
+            "value": "New York-JFK",
+            "sourceQuote": "debuting on its New York-JFK flights",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/exclusive-virgin-atlantic-manchester-expansion/"
+          },
+          {
+            "entityType": "locations",
+            "value": "Manchester",
+            "sourceQuote": "Virgin Atlantic made adjustments to its Manchester network.",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/exclusive-virgin-atlantic-manchester-expansion/"
+          },
+          {
+            "entityType": "locations",
+            "value": "Orlando",
+            "sourceQuote": "Orlando flights will reach up to 17x weekly",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/exclusive-virgin-atlantic-manchester-expansion/"
+          },
+          {
+            "entityType": "locations",
+            "value": "Las Vegas",
+            "sourceQuote": "its Las Vegas route as of next summer",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/exclusive-virgin-atlantic-manchester-expansion/"
+          },
+          {
+            "entityType": "event_dates",
+            "value": "March 2027",
+            "sourceQuote": "at its Manchester hub from March 2027",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/exclusive-virgin-atlantic-manchester-expansion/"
+          },
+          {
+            "entityType": "event_dates",
+            "value": "next summer",
+            "sourceQuote": "its Las Vegas route as of next summer",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/exclusive-virgin-atlantic-manchester-expansion/"
+          }
+        ],
+        "evidenceVersion": 2,
+        "airportCodeEvidence": [
+          {
+            "name": "London Heathrow Airport",
+            "code": "LHR",
+            "sourceQuote": "London Heathrow Airport (LHR)",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/exclusive-virgin-atlantic-manchester-expansion/"
+          }
+        ]
+      },
+      "publishedExcerptId": null
     }
   ],
   "history": [
