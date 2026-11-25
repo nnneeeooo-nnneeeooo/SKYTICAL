@@ -3693,29 +3693,6 @@
         }
       ]
     },
-    "fd108c1e28c7bab10bf771b2": {
-      "sourceUrls": [
-        "https://news.aa.com/news/news-details/2026/American-Airlines-to-bring-more-than-85-World-War-II-veterans-to-Hawaii-for-the-85th-anniversary-of-the-attack-on-Pearl-Harbor-COMM-MVI-11/default.aspx"
-      ],
-      "contentFailures": 0,
-      "serviceFailures": 1,
-      "history": [],
-      "updatedUtc": "2026-11-24T16:29Z",
-      "failureClass": "source_insufficient",
-      "status": "waiting",
-      "nextRetryUtc": "2026-11-24T22:29Z",
-      "title": "American Airlines to bring more than 85 World War II veterans to Hawaii for 85th anniversary of the attack on Pearl Harbor",
-      "items": [
-        {
-          "url": "https://news.aa.com/news/news-details/2026/American-Airlines-to-bring-more-than-85-World-War-II-veterans-to-Hawaii-for-the-85th-anniversary-of-the-attack-on-Pearl-Harbor-COMM-MVI-11/default.aspx",
-          "title": "American Airlines to bring more than 85 World War II veterans to Hawaii for 85th anniversary of the attack on Pearl Harbor",
-          "summary": "",
-          "publishedUtc": "2026-11-24T16:16Z",
-          "source": "American Airlines",
-          "sourceKey": "americannews"
-        }
-      ]
-    },
     "8ea52836d2419f5240d44e51": {
       "sourceUrls": [
         "https://simpleflying.com/airport-thanksgiving-curb-2-lane-bypass-expected-last-2030"
@@ -4947,45 +4924,6 @@
       "nextRetryUtc": "2026-11-25T11:46Z",
       "title": "長榮航空獲7項永續獎 華航首獲職安領袖獎"
     },
-    "de8580d94ff517e73ce2e26f": {
-      "sourceUrls": [
-        "https://www.ntsb.gov/WebResource.axd?d=beToSAE3vdsL1QUQUxjWdf2jke9q5wlPctXqZ2bkqQkm2js8Pz9RiThOcJXpBE9AvowYJWGFiC7hTsLi_RypHg2&t=639256253503738887",
-        "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FEvents%2Fboardmeeting.htm",
-        "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FEvents%2Fsymposia.htm",
-        "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FInfo%2Fsources.htm",
-        "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FPages%2Fbrief.aspx%3Fev%25255Fid%3D27947%26key%3D0",
-        "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FPages%2Fbrief.aspx%3Fev%25255Fid%3D35471%26key%3D0",
-        "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FPages%2Fhome.aspx",
-        "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FScriptResource.axd%3Fd%3DdwY9oWetJoJoVpgL6Zq8OCGTHSVrSi6xCyU9ORLeNcMVpKQFNVDbn3pLYFVozyeAvxDyhE8G78I5sG0GNrbznWFdlguNwSGHzBVCb68WdXHHZTwXsNtjVlg71WqJxECRVuzXdOcup3lwpz3eUK05OSIEDGB%252DYvMk0jQsMNqtNR81%26t%3Dffffffffa1bf0f7b",
-        "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2Fnews%2Fpress-releases%2FPages%2FNTSB_identifies_cargo_tank_design_as_factor_in_Indianapolis_truck_rollover_accident_calls_for_improvements_in_cargo_tank_d.aspx",
-        "https://www.ntsb.gov/_layouts/ntsb.aviation/Results.aspx?queryId=d46ded6a-42ab-4716-ae4b-59cccbaf35c1"
-      ],
-      "contentFailures": 0,
-      "serviceFailures": 0,
-      "status": "ready",
-      "history": [
-        {
-          "status": "waiting",
-          "contentFailures": 0,
-          "serviceFailures": 1,
-          "updatedUtc": "2026-11-24T15:52Z"
-        },
-        {
-          "status": "waiting",
-          "contentFailures": 0,
-          "serviceFailures": 1,
-          "updatedUtc": "2026-11-24T17:46Z"
-        },
-        {
-          "status": "waiting",
-          "contentFailures": 0,
-          "serviceFailures": 1,
-          "updatedUtc": "2026-11-24T23:23Z"
-        }
-      ],
-      "updatedUtc": "2026-11-25T10:31Z",
-      "nextRetryUtc": null
-    },
     "76fa162e04db014c4f5f6755": {
       "sourceUrls": [
         "https://www.cna.com.tw/news/afe/202611250268.aspx"
@@ -5067,6 +5005,86 @@
           "sourceKey": "simpleflying"
         }
       ]
+    },
+    "fd108c1e28c7bab10bf771b2": {
+      "sourceUrls": [
+        "https://news.aa.com/news/news-details/2026/American-Airlines-to-bring-more-than-85-World-War-II-veterans-to-Hawaii-for-the-85th-anniversary-of-the-attack-on-Pearl-Harbor-COMM-MVI-11/default.aspx",
+        "https://www.aerotime.aero/articles/american-airlines-to-fly-ww2-veterans-to-hawaii-for-pearl-harbor-anniversary"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "status": "waiting",
+      "history": [
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 1,
+          "updatedUtc": "2026-11-24T16:29Z"
+        }
+      ],
+      "updatedUtc": "2026-11-25T11:46Z",
+      "nextRetryUtc": "2026-11-25T13:46Z",
+      "failureClass": "provider_failure",
+      "title": "American Airlines to fly WW2 veterans to Hawaii for Pearl Harbor anniversary"
+    },
+    "de8580d94ff517e73ce2e26f": {
+      "sourceUrls": [
+        "https://www.ntsb.gov/WebResource.axd?d=beToSAE3vdsL1QUQUxjWdf2jke9q5wlPctXqZ2bkqQkm2js8Pz9RiThOcJXpBE9AvowYJWGFiC7hTsLi_RypHg2&t=639256253503738887",
+        "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FEvents%2Fboardmeeting.htm",
+        "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FEvents%2Fsymposia.htm",
+        "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FInfo%2Fsources.htm",
+        "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FPages%2Fbrief.aspx%3Fev%25255Fid%3D27947%26key%3D0",
+        "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FPages%2Fbrief.aspx%3Fev%25255Fid%3D35471%26key%3D0",
+        "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FPages%2Fbrief.aspx%3Fev%25255Fid%3D47905%26key%3D0",
+        "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FPages%2Fhome.aspx",
+        "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FScriptResource.axd%3Fd%3DdwY9oWetJoJoVpgL6Zq8OCGTHSVrSi6xCyU9ORLeNcMVpKQFNVDbn3pLYFVozyeAvxDyhE8G78I5sG0GNrbznWFdlguNwSGHzBVCb68WdXHHZTwXsNtjVlg71WqJxECRVuzXdOcup3lwpz3eUK05OSIEDGB%252DYvMk0jQsMNqtNR81%26t%3Dffffffffa1bf0f7b",
+        "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2Fnews%2Fpress-releases%2FPages%2FNTSB_identifies_cargo_tank_design_as_factor_in_Indianapolis_truck_rollover_accident_calls_for_improvements_in_cargo_tank_d.aspx",
+        "https://www.ntsb.gov/_layouts/ntsb.aviation/Results.aspx?queryId=d46ded6a-42ab-4716-ae4b-59cccbaf35c1"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 0,
+      "status": "ready",
+      "history": [
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 1,
+          "updatedUtc": "2026-11-24T15:52Z"
+        },
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 1,
+          "updatedUtc": "2026-11-24T17:46Z"
+        },
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 1,
+          "updatedUtc": "2026-11-24T23:23Z"
+        },
+        {
+          "status": "ready",
+          "contentFailures": 0,
+          "serviceFailures": 0,
+          "updatedUtc": "2026-11-25T10:31Z"
+        }
+      ],
+      "updatedUtc": "2026-11-25T11:46Z",
+      "nextRetryUtc": null
+    },
+    "8b55ed806c1898ecf01acec1": {
+      "sourceUrls": [
+        "https://www.aerotime.aero/articles/k2-aviation-portfolio-purchase-boeing-aircraft-smbc"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-25T11:46Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-25T13:46Z",
+      "title": "K2 Aviation strengthens portfolio with purchase of six Boeing aircraft from SMBC"
     }
   }
 }
