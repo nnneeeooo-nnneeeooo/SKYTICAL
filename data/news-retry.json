@@ -4959,27 +4959,6 @@
         }
       ]
     },
-    "b00511c3c7b61ffcdd3cc96a": {
-      "sourceUrls": [
-        "https://avherald.com/h?article=5485d4bf",
-        "https://avherald.com/h?article=5485decd",
-        "https://avherald.com/h?article=54872d75&opt=0",
-        "https://avherald.com/h?article=548738db&opt=0"
-      ],
-      "contentFailures": 0,
-      "serviceFailures": 0,
-      "status": "ready",
-      "history": [
-        {
-          "status": "waiting",
-          "contentFailures": 1,
-          "serviceFailures": 0,
-          "updatedUtc": "2026-11-25T17:46Z"
-        }
-      ],
-      "updatedUtc": "2026-11-25T18:46Z",
-      "nextRetryUtc": null
-    },
     "7f3b2b8643c722f12701f480": {
       "sourceUrls": [
         "https://simpleflying.com/american-airlines-flight-chicago-diverts-cockpit-breach-attempt"
@@ -5025,6 +5004,19 @@
           "sourceKey": "simpleflying"
         }
       ]
+    },
+    "522f807afc8820513dfb18ef": {
+      "sourceUrls": [
+        "https://simpleflying.com/airbus-a380-fuel-burn-4-engines-shape-superjumbo-economics"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-25T19:46Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-25T21:46Z",
+      "title": "Airbus A380 Fuel Burn: How 4 Engines Shape The Superjumbo’s Economics"
     }
   }
 }
