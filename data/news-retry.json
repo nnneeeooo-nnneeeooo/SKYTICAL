@@ -3384,12 +3384,12 @@
         "https://simpleflying.com/ryanair-cancels-all-flights-to-5-destinations"
       ],
       "contentFailures": 0,
-      "serviceFailures": 3,
+      "serviceFailures": 4,
       "history": [],
-      "updatedUtc": "2026-11-24T21:33Z",
+      "updatedUtc": "2026-11-25T03:34Z",
       "failureClass": "source_insufficient",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-25T03:33Z",
+      "nextRetryUtc": "2026-11-25T09:34Z",
       "title": "Ryanair Cancels All Flights To 5 Destinations: See Full List Now",
       "items": [
         {
@@ -3775,29 +3775,6 @@
           "publishedUtc": "2026-11-24T16:16Z",
           "source": "American Airlines",
           "sourceKey": "americannews"
-        }
-      ]
-    },
-    "9b7fb872c493a07be4611456": {
-      "sourceUrls": [
-        "https://www.aviationwire.jp/archives/355094"
-      ],
-      "contentFailures": 0,
-      "serviceFailures": 1,
-      "history": [],
-      "updatedUtc": "2026-11-24T16:29Z",
-      "failureClass": "source_insufficient",
-      "status": "waiting",
-      "nextRetryUtc": "2026-11-24T22:29Z",
-      "title": "羽田D滑走路、タイヤ破裂との因果関係不明 ゴムジョイント新構造へ＝最終とりまとめ",
-      "items": [
-        {
-          "url": "https://www.aviationwire.jp/archives/355094",
-          "title": "羽田D滑走路、タイヤ破裂との因果関係不明 ゴムジョイント新構造へ＝最終とりまとめ",
-          "summary": "",
-          "publishedUtc": "2026-11-24T09:03Z",
-          "source": "Aviation Wire",
-          "sourceKey": "japansafety"
         }
       ]
     },
@@ -4296,7 +4273,7 @@
         "https://simpleflying.com/westjet-cancels-3-international-routes"
       ],
       "contentFailures": 0,
-      "serviceFailures": 1,
+      "serviceFailures": 2,
       "status": "waiting",
       "history": [
         {
@@ -4306,8 +4283,8 @@
           "updatedUtc": "2026-11-24T20:04Z"
         }
       ],
-      "updatedUtc": "2026-11-24T21:06Z",
-      "nextRetryUtc": "2026-11-25T03:06Z",
+      "updatedUtc": "2026-11-25T03:34Z",
+      "nextRetryUtc": "2026-11-25T09:34Z",
       "failureClass": "source_insufficient",
       "title": "Breeze Airways Adds 6 New Cities & 9 Routes: See Full List Now",
       "items": [
@@ -4833,6 +4810,77 @@
           "publishedUtc": "2026-11-24T21:54Z",
           "source": "山陽新聞",
           "sourceKey": "japansafety"
+        }
+      ]
+    },
+    "9b7fb872c493a07be4611456": {
+      "sourceUrls": [
+        "https://news.yahoo.co.jp/articles/57d34a38d6ef338ab0e6d406ce906724ff7ef009",
+        "https://www.aviationwire.jp/archives/355094"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "status": "waiting",
+      "history": [
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 1,
+          "updatedUtc": "2026-11-24T16:29Z"
+        }
+      ],
+      "updatedUtc": "2026-11-25T03:34Z",
+      "nextRetryUtc": "2026-11-25T09:34Z",
+      "failureClass": "source_insufficient",
+      "title": "羽田D滑走路、タイヤ破裂との因果関係不明 ゴムジョイント新構造へ＝最終とりまとめ（Aviation Wire）",
+      "items": [
+        {
+          "url": "https://news.yahoo.co.jp/articles/57d34a38d6ef338ab0e6d406ce906724ff7ef009",
+          "title": "羽田D滑走路、タイヤ破裂との因果関係不明 ゴムジョイント新構造へ＝最終とりまとめ（Aviation Wire）",
+          "summary": "",
+          "publishedUtc": "2026-11-24T09:20Z",
+          "source": "Yahoo!ニュース",
+          "sourceKey": "japansafety"
+        },
+        {
+          "url": "https://www.aviationwire.jp/archives/355094",
+          "title": "羽田D滑走路、タイヤ破裂との因果関係不明 ゴムジョイント新構造へ＝最終とりまとめ",
+          "summary": "",
+          "publishedUtc": "2026-11-24T09:03Z",
+          "source": "Aviation Wire",
+          "sourceKey": "japansafety"
+        }
+      ]
+    },
+    "c75da6042117dbcdd63d3475": {
+      "sourceUrls": [
+        "https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/23886/pdf",
+        "https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/71826/pdf"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-25T03:34Z",
+      "failureClass": "source_insufficient",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-25T09:34Z",
+      "title": "LAX82DVG12 Final Report",
+      "items": [
+        {
+          "url": "https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/71826/pdf",
+          "title": "LAX82DVG12 Final Report",
+          "summary": "",
+          "publishedUtc": "2026-11-20T13:27Z",
+          "source": "NTSB",
+          "sourceKey": "ntsb"
+        },
+        {
+          "url": "https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/23886/pdf",
+          "title": "LAX83LVM11 Final Report",
+          "summary": "",
+          "publishedUtc": "2026-11-21T01:32Z",
+          "source": "NTSB",
+          "sourceKey": "ntsb"
         }
       ]
     }

@@ -39,8 +39,8 @@
     },
     "nvidia:qwen/qwen3.5-397b-a17b": {
       "status": "unavailable",
-      "untilUtc": "2026-11-25T03:29Z",
-      "checkedUtc": "2026-11-24T03:29Z",
+      "untilUtc": "2026-11-26T03:34Z",
+      "checkedUtc": "2026-11-25T03:34Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
       "probeVersion": 3,
@@ -57,10 +57,10 @@
     },
     "gemini:gemini-3.5-flash": {
       "status": "waiting",
-      "untilUtc": "2026-11-25T03:04Z",
-      "checkedUtc": "2026-11-24T21:04Z",
-      "failureClass": "quota",
-      "diagnostic": "HTTP 429 (free-tier quota exhausted?)",
+      "untilUtc": "2026-11-25T09:34Z",
+      "checkedUtc": "2026-11-25T03:34Z",
+      "failureClass": "unexpected",
+      "diagnostic": "zh.body[0] contains Simplified Chinese characters",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -92,13 +92,13 @@
       "schemaMode": null
     },
     "gemini:gemini-4-hydrogen": {
-      "status": "verified",
-      "untilUtc": "2026-11-25T20:53Z",
-      "checkedUtc": "2026-11-24T20:53Z",
-      "failureClass": null,
-      "diagnostic": null,
+      "status": "waiting",
+      "checkedUtc": "2026-11-25T03:49Z",
+      "untilUtc": "2026-11-25T09:49Z",
+      "failureClass": "quota",
+      "diagnostic": "HTTP 429 (free-tier quota exhausted?)",
       "probeVersion": 3,
-      "schemaMode": "prompt"
+      "schemaMode": null
     },
     "gemini:gemini-3.8-flash": {
       "status": "waiting",
@@ -291,8 +291,8 @@
     },
     "openrouter:nvidia/nemotron-3.5-lightning:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-25T03:33Z",
-      "checkedUtc": "2026-11-24T21:33Z",
+      "untilUtc": "2026-11-25T09:34Z",
+      "checkedUtc": "2026-11-25T03:34Z",
       "failureClass": "truncated",
       "diagnostic": "response truncated (length)",
       "probeVersion": 3,
@@ -300,8 +300,8 @@
     },
     "openrouter:google/gemma-4-31b-it:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-25T03:00Z",
-      "checkedUtc": "2026-11-25T02:59Z",
+      "untilUtc": "2026-11-25T03:35Z",
+      "checkedUtc": "2026-11-25T03:34Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
@@ -309,8 +309,8 @@
     },
     "openrouter:google/gemma-4-26b-a4b-it:free": {
       "status": "waiting",
-      "checkedUtc": "2026-11-25T02:59Z",
-      "untilUtc": "2026-11-25T03:00Z",
+      "untilUtc": "2026-11-25T03:35Z",
+      "checkedUtc": "2026-11-25T03:34Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
