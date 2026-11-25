@@ -7,7 +7,6 @@
 <meta name="referrer" content="no-referrer">
 <meta name="theme-color" content="#f4f6f8">
 {% if not traffic_server_mode %}<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://accounts.google.com/gsi/client; style-src 'self'; img-src 'self' data:; connect-src 'self' https://analyticsdata.googleapis.com https://accounts.google.com; frame-src https://accounts.google.com; form-action 'none'; base-uri 'none'; frame-ancestors 'none'">{% endif %}
-{% if traffic_app_url %}<meta http-equiv="refresh" content="0;url={{ traffic_app_url }}">{% endif %}
 <title>SKYTICAL｜私人流量儀表板</title>
 <link rel="icon" href="{{ favicon }}">
 <link rel="stylesheet" href="{{ base }}/assets/traffic-dashboard.css?v={{ traffic_asset_version }}">
@@ -25,13 +24,14 @@
   <div class="account"><span id="auth-state" class="status" role="status">尚未連接</span><button id="auth-action" type="button">連接 Google</button></div>
 </header>
 <main class="shell" id="traffic-app" tabindex="-1">
-  {% if traffic_app_url %}<p class="help">正在開啟 Google 保護的私人儀表板。<a href="{{ traffic_app_url }}" rel="noreferrer">手動開啟</a></p>{% endif %}
   <header class="header">
-    <div><h1>網站流量</h1><p id="finding" class="subtitle">了解讀者從哪裡來，以及哪些新聞受到關注。</p></div>
+    <div><h1>網站流量</h1><p id="finding" class="subtitle">了解讀者從哪裡來，以及哪些新聞受到關注。</p>
+      {% if traffic_app_url %}<p class="subtitle"><a href="{{ traffic_app_url }}" target="_blank" rel="noopener noreferrer">開啟 Google 私人儀表板（新分頁）</a></p><p class="help">Google 若顯示無法開啟，請在私密視窗只登入部署儀表板的帳號，或使用下方 GA4 備用連線。</p>{% endif %}
+    </div>
     <button id="refresh" type="button" disabled><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M5.6 8a7 7 0 0 1 11.6-2L20 9M4 15l2.8 3A7 7 0 0 0 18.4 16"/></svg><span>更新數據</span></button>
   </header>
   <details class="setup" id="setup" open>
-    <summary><span>GA4 連線設定</span><span class="summary-note">設定儲存在這個瀏覽器</span></summary>
+    <summary><span>{% if traffic_app_url %}GA4 備用連線設定{% else %}GA4 連線設定{% endif %}</span><span class="summary-note">設定儲存在這個瀏覽器</span></summary>
     <div class="setup-content">
       <p class="help">使用有權限的 Google 帳號讀取流量。存取權杖只保留在此分頁記憶體，不會上傳到 SKYTICAL 或 GitHub。</p>
       <div class="setup-grid">
