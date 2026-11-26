@@ -120,10 +120,10 @@
     },
     "gemini:gemini-3.1-flash-lite": {
       "status": "waiting",
-      "untilUtc": "2026-11-26T15:46Z",
-      "checkedUtc": "2026-11-26T09:46Z",
+      "untilUtc": "2026-11-26T21:46Z",
+      "checkedUtc": "2026-11-26T15:46Z",
       "failureClass": "unexpected",
-      "diagnostic": "F2 claim adds high-risk atom '2026' not present in its own sourceQuote",
+      "diagnostic": "F2 claim adds high-risk atom '10' not present in its own sourceQuote",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -137,18 +137,18 @@
       "schemaMode": "prompt"
     },
     "gemini:gemma-4-26b-a4b-it": {
-      "status": "verified",
-      "untilUtc": "2026-11-26T14:48Z",
-      "checkedUtc": "2026-11-25T14:48Z",
-      "failureClass": null,
-      "diagnostic": null,
+      "status": "waiting",
+      "untilUtc": "2026-11-26T21:46Z",
+      "checkedUtc": "2026-11-26T15:46Z",
+      "failureClass": "timeout",
+      "diagnostic": "ReadTimeout",
       "probeVersion": 3,
-      "schemaMode": "prompt"
+      "schemaMode": null
     },
     "nvidia:z-ai/glm-5.3-flash": {
       "status": "waiting",
-      "untilUtc": "2026-11-26T15:46Z",
-      "checkedUtc": "2026-11-26T09:46Z",
+      "untilUtc": "2026-11-26T21:46Z",
+      "checkedUtc": "2026-11-26T15:46Z",
       "failureClass": "timeout",
       "diagnostic": "ReadTimeout",
       "probeVersion": 3,
@@ -300,8 +300,8 @@
     },
     "openrouter:google/gemma-4-31b-it:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-26T14:48Z",
-      "checkedUtc": "2026-11-26T14:47Z",
+      "untilUtc": "2026-11-26T15:47Z",
+      "checkedUtc": "2026-11-26T15:46Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
@@ -309,8 +309,8 @@
     },
     "openrouter:google/gemma-4-26b-a4b-it:free": {
       "status": "waiting",
-      "checkedUtc": "2026-11-26T14:47Z",
-      "untilUtc": "2026-11-26T14:48Z",
+      "checkedUtc": "2026-11-26T15:46Z",
+      "untilUtc": "2026-11-26T15:47Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
