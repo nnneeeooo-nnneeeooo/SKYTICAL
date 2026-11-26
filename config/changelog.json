@@ -2,8 +2,22 @@
   "schemaVersion": 1,
   "repository": "https://github.com/nnneeeooo-nnneeeooo/SKYTICAL",
   "historyStart": "2026-07-26",
-  "updatedThrough": "2026-11-25",
+  "updatedThrough": "2026-11-27",
   "entries": [
+    {
+      "date": "2026-11-27",
+      "kind": "feature",
+      "commit": "5da885157752ce376eb7a93c4b9216e849b06cf1",
+      "zh": "優先為缺少照片的新聞與短訊尋找配圖\nSKYTICAL 會先替還沒有照片的報導和彙整中的個別短訊尋找第一張照片，再替已有照片的報導增加配圖。現在也能從更多來源頁找到附有圖說的原圖。找不到來源可查、主題相符的照片時，頁面會顯示預設圖。",
+      "en": "Photo searches now prioritize stories and briefs without images\nSKYTICAL now looks for the first photo for a story or an individual brief before adding more photos to stories that already have one. It can also find captioned originals on more source pages. When no relevant photo with a verifiable source is available, the page displays the default image.",
+      "notice": {
+        "importance": "major",
+        "title": {
+          "zh": "優先為缺少照片的新聞與短訊尋找配圖",
+          "en": "Photo searches now prioritize stories and briefs without images"
+        }
+      }
+    },
     {
       "date": "2026-11-25",
       "kind": "system",
