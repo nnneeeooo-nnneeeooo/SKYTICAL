@@ -244,180 +244,198 @@
       "publishedExcerptId": "a-us-army-restart-dc-helicopter-training-20261124"
     },
     {
-      "enqueuedUtc": "2026-11-25T13:11Z",
+      "enqueuedUtc": "2026-11-25T12:34Z",
       "routeReason": "verified_short_update",
-      "sourceGroupId": "g-20261125-1311-1",
-      "eventKey": "",
+      "sourceGroupId": "",
+      "eventKey": "k2-aviation-smbc-six-737-800-20261124",
       "article": {
-        "id": "a-20261125-1311-nasa-takes-ownership-of-x-59-supersonic",
-        "publishedUtc": "2026-11-25T13:11Z",
+        "id": "a-k2-aviation-smbc-six-737-800-20261124",
         "cat": "biz",
-        "primarySource": "AeroTime",
-        "image": null,
-        "sourceImageCandidates": [],
+        "articleFormat": "brief",
+        "sourcePublishedUtc": "2026-11-24T00:00:00Z",
+        "publishedUtc": "2026-11-25T12:34:36Z",
         "zh": {
-          "title": "NASA接收洛克希德馬丁移交的X-59超音速研究機",
-          "summary": "NASA表示已接收洛克希德馬丁於11月18日移交的X-59研究機，飛行測試持續。",
+          "title": "K2 Aviation 簽約向 SMBC 購買六架波音 737-800",
+          "summary": "K2 Aviation 表示，已與 SMBC Aviation Capital 簽署協議，將購買六架波音 737-800；這批飛機已租給六家航空公司。",
           "body": [
-            "美國太空總署（NASA）表示，洛克希德馬丁的臭鼬工廠（Skunk Works）於11月18日正式將X-59超音速研究機移交給NASA。該機目前由NASA持有，持續進行飛行測試；洛克希德馬丁將視需要提供補充支援。",
-            "X-59的設計目標是在超音速飛行時，將響亮音爆減弱為較輕的「音爆悶響」。",
-            "X-59於2025年10月28日首飛，並在2026年6月5日首次飛越音速。該次飛行從愛德華空軍基地起飛，速度達約1.1馬赫。",
-            "NASA表示，當時伴飛的F-15所產生的音爆掩蓋了X-59發出的任何聲響。"
+            "K2 Aviation 表示，這是雙方首度交易。承租客戶分布於歐洲、拉丁美洲、亞洲、中東和非洲。"
           ]
         },
         "en": {
-          "title": "NASA takes ownership of X-59 supersonic research aircraft from Lockheed Martin",
-          "summary": "NASA says it received the X-59 research aircraft from Lockheed Martin on November 18; flight testing continues.",
+          "title": "K2 Aviation agrees to buy six Boeing 737-800s from SMBC",
+          "summary": "K2 Aviation says it signed an agreement with SMBC Aviation Capital to buy six Boeing 737-800s on lease to six airlines.",
           "body": [
-            "NASA says Lockheed Martin Skunk Works officially transferred the X-59 supersonic research aircraft to the agency on November 18. The aircraft continues flight testing under NASA ownership, with Lockheed Martin to provide supplemental support as needed.",
-            "The X-59 is designed to fly faster than sound while reducing a loud sonic boom to a quieter “sonic thump.”",
-            "The aircraft first flew on October 28, 2025. On June 5, 2026, it flew faster than sound for the first time, reaching about Mach 1.1 after taking off from Edwards Air Force Base.",
-            "NASA said sonic booms from an accompanying F-15 obscured any sound made by the X-59 during the flight."
+            "K2 says it is the first transaction between the two companies. The aircraft are leased across Europe, Latin America, Asia, the Middle East and Africa."
           ]
         },
+        "primarySource": "K2 Aviation",
+        "image": null,
+        "writer": "scheduled:Codex • GPT-6",
+        "writerModels": [
+          "Codex • GPT-6"
+        ],
         "sources": [
           {
-            "name": "AeroTime — NASA marks ‘big moment’ for commercial supersonic flight wi…",
-            "url": "https://www.aerotime.aero/articles/nasa-commercial-supersonic-flight-x-59-arrival"
+            "name": "K2 Aviation",
+            "url": "https://www.k2aviationpartners.com/news"
           }
         ],
-        "articleFormat": "brief",
-        "sourcePublishedUtc": "2026-11-25T12:28Z",
-        "writer": "openai:gpt-6.1-terra",
         "facts": [
           {
             "factId": "F1",
-            "claim": "NASA said Lockheed Martin Skunk Works officially transferred the supersonic X-59 to the agency on November 18.",
-            "sourceQuote": "According to NASA, the supersonic X-59 aircraft was officially transferred to the US space agency by Lockheed Martin Skunk Works on November 18",
-            "sourceUrl": "https://www.aerotime.aero/articles/nasa-commercial-supersonic-flight-x-59-arrival",
-            "evidenceScope": "source",
-            "archiveEventId": null,
-            "archiveContext": false
-          },
-          {
-            "factId": "F2",
-            "claim": "The X-59 continues flight testing under NASA ownership, with Lockheed Martin to provide supplemental support as needed.",
-            "sourceQuote": "X-59 continues flight testing under NASA ownership, Lockheed Martin will provide supplemental support on an as-needed basis",
-            "sourceUrl": "https://www.aerotime.aero/articles/nasa-commercial-supersonic-flight-x-59-arrival",
-            "evidenceScope": "source",
-            "archiveEventId": null,
-            "archiveContext": false
-          },
-          {
-            "factId": "F3",
-            "claim": "The X-59 is designed to fly faster than sound while reducing a loud sonic boom to a quieter sonic thump.",
-            "sourceQuote": "X-59 is designed to be a boomless supersonic aircraft with the capability to fly faster than the speed of sound while reducing the loud sonic boom to a quieter ‘sonic thump’",
-            "sourceUrl": "https://www.aerotime.aero/articles/nasa-commercial-supersonic-flight-x-59-arrival",
-            "evidenceScope": "source",
-            "archiveEventId": null,
-            "archiveContext": false
-          },
-          {
-            "factId": "F4",
-            "claim": "The X-59 made its first flight on October 28, 2025.",
-            "sourceQuote": "X-59 made its first flight October 28, 2025",
-            "sourceUrl": "https://www.aerotime.aero/articles/nasa-commercial-supersonic-flight-x-59-arrival",
-            "evidenceScope": "source",
-            "archiveEventId": null,
-            "archiveContext": false
-          },
-          {
-            "factId": "F5",
-            "claim": "On June 5, 2026, the X-59 first flew faster than sound, reaching about Mach 1.1 after taking off from Edwards Air Force Base.",
-            "sourceQuote": "June 5, 2026, the X-59 supersonic research aircraft flew faster than the speed of sound for the first time.\nTaking off from Edwards Air Force Base, the aircraft reached about Mach 1.1",
-            "sourceUrl": "https://www.aerotime.aero/articles/nasa-commercial-supersonic-flight-x-59-arrival",
-            "evidenceScope": "source",
-            "archiveEventId": null,
-            "archiveContext": false
-          },
-          {
-            "factId": "F6",
-            "claim": "NASA said sonic booms from a NASA F-15 accompanying the X-59 obscured any sound made by the X-59 during the flight.",
-            "sourceQuote": "X-59 was accompanied by a NASA F-15 chase aircraft during the flight. NASA said sonic booms from the F-15 obscured any sound made by the X-59",
-            "sourceUrl": "https://www.aerotime.aero/articles/nasa-commercial-supersonic-flight-x-59-arrival",
-            "evidenceScope": "source",
-            "archiveEventId": null,
-            "archiveContext": false
+            "claim": "K2 Aviation says it signed an agreement with SMBC Aviation Capital to buy six Boeing 737-800s on lease to six airlines.",
+            "sourceQuote": "to purchase six Boeing 737-800 Next Generation aircraft on lease to six airline customers",
+            "sourceUrl": "https://www.k2aviationpartners.com/news",
+            "evidenceScope": "source"
           }
-        ],
-        "riskFlags": [],
-        "eventStatus": "confirmed",
-        "entities": {
-          "organizations": [
-            "NASA",
-            "Lockheed Martin Skunk Works",
-            "Lockheed Martin"
-          ],
-          "aircraft_models": [
-            "X-59",
-            "F-15"
-          ],
-          "airports": [
-            "Edwards Air Force Base"
-          ],
-          "event_dates": [
-            "November 18, 2026",
-            "October 28, 2025",
-            "June 5, 2026"
+        ]
+      },
+      "publishedExcerptId": null
+    },
+    {
+      "enqueuedUtc": "2026-11-25T12:34Z",
+      "routeReason": "verified_short_update",
+      "sourceGroupId": "",
+      "eventKey": "american-airlines-pearl-harbor-charter-20261124",
+      "article": {
+        "id": "a-american-airlines-pearl-harbor-charter-20261124",
+        "cat": "biz",
+        "articleFormat": "brief",
+        "sourcePublishedUtc": "2026-11-24T00:00:00Z",
+        "publishedUtc": "2026-11-25T12:34:36Z",
+        "zh": {
+          "title": "美國航空籌辦珍珠港事件 85 週年紀念包機",
+          "summary": "美國航空計畫以包機從達拉斯沃斯堡載送逾 85 名二戰退伍軍人、戰時女性工人及嘉賓前往夏威夷歐胡島，參加珍珠港事件 85 週年紀念活動。",
+          "body": [
+            "航空公司公布的行程包括參訪珍珠港航空博物館和珍珠港國家紀念園區。"
           ]
         },
-        "entityEvidence": [
+        "en": {
+          "title": "American Airlines plans Pearl Harbor anniversary charter",
+          "summary": "American Airlines plans to charter a flight from Dallas–Fort Worth to Oahu for more than 85 World War II veterans, wartime women workers and guests to mark the 85th anniversary of the Pearl Harbor attack.",
+          "body": [
+            "The airline’s itinerary includes visits to the Pearl Harbor Aviation Museum and Pearl Harbor National Memorial."
+          ]
+        },
+        "primarySource": "American Airlines Newsroom",
+        "image": null,
+        "writer": "scheduled:Codex • GPT-6",
+        "writerModels": [
+          "Codex • GPT-6"
+        ],
+        "sources": [
           {
-            "entityType": "organizations",
-            "value": "NASA",
-            "sourceQuote": "According to NASA, the supersonic X-59 aircraft",
-            "sourceUrl": "https://www.aerotime.aero/articles/nasa-commercial-supersonic-flight-x-59-arrival"
-          },
-          {
-            "entityType": "organizations",
-            "value": "Lockheed Martin Skunk Works",
-            "sourceQuote": "by Lockheed Martin Skunk Works on November 18, 2026",
-            "sourceUrl": "https://www.aerotime.aero/articles/nasa-commercial-supersonic-flight-x-59-arrival"
-          },
-          {
-            "entityType": "organizations",
-            "value": "Lockheed Martin",
-            "sourceQuote": "Lockheed Martin will provide supplemental support on an as-needed basis",
-            "sourceUrl": "https://www.aerotime.aero/articles/nasa-commercial-supersonic-flight-x-59-arrival"
-          },
-          {
-            "entityType": "aircraft_models",
-            "value": "X-59",
-            "sourceQuote": "the X-59 supersonic research aircraft flew faster than the speed of sound",
-            "sourceUrl": "https://www.aerotime.aero/articles/nasa-commercial-supersonic-flight-x-59-arrival"
-          },
-          {
-            "entityType": "aircraft_models",
-            "value": "F-15",
-            "sourceQuote": "X-59 was accompanied by a NASA F-15 chase aircraft",
-            "sourceUrl": "https://www.aerotime.aero/articles/nasa-commercial-supersonic-flight-x-59-arrival"
-          },
-          {
-            "entityType": "airports",
-            "value": "Edwards Air Force Base",
-            "sourceQuote": "Taking off from Edwards Air Force Base, the aircraft reached about Mach 1.1",
-            "sourceUrl": "https://www.aerotime.aero/articles/nasa-commercial-supersonic-flight-x-59-arrival"
-          },
-          {
-            "entityType": "event_dates",
-            "value": "November 18, 2026",
-            "sourceQuote": "by Lockheed Martin Skunk Works on November 18, 2026",
-            "sourceUrl": "https://www.aerotime.aero/articles/nasa-commercial-supersonic-flight-x-59-arrival"
-          },
-          {
-            "entityType": "event_dates",
-            "value": "October 28, 2025",
-            "sourceQuote": "The X-59 made its first flight October 28, 2025",
-            "sourceUrl": "https://www.aerotime.aero/articles/nasa-commercial-supersonic-flight-x-59-arrival"
-          },
-          {
-            "entityType": "event_dates",
-            "value": "June 5, 2026",
-            "sourceQuote": "On June 5, 2026, the X-59 supersonic research aircraft",
-            "sourceUrl": "https://www.aerotime.aero/articles/nasa-commercial-supersonic-flight-x-59-arrival"
+            "name": "American Airlines Newsroom",
+            "url": "https://news.aa.com/news/news-details/2026/American-Airlines-to-bring-more-than-85-World-War-II-veterans-to-Hawaii-for-the-85th-anniversary-of-the-attack-on-Pearl-Harbor-COMM-MVI-11/default.aspx"
           }
         ],
-        "evidenceVersion": 2
+        "facts": [
+          {
+            "factId": "F1",
+            "claim": "American Airlines plans to charter a flight from Dallas–Fort Worth to Oahu for more than 85 World War II veterans, wartime women workers and guests to mark the 85th anniversary of the Pearl Harbor attack.",
+            "sourceQuote": "transport more than 85 World War II veterans, Rosie the Riveters and their guests to Oahu, Hawaii",
+            "sourceUrl": "https://news.aa.com/news/news-details/2026/American-Airlines-to-bring-more-than-85-World-War-II-veterans-to-Hawaii-for-the-85th-anniversary-of-the-attack-on-Pearl-Harbor-COMM-MVI-11/default.aspx",
+            "evidenceScope": "source"
+          }
+        ]
+      },
+      "publishedExcerptId": null
+    },
+    {
+      "enqueuedUtc": "2026-11-25T12:34Z",
+      "routeReason": "verified_short_update",
+      "sourceGroupId": "",
+      "eventKey": "aci-world-airport-innovation-awards-20261124",
+      "article": {
+        "id": "a-aci-world-airport-innovation-awards-20261124",
+        "cat": "biz",
+        "articleFormat": "brief",
+        "sourcePublishedUtc": "2026-11-24T00:00:00Z",
+        "publishedUtc": "2026-11-25T12:34:36Z",
+        "zh": {
+          "title": "ACI 公布機場創新獎，上海浦東與虹橋分獲兩項肯定",
+          "summary": "國際機場協會公布 2026 機場創新獎。上海浦東機場的 AI 到站行李處理與虹橋機場的停靠引導整合系統分別獲獎。",
+          "body": [
+            "西班牙韋斯卡－庇里牛斯機場與保加利亞布爾加斯機場並列小型機場組得主，仁川國際機場的李相龍獲個人獎。"
+          ]
+        },
+        "en": {
+          "title": "ACI names airport innovation winners, with awards for Shanghai Pudong and Hongqiao",
+          "summary": "ACI World named its 2026 Airport Innovation Award winners. Shanghai Pudong won for AI-assisted inbound baggage handling, while Hongqiao won for an integrated docking and pushback monitoring system.",
+          "body": [
+            "Huesca-Pirineos and Burgas were joint winners in the small-airport category. Incheon International Airport executive Sangyong Lee won the individual award."
+          ]
+        },
+        "primarySource": "ACI World",
+        "image": null,
+        "writer": "scheduled:Codex • GPT-6",
+        "writerModels": [
+          "Codex • GPT-6"
+        ],
+        "sources": [
+          {
+            "name": "ACI World",
+            "url": "https://aci.aero/2026/11/24/aci-world-names-the-worlds-most-innovative-airports-of-2026/"
+          }
+        ],
+        "facts": [
+          {
+            "factId": "F1",
+            "claim": "ACI World named its 2026 Airport Innovation Award winners. Shanghai Pudong won for AI-assisted inbound baggage handling, while Hongqiao won for an integrated docking and pushback monitoring system.",
+            "sourceQuote": "AI-managed inbound baggage handling at Shanghai Pudong International Airport, China.",
+            "sourceUrl": "https://aci.aero/2026/11/24/aci-world-names-the-worlds-most-innovative-airports-of-2026/",
+            "evidenceScope": "source"
+          }
+        ]
+      },
+      "publishedExcerptId": null
+    },
+    {
+      "enqueuedUtc": "2026-11-25T12:34Z",
+      "routeReason": "verified_short_update",
+      "sourceGroupId": "",
+      "eventKey": "matsuyama-airport-fire-response-drill-20261125",
+      "article": {
+        "id": "a-matsuyama-airport-fire-response-drill-20261125",
+        "cat": "biz",
+        "articleFormat": "brief",
+        "sourcePublishedUtc": "2026-11-25T09:40:00Z",
+        "publishedUtc": "2026-11-25T12:34:36Z",
+        "zh": {
+          "title": "日本松山機場舉行空難應變演練",
+          "summary": "日本愛媛縣松山機場 11 月 25 日舉行綜合演練，以航機緊急降落後起火為情境，確認疏散及傷患檢傷分類的程序。",
+          "body": [
+            "參演單位透過模擬事故檢查跨機構的協調與應變流程。"
+          ]
+        },
+        "en": {
+          "title": "Japan’s Matsuyama Airport holds aircraft emergency drill",
+          "summary": "Matsuyama Airport in Ehime, Japan, held a drill on November 25 simulating an aircraft fire after an emergency landing to check evacuation and triage procedures.",
+          "body": [
+            "The exercise brought responding agencies together to review how they coordinate during an aircraft emergency."
+          ]
+        },
+        "primarySource": "テレビ愛媛／FNN",
+        "image": null,
+        "writer": "scheduled:Codex • GPT-6",
+        "writerModels": [
+          "Codex • GPT-6"
+        ],
+        "sources": [
+          {
+            "name": "テレビ愛媛／FNN",
+            "url": "https://www.fnn.jp/articles/-/1159263"
+          }
+        ],
+        "facts": [
+          {
+            "factId": "F1",
+            "claim": "Matsuyama Airport in Ehime, Japan, held a drill on November 25 simulating an aircraft fire after an emergency landing to check evacuation and triage procedures.",
+            "sourceQuote": "松山空港で２５日、航空機の事故を想定した総合訓練が行われ関係機関が連携して対応手順を確認しました",
+            "sourceUrl": "https://www.fnn.jp/articles/-/1159263",
+            "evidenceScope": "source"
+          }
+        ]
       },
       "publishedExcerptId": null
     },
@@ -1343,198 +1361,6 @@
             "value": "Arctic",
             "sourceQuote": "United Airlines' Rare Arctic Flights Only 46% Full: Here's Why",
             "sourceUrl": "https://simpleflying.com/united-airlines-rare-arctic-flights-46pc-full/"
-          }
-        ],
-        "evidenceVersion": 2
-      },
-      "publishedExcerptId": null
-    },
-    {
-      "enqueuedUtc": "2026-11-25T20:48Z",
-      "routeReason": "verified_short_update",
-      "sourceGroupId": "g-20261125-2047-1",
-      "eventKey": "",
-      "article": {
-        "id": "a-20261125-2048-us-proposes-10-tariff-on-finished-aircra",
-        "publishedUtc": "2026-11-25T20:48Z",
-        "cat": "reg",
-        "primarySource": "AeroTime",
-        "image": null,
-        "sourceImageCandidates": [],
-        "zh": {
-          "title": "美國擬對自巴西進口的成品航空器課10%關稅",
-          "summary": "美國提議對自巴西進口的成品航空器課10%關稅，巴西航空工業正評估提案。",
-          "body": [
-            "美國提議對自巴西進口的成品航空器課徵10%關稅。AeroTime報導，這項提案可能使巴西航空工業（Embraer）面臨較高成本。提案於2026年11月25日公佈，涵蓋多類成品航空器，包括飛機與直升機。",
-            "美國貿易代表署（USTR）希望取消2026年7月給予成品航空器的關稅豁免。巴西航空工業告訴路透社，正在評估這項提案，並支持維持航太貿易免關稅。",
-            "公眾意見徵詢期將於11月27日開始，持續至12月30日。美國貿易代表署已安排於2027年1月14日舉行聽證會，討論關稅。"
-          ]
-        },
-        "en": {
-          "title": "US proposes 10% tariff on finished aircraft imported from Brazil",
-          "summary": "US proposes 10% tariff on finished aircraft imported from Brazil; Embraer is reviewing the plan.",
-          "body": [
-            "The United States has proposed a 10% tariff on finished aircraft imported from Brazil. AeroTime reports that the proposal puts Embraer at risk of higher costs. Announced on November 25, 2026, the proposal would cover several categories of finished aircraft, including airplanes and helicopters.",
-            "The Office of the US Trade Representative (USTR) wants to end an exemption for finished aircraft that it granted in July 2026. Embraer told Reuters that it was reviewing the proposal and supported keeping aerospace trade tariff-free.",
-            "The public comment period is scheduled to open November 27 and run through December 30. The USTR has scheduled a hearing to discuss the tariffs on January 14, 2027."
-          ]
-        },
-        "sources": [
-          {
-            "name": "AeroTime — US proposes 10% tariff on Brazilian aircraft, putting Embra…",
-            "url": "https://www.aerotime.aero/articles/us-10-percent-tariff-brazilian-aircraft-embraer"
-          }
-        ],
-        "articleFormat": "brief",
-        "sourcePublishedUtc": "2026-11-25T19:56Z",
-        "writer": "openai:gpt-6.1-terra",
-        "facts": [
-          {
-            "factId": "F1",
-            "claim": "The United States proposed a 10% tariff on finished aircraft imported from Brazil, putting Embraer at risk of higher costs.",
-            "sourceQuote": "The United States proposed a 10% tariff on finished aircraft imported from Brazil, putting Embraer at risk of higher costs",
-            "sourceUrl": "https://www.aerotime.aero/articles/us-10-percent-tariff-brazilian-aircraft-embraer",
-            "evidenceScope": "source",
-            "archiveEventId": null,
-            "archiveContext": false
-          },
-          {
-            "factId": "F2",
-            "claim": "The proposal was announced on November 25, 2026, and would apply to several categories of finished aircraft, including airplanes and helicopters.",
-            "sourceQuote": "The new proposal, announced on November 25, 2026, would apply a 10% duty to several categories of finished aircraft, including airplanes and helicopters.",
-            "sourceUrl": "https://www.aerotime.aero/articles/us-10-percent-tariff-brazilian-aircraft-embraer",
-            "evidenceScope": "source",
-            "archiveEventId": null,
-            "archiveContext": false
-          },
-          {
-            "factId": "F3",
-            "claim": "The USTR wants to end a tariff exemption for finished aircraft that it granted in July 2026.",
-            "sourceQuote": "The Office of the US Trade Representative (USTR) wants to end an exemption for finished aircraft that it granted in July 2026, when Washington imposed a 25% tariff",
-            "sourceUrl": "https://www.aerotime.aero/articles/us-10-percent-tariff-brazilian-aircraft-embraer",
-            "evidenceScope": "source",
-            "archiveEventId": null,
-            "archiveContext": false
-          },
-          {
-            "factId": "F4",
-            "claim": "Embraer told Reuters it was reviewing the proposal and supported keeping aerospace trade tariff-free.",
-            "sourceQuote": "Embraer told Reuters it was reviewing the proposal and supported keeping aerospace trade tariff-free.",
-            "sourceUrl": "https://www.aerotime.aero/articles/us-10-percent-tariff-brazilian-aircraft-embraer",
-            "evidenceScope": "source",
-            "archiveEventId": null,
-            "archiveContext": false
-          },
-          {
-            "factId": "F5",
-            "claim": "The public comment period opens November 27 and runs through December 30.",
-            "sourceQuote": "The public comment period opens November 27 and runs through December 30.",
-            "sourceUrl": "https://www.aerotime.aero/articles/us-10-percent-tariff-brazilian-aircraft-embraer",
-            "evidenceScope": "source",
-            "archiveEventId": null,
-            "archiveContext": false
-          },
-          {
-            "factId": "F6",
-            "claim": "USTR has scheduled a hearing to discuss the tariffs for January 14, 2027.",
-            "sourceQuote": "USTR has scheduled a hearing to discuss the tariffs for January 14, 2027.",
-            "sourceUrl": "https://www.aerotime.aero/articles/us-10-percent-tariff-brazilian-aircraft-embraer",
-            "evidenceScope": "source",
-            "archiveEventId": null,
-            "archiveContext": false
-          }
-        ],
-        "riskFlags": [
-          "regulatory_action",
-          "financial_or_order_claim",
-          "unconfirmed_or_developing"
-        ],
-        "eventStatus": "planned",
-        "entities": {
-          "organizations": [
-            "Office of the US Trade Representative",
-            "Embraer",
-            "Reuters",
-            "AeroTime"
-          ],
-          "locations": [
-            "United States",
-            "Brazil"
-          ],
-          "event_dates": [
-            "November 25, 2026",
-            "July 2026",
-            "November 27",
-            "December 30",
-            "January 14, 2027"
-          ]
-        },
-        "entityEvidence": [
-          {
-            "entityType": "organizations",
-            "value": "Office of the US Trade Representative",
-            "sourceQuote": "The Office of the US Trade Representative (USTR) wants to end an exemption for finished aircraft that it granted in July 2026",
-            "sourceUrl": "https://www.aerotime.aero/articles/us-10-percent-tariff-brazilian-aircraft-embraer"
-          },
-          {
-            "entityType": "organizations",
-            "value": "Embraer",
-            "sourceQuote": "Embraer told Reuters it was reviewing the proposal and supported keeping aerospace trade tariff-free.",
-            "sourceUrl": "https://www.aerotime.aero/articles/us-10-percent-tariff-brazilian-aircraft-embraer"
-          },
-          {
-            "entityType": "organizations",
-            "value": "Reuters",
-            "sourceQuote": "Embraer told Reuters it was reviewing the proposal and supported keeping aerospace trade tariff-free.",
-            "sourceUrl": "https://www.aerotime.aero/articles/us-10-percent-tariff-brazilian-aircraft-embraer"
-          },
-          {
-            "entityType": "organizations",
-            "value": "AeroTime",
-            "sourceQuote": "appeared first on AeroTime",
-            "sourceUrl": "https://www.aerotime.aero/articles/us-10-percent-tariff-brazilian-aircraft-embraer"
-          },
-          {
-            "entityType": "locations",
-            "value": "United States",
-            "sourceQuote": "The United States proposed a 10% tariff on finished aircraft imported from Brazil",
-            "sourceUrl": "https://www.aerotime.aero/articles/us-10-percent-tariff-brazilian-aircraft-embraer"
-          },
-          {
-            "entityType": "locations",
-            "value": "Brazil",
-            "sourceQuote": "The United States proposed a 10% tariff on finished aircraft imported from Brazil",
-            "sourceUrl": "https://www.aerotime.aero/articles/us-10-percent-tariff-brazilian-aircraft-embraer"
-          },
-          {
-            "entityType": "event_dates",
-            "value": "November 25, 2026",
-            "sourceQuote": "The new proposal, announced on November 25, 2026, would apply a 10% duty to several categories of finished aircraft, including airplanes and helicopters.",
-            "sourceUrl": "https://www.aerotime.aero/articles/us-10-percent-tariff-brazilian-aircraft-embraer"
-          },
-          {
-            "entityType": "event_dates",
-            "value": "July 2026",
-            "sourceQuote": "The Office of the US Trade Representative (USTR) wants to end an exemption for finished aircraft that it granted in July 2026",
-            "sourceUrl": "https://www.aerotime.aero/articles/us-10-percent-tariff-brazilian-aircraft-embraer"
-          },
-          {
-            "entityType": "event_dates",
-            "value": "November 27",
-            "sourceQuote": "The public comment period opens November 27 and runs through December 30.",
-            "sourceUrl": "https://www.aerotime.aero/articles/us-10-percent-tariff-brazilian-aircraft-embraer"
-          },
-          {
-            "entityType": "event_dates",
-            "value": "December 30",
-            "sourceQuote": "The public comment period opens November 27 and runs through December 30.",
-            "sourceUrl": "https://www.aerotime.aero/articles/us-10-percent-tariff-brazilian-aircraft-embraer"
-          },
-          {
-            "entityType": "event_dates",
-            "value": "January 14, 2027",
-            "sourceQuote": "USTR has scheduled a hearing to discuss the tariffs for January 14, 2027.",
-            "sourceUrl": "https://www.aerotime.aero/articles/us-10-percent-tariff-brazilian-aircraft-embraer"
           }
         ],
         "evidenceVersion": 2
