@@ -623,6 +623,12 @@ def test_extract_json_and_validate_draft():
     broken["flash"]["zh"] = "中国国航增飞纽约航班"
     check("Simplified Chinese" in (write.validate_draft(broken) or ""),
           "simplified Chinese flash is rejected before publication")
+    broken = json.loads(json.dumps(DRAFT_BIZ))
+    broken["flash"]["zh"] = "ACI 公布機場创新奖"
+    check("Simplified Chinese" in (write.validate_draft(broken) or ""),
+          "valid Taiwan 公布 does not mask simplified glyphs in the same flash")
+    check(not write.has_simplified_chinese("ACI 公布機場創新獎"),
+          "Taiwan usage 公布 is accepted in published flash headlines")
 
     live_flashes = json.loads((ROOT / "data" / "flashes.json").read_text(
         encoding="utf-8"))
@@ -631,7 +637,7 @@ def test_extract_json_and_validate_draft():
         for flash in live_flashes
         if isinstance(flash, dict)
         and isinstance(flash.get("zh"), str)
-        and write._S2T.convert(flash["zh"]) != flash["zh"]
+        and write.has_simplified_chinese(flash["zh"])
     ]
     check(not simplified_flashes,
           "published flash headlines use Traditional Chinese")

@@ -121,6 +121,17 @@ EN_PUBLICATION_MIN_WORDS = 70
 _S2T = OpenCC("s2t")
 
 
+def has_simplified_chinese(value: str) -> bool:
+    """Detect simplified text without flagging Taiwan's valid ``公布`` form.
+
+    OpenCC's generic s2t profile changes ``公布`` to ``公佈``. Both are valid
+    Traditional Chinese usage in Taiwan, so compare that pair as one spelling
+    while preserving detection of other simplified characters in the same text.
+    """
+    converted = _S2T.convert(value)
+    return converted.replace("公佈", "公布") != value.replace("公佈", "公布")
+
+
 def simplified_chinese_error(draft: dict) -> str | None:
     """Reject reader-facing Chinese copy that still contains simplified glyphs."""
     fields: list[tuple[str, object]] = []
@@ -144,7 +155,7 @@ def simplified_chinese_error(draft: dict) -> str | None:
             if isinstance(bilingual, dict):
                 fields.append((f"incident.{key}.zh", bilingual.get("zh")))
     for field, value in fields:
-        if isinstance(value, str) and _S2T.convert(value) != value:
+        if isinstance(value, str) and has_simplified_chinese(value):
             return f"{field} contains Simplified Chinese characters"
     return None
 
