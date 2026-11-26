@@ -104,33 +104,39 @@ def main():
     now = now_utc()
     usage = stock_usage([a for _, _, adapter in batches for a in adapter.articles])
     attempted = 0
-    for path, batch, adapter in batches:
-        changed = False
-        for article in adapter.articles:
-            if (article.get("editorialImageLocked") or article.get("articleFormat") == "roundup"
-                    or manual_image(article, article.get("image"))):
+    changed_batches = [False] * len(batches)
+    # Schedule empty slots first across every recent batch, preserving the
+    # adapter/article order within each priority class.
+    jobs = [(batch_index, article)
+            for batch_index, (_, _, adapter) in enumerate(batches)
+            for article in adapter.articles
+            if not article.get("editorialImageLocked")
+            and not manual_image(article, article.get("image"))
+            and article.get("articleFormat") != "roundup"]
+    jobs.sort(key=lambda job: bool(job[1].get("image") or job[1].get("images")))
+    for batch_index, article in jobs:
+        art_id = article.get("id")
+        entry = cache.get(art_id) or {}
+        try:
+            if entry.get("version") == VERSION and parse_iso(entry["retryUtc"]) > now:
                 continue
-            art_id = article.get("id")
-            entry = cache.get(art_id) or {}
-            try:
-                if entry.get("version") == VERSION and parse_iso(entry["retryUtc"]) > now:
-                    continue
-            except (KeyError, TypeError, ValueError):
-                pass
-            if attempted >= JOBS_PER_RUN:
-                break
-            attempted += 1
-            photos = collect(article, usage)
-            cache[art_id] = {"version": VERSION, "checkedUtc": now.isoformat(),
-                             "retryUtc": (now + timedelta(hours=24 if photos else 6)).isoformat()}
-            if photos and (article.get("images") != photos or article.get("image") != photos[0]):
-                previous_usage = stock_usage([article])
-                article["images"], article["image"] = photos, photos[0]
-                article.pop("imageSelection", None)
-                usage.subtract(previous_usage)
-                usage.update(stock_usage([article]))
-                changed = True
-        if adapter.sync() or changed:
+        except (KeyError, TypeError, ValueError):
+            pass
+        if attempted >= JOBS_PER_RUN:
+            break
+        attempted += 1
+        photos = collect(article, usage)
+        cache[art_id] = {"version": VERSION, "checkedUtc": now.isoformat(),
+                         "retryUtc": (now + timedelta(hours=24 if photos else 6)).isoformat()}
+        if photos and (article.get("images") != photos or article.get("image") != photos[0]):
+            previous_usage = stock_usage([article])
+            article["images"], article["image"] = photos, photos[0]
+            article.pop("imageSelection", None)
+            usage.subtract(previous_usage)
+            usage.update(stock_usage([article]))
+            changed_batches[batch_index] = True
+    for index, (path, batch, adapter) in enumerate(batches):
+        if adapter.sync() or changed_batches[index]:
             save_json(path, batch)
     if attempted:
         save_json(CACHE_PATH, cache)
