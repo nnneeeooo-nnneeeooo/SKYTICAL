@@ -1,5 +1,5 @@
 {
-  "updatedUtc": "2026-11-26T13:12Z",
+  "updatedUtc": "2026-11-26T13:32Z",
   "trackingSinceUtc": "2026-09-12T01:05Z",
   "models": {
     "gemini:gemini-3.6-flash": {
@@ -69,9 +69,9 @@
       "unknownCalls": 36
     },
     "openai:gpt-6.1-terra": {
-      "calls": 371,
-      "inputTokens": 1715532,
-      "outputTokens": 5525569,
+      "calls": 373,
+      "inputTokens": 1722229,
+      "outputTokens": 5572654,
       "unknownCalls": 25
     },
     "openai:gpt-6.1-terra+search": {
@@ -207,16 +207,16 @@
       "unknownCalls": 2
     },
     "openrouter:google/gemma-4-31b-it:free": {
-      "calls": 63,
+      "calls": 64,
       "inputTokens": 0,
       "outputTokens": 0,
-      "unknownCalls": 63
+      "unknownCalls": 64
     },
     "openrouter:google/gemma-4-26b-a4b-it:free": {
-      "calls": 83,
+      "calls": 84,
       "inputTokens": 0,
       "outputTokens": 0,
-      "unknownCalls": 83
+      "unknownCalls": 84
     },
     "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free": {
       "calls": 16,
@@ -626,12 +626,233 @@
       "outputTokens": 2184514
     },
     "2026-11-26": {
-      "calls": 195,
-      "inputTokens": 634697,
-      "outputTokens": 890538
+      "calls": 199,
+      "inputTokens": 641394,
+      "outputTokens": 937623
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-11-26T13:16Z",
+      "finishedUtc": "2026-11-26T13:16Z",
+      "workflow": "provider_probe",
+      "taskType": "article_probe",
+      "editorialTier": "niche",
+      "routeReason": "routine_development_or_military_test",
+      "paidFallbackAllowed": true,
+      "groupId": "free-provider-probe-h140-v1",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "Aerospace Global News",
+      "result": "probe_failed",
+      "articleId": null,
+      "finalStatus": "retry_pending",
+      "finalModel": "openrouter:google/gemma-4-31b-it:free",
+      "fallbackUsed": false,
+      "attemptCount": 1,
+      "httpCallCount": 1,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": null,
+        "promptAssembly": 231,
+        "drafting": 496,
+        "validation": null,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 497
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "openrouter",
+          "model": "google/gemma-4-31b-it:free",
+          "label": "openrouter:google/gemma-4-31b-it:free",
+          "startedUtc": "2026-11-26T13:16Z",
+          "durationMs": 496,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 264,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
+    {
+      "startedUtc": "2026-11-26T13:16Z",
+      "finishedUtc": "2026-11-26T13:16Z",
+      "workflow": "provider_probe",
+      "taskType": "article_probe",
+      "editorialTier": "niche",
+      "routeReason": "routine_development_or_military_test",
+      "paidFallbackAllowed": true,
+      "groupId": "free-provider-probe-h140-v1",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "Aerospace Global News",
+      "result": "probe_failed",
+      "articleId": null,
+      "finalStatus": "retry_pending",
+      "finalModel": "openrouter:google/gemma-4-26b-a4b-it:free",
+      "fallbackUsed": false,
+      "attemptCount": 1,
+      "httpCallCount": 1,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": null,
+        "promptAssembly": 1,
+        "drafting": 260,
+        "validation": null,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 261
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "openrouter",
+          "model": "google/gemma-4-26b-a4b-it:free",
+          "label": "openrouter:google/gemma-4-26b-a4b-it:free",
+          "startedUtc": "2026-11-26T13:16Z",
+          "durationMs": 260,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 259,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
+    {
+      "startedUtc": "2026-11-26T13:16Z",
+      "finishedUtc": "2026-11-26T13:32Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "editorialTier": "urgent",
+      "routeReason": "safety_or_major_operational_event",
+      "paidFallbackAllowed": true,
+      "groupId": "g-20261126-1316-1",
+      "eventId": null,
+      "sourceCount": 3,
+      "primarySource": "The Aviation Herald",
+      "result": "retry_pending",
+      "articleId": null,
+      "finalStatus": "editorial_audit_held",
+      "finalModel": "openai:gpt-6.1-terra",
+      "fallbackUsed": false,
+      "attemptCount": 1,
+      "httpCallCount": 1,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 3264,
+        "promptAssembly": 0,
+        "drafting": 402163,
+        "validation": 1,
+        "factVerification": 0,
+        "evidenceBinding": 0,
+        "glossaryCheck": 0,
+        "fabricationCheck": 0,
+        "articleBuild": null,
+        "total": 951104
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "openai",
+          "model": "gpt-6.1-terra",
+          "label": "openai:gpt-6.1-terra",
+          "startedUtc": "2026-11-26T13:16Z",
+          "durationMs": 402166,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 400625,
+          "repairDurationMs": 0,
+          "outcome": "success",
+          "failureClass": null,
+          "failureStage": null,
+          "failureMessage": null,
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
+    {
+      "startedUtc": "2026-11-26T13:16Z",
+      "finishedUtc": "2026-11-26T13:32Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "editorialTier": "standard",
+      "routeReason": "ordinary_news",
+      "paidFallbackAllowed": true,
+      "groupId": "g-20261126-1316-2",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "Simple Flying",
+      "result": "retry_pending",
+      "articleId": null,
+      "finalStatus": "retry_pending",
+      "finalModel": null,
+      "fallbackUsed": false,
+      "attemptCount": 0,
+      "httpCallCount": 0,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 3309,
+        "promptAssembly": null,
+        "drafting": null,
+        "validation": null,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 948021
+      },
+      "attempts": [],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
     {
       "startedUtc": "2026-11-26T12:46Z",
       "finishedUtc": "2026-11-26T12:46Z",
@@ -62315,245 +62536,6 @@
           "disabledForRun": false
         }
       ],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-11-13T18:14Z",
-      "finishedUtc": "2026-11-13T18:14Z",
-      "workflow": "provider_probe",
-      "taskType": "article_probe",
-      "editorialTier": "niche",
-      "routeReason": "routine_development_or_military_test",
-      "paidFallbackAllowed": false,
-      "groupId": "free-provider-probe-h140-v1",
-      "eventId": null,
-      "sourceCount": 1,
-      "primarySource": "Aerospace Global News",
-      "result": "probe_verified",
-      "articleId": null,
-      "finalStatus": "publish",
-      "finalModel": "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8",
-      "fallbackUsed": false,
-      "attemptCount": 1,
-      "httpCallCount": 1,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": null,
-        "promptAssembly": 2,
-        "drafting": 18705,
-        "validation": 1,
-        "factVerification": 0,
-        "evidenceBinding": 1,
-        "glossaryCheck": 0,
-        "fabricationCheck": 0,
-        "articleBuild": null,
-        "total": 18723
-      },
-      "attempts": [
-        {
-          "sequence": 1,
-          "provider": "cloudflare",
-          "model": "@cf/qwen/qwen3-30b-a3b-fp8",
-          "label": "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8",
-          "startedUtc": "2026-11-13T18:14Z",
-          "durationMs": 18710,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 18700,
-          "repairDurationMs": 0,
-          "outcome": "success",
-          "failureClass": null,
-          "failureStage": null,
-          "failureMessage": null,
-          "retryPlanned": false,
-          "disabledForRun": false
-        }
-      ],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-11-13T18:13Z",
-      "finishedUtc": "2026-11-13T18:14Z",
-      "workflow": "provider_probe",
-      "taskType": "article_probe",
-      "editorialTier": "niche",
-      "routeReason": "routine_development_or_military_test",
-      "paidFallbackAllowed": false,
-      "groupId": "free-provider-probe-h140-v1",
-      "eventId": null,
-      "sourceCount": 1,
-      "primarySource": "Aerospace Global News",
-      "result": "probe_verified",
-      "articleId": null,
-      "finalStatus": "publish",
-      "finalModel": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
-      "fallbackUsed": false,
-      "attemptCount": 1,
-      "httpCallCount": 1,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": null,
-        "promptAssembly": 2,
-        "drafting": 77780,
-        "validation": 1,
-        "factVerification": 0,
-        "evidenceBinding": 1,
-        "glossaryCheck": 0,
-        "fabricationCheck": 0,
-        "articleBuild": null,
-        "total": 77795
-      },
-      "attempts": [
-        {
-          "sequence": 1,
-          "provider": "openrouter",
-          "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-          "label": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
-          "startedUtc": "2026-11-13T18:13Z",
-          "durationMs": 77785,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 77776,
-          "repairDurationMs": 0,
-          "outcome": "success",
-          "failureClass": null,
-          "failureStage": null,
-          "failureMessage": null,
-          "retryPlanned": false,
-          "disabledForRun": false
-        }
-      ],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-11-13T18:11Z",
-      "finishedUtc": "2026-11-13T18:13Z",
-      "workflow": "provider_probe",
-      "taskType": "article_probe",
-      "editorialTier": "niche",
-      "routeReason": "routine_development_or_military_test",
-      "paidFallbackAllowed": false,
-      "groupId": "free-provider-probe-h140-v1",
-      "eventId": null,
-      "sourceCount": 1,
-      "primarySource": "Aerospace Global News",
-      "result": "probe_failed",
-      "articleId": null,
-      "finalStatus": "retry_pending",
-      "finalModel": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-      "fallbackUsed": false,
-      "attemptCount": 2,
-      "httpCallCount": 2,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": null,
-        "promptAssembly": 4,
-        "drafting": 103480,
-        "validation": 1,
-        "factVerification": 0,
-        "evidenceBinding": 1,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
-        "articleBuild": null,
-        "total": 103486
-      },
-      "attempts": [
-        {
-          "sequence": 1,
-          "provider": "nvidia",
-          "model": "nvidia/nemotron-3-ultra-550b-a55b",
-          "label": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-          "startedUtc": "2026-11-13T18:11Z",
-          "durationMs": 65884,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 65877,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "evidence_binding_failed",
-          "failureStage": "evidenceBinding",
-          "failureMessage": "entity evidence quote not found in current source: event_dates='2026-10-21T00:00Z'",
-          "retryPlanned": true,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 2,
-          "provider": "nvidia",
-          "model": "nvidia/nemotron-3-ultra-550b-a55b",
-          "label": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-          "startedUtc": "2026-11-13T18:12Z",
-          "durationMs": 37601,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 37595,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "invalid_schema",
-          "failureStage": "validation",
-          "failureMessage": "zh.body[2] contains Simplified Chinese characters",
-          "retryPlanned": false,
-          "disabledForRun": false
-        }
-      ],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-11-13T18:10Z",
-      "finishedUtc": "2026-11-13T18:10Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "editorialTier": "niche",
-      "routeReason": "limited_certification",
-      "paidFallbackAllowed": false,
-      "groupId": "g-20261113-1809-3",
-      "eventId": null,
-      "sourceCount": 1,
-      "primarySource": "AeroTime",
-      "result": "already_published",
-      "articleId": "a-vertical-aerospace-as9100-certification-20261112",
-      "finalStatus": "duplicate_existing",
-      "finalModel": null,
-      "fallbackUsed": false,
-      "attemptCount": 0,
-      "httpCallCount": 0,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 5861,
-        "promptAssembly": null,
-        "drafting": null,
-        "validation": null,
-        "factVerification": null,
-        "evidenceBinding": null,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
-        "articleBuild": null,
-        "total": 18348
-      },
-      "attempts": [],
       "resourceUsage": {
         "actualUsd": 0.0,
         "models": []

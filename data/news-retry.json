@@ -5370,13 +5370,15 @@
     },
     "12c9dac112dbc9c4c662cd8c": {
       "sourceUrls": [
+        "https://avherald.com/h?article=54872d75",
         "https://avherald.com/h?article=54872d75&opt=0",
         "https://avherald.com/h?article=548738db",
         "https://avherald.com/h?article=548738db&opt=0",
+        "https://avherald.com/h?article=548813e0",
         "https://avherald.com/h?article=548813e0&opt=0"
       ],
-      "contentFailures": 1,
-      "serviceFailures": 0,
+      "contentFailures": 0,
+      "serviceFailures": 1,
       "status": "waiting",
       "history": [
         {
@@ -5384,11 +5386,17 @@
           "contentFailures": 0,
           "serviceFailures": 1,
           "updatedUtc": "2026-11-26T10:47Z"
+        },
+        {
+          "status": "waiting",
+          "contentFailures": 1,
+          "serviceFailures": 0,
+          "updatedUtc": "2026-11-26T12:46Z"
         }
       ],
-      "updatedUtc": "2026-11-26T12:46Z",
-      "nextRetryUtc": "2026-11-26T14:46Z",
-      "failureClass": "content_validation",
+      "updatedUtc": "2026-11-26T13:16Z",
+      "nextRetryUtc": "2026-11-26T15:16Z",
+      "failureClass": "provider_failure",
       "title": "Incident: Fedex MD11 at Miami on Nov 25th 2026, overran runway on landing"
     }
   }
