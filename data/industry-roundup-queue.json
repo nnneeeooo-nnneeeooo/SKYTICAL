@@ -3634,6 +3634,524 @@
         "evidenceVersion": 2
       },
       "publishedExcerptId": null
+    },
+    {
+      "enqueuedUtc": "2026-11-26T21:46Z",
+      "routeReason": "verified_short_update",
+      "sourceGroupId": "g-20261126-2146-1",
+      "eventKey": "",
+      "article": {
+        "id": "a-20261126-2146-nasa-deploys-three-research-aircraft-to",
+        "publishedUtc": "2026-11-26T21:46Z",
+        "cat": "ops",
+        "primarySource": "Aerospace Global News",
+        "image": null,
+        "sourceImageCandidates": [
+          {
+            "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/11/DB_image_3766.webp",
+            "sources": [
+              {
+                "url": "https://aerospaceglobalnews.com/news/nasa-research-aircraft-iowa-lead-azide-detonation/",
+                "name": "Aerospace Global News"
+              }
+            ]
+          }
+        ],
+        "zh": {
+          "title": "NASA派3架研究機赴愛荷華 監測疊氮化鉛引爆作業",
+          "summary": "NASA派3架研究機赴愛荷華，任務為收集疊氮化鉛引爆期間的環境資料。",
+          "body": [
+            "美國太空總署（NASA）派出3架研究飛機前往愛荷華州，目的是收集疊氮化鉛引爆期間的大氣與環境資料。這項引爆行動於11月25日進行。",
+            "參與的機型包括NASA維吉尼亞州蘭利研究中心的洛克希德P-3 Orion與Gulfstream III，以及由艾姆斯研究中心以合約方式使用的Beechcraft King Air B200。",
+            "美國陸軍在Middletown的愛荷華陸軍彈藥廠，以受控方式引爆近4.5公噸不穩定爆炸物。太空中的TEMPO儀器觀測資料，也納入聯邦單位協調應對這項行動的工作。",
+            "美國環境保護署表示，其空氣監測設備在引爆前、引爆期間及緊接其後，均未檢出空氣中的鉛。"
+          ]
+        },
+        "en": {
+          "title": "NASA deploys three research aircraft to monitor Iowa lead azide detonation",
+          "summary": "NASA sent three research aircraft to Iowa to collect environmental data during a lead azide detonation.",
+          "body": [
+            "NASA deployed three research aircraft to Iowa to collect atmospheric and environmental data during a lead azide detonation on November 25.",
+            "The aircraft included a Lockheed P-3 Orion and a Gulfstream III from NASA’s Langley Research Center in Virginia, and a Beechcraft King Air B200 contracted by the agency’s Ames Research Center.",
+            "The US Army carried out a controlled detonation of nearly 4.5 metric tonnes of unstable explosive material at the Iowa Army Ammunition Plant in Middletown. Observations from the space-based TEMPO instrument formed part of a coordinated federal response to the operation.",
+            "The US Environmental Protection Agency said its air monitoring equipment detected no airborne lead before, during or immediately after the detonation."
+          ]
+        },
+        "sources": [
+          {
+            "name": "Aerospace Global News — NASA deploys P-3 Orion, Gulfstream III and King Air to moni…",
+            "url": "https://aerospaceglobalnews.com/news/nasa-research-aircraft-iowa-lead-azide-detonation/"
+          }
+        ],
+        "articleFormat": "brief",
+        "sourcePublishedUtc": "2026-11-26T00:00Z",
+        "writer": "openai:gpt-6.1-terra",
+        "facts": [
+          {
+            "factId": "F1",
+            "claim": "NASA deployed three airborne research aircraft to Iowa to collect atmospheric and environmental data.",
+            "sourceQuote": "NASA deployed three of its airborne research aircraft to Iowa this week to collect atmospheric and environmental data",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/nasa-research-aircraft-iowa-lead-azide-detonation/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F2",
+            "claim": "NASA deployed aircraft to monitor a lead azide detonation in Iowa.",
+            "sourceQuote": "NASA deploys P-3 Orion, Gulfstream III and King Air to monitor Iowa lead azide detonation",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/nasa-research-aircraft-iowa-lead-azide-detonation/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F3",
+            "claim": "The US Army carried out a controlled detonation of nearly 4.5 metric tonnes of unstable explosive material at the Iowa Army Ammunition Plant in Middletown.",
+            "sourceQuote": "the US Army carried out the controlled detonation of nearly 4.5 metric tonnes of unstable explosive material at the Iowa Army Ammunition Plant in Middletown",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/nasa-research-aircraft-iowa-lead-azide-detonation/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F4",
+            "claim": "A Lockheed P-3 Orion and Gulfstream III from NASA’s Langley Research Center in Virginia were joined by a Beechcraft King Air B200 contracted by the Ames Research Center.",
+            "sourceQuote": "Lockheed P-3 Orion and a Gulfstream III from NASA’s Langley Research Center in Virginia were joined by a Beechcraft King Air B200 contracted by the agency’s Ames Research Center",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/nasa-research-aircraft-iowa-lead-azide-detonation/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F5",
+            "claim": "Space-based TEMPO observations were part of a coordinated federal response to the operation on 25 November.",
+            "sourceQuote": "observations from its space-based Tropospheric Emissions: Monitoring of Pollution (TEMPO) instrument as part of a coordinated federal response to the operation on 25 November",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/nasa-research-aircraft-iowa-lead-azide-detonation/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F6",
+            "claim": "The US Environmental Protection Agency said its air monitoring equipment detected no airborne lead before, during or immediately after the detonation.",
+            "sourceQuote": "US Environmental Protection Agency (EPA) said its air monitoring equipment had detected no airborne lead before, during or immediately after the detonation",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/nasa-research-aircraft-iowa-lead-azide-detonation/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          }
+        ],
+        "riskFlags": [],
+        "eventStatus": "confirmed",
+        "entities": {
+          "organizations": [
+            "NASA",
+            "US Army",
+            "Langley Research Center",
+            "Ames Research Center",
+            "US Environmental Protection Agency"
+          ],
+          "aircraft_models": [
+            "Lockheed P-3 Orion",
+            "Gulfstream III",
+            "Beechcraft King Air B200"
+          ],
+          "locations": [
+            "Iowa",
+            "Middletown",
+            "Iowa Army Ammunition Plant",
+            "Virginia"
+          ],
+          "event_dates": [
+            "25 November"
+          ]
+        },
+        "entityEvidence": [
+          {
+            "entityType": "organizations",
+            "value": "NASA",
+            "sourceQuote": "NASA deployed three of its airborne research aircraft to Iowa",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/nasa-research-aircraft-iowa-lead-azide-detonation/"
+          },
+          {
+            "entityType": "organizations",
+            "value": "US Army",
+            "sourceQuote": "the US Army carried out the controlled detonation",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/nasa-research-aircraft-iowa-lead-azide-detonation/"
+          },
+          {
+            "entityType": "organizations",
+            "value": "Langley Research Center",
+            "sourceQuote": "NASA’s Langley Research Center in Virginia",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/nasa-research-aircraft-iowa-lead-azide-detonation/"
+          },
+          {
+            "entityType": "organizations",
+            "value": "Ames Research Center",
+            "sourceQuote": "the agency’s Ames Research Center in California",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/nasa-research-aircraft-iowa-lead-azide-detonation/"
+          },
+          {
+            "entityType": "organizations",
+            "value": "US Environmental Protection Agency",
+            "sourceQuote": "the US Environmental Protection Agency (EPA) said its air monitoring equipment had detected no airborne lead",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/nasa-research-aircraft-iowa-lead-azide-detonation/"
+          },
+          {
+            "entityType": "aircraft_models",
+            "value": "Lockheed P-3 Orion",
+            "sourceQuote": "A Lockheed P-3 Orion and a Gulfstream III from NASA’s Langley Research Center",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/nasa-research-aircraft-iowa-lead-azide-detonation/"
+          },
+          {
+            "entityType": "aircraft_models",
+            "value": "Gulfstream III",
+            "sourceQuote": "A Lockheed P-3 Orion and a Gulfstream III from NASA’s Langley Research Center",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/nasa-research-aircraft-iowa-lead-azide-detonation/"
+          },
+          {
+            "entityType": "aircraft_models",
+            "value": "Beechcraft King Air B200",
+            "sourceQuote": "a Beechcraft King Air B200 contracted by the agency’s Ames Research Center",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/nasa-research-aircraft-iowa-lead-azide-detonation/"
+          },
+          {
+            "entityType": "locations",
+            "value": "Iowa",
+            "sourceQuote": "NASA deployed three of its airborne research aircraft to Iowa this week",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/nasa-research-aircraft-iowa-lead-azide-detonation/"
+          },
+          {
+            "entityType": "locations",
+            "value": "Middletown",
+            "sourceQuote": "the Iowa Army Ammunition Plant in Middletown",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/nasa-research-aircraft-iowa-lead-azide-detonation/"
+          },
+          {
+            "entityType": "locations",
+            "value": "Iowa Army Ammunition Plant",
+            "sourceQuote": "the Iowa Army Ammunition Plant in Middletown",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/nasa-research-aircraft-iowa-lead-azide-detonation/"
+          },
+          {
+            "entityType": "locations",
+            "value": "Virginia",
+            "sourceQuote": "NASA’s Langley Research Center in Virginia",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/nasa-research-aircraft-iowa-lead-azide-detonation/"
+          },
+          {
+            "entityType": "event_dates",
+            "value": "25 November",
+            "sourceQuote": "as part of a coordinated federal response to the operation on 25 November",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/nasa-research-aircraft-iowa-lead-azide-detonation/"
+          }
+        ],
+        "evidenceVersion": 2
+      },
+      "publishedExcerptId": null
+    },
+    {
+      "enqueuedUtc": "2026-11-26T21:46Z",
+      "routeReason": "verified_short_update",
+      "sourceGroupId": "g-20261126-2146-2",
+      "eventKey": "",
+      "article": {
+        "id": "a-20261126-2146-ukrainian-laser-appears-to-down-russian",
+        "publishedUtc": "2026-11-26T21:46Z",
+        "cat": "mil",
+        "primarySource": "Aerospace Global News",
+        "image": null,
+        "sourceImageCandidates": [
+          {
+            "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/03/Sunray-laser-anti-drone-weapon-General-Staff-of-the-Armed-Forces-Ukraine.jpeg",
+            "sources": [
+              {
+                "url": "https://aerospaceglobalnews.com/news/ukraine-laser-downs-russian-geran-4/",
+                "name": "Aerospace Global News"
+              }
+            ]
+          }
+        ],
+        "zh": {
+          "title": "烏克蘭雷射疑似擊落俄羅斯Geran-4噴射動力無人機",
+          "summary": "Serhii Flash發布影片，疑似顯示俄羅斯Geran-4無人機遭雷射擊落。",
+          "body": [
+            "據Aerospace Global News報導，烏克蘭Telegram頻道Serhii Flash發布影片，疑似顯示一架俄羅斯Geran-4噴射動力無人機遭雷射擊落。",
+            "貼文稱，這次攔截是烏克蘭Blysk防空雷射系統所為；該系統由烏克蘭國防科技公司Carmine Sky研發。報導指出，影片疑似顯示系統先偵獲並追蹤Geran-4，再以雷射攻擊目標。",
+            "該頻道所有人為烏克蘭總統科技事務顧問Serhii Beskrestnov。他提醒，目前討論Carmine Sky雷射系統量產仍言之過早。"
+          ]
+        },
+        "en": {
+          "title": "Ukrainian laser appears to down Russian jet-powered Geran-4 drone",
+          "summary": "Serhii Flash posted a video that appears to show a Russian Geran-4 drone downed by laser.",
+          "body": [
+            "Ukrainian Telegram channel Serhii Flash posted a video that appears to show a Russian jet-powered Geran-4 drone being shot down by a laser, Aerospace Global News reported.",
+            "The post attributed the apparent shootdown to Ukraine’s Blysk air-defence laser systems, developed by Ukrainian defence-technology company Carmine Sky. The video appears to show the system acquiring and tracking the Geran-4 before engaging it with a laser, according to the report.",
+            "The channel is owned by Serhii Beskrestnov, an adviser to the Ukrainian president on technology. Beskrestnov cautioned that it was too early to discuss serial production of Carmine Sky’s laser system."
+          ]
+        },
+        "sources": [
+          {
+            "name": "Aerospace Global News — Ukraine uses laser weapon to shoot down jet-powered Russian…",
+            "url": "https://aerospaceglobalnews.com/news/ukraine-laser-downs-russian-geran-4/"
+          }
+        ],
+        "articleFormat": "brief",
+        "sourcePublishedUtc": "2026-11-26T00:00Z",
+        "writer": "openai:gpt-6.1-terra",
+        "facts": [
+          {
+            "factId": "F1",
+            "claim": "Ukraine reportedly used a laser weapon to shoot down a jet-powered Russian Geran-4 drone.",
+            "sourceQuote": "Ukraine uses laser weapon to shoot down jet-powered Russian Geran-4 drone",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/ukraine-laser-downs-russian-geran-4/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F2",
+            "claim": "The Ukrainian Telegram channel Serhii Flash posted a video that appears to show a Russian Geran one-way attack drone being shot down.",
+            "sourceQuote": "The Ukrainian Telegram channel Serhii Flash has posted a video that appears to show a Russian Geran one-way attack drone being shot down.",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/ukraine-laser-downs-russian-geran-4/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F3",
+            "claim": "The post attributed the apparent laser shootdown of a jet-powered Geran drone to Ukraine’s Blysk laser systems, developed by Carmine Sky.",
+            "sourceQuote": "laser appears to shoot down jet-powered Geran drone\nThe post said this was the work of Ukraine’s Blysk air defence laser systems, developed by the Ukrainian defence-tech company Carmine Sky.",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/ukraine-laser-downs-russian-geran-4/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F4",
+            "claim": "The video appears to show a laser system acquiring and tracking a jet-powered Geran-4 before engaging it.",
+            "sourceQuote": "The video appears to show the laser system acquiring and tracking a jet-powered Geran-4 drone, and then engaging it with the laser system.",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/ukraine-laser-downs-russian-geran-4/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F5",
+            "claim": "Serhii Beskrestnov, an adviser to the Ukrainian president on technology, owns the channel.",
+            "sourceQuote": "The channel is owned by Serhii Beskrestnov, an adviser to the Ukrainian president on technology.",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/ukraine-laser-downs-russian-geran-4/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F6",
+            "claim": "Beskrestnov cautioned that it was too early to discuss serial production of Carmine Sky’s laser system.",
+            "sourceQuote": "Beskrestnov cautioned that it is too early to discuss serial production of Carmine Sky’s laser system.",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/ukraine-laser-downs-russian-geran-4/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          }
+        ],
+        "riskFlags": [
+          "unconfirmed_or_developing"
+        ],
+        "eventStatus": "unknown",
+        "entities": {
+          "organizations": [
+            "Serhii Flash",
+            "Carmine Sky"
+          ],
+          "aircraft_models": [
+            "Geran-4"
+          ],
+          "locations": [
+            "Ukraine"
+          ]
+        },
+        "entityEvidence": [
+          {
+            "entityType": "organizations",
+            "value": "Serhii Flash",
+            "sourceQuote": "The Ukrainian Telegram channel Serhii Flash has posted a video that appears to show a Russian Geran one-way attack drone being shot down.",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/ukraine-laser-downs-russian-geran-4/"
+          },
+          {
+            "entityType": "organizations",
+            "value": "Carmine Sky",
+            "sourceQuote": "The post said this was the work of Ukraine’s Blysk air defence laser systems, developed by the Ukrainian defence-tech company Carmine Sky.",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/ukraine-laser-downs-russian-geran-4/"
+          },
+          {
+            "entityType": "aircraft_models",
+            "value": "Geran-4",
+            "sourceQuote": "The video appears to show the laser system acquiring and tracking a jet-powered Geran-4 drone, and then engaging it with the laser system.",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/ukraine-laser-downs-russian-geran-4/"
+          },
+          {
+            "entityType": "locations",
+            "value": "Ukraine",
+            "sourceQuote": "Ukraine uses laser weapon to shoot down jet-powered Russian Geran-4 drone",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/ukraine-laser-downs-russian-geran-4/"
+          }
+        ],
+        "evidenceVersion": 2
+      },
+      "publishedExcerptId": null
+    },
+    {
+      "enqueuedUtc": "2026-11-26T21:46Z",
+      "routeReason": "verified_short_update",
+      "sourceGroupId": "g-20261126-2146-3",
+      "eventKey": "",
+      "article": {
+        "id": "a-20261126-2146-cambridge-researchers-propose-altitude-c",
+        "publishedUtc": "2026-11-26T21:46Z",
+        "cat": "ops",
+        "primarySource": "Aerospace Global News",
+        "image": null,
+        "sourceImageCandidates": [
+          {
+            "url": "https://aerospaceglobalnews.com/wp-content/uploads/2025/11/AdobeStock_1719472789-scaled-e1795680129350.jpeg",
+            "sources": [
+              {
+                "url": "https://aerospaceglobalnews.com/news/contrail-avoidance-2000-ft-operation-blue-skies/",
+                "name": "Aerospace Global News"
+              }
+            ]
+          }
+        ],
+        "zh": {
+          "title": "劍橋大學提常態調整部分航班高度 盼減少英國管理空域持續性凝結尾",
+          "summary": "劍橋大學提常態調整部分航班高度；盼減少英國管理空域持續性凝結尾",
+          "body": [
+            "劍橋大學研究人員在政策簡報中提出，在英國管理的空域常態調整航班飛行高度。研究人員表示，部分航班上升或下降約2,000英呎，可能避免形成持續性凝結尾。簡報於11月18日COP31期間發布。",
+            "Aviation Impact Accelerator（AIA）估計，2%至5%的航班造成80%至90%的凝結尾暖化效應。劍橋大學估計，有針對性的規避措施可能使航空公司整體機隊的平均燃油消耗增加約0.1%。",
+            "另一項估計指出，避開持續性凝結尾可能讓航空業的氣候影響近乎減半，但成效取決於預報準確度，以及規避措施可推行的範圍。"
+          ]
+        },
+        "en": {
+          "title": "Cambridge researchers propose altitude changes to curb persistent contrails in UK-managed airspace",
+          "summary": "Cambridge proposes routine altitude changes for some flights in UK-managed airspace to reduce persistent contrails.",
+          "body": [
+            "University of Cambridge researchers have set out a plan in a policy briefing to make flight-altitude adjustments routine in UK-administered airspace. They say climbing or descending by about 2,000 feet could allow some flights to avoid forming persistent contrails. The briefing was released during COP31 on 18 November.",
+            "The Aviation Impact Accelerator (AIA) estimates that 2–5% of flights cause 80–90% of contrail warming. Cambridge estimates that targeted avoidance could increase fuel burn by about 0.1% when averaged across an airline’s fleet.",
+            "Another estimate suggests that avoiding persistent contrails could almost halve aviation’s climate impact, though the outcome depends on forecast accuracy and how widely avoidance can be used."
+          ]
+        },
+        "sources": [
+          {
+            "name": "Aerospace Global News — Could a 2,000 ft altitude change transform aviation’s clima…",
+            "url": "https://aerospaceglobalnews.com/news/contrail-avoidance-2000-ft-operation-blue-skies/"
+          }
+        ],
+        "articleFormat": "brief",
+        "sourcePublishedUtc": "2026-11-26T00:00Z",
+        "writer": "openai:gpt-6.1-terra",
+        "facts": [
+          {
+            "factId": "F1",
+            "claim": "University of Cambridge researchers say climbing or descending by around 2,000 feet could let some flights avoid forming persistent contrails.",
+            "sourceQuote": "University of Cambridge researchers say climbing or descending by around 2,000ft could let some flights avoid forming persistent contrails.",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/contrail-avoidance-2000-ft-operation-blue-skies/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F2",
+            "claim": "The researchers set out a plan in a policy briefing to make such adjustments routine in UK-administered airspace.",
+            "sourceQuote": "The researchers set out a plan to make such adjustments routine in UK-administered airspace in a policy briefing",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/contrail-avoidance-2000-ft-operation-blue-skies/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F3",
+            "claim": "A policy briefing was released during COP31 on 18 November.",
+            "sourceQuote": "a policy briefing released during COP31 on 18 November",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/contrail-avoidance-2000-ft-operation-blue-skies/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F4",
+            "claim": "The Aviation Impact Accelerator estimates that 2–5% of flights cause 80–90% of contrail warming.",
+            "sourceQuote": "The Aviation Impact Accelerator (AIA) estimates that 2–5% of flights cause 80–90% of contrail warming.",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/contrail-avoidance-2000-ft-operation-blue-skies/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F5",
+            "claim": "Cambridge estimates that targeted avoidance could increase fuel burn by about 0.1% averaged across an airline’s fleet.",
+            "sourceQuote": "Cambridge estimates that targeted avoidance could increase fuel burn by about 0.1% averaged across an airline’s fleet.",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/contrail-avoidance-2000-ft-operation-blue-skies/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F6",
+            "claim": "An estimate says avoiding persistent contrails could almost halve aviation’s climate impact, depending on forecast accuracy and how widely avoidance can be used.",
+            "sourceQuote": "They estimate that avoiding persistent contrails could almost halve aviation’s climate impact, though the outcome depends on forecast accuracy and how widely avoidance can be used.",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/contrail-avoidance-2000-ft-operation-blue-skies/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          }
+        ],
+        "riskFlags": [
+          "unconfirmed_or_developing"
+        ],
+        "eventStatus": "planned",
+        "entities": {
+          "organizations": [
+            "University of Cambridge",
+            "Aviation Impact Accelerator"
+          ],
+          "locations": [
+            "UK-administered airspace"
+          ],
+          "event_dates": [
+            "18 November"
+          ]
+        },
+        "entityEvidence": [
+          {
+            "entityType": "organizations",
+            "value": "University of Cambridge",
+            "sourceQuote": "University of Cambridge researchers say climbing or descending by around 2,000ft could let some flights avoid forming persistent contrails.",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/contrail-avoidance-2000-ft-operation-blue-skies/"
+          },
+          {
+            "entityType": "organizations",
+            "value": "Aviation Impact Accelerator",
+            "sourceQuote": "The Aviation Impact Accelerator (AIA) estimates that 2–5% of flights cause 80–90% of contrail warming.",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/contrail-avoidance-2000-ft-operation-blue-skies/"
+          },
+          {
+            "entityType": "locations",
+            "value": "UK-administered airspace",
+            "sourceQuote": "The researchers set out a plan to make such adjustments routine in UK-administered airspace in a policy briefing",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/contrail-avoidance-2000-ft-operation-blue-skies/"
+          },
+          {
+            "entityType": "event_dates",
+            "value": "18 November",
+            "sourceQuote": "a policy briefing released during COP31 on 18 November",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/contrail-avoidance-2000-ft-operation-blue-skies/"
+          }
+        ],
+        "evidenceVersion": 2
+      },
+      "publishedExcerptId": null
     }
   ],
   "history": [
