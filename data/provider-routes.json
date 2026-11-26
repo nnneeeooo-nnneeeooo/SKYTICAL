@@ -48,10 +48,10 @@
     },
     "gemini:gemini-3.6-flash": {
       "status": "waiting",
-      "untilUtc": "2026-11-26T13:46Z",
-      "checkedUtc": "2026-11-26T07:46Z",
-      "failureClass": "quota",
-      "diagnostic": "HTTP 429 (free-tier quota exhausted?)",
+      "untilUtc": "2026-11-26T19:46Z",
+      "checkedUtc": "2026-11-26T13:46Z",
+      "failureClass": "http_error",
+      "diagnostic": "HTTP 503 code=UNAVAILABLE",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -300,8 +300,8 @@
     },
     "openrouter:google/gemma-4-31b-it:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-26T13:17Z",
-      "checkedUtc": "2026-11-26T13:16Z",
+      "untilUtc": "2026-11-26T13:47Z",
+      "checkedUtc": "2026-11-26T13:46Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
@@ -309,8 +309,8 @@
     },
     "openrouter:google/gemma-4-26b-a4b-it:free": {
       "status": "waiting",
-      "checkedUtc": "2026-11-26T13:16Z",
-      "untilUtc": "2026-11-26T13:17Z",
+      "checkedUtc": "2026-11-26T13:46Z",
+      "untilUtc": "2026-11-26T13:47Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
