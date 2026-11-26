@@ -21,10 +21,10 @@
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "untilUtc": "2026-11-26T03:46Z",
-      "checkedUtc": "2026-11-25T21:46Z",
+      "untilUtc": "2026-11-26T09:58Z",
+      "checkedUtc": "2026-11-26T03:58Z",
       "failureClass": "unexpected",
-      "diagnostic": "verified factId values must be sequential F1..Fn",
+      "diagnostic": "entity value '13 June – 8 October 2026' is not verbatim in its sourceQuote",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -39,8 +39,8 @@
     },
     "nvidia:qwen/qwen3.5-397b-a17b": {
       "status": "unavailable",
-      "untilUtc": "2026-11-26T03:34Z",
-      "checkedUtc": "2026-11-25T03:34Z",
+      "untilUtc": "2026-11-27T03:58Z",
+      "checkedUtc": "2026-11-26T03:58Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
       "probeVersion": 3,
@@ -219,10 +219,10 @@
     },
     "groq:openai/gpt-oss-20b": {
       "status": "waiting",
-      "untilUtc": "2026-11-26T03:46Z",
-      "checkedUtc": "2026-11-25T21:46Z",
-      "failureClass": "unexpected",
-      "diagnostic": "entity lacks verified evidence: event_dates='2026-06-13'",
+      "untilUtc": "2026-11-26T09:58Z",
+      "checkedUtc": "2026-11-26T03:58Z",
+      "failureClass": "invalid_request",
+      "diagnostic": "HTTP 400 code=invalid_request_error",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -300,8 +300,8 @@
     },
     "openrouter:google/gemma-4-31b-it:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-26T03:28Z",
-      "checkedUtc": "2026-11-26T03:27Z",
+      "untilUtc": "2026-11-26T03:59Z",
+      "checkedUtc": "2026-11-26T03:58Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
@@ -309,8 +309,8 @@
     },
     "openrouter:google/gemma-4-26b-a4b-it:free": {
       "status": "waiting",
-      "checkedUtc": "2026-11-26T03:27Z",
-      "untilUtc": "2026-11-26T03:28Z",
+      "checkedUtc": "2026-11-26T03:58Z",
+      "untilUtc": "2026-11-26T03:59Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
