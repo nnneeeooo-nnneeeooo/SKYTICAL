@@ -3111,6 +3111,160 @@
         "evidenceVersion": 2
       },
       "publishedExcerptId": null
+    },
+    {
+      "enqueuedUtc": "2026-11-26T19:11Z",
+      "routeReason": "verified_short_update",
+      "sourceGroupId": "g-20261126-1911-11",
+      "eventKey": "",
+      "article": {
+        "id": "a-20261126-1911-two-italian-rheinmetall-workers-killed-a",
+        "publishedUtc": "2026-11-26T19:11Z",
+        "cat": "mil",
+        "primarySource": "AeroTime",
+        "image": null,
+        "sourceImageCandidates": [],
+        "zh": {
+          "title": "科威特無人機爆炸後 兩名萊茵金屬義大利籍員工死亡",
+          "summary": "萊茵金屬兩名義大利籍員工在科威特無人機爆炸後死亡，義大利外交部證實",
+          "body": [
+            "義大利外交部證實，兩名在萊茵金屬（Rheinmetall）工作的義大利公民，在科威特發生無人機爆炸後死亡。義大利當局表示，無人機攻擊發生時，Rheinmetall Italia員工正在維護Skyguard防空系統的偵測天線。",
+            "國防部發言人Saud Al-Atwan上校說，科威特武裝部隊在該國領空偵測到數架敵方無人機，並曾交戰。他將攻擊歸咎於伊朗，稱一處「重要設施」遭到攻擊。",
+            "他說，4名傷者包括兩名義大利人、1名科威特人及1名巴基斯坦人；其中兩名義大利人死亡。"
+          ]
+        },
+        "en": {
+          "title": "Two Italian Rheinmetall workers killed after drone explosion in Kuwait",
+          "summary": "Two Italian Rheinmetall workers died after a drone explosion in Kuwait, Italy’s foreign ministry said.",
+          "body": [
+            "Italy’s Ministry of Foreign Affairs confirmed that two Italian nationals working for Rheinmetall were killed in Kuwait following a drone explosion. Italian authorities said the Rheinmetall Italia workers were maintaining detection antennas for the Skyguard anti-aircraft defense system when the drone strike occurred.",
+            "Defense Ministry spokesman Colonel Saud Al-Atwan said Kuwait’s armed forces had detected several hostile drones in the country’s airspace and had engaged. He blamed Iran for an attack on what he called a “vital site”.",
+            "Al-Atwan said the four people injured were two Italians, a Kuwaiti national and a Pakistani national. The two Italians died, according to the Italian ministry."
+          ]
+        },
+        "sources": [
+          {
+            "name": "AeroTime — Italian Rheinmetall technicians killed in Kuwaiti drone exp…",
+            "url": "https://www.aerotime.aero/articles/italian-rheinmetall-technicians-killed-in-kuwaiti-drone-explosion"
+          }
+        ],
+        "articleFormat": "brief",
+        "sourcePublishedUtc": "2026-11-26T15:26Z",
+        "writer": "openai:gpt-6.1-terra",
+        "facts": [
+          {
+            "factId": "F1",
+            "claim": "Two Italian nationals working for Rheinmetall were killed in Kuwait following a drone explosion.",
+            "sourceQuote": "two Italian nationals working for defense firm Rheinmetall were killed in Kuwait following a drone explosion",
+            "sourceUrl": "https://www.aerotime.aero/articles/italian-rheinmetall-technicians-killed-in-kuwaiti-drone-explosion",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F2",
+            "claim": "Italy’s Ministry of Foreign Affairs confirmed that two Italian nationals working for Rheinmetall were killed.",
+            "sourceQuote": "Italy’s Ministry of Foreign Affairs has confirmed that two Italian nationals working for defense firm Rheinmetall were killed",
+            "sourceUrl": "https://www.aerotime.aero/articles/italian-rheinmetall-technicians-killed-in-kuwaiti-drone-explosion",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F3",
+            "claim": "Italian authorities said Rheinmetall Italia workers were maintaining Skyguard anti-aircraft defense system detection antennas when the drone strike occurred.",
+            "sourceQuote": "Italian authorities said the Rheinmetall Italia workers were “performing maintenance on the detection antennas of the Skyguard anti-aircraft defense system” when the drone strike occurred",
+            "sourceUrl": "https://www.aerotime.aero/articles/italian-rheinmetall-technicians-killed-in-kuwaiti-drone-explosion",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F4",
+            "claim": "Defense Ministry spokesperson Colonel Saud Al-Atwan said Kuwait Armed Forces had detected several hostile drones in the country’s airspace and had engaged.",
+            "sourceQuote": "Colonel Saud Al-Atwan, a spokesperson for the Ministry of Defense, said that Kuwait Armed Forces had detected several hostile drones in the country’s air space and had engaged",
+            "sourceUrl": "https://www.aerotime.aero/articles/italian-rheinmetall-technicians-killed-in-kuwaiti-drone-explosion",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F5",
+            "claim": "Al-Atwan blamed Iranian aggression for targeting a vital site.",
+            "sourceQuote": "Al-Atwan blamed “heinous Iranian aggression” which targeted a “vital site”",
+            "sourceUrl": "https://www.aerotime.aero/articles/italian-rheinmetall-technicians-killed-in-kuwaiti-drone-explosion",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F6",
+            "claim": "The four people described as injured were a Kuwaiti national, a Pakistani national and two Italians.",
+            "sourceQuote": "He described the four injured individuals as a Kuwaiti national, a Pakistani national and two Italians",
+            "sourceUrl": "https://www.aerotime.aero/articles/italian-rheinmetall-technicians-killed-in-kuwaiti-drone-explosion",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          }
+        ],
+        "riskFlags": [
+          "casualties_or_injuries",
+          "unconfirmed_or_developing"
+        ],
+        "eventStatus": "confirmed",
+        "entities": {
+          "organizations": [
+            "Italy’s Ministry of Foreign Affairs",
+            "Rheinmetall",
+            "Rheinmetall Italia",
+            "Ministry of Defense",
+            "Kuwait Armed Forces"
+          ],
+          "locations": [
+            "Kuwait"
+          ]
+        },
+        "entityEvidence": [
+          {
+            "entityType": "organizations",
+            "value": "Italy’s Ministry of Foreign Affairs",
+            "sourceQuote": "Italy’s Ministry of Foreign Affairs has confirmed",
+            "sourceUrl": "https://www.aerotime.aero/articles/italian-rheinmetall-technicians-killed-in-kuwaiti-drone-explosion"
+          },
+          {
+            "entityType": "organizations",
+            "value": "Rheinmetall",
+            "sourceQuote": "two Italian nationals working for defense firm Rheinmetall",
+            "sourceUrl": "https://www.aerotime.aero/articles/italian-rheinmetall-technicians-killed-in-kuwaiti-drone-explosion"
+          },
+          {
+            "entityType": "organizations",
+            "value": "Rheinmetall Italia",
+            "sourceQuote": "the Rheinmetall Italia workers",
+            "sourceUrl": "https://www.aerotime.aero/articles/italian-rheinmetall-technicians-killed-in-kuwaiti-drone-explosion"
+          },
+          {
+            "entityType": "organizations",
+            "value": "Ministry of Defense",
+            "sourceQuote": "a spokesperson for the Ministry of Defense",
+            "sourceUrl": "https://www.aerotime.aero/articles/italian-rheinmetall-technicians-killed-in-kuwaiti-drone-explosion"
+          },
+          {
+            "entityType": "organizations",
+            "value": "Kuwait Armed Forces",
+            "sourceQuote": "Kuwait Armed Forces had detected several hostile drones",
+            "sourceUrl": "https://www.aerotime.aero/articles/italian-rheinmetall-technicians-killed-in-kuwaiti-drone-explosion"
+          },
+          {
+            "entityType": "locations",
+            "value": "Kuwait",
+            "sourceQuote": "were killed in Kuwait following a drone explosion",
+            "sourceUrl": "https://www.aerotime.aero/articles/italian-rheinmetall-technicians-killed-in-kuwaiti-drone-explosion"
+          }
+        ],
+        "evidenceVersion": 2
+      },
+      "publishedExcerptId": null
     }
   ],
   "history": [
