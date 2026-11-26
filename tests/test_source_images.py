@@ -136,6 +136,24 @@ def test_aerotime_exact_lead_event_photo_with_credit_and_entities():
         "sources": [{"url": AEROTIME_URL}]}) == AEROTIME_URL
 
 
+def test_lookup_source_photos_uses_relative_lazy_image_not_placeholder(monkeypatch):
+    html = f'''<figure class="cs-entry__post-media">
+    <img src="/images/2026/09/placeholder.jpg"
+         data-lazy-src="{AEROTIME_PHOTO.removeprefix('https://www.aerotime.aero')}"
+         data-srcset="https://unknown.example/ad.jpg 1x">
+    <figcaption>Bystander video</figcaption></figure>'''
+    response = SimpleNamespace(url=AEROTIME_URL, text=html,
+                               raise_for_status=lambda: None)
+    monkeypatch.setattr(source.requests, "get", lambda *args, **kwargs: response)
+    article = {"sources": [{"url": AEROTIME_URL}], **AEROTIME_ARTICLE}
+
+    photos = source.lookup_source_photos(article)
+
+    assert [photo["url"] for photo in photos] == [AEROTIME_PHOTO]
+    assert photos[0]["link"] == AEROTIME_URL
+    assert photos[0]["credit"] == "Bystander video"
+
+
 def test_aerotime_webp_resize_and_short_corporate_credit():
     original = "https://www.aerotime.aero/images/2026/09/a330-first-flight.jpg"
     html = f'''<meta property="og:image" content="{original}">
@@ -388,6 +406,27 @@ def test_official_photo_needs_no_license_statement_and_keeps_credit():
     photo = next(source.parse_official_photo(OFFICIAL_HTML.split('<main>')[0], OFFICIAL_URL))
     assert photo["credit"] == "KLM"
     assert photo["kind"] != "event_photo"
+
+
+def test_official_photo_lookup_uses_lazy_image_when_src_is_placeholder():
+    html = OFFICIAL_HTML.replace(
+        f'<img src="{OFFICIAL_PHOTO}"',
+        f'<img src="https://media.klm.com/aircraft/placeholder.jpg" '
+        f'data-lazy-src="{OFFICIAL_PHOTO}"')
+    photo = next(source.parse_official_photo(html, OFFICIAL_URL))
+    assert photo["url"] == OFFICIAL_PHOTO
+
+
+def test_official_photo_binds_data_original_caption_and_ignores_empty_meta():
+    html = OFFICIAL_HTML.replace(
+        f'<img src="{OFFICIAL_PHOTO}"',
+        f'<img src="https://media.klm.com/aircraft/placeholder.jpg" '
+        f'data-original="{OFFICIAL_PHOTO}"')
+    photo = next(source.parse_official_photo(html, OFFICIAL_URL))
+    assert photo["url"] == OFFICIAL_PHOTO
+    assert "Jane Doe / KLM" in photo["credit"]
+    assert list(source.parse_official_photo(
+        '<meta property="og:image" content="">', OFFICIAL_URL)) == []
 
 
 def test_official_missing_image_evidence_and_wrong_aircraft_still_rejected():

@@ -125,7 +125,7 @@ def test_locked_gallery_is_not_overwritten_by_automatic_job(monkeypatch, tmp_pat
 def test_automatic_gallery_counts_every_photo_for_following_jobs(monkeypatch, tmp_path):
     from image_selection import image_key
     a = dict(story(), image=stock(0), images=[stock(0)])
-    b = dict(story(), id="a-gallery-second")
+    b = dict(story(), id="a-gallery-second", image=stock(9), images=[stock(9)])
     batch = {"articles": [a, b]}
     monkeypatch.setattr(images, "_recent_batches", lambda: [(tmp_path / "batch.json", batch, [a, b])])
     monkeypatch.setattr(galleries, "CACHE_PATH", tmp_path / "cache.json")
@@ -137,6 +137,37 @@ def test_automatic_gallery_counts_every_photo_for_following_jobs(monkeypatch, tm
     monkeypatch.setattr(galleries, "collect", collect)
     galleries.main()
     assert len(a["images"]) == len(b["images"]) == 3
+
+
+def test_main_prioritizes_empty_articles_and_roundup_slots_across_batches(monkeypatch, tmp_path):
+    filled = [dict(story(), id=f"a-filled-{n}", image=stock(n), images=[stock(n)])
+              for n in range(8)]
+    empty = dict(story(), id="a-empty-later")
+    roundup_article = roundup()
+    roundup_article["roundupItems"][0].pop("image", None)
+    roundup_article["roundupItems"][1].pop("image", None)
+    roundup_article["roundupItems"][2]["image"] = photo(99)
+    batch_one = {"articles": filled}
+    batch_two = {"articles": [empty, roundup_article]}
+    paths = [tmp_path / "first.json", tmp_path / "second.json"]
+    monkeypatch.setattr(images, "_recent_batches", lambda: [
+        (paths[0], batch_one, filled), (paths[1], batch_two, [empty, roundup_article])])
+    monkeypatch.setattr(galleries, "CACHE_PATH", tmp_path / "cache.json")
+    order = []
+
+    def collect(article, usage):
+        order.append(article["id"])
+        return [stock(len(order))]
+
+    monkeypatch.setattr(galleries, "collect", collect)
+    galleries.main()
+
+    assert order == ["a-empty-later", f"{roundup_article['id']}-image-1",
+                     f"{roundup_article['id']}-image-2", *[f"a-filled-{n}" for n in range(5)]]
+    assert roundup_article["roundupItems"][0]["image"] == stock(2)
+    assert roundup_article["roundupItems"][1]["image"] == stock(3)
+    assert roundup_article["image"]["roundupItemNumber"] == 1
+    assert paths[0].exists() and paths[1].exists()
 
 
 def test_terra_retains_all_visually_approved_images_across_batches(monkeypatch):
