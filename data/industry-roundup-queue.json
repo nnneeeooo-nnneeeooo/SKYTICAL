@@ -3265,6 +3265,375 @@
         "evidenceVersion": 2
       },
       "publishedExcerptId": null
+    },
+    {
+      "enqueuedUtc": "2026-11-26T21:20Z",
+      "routeReason": "verified_short_update",
+      "sourceGroupId": "g-20261126-2120-1",
+      "eventKey": "",
+      "article": {
+        "id": "a-20261126-2120-severe-weather-disrupts-us-thanksgiving",
+        "publishedUtc": "2026-11-26T21:20Z",
+        "cat": "ops",
+        "primarySource": "Aerospace Global News",
+        "image": null,
+        "sourceImageCandidates": [
+          {
+            "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/11/AdobeStock_166212687-scaled.jpeg",
+            "sources": [
+              {
+                "url": "https://aerospaceglobalnews.com/news/thanksgiving-flight-cancellations-us-airports-2026/",
+                "name": "Aerospace Global News"
+              }
+            ]
+          }
+        ],
+        "zh": {
+          "title": "美國感恩節惡劣天候幹擾航班 396班取消、948班延誤",
+          "summary": "FlightAware統計美國航班396班取消、948班延誤，感恩節天候惡劣",
+          "body": [
+            "美國感恩節當天遭逢惡劣天候，航空運作受到幹擾。FlightAware資料顯示，截至美東時間11月26日10時46分，美國境內、飛往美國及自美國出發的航班已有396班取消。同一資料另顯示948班延誤。",
+            "一場沿岸風暴正為美國東北部帶來豪雨、淹水與強風，並影響服務紐約和波士頓的主要航空樞紐。巴爾的摩／華盛頓國際機場受到較嚴重衝擊，週四稍早約有四分之一的預定起飛航班取消。",
+            "達美航空已發布涵蓋9座機場的天候豁免措施。符合資格的旅客可將感恩節航班改訂為11月28日或之前的行程，無須支付票價差額。"
+          ]
+        },
+        "en": {
+          "title": "Severe weather disrupts US Thanksgiving flights, with 396 canceled and 948 delayed",
+          "summary": "FlightAware recorded 396 US flight cancellations and 948 delays as severe weather disrupted Thanksgiving operations.",
+          "body": [
+            "Severe weather has disrupted US flight operations on Thanksgiving Day, with hundreds of flights canceled. FlightAware data showed that, as of 10:46 Eastern time on Nov. 26, 396 flights within, into or out of the US had been canceled. The data also showed a further 948 flights delayed.",
+            "A coastal storm is bringing heavy rain, flooding and strong winds to the northeastern US and affecting major aviation hubs serving New York and Boston. At Baltimore/Washington International Airport, around a quarter of scheduled departures had been canceled earlier on Thursday.",
+            "Delta Air Lines has issued a weather waiver covering nine airports. Eligible passengers can rebook Thanksgiving flights for travel through Nov. 28 without paying a fare difference."
+          ]
+        },
+        "sources": [
+          {
+            "name": "Aerospace Global News — Storms threaten busiest Thanksgiving skies in 16 years as U…",
+            "url": "https://aerospaceglobalnews.com/news/thanksgiving-flight-cancellations-us-airports-2026/"
+          }
+        ],
+        "articleFormat": "brief",
+        "sourcePublishedUtc": "2026-11-26T00:00Z",
+        "writer": "openai:gpt-6.1-terra",
+        "facts": [
+          {
+            "factId": "F1",
+            "claim": "Hundreds of flights were canceled across the United States on Thanksgiving Day as severe weather disrupted operations.",
+            "sourceQuote": "Hundreds of flights have been cancelled across the United States on Thanksgiving Day as severe weather disrupts operations",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/thanksgiving-flight-cancellations-us-airports-2026/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F2",
+            "claim": "As of 10:46 Eastern time on 26 November, FlightAware data showed 396 canceled flights within, into or out of the US.",
+            "sourceQuote": "As of 10:46 Eastern Time on 26 November, FlightAware data showed 396 flights within, into or out of the US had been cancelled",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/thanksgiving-flight-cancellations-us-airports-2026/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F3",
+            "claim": "FlightAware data also showed a further 948 delayed flights within, into or out of the US.",
+            "sourceQuote": "FlightAware data showed 396 flights within, into or out of the US had been cancelled, with a further 948 delayed",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/thanksgiving-flight-cancellations-us-airports-2026/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F4",
+            "claim": "A coastal storm brought heavy rain, flooding and strong winds to the northeastern US and affected aviation hubs serving New York and Boston.",
+            "sourceQuote": "A coastal storm bringing heavy rain, flooding and strong winds to the northeastern US is affecting several major aviation hubs, including those serving New York, Boston",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/thanksgiving-flight-cancellations-us-airports-2026/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F5",
+            "claim": "Around a quarter of scheduled departures at Baltimore/Washington International Airport were canceled earlier on Thursday.",
+            "sourceQuote": "Baltimore/Washington International Airport has been particularly badly affected, with around a quarter of its scheduled departures cancelled earlier on Thursday",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/thanksgiving-flight-cancellations-us-airports-2026/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F6",
+            "claim": "Delta Air Lines issued a weather waiver covering nine airports and allowing eligible passengers to rebook Thanksgiving flights for travel through 28 November without paying a fare difference.",
+            "sourceQuote": "Delta Air Lines has issued a weather waiver covering nine airports, allowing eligible passengers to rebook their Thanksgiving flights for travel through 28 November without paying a fare difference",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/thanksgiving-flight-cancellations-us-airports-2026/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          }
+        ],
+        "riskFlags": [
+          "unconfirmed_or_developing"
+        ],
+        "eventStatus": "confirmed",
+        "entities": {
+          "organizations": [
+            "FlightAware"
+          ],
+          "airlines": [
+            "Delta Air Lines"
+          ],
+          "airports": [
+            "Baltimore/Washington International Airport"
+          ],
+          "locations": [
+            "United States",
+            "northeastern US",
+            "New York",
+            "Boston"
+          ],
+          "event_dates": [
+            "26 November",
+            "28 November"
+          ]
+        },
+        "entityEvidence": [
+          {
+            "entityType": "organizations",
+            "value": "FlightAware",
+            "sourceQuote": "FlightAware data showed 396 flights within, into or out of the US had been cancelled",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/thanksgiving-flight-cancellations-us-airports-2026/"
+          },
+          {
+            "entityType": "airlines",
+            "value": "Delta Air Lines",
+            "sourceQuote": "Delta Air Lines has issued a weather waiver covering nine airports",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/thanksgiving-flight-cancellations-us-airports-2026/"
+          },
+          {
+            "entityType": "airports",
+            "value": "Baltimore/Washington International Airport",
+            "sourceQuote": "Baltimore/Washington International Airport has been particularly badly affected",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/thanksgiving-flight-cancellations-us-airports-2026/"
+          },
+          {
+            "entityType": "locations",
+            "value": "United States",
+            "sourceQuote": "Hundreds of flights have been cancelled across the United States on Thanksgiving Day",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/thanksgiving-flight-cancellations-us-airports-2026/"
+          },
+          {
+            "entityType": "locations",
+            "value": "northeastern US",
+            "sourceQuote": "strong winds to the northeastern US is affecting several major aviation hubs",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/thanksgiving-flight-cancellations-us-airports-2026/"
+          },
+          {
+            "entityType": "locations",
+            "value": "New York",
+            "sourceQuote": "including those serving New York, Boston and Washington DC",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/thanksgiving-flight-cancellations-us-airports-2026/"
+          },
+          {
+            "entityType": "locations",
+            "value": "Boston",
+            "sourceQuote": "including those serving New York, Boston and Washington DC",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/thanksgiving-flight-cancellations-us-airports-2026/"
+          },
+          {
+            "entityType": "event_dates",
+            "value": "26 November",
+            "sourceQuote": "As of 10:46 Eastern Time on 26 November, FlightAware data showed",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/thanksgiving-flight-cancellations-us-airports-2026/"
+          },
+          {
+            "entityType": "event_dates",
+            "value": "28 November",
+            "sourceQuote": "Thanksgiving flights for travel through 28 November without paying a fare difference",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/thanksgiving-flight-cancellations-us-airports-2026/"
+          }
+        ],
+        "evidenceVersion": 2
+      },
+      "publishedExcerptId": null
+    },
+    {
+      "enqueuedUtc": "2026-11-26T21:20Z",
+      "routeReason": "verified_short_update",
+      "sourceGroupId": "g-20261126-2120-2",
+      "eventKey": "",
+      "article": {
+        "id": "a-20261126-2120-us-air-force-upgrades-b-52-bombers-plans",
+        "publishedUtc": "2026-11-26T21:20Z",
+        "cat": "mil",
+        "primarySource": "Aerospace Global News",
+        "image": null,
+        "sourceImageCandidates": [
+          {
+            "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/02/B-52-bomber-set-to-be-turned-into-B-52J.jpeg",
+            "sources": [
+              {
+                "url": "https://aerospaceglobalnews.com/news/b-52-100-years-service/",
+                "name": "Aerospace Global News"
+              }
+            ]
+          }
+        ],
+        "zh": {
+          "title": "美空軍持續升級B-52轟炸機 規劃投入210億美元",
+          "summary": "美空軍正升級B-52轟炸機；規劃投入210億美元更新現役機隊",
+          "body": [
+            "美國空軍正持續升級波音B-52轟炸機機隊。政府監督機構GAO的一篇文章指出，空軍規劃投入210億美元，更新70多架現役B-52。",
+            "Aerospace Global News報導，空軍目前正推動將B-52H機隊升級為B-52J型。這項現代化計畫將為現役機隊提供新的勞斯萊斯F130發動機。",
+            "B-52於1955年服役。報導稱，這項升級可能讓該機型在美國空軍的服役時間達到100年。"
+          ]
+        },
+        "en": {
+          "title": "US Air Force upgrades B-52 bombers, plans $21 billion for modernization",
+          "summary": "US Air Force is upgrading B-52 bombers and plans $21 billion in fleet modernization spending.",
+          "body": [
+            "The US Air Force is currently upgrading its Boeing B-52 bomber fleet. An article by the government watchdog GAO says the Air Force plans to spend $21 billion modernizing its remaining 70-plus active B-52 aircraft.",
+            "Aerospace Global News reports that the Air Force is working to upgrade the B-52H fleet to the B-52J variant. The modernization will provide the aircraft with new Rolls-Royce F130 engines, according to the report.",
+            "The B-52 entered service in 1955. The report says the ongoing upgrade could see the aircraft reach 100 years of service with the US Air Force."
+          ]
+        },
+        "sources": [
+          {
+            "name": "Aerospace Global News — Why the USAF is spending $21 billion to modernise the B-52…",
+            "url": "https://aerospaceglobalnews.com/news/b-52-100-years-service/"
+          }
+        ],
+        "articleFormat": "brief",
+        "sourcePublishedUtc": "2026-11-26T00:00Z",
+        "writer": "openai:gpt-6.1-terra",
+        "facts": [
+          {
+            "factId": "F1",
+            "claim": "The US Air Force is currently upgrading the Boeing B-52 fleet.",
+            "sourceQuote": "the US Air Force is currently upgrading the Boeing B-52 fleet",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/b-52-100-years-service/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F2",
+            "claim": "A GAO article says the Air Force plans to spend $21 billion modernizing the remaining 70-plus active B-52s.",
+            "sourceQuote": "An article by the government watchdog, GAO , writes, “The Air Force plans to spend $21 billion modernizing the remaining 70-plus active B-52s.",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/b-52-100-years-service/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F3",
+            "claim": "The Air Force is working to upgrade the B-52H fleet to the B-52J variant.",
+            "sourceQuote": "B-52H fleet is now old, and the type’s engines are in need of replacement. The Air Force is currently working to upgrade them to the new B-52J variant",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/b-52-100-years-service/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F4",
+            "claim": "The modernization plan will provide the B-52s with new Rolls-Royce F130 engines.",
+            "sourceQuote": "modernizing the remaining 70-plus active B-52s. This plan is one of the most extensive modernization programs in Air Force history.”\nNot only will this provide them with new Rolls-Royce F130 engines",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/b-52-100-years-service/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F5",
+            "claim": "The B-52 bomber entered service in 1955.",
+            "sourceQuote": "the B-52 bomber would have an operational lifespan of 20 years, and would largely follow the course of its contemporary bombers.\nThe type entered service in 1955",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/b-52-100-years-service/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F6",
+            "claim": "The ongoing B-52 upgrade may allow the aircraft to reach 100 years of US Air Force service.",
+            "sourceQuote": "the US Air Force is currently upgrading the Boeing B-52 fleet in an effort that may see it reach 100 years of USAF service.",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/b-52-100-years-service/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          }
+        ],
+        "riskFlags": [
+          "financial_or_order_claim"
+        ],
+        "eventStatus": "confirmed",
+        "entities": {
+          "organizations": [
+            "US Air Force",
+            "Boeing",
+            "GAO",
+            "Rolls-Royce"
+          ],
+          "aircraft_models": [
+            "B-52",
+            "B-52H",
+            "B-52J"
+          ],
+          "event_dates": [
+            "1955"
+          ]
+        },
+        "entityEvidence": [
+          {
+            "entityType": "organizations",
+            "value": "US Air Force",
+            "sourceQuote": "the US Air Force is currently upgrading the Boeing B-52 fleet",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/b-52-100-years-service/"
+          },
+          {
+            "entityType": "organizations",
+            "value": "Boeing",
+            "sourceQuote": "Boeing B-52 fleet",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/b-52-100-years-service/"
+          },
+          {
+            "entityType": "organizations",
+            "value": "GAO",
+            "sourceQuote": "government watchdog, GAO",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/b-52-100-years-service/"
+          },
+          {
+            "entityType": "organizations",
+            "value": "Rolls-Royce",
+            "sourceQuote": "Rolls-Royce F130 engines",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/b-52-100-years-service/"
+          },
+          {
+            "entityType": "aircraft_models",
+            "value": "B-52",
+            "sourceQuote": "Boeing B-52 fleet",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/b-52-100-years-service/"
+          },
+          {
+            "entityType": "aircraft_models",
+            "value": "B-52H",
+            "sourceQuote": "The B-52H fleet is now old",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/b-52-100-years-service/"
+          },
+          {
+            "entityType": "aircraft_models",
+            "value": "B-52J",
+            "sourceQuote": "the new B-52J variant",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/b-52-100-years-service/"
+          },
+          {
+            "entityType": "event_dates",
+            "value": "1955",
+            "sourceQuote": "The type entered service in 1955",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/b-52-100-years-service/"
+          }
+        ],
+        "evidenceVersion": 2
+      },
+      "publishedExcerptId": null
     }
   ],
   "history": [
