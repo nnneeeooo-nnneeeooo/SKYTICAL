@@ -1,0 +1,241 @@
+{
+  "articles": [
+    {
+      "id": "a-20261125-1946-safety-roundup-four-independent-incident",
+      "publishedUtc": "2026-11-25T19:46Z",
+      "cat": "safety",
+      "primarySource": "The Aviation Herald",
+      "sourceImageCandidates": [],
+      "zh": {
+        "title": "航空安全彙整：Western Global飛機在東京滑出跑道等4起獨立事件",
+        "summary": "Western Global飛機在東京滑出跑道；另有3起獨立航空事件",
+        "body": [
+          "The Aviation Herald報導4起彼此獨立的航空事件，現有資訊未指出事件間有關聯。",
+          "1. Western Global的波音747-400（ICAO機型代碼B744）於2026年11月25日在東京反向滑行時滑出跑道。",
+          "2. American的波音787-8（ICAO機型代碼B788）於2026年11月24日在阿姆斯特丹發生輪胎洩氣事件。",
+          "3. Wizz的空中巴士A321neo（ICAO機型代碼A21N）於2026年11月23日在巴塞隆納附近發生引擎問題。",
+          "4. UPS的波音757-200（ICAO機型代碼B752）於2026年11月23日在安大略發生飛行中引擎關閉事件。"
+        ]
+      },
+      "en": {
+        "title": "Safety roundup: Four independent incidents include Western Global's Tokyo runway excursion",
+        "summary": "Western Global aircraft had a runway excursion in Tokyo; three other independent aviation incidents were reported.",
+        "body": [
+          "The Aviation Herald reported four independent aviation incidents. No connection between them was stated.",
+          "1. Western Global's Boeing 747-400 (ICAO type code B744) had a runway excursion while backtracking at Tokyo on November 25, 2026.",
+          "2. An American Boeing 787-8 (ICAO type code B788) had a flat tyre at Amsterdam on November 24, 2026.",
+          "3. A Wizz Airbus A321neo (ICAO type code A21N) had an engine problem near Barcelona on November 23, 2026.",
+          "4. A UPS Boeing 757-200 (ICAO type code B752) experienced an engine shutdown in flight at Ontario on November 23, 2026."
+        ]
+      },
+      "sources": [
+        {
+          "name": "The Aviation Herald — Incident: Western Global B744 at Tokyo on Nov 25th 2026, ru…",
+          "url": "https://avherald.com/h?article=54872d75&opt=0"
+        },
+        {
+          "name": "The Aviation Herald — Incident: American B788 at Amsterdam on Nov 24th 2026, flat…",
+          "url": "https://avherald.com/h?article=548738db&opt=0"
+        },
+        {
+          "name": "The Aviation Herald — Incident: Wizz A21N near Barcelona on Nov 23rd 2026, engine…",
+          "url": "https://avherald.com/h?article=5485d4bf"
+        },
+        {
+          "name": "The Aviation Herald — Incident: UPS B752 at Ontario on Nov 23rd 2026, engine shut…",
+          "url": "https://avherald.com/h?article=5485decd"
+        }
+      ],
+      "articleFormat": "roundup",
+      "sourcePublishedUtc": "2026-11-25T17:21Z",
+      "writer": "openai:gpt-6.1-terra",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "On November 25, 2026, a Western Global B744 had a runway excursion while backtracking at Tokyo.",
+          "sourceQuote": "Incident: Western Global B744 at Tokyo on Nov 25th 2026, runway excursion on backtrack",
+          "sourceUrl": "https://avherald.com/h?article=54872d75&opt=0",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "On November 24, 2026, an American B788 had a flat tyre at Amsterdam.",
+          "sourceQuote": "Incident: American B788 at Amsterdam on Nov 24th 2026, flat tyre",
+          "sourceUrl": "https://avherald.com/h?article=548738db&opt=0",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "On November 23, 2026, a Wizz A21N had an engine problem near Barcelona.",
+          "sourceQuote": "Incident: Wizz A21N near Barcelona on Nov 23rd 2026, engine problem",
+          "sourceUrl": "https://avherald.com/h?article=5485d4bf",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "On November 23, 2026, an engine on a UPS B752 shut down in flight at Ontario.",
+          "sourceQuote": "Incident: UPS B752 at Ontario on Nov 23rd 2026, engine shut down in flight",
+          "sourceUrl": "https://avherald.com/h?article=5485decd",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [],
+      "eventStatus": "confirmed",
+      "entities": {
+        "airlines": [
+          "Western Global",
+          "American",
+          "Wizz",
+          "UPS"
+        ],
+        "aircraft_models": [
+          "B744",
+          "B788",
+          "A21N",
+          "B752"
+        ],
+        "locations": [
+          "Tokyo",
+          "Amsterdam",
+          "Barcelona",
+          "Ontario"
+        ],
+        "event_dates": [
+          "Nov 25th 2026",
+          "Nov 24th 2026",
+          "Nov 23rd 2026"
+        ]
+      },
+      "entityEvidence": [
+        {
+          "entityType": "airlines",
+          "value": "Western Global",
+          "sourceQuote": "Western Global B744 at Tokyo on Nov 25th 2026",
+          "sourceUrl": "https://avherald.com/h?article=54872d75&opt=0"
+        },
+        {
+          "entityType": "airlines",
+          "value": "American",
+          "sourceQuote": "American B788 at Amsterdam on Nov 24th 2026",
+          "sourceUrl": "https://avherald.com/h?article=548738db&opt=0"
+        },
+        {
+          "entityType": "airlines",
+          "value": "Wizz",
+          "sourceQuote": "Wizz A21N near Barcelona on Nov 23rd 2026",
+          "sourceUrl": "https://avherald.com/h?article=5485d4bf"
+        },
+        {
+          "entityType": "airlines",
+          "value": "UPS",
+          "sourceQuote": "UPS B752 at Ontario on Nov 23rd 2026",
+          "sourceUrl": "https://avherald.com/h?article=5485decd"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "B744",
+          "sourceQuote": "Western Global B744 at Tokyo on Nov 25th 2026",
+          "sourceUrl": "https://avherald.com/h?article=54872d75&opt=0"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "B788",
+          "sourceQuote": "American B788 at Amsterdam on Nov 24th 2026",
+          "sourceUrl": "https://avherald.com/h?article=548738db&opt=0"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "A21N",
+          "sourceQuote": "Wizz A21N near Barcelona on Nov 23rd 2026",
+          "sourceUrl": "https://avherald.com/h?article=5485d4bf"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "B752",
+          "sourceQuote": "UPS B752 at Ontario on Nov 23rd 2026",
+          "sourceUrl": "https://avherald.com/h?article=5485decd"
+        },
+        {
+          "entityType": "locations",
+          "value": "Tokyo",
+          "sourceQuote": "Western Global B744 at Tokyo on Nov 25th 2026",
+          "sourceUrl": "https://avherald.com/h?article=54872d75&opt=0"
+        },
+        {
+          "entityType": "locations",
+          "value": "Amsterdam",
+          "sourceQuote": "American B788 at Amsterdam on Nov 24th 2026",
+          "sourceUrl": "https://avherald.com/h?article=548738db&opt=0"
+        },
+        {
+          "entityType": "locations",
+          "value": "Barcelona",
+          "sourceQuote": "Wizz A21N near Barcelona on Nov 23rd 2026",
+          "sourceUrl": "https://avherald.com/h?article=5485d4bf"
+        },
+        {
+          "entityType": "locations",
+          "value": "Ontario",
+          "sourceQuote": "UPS B752 at Ontario on Nov 23rd 2026",
+          "sourceUrl": "https://avherald.com/h?article=5485decd"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "Nov 25th 2026",
+          "sourceQuote": "Western Global B744 at Tokyo on Nov 25th 2026",
+          "sourceUrl": "https://avherald.com/h?article=54872d75&opt=0"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "Nov 24th 2026",
+          "sourceQuote": "American B788 at Amsterdam on Nov 24th 2026",
+          "sourceUrl": "https://avherald.com/h?article=548738db&opt=0"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "Nov 23rd 2026",
+          "sourceQuote": "Wizz A21N near Barcelona on Nov 23rd 2026",
+          "sourceUrl": "https://avherald.com/h?article=5485d4bf"
+        }
+      ],
+      "evidenceVersion": 2,
+      "image": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/Western_Global_Airlines_Boeing_747_%28N356KD%29_at_LAX_%2822543637779%29.jpg/1280px-Western_Global_Airlines_Boeing_747_%28N356KD%29_at_LAX_%2822543637779%29.jpg?utm_campaign=index&utm_content=thumbnail&utm_source=commons.wikimedia.org",
+        "link": "https://commons.wikimedia.org/wiki/File:Western_Global_Airlines_Boeing_747_%28N356KD%29_at_LAX_%2822543637779%29.jpg",
+        "credit": "Glenn Beltz",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+        "provider": "Wikimedia Commons",
+        "kind": "file_photo",
+        "subject": "資料照：涉事的 Western Global 航空波音 747-400 貨機 N356KD，攝於洛杉磯國際機場。",
+        "subjectEn": "File photo: Western Global Airlines Boeing 747-400 freighter N356KD, the aircraft involved in the Yokota incident, photographed at Los Angeles International Airport.",
+        "description": "File photo: Western Global Airlines Boeing 747-400 freighter N356KD, the aircraft involved in the Yokota incident, photographed at Los Angeles International Airport.",
+        "curated": true
+      },
+      "images": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/Western_Global_Airlines_Boeing_747_%28N356KD%29_at_LAX_%2822543637779%29.jpg/1280px-Western_Global_Airlines_Boeing_747_%28N356KD%29_at_LAX_%2822543637779%29.jpg?utm_campaign=index&utm_content=thumbnail&utm_source=commons.wikimedia.org",
+          "link": "https://commons.wikimedia.org/wiki/File:Western_Global_Airlines_Boeing_747_%28N356KD%29_at_LAX_%2822543637779%29.jpg",
+          "credit": "Glenn Beltz",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+          "provider": "Wikimedia Commons",
+          "kind": "file_photo",
+          "subject": "資料照：涉事的 Western Global 航空波音 747-400 貨機 N356KD，攝於洛杉磯國際機場。",
+          "subjectEn": "File photo: Western Global Airlines Boeing 747-400 freighter N356KD, the aircraft involved in the Yokota incident, photographed at Los Angeles International Airport.",
+          "description": "File photo: Western Global Airlines Boeing 747-400 freighter N356KD, the aircraft involved in the Yokota incident, photographed at Los Angeles International Airport.",
+          "curated": true
+        }
+      ],
+      "editorialImageLocked": true
+    }
+  ]
+}
