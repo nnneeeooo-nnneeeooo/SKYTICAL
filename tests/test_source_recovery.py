@@ -60,6 +60,24 @@ def test_model_typed_url_without_tool_source_is_discarded():
         assert payload["model"] == "gpt-6.1-terra"
         assert "max_output_tokens" not in payload
         assert payload["tool_choice"] == "required"
+        assert payload["max_tool_calls"] == 8
+
+
+def test_search_passes_real_enabled_accounting(tmp_path):
+    import paid_budget
+    data = {"status": "completed", "usage": {"input_tokens": 100, "output_tokens": 10},
+            "output": [{"type": "web_search_call", "status": "completed", "action": {"sources": []}},
+                       {"type": "message", "content": [{"type": "output_text", "text": '{"urls":[]}'}]}]}
+    with patch.dict("os.environ", {"OPENAI_API_KEY": "test", "AVWIRE_PAID_BUDGET_ENABLED": "true",
+                                    "GITHUB_ACTIONS": "false"}), \
+         patch.object(paid_budget, "DATA_DIR", tmp_path), \
+         patch.object(recovery.requests, "post", return_value=SimpleNamespace(status_code=200, json=lambda: data)) as post, \
+         patch("usage.record_providers"):
+        assert recovery._search(story()) == []
+        assert post.call_count == 1
+        ledger = json.loads((tmp_path / "paid-budget.json").read_text())
+        assert not ledger["reservations"]
+        assert sum(day["draft"] for day in ledger["days"].values()) > 0
 
 
 def test_insufficient_never_exhausts(tmp_path):

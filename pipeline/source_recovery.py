@@ -17,6 +17,7 @@ from model_config import model_route_allowed
 MODEL = "gpt-6.1-terra"
 CACHE_PATH = DATA_DIR / "source-recovery.json"
 RETRY = timedelta(hours=6)
+RECOVERY_VERSION = 2
 
 
 def needs_evidence(group, previous_retry=None):
@@ -57,6 +58,7 @@ def _search(group):
     payload = {
         "model": MODEL, "reasoning": {"effort": "max"}, "store": False,
         "tools": [{"type": "web_search", "search_context_size": "high"}],
+        "max_tool_calls": 8,
         "tool_choice": "required", "include": ["web_search_call.action.sources"],
         "input": [{"role": "user", "content":
             "為 SKYTICAL 補查以下指定事件的可靠來源，優先原始公告、監管機關、航空公司與可靠新聞媒體。"
@@ -109,7 +111,8 @@ def recover(group, *, force=False):
     key = _key(group)
     previous = state.get(key) or {}
     try:
-        if not force and parse_iso(previous["nextRetryUtc"]) > now:
+        if (not force and previous.get("recoveryVersion") == RECOVERY_VERSION
+                and parse_iso(previous["nextRetryUtc"]) > now):
             return False
     except (KeyError, TypeError, ValueError):
         pass
@@ -139,6 +142,8 @@ def recover(group, *, force=False):
             diagnostics.append({"url": url, "status": "verified"})
     except (requests.RequestException, RuntimeError, ValueError, KeyError, TypeError) as exc:
         diagnostics.append({"status": type(exc).__name__})
+        if type(exc).__name__ == "BudgetDenied":
+            diagnostics[-1]["reason"] = str(exc)[:160]
     existing = {norm_url(str(i.get("url") or "")): i for i in group.get("items") or []}
     for item in found:
         existing[norm_url(item["url"])] = item
@@ -146,6 +151,7 @@ def recover(group, *, force=False):
     if found:
         group["sourceRecoveryModel"] = MODEL
     state[key] = {"checkedUtc": iso_minute(now), "nextRetryUtc": iso_minute(now + RETRY),
+                  "recoveryVersion": RECOVERY_VERSION,
                   "status": "recovered" if found else "waiting", "diagnostics": diagnostics}
     save_json(CACHE_PATH, state)
     print(f"source-recovery: {group.get('id')}: {len(found)} verified page(s); "
