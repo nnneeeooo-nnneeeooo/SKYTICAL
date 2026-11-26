@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "routes": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
-      "status": "waiting",
-      "untilUtc": "2026-11-26T08:47Z",
-      "checkedUtc": "2026-11-26T02:47Z",
-      "failureClass": "unexpected",
-      "diagnostic": "publish_brief must have an empty decisionReason",
+      "status": "verified",
+      "untilUtc": "2026-11-27T08:47Z",
+      "checkedUtc": "2026-11-26T08:47Z",
+      "failureClass": null,
+      "diagnostic": null,
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -111,10 +111,10 @@
     },
     "gemini:gemini-3.5-flash-lite": {
       "status": "waiting",
-      "untilUtc": "2026-11-26T08:47Z",
-      "checkedUtc": "2026-11-26T02:47Z",
-      "failureClass": "unexpected",
-      "diagnostic": "F2 claim adds high-risk atom '10' not present in its own sourceQuote",
+      "untilUtc": "2026-11-26T14:47Z",
+      "checkedUtc": "2026-11-26T08:47Z",
+      "failureClass": "http_error",
+      "diagnostic": "HTTP 503 code=UNAVAILABLE",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -156,8 +156,8 @@
     },
     "nvidia:z-ai/glm-5.2": {
       "status": "unavailable",
-      "untilUtc": "2026-11-26T07:55Z",
-      "checkedUtc": "2026-11-25T07:55Z",
+      "untilUtc": "2026-11-27T08:47Z",
+      "checkedUtc": "2026-11-26T08:47Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
       "probeVersion": 3,
@@ -174,8 +174,8 @@
     },
     "nvidia:deepseek-ai/deepseek-v4.1-flash": {
       "status": "unavailable",
-      "untilUtc": "2026-11-26T07:55Z",
-      "checkedUtc": "2026-11-25T07:55Z",
+      "untilUtc": "2026-11-27T08:47Z",
+      "checkedUtc": "2026-11-26T08:47Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
       "probeVersion": 3,
@@ -183,8 +183,8 @@
     },
     "nvidia:deepseek-ai/deepseek-v4-pro": {
       "status": "unavailable",
-      "untilUtc": "2026-11-26T07:55Z",
-      "checkedUtc": "2026-11-25T07:55Z",
+      "untilUtc": "2026-11-27T08:47Z",
+      "checkedUtc": "2026-11-26T08:47Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
       "probeVersion": 3,
@@ -201,8 +201,8 @@
     },
     "nvidia:nvidia/nemotron-3-super-120b-a12b": {
       "status": "unavailable",
-      "untilUtc": "2026-11-26T07:55Z",
-      "checkedUtc": "2026-11-25T07:55Z",
+      "untilUtc": "2026-11-27T08:47Z",
+      "checkedUtc": "2026-11-26T08:47Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
       "probeVersion": 3,
@@ -210,8 +210,8 @@
     },
     "nvidia:mistralai/mistral-medium-3.5-128b": {
       "status": "unavailable",
-      "untilUtc": "2026-11-26T07:55Z",
-      "checkedUtc": "2026-11-25T07:55Z",
+      "untilUtc": "2026-11-27T08:47Z",
+      "checkedUtc": "2026-11-26T08:47Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
       "probeVersion": 3,
@@ -300,8 +300,8 @@
     },
     "openrouter:google/gemma-4-31b-it:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-26T07:47Z",
-      "checkedUtc": "2026-11-26T07:46Z",
+      "untilUtc": "2026-11-26T08:48Z",
+      "checkedUtc": "2026-11-26T08:47Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
@@ -309,8 +309,8 @@
     },
     "openrouter:google/gemma-4-26b-a4b-it:free": {
       "status": "waiting",
-      "checkedUtc": "2026-11-26T07:46Z",
-      "untilUtc": "2026-11-26T07:47Z",
+      "checkedUtc": "2026-11-26T08:47Z",
+      "untilUtc": "2026-11-26T08:48Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
