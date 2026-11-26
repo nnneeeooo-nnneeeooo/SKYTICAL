@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "routes": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
-      "status": "verified",
-      "untilUtc": "2026-11-26T02:27Z",
-      "checkedUtc": "2026-11-25T02:27Z",
-      "failureClass": null,
-      "diagnostic": null,
+      "status": "waiting",
+      "untilUtc": "2026-11-26T08:47Z",
+      "checkedUtc": "2026-11-26T02:47Z",
+      "failureClass": "unexpected",
+      "diagnostic": "publish_brief must have an empty decisionReason",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -110,13 +110,13 @@
       "schemaMode": null
     },
     "gemini:gemini-3.5-flash-lite": {
-      "status": "verified",
-      "untilUtc": "2026-11-26T02:27Z",
-      "checkedUtc": "2026-11-25T02:27Z",
-      "failureClass": null,
-      "diagnostic": null,
+      "status": "waiting",
+      "untilUtc": "2026-11-26T08:47Z",
+      "checkedUtc": "2026-11-26T02:47Z",
+      "failureClass": "unexpected",
+      "diagnostic": "F2 claim adds high-risk atom '10' not present in its own sourceQuote",
       "probeVersion": 3,
-      "schemaMode": "prompt"
+      "schemaMode": null
     },
     "gemini:gemini-3.1-flash-lite": {
       "status": "waiting",
@@ -300,8 +300,8 @@
     },
     "openrouter:google/gemma-4-31b-it:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-26T01:47Z",
-      "checkedUtc": "2026-11-26T01:46Z",
+      "untilUtc": "2026-11-26T02:48Z",
+      "checkedUtc": "2026-11-26T02:47Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
@@ -309,8 +309,8 @@
     },
     "openrouter:google/gemma-4-26b-a4b-it:free": {
       "status": "waiting",
-      "checkedUtc": "2026-11-26T01:46Z",
-      "untilUtc": "2026-11-26T01:47Z",
+      "checkedUtc": "2026-11-26T02:47Z",
+      "untilUtc": "2026-11-26T02:48Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
