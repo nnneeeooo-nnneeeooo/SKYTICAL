@@ -66,8 +66,8 @@
     },
     "cloudflare:@cf/openai/gpt-oss-120b": {
       "status": "verified",
-      "untilUtc": "2026-11-26T05:46Z",
-      "checkedUtc": "2026-11-25T05:46Z",
+      "untilUtc": "2026-11-27T05:46Z",
+      "checkedUtc": "2026-11-26T05:46Z",
       "failureClass": null,
       "diagnostic": null,
       "probeVersion": 3,
@@ -75,10 +75,10 @@
     },
     "groq:qwen/qwen3.8-27b": {
       "status": "waiting",
-      "untilUtc": "2026-11-26T05:46Z",
-      "checkedUtc": "2026-11-25T23:46Z",
+      "untilUtc": "2026-11-26T11:46Z",
+      "checkedUtc": "2026-11-26T05:46Z",
       "failureClass": "unexpected",
-      "diagnostic": "publish_brief body does not meet brief contract (zh=135 content characters, en=61 words, paragraphs=3/3)",
+      "diagnostic": "zh.body[2] contains Simplified Chinese characters",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -300,8 +300,8 @@
     },
     "openrouter:google/gemma-4-31b-it:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-26T04:47Z",
-      "checkedUtc": "2026-11-26T04:46Z",
+      "untilUtc": "2026-11-26T05:47Z",
+      "checkedUtc": "2026-11-26T05:46Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
@@ -309,8 +309,8 @@
     },
     "openrouter:google/gemma-4-26b-a4b-it:free": {
       "status": "waiting",
-      "checkedUtc": "2026-11-26T04:46Z",
-      "untilUtc": "2026-11-26T04:47Z",
+      "checkedUtc": "2026-11-26T05:46Z",
+      "untilUtc": "2026-11-26T05:47Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
