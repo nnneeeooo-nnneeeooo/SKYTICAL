@@ -101,13 +101,13 @@
       "schemaMode": "prompt"
     },
     "gemini:gemini-3.8-flash": {
-      "status": "waiting",
-      "untilUtc": "2026-11-26T02:48Z",
-      "checkedUtc": "2026-11-25T20:48Z",
-      "failureClass": "timeout",
-      "diagnostic": "ReadTimeout",
+      "status": "verified",
+      "untilUtc": "2026-11-27T03:27Z",
+      "checkedUtc": "2026-11-26T03:27Z",
+      "failureClass": null,
+      "diagnostic": null,
       "probeVersion": 3,
-      "schemaMode": null
+      "schemaMode": "prompt"
     },
     "gemini:gemini-3.5-flash-lite": {
       "status": "waiting",
@@ -120,10 +120,10 @@
     },
     "gemini:gemini-3.1-flash-lite": {
       "status": "waiting",
-      "untilUtc": "2026-11-26T02:48Z",
-      "checkedUtc": "2026-11-25T20:48Z",
-      "failureClass": "http_error",
-      "diagnostic": "HTTP 503 code=UNAVAILABLE",
+      "untilUtc": "2026-11-26T09:27Z",
+      "checkedUtc": "2026-11-26T03:27Z",
+      "failureClass": "unexpected",
+      "diagnostic": "verified factId values must be sequential F1..Fn",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -147,8 +147,8 @@
     },
     "nvidia:z-ai/glm-5.3-flash": {
       "status": "waiting",
-      "untilUtc": "2026-11-26T02:48Z",
-      "checkedUtc": "2026-11-25T20:48Z",
+      "untilUtc": "2026-11-26T09:27Z",
+      "checkedUtc": "2026-11-26T03:27Z",
       "failureClass": "timeout",
       "diagnostic": "ReadTimeout",
       "probeVersion": 3,
@@ -300,8 +300,8 @@
     },
     "openrouter:google/gemma-4-31b-it:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-26T02:48Z",
-      "checkedUtc": "2026-11-26T02:47Z",
+      "untilUtc": "2026-11-26T03:28Z",
+      "checkedUtc": "2026-11-26T03:27Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
@@ -309,8 +309,8 @@
     },
     "openrouter:google/gemma-4-26b-a4b-it:free": {
       "status": "waiting",
-      "checkedUtc": "2026-11-26T02:47Z",
-      "untilUtc": "2026-11-26T02:48Z",
+      "checkedUtc": "2026-11-26T03:27Z",
+      "untilUtc": "2026-11-26T03:28Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,

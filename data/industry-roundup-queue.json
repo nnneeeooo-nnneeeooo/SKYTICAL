@@ -2281,6 +2281,136 @@
         "evidenceVersion": 2
       },
       "publishedExcerptId": null
+    },
+    {
+      "enqueuedUtc": "2026-11-26T03:27Z",
+      "routeReason": "verified_short_update",
+      "sourceGroupId": "g-20261126-0327-2",
+      "eventKey": "",
+      "article": {
+        "id": "a-20261126-0327-ge-aerospace-ceo-announces-100-000-donat",
+        "publishedUtc": "2026-11-26T03:27Z",
+        "cat": "mil",
+        "primarySource": "GE Aerospace 官方新聞室",
+        "image": null,
+        "sourceImageCandidates": [],
+        "zh": {
+          "title": "GE Aerospace執行長宣佈$100,000捐款 支持軍人轉職航空維修培訓",
+          "summary": "GE Aerospace執行長宣佈$100,000捐款，將補助轉職軍人學費及考試費。",
+          "body": [
+            "GE Aerospace董事長兼執行長Larry Culp在Embry-Riddle Aeronautical University的Daytona Beach校區宣佈一筆$100,000捐款，支持該校的航空維修技術SkillBridge計畫。這筆捐款將協助計畫中準備轉職的服役人員支付學費及聯邦航空總署（FAA）考試費。",
+            "GE Aerospace表示，SkillBridge讓準備離開軍隊的人員在服役的最後數月，透過參與計畫的企業與學校接受訓練，為投入民間職涯做準備。",
+            "GE Aerospace也指出，Embry-Riddle Aeronautical University在部分軍事基地開設一門一般航空維修課程，協助學員在離開軍隊前朝取得機體與動力裝置證照邁進。"
+          ]
+        },
+        "en": {
+          "title": "GE Aerospace CEO announces $100,000 donation for service members' aviation training",
+          "summary": "GE Aerospace's CEO announces a $100,000 donation to help transitioning service members cover tuition and testing costs.",
+          "body": [
+            "GE Aerospace Chairman and CEO Larry Culp announced a $100,000 donation to Embry-Riddle Aeronautical University’s Aviation Maintenance Technology SkillBridge program at the university’s Daytona Beach campus. The donation will help cover tuition and Federal Aviation Administration (FAA) testing expenses for transitioning service members in the program, the company said.",
+            "The SkillBridge program allows service members transitioning out of the military to use their final months in uniform to train with participating companies and schools for civilian careers, according to GE Aerospace.",
+            "GE Aerospace said one Embry-Riddle Aeronautical University course offered at select military bases focuses on general aviation maintenance. It helps participants work toward an airframe and powerplant certification before leaving the military."
+          ]
+        },
+        "sources": [
+          {
+            "name": "GE Aerospace 官方新聞室 — From the Military to Soaring Careers: A New Donation Clears…",
+            "url": "https://www.geaerospace.com/news/articles/military-soaring-careers-new-donation-clears-runway-other-transitioning-service-members"
+          }
+        ],
+        "articleFormat": "brief",
+        "sourcePublishedUtc": "2026-11-25T20:21Z",
+        "writer": "openai:gpt-6.1-terra",
+        "facts": [
+          {
+            "factId": "F1",
+            "claim": "GE Aerospace Chairman and CEO Larry Culp announced a $100,000 donation to Embry-Riddle Aeronautical University’s Aviation Maintenance Technology SkillBridge program.",
+            "sourceQuote": "Embry-Riddle Aeronautical University marks its 100th anniversary, GE Aerospace Chairman and CEO Larry Culp announced a $100,000 donation to the school’s Aviation Maintenance Technology SkillBridge program",
+            "sourceUrl": "https://www.geaerospace.com/news/articles/military-soaring-careers-new-donation-clears-runway-other-transitioning-service-members",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F2",
+            "claim": "The donation will help cover tuition and FAA testing expenses for transitioning service members in the program.",
+            "sourceQuote": "The donation will help cover costs like tuition and Federal Aviation Administration (FAA) testing expenses for transitioning service members in the program.",
+            "sourceUrl": "https://www.geaerospace.com/news/articles/military-soaring-careers-new-donation-clears-runway-other-transitioning-service-members",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F3",
+            "claim": "Larry Culp announced the donation at the university’s Daytona Beach campus.",
+            "sourceQuote": "Larry Culp announced a $100,000 donation to the school’s Aviation Maintenance Technology SkillBridge program, during the Presidential Speaker Series at the university’s Daytona Beach campus.",
+            "sourceUrl": "https://www.geaerospace.com/news/articles/military-soaring-careers-new-donation-clears-runway-other-transitioning-service-members",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F4",
+            "claim": "SkillBridge lets transitioning service members use their final months in uniform to train with participating companies and schools for civilian careers.",
+            "sourceQuote": "The SkillBridge program lets transitioning service members use their final months in uniform to train with participating companies and schools for civilian careers.",
+            "sourceUrl": "https://www.geaerospace.com/news/articles/military-soaring-careers-new-donation-clears-runway-other-transitioning-service-members",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F5",
+            "claim": "One Embry-Riddle course offered at select military bases focuses on general aviation maintenance and helps veterans work toward an airframe and powerplant certification before leaving the military.",
+            "sourceQuote": "One of Embry-Riddle’s courses, offered on select military bases, focuses on general aviation maintenance, helping veterans work toward an airframe and powerplant certification before they leave the military.",
+            "sourceUrl": "https://www.geaerospace.com/news/articles/military-soaring-careers-new-donation-clears-runway-other-transitioning-service-members",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          }
+        ],
+        "riskFlags": [
+          "financial_or_order_claim"
+        ],
+        "eventStatus": "confirmed",
+        "entities": {
+          "organizations": [
+            "GE Aerospace",
+            "Embry-Riddle Aeronautical University",
+            "Federal Aviation Administration (FAA)"
+          ],
+          "locations": [
+            "Daytona Beach"
+          ]
+        },
+        "entityEvidence": [
+          {
+            "entityType": "organizations",
+            "value": "GE Aerospace",
+            "sourceQuote": "GE Aerospace Chairman and CEO Larry Culp announced a $100,000 donation",
+            "sourceUrl": "https://www.geaerospace.com/news/articles/military-soaring-careers-new-donation-clears-runway-other-transitioning-service-members"
+          },
+          {
+            "entityType": "organizations",
+            "value": "Embry-Riddle Aeronautical University",
+            "sourceQuote": "As Embry-Riddle Aeronautical University marks its 100th anniversary",
+            "sourceUrl": "https://www.geaerospace.com/news/articles/military-soaring-careers-new-donation-clears-runway-other-transitioning-service-members"
+          },
+          {
+            "entityType": "organizations",
+            "value": "Federal Aviation Administration (FAA)",
+            "sourceQuote": "Federal Aviation Administration (FAA) testing expenses",
+            "sourceUrl": "https://www.geaerospace.com/news/articles/military-soaring-careers-new-donation-clears-runway-other-transitioning-service-members"
+          },
+          {
+            "entityType": "locations",
+            "value": "Daytona Beach",
+            "sourceQuote": "during the Presidential Speaker Series at the university’s Daytona Beach campus",
+            "sourceUrl": "https://www.geaerospace.com/news/articles/military-soaring-careers-new-donation-clears-runway-other-transitioning-service-members"
+          }
+        ],
+        "evidenceVersion": 2
+      },
+      "publishedExcerptId": null
     }
   ],
   "history": [
