@@ -3221,38 +3221,6 @@
         }
       ]
     },
-    "08e7d50957971567559359b6": {
-      "sourceUrls": [
-        "https://news.yahoo.co.jp/articles/df887b1f90527b3eb96b6986ebed42456da53031",
-        "https://newsdig.tbs.co.jp/articles/rsk/3107858"
-      ],
-      "contentFailures": 0,
-      "serviceFailures": 1,
-      "history": [],
-      "updatedUtc": "2026-11-24T15:40Z",
-      "failureClass": "source_insufficient",
-      "status": "waiting",
-      "nextRetryUtc": "2026-11-24T21:40Z",
-      "title": "岡山空港で着陸時の事故想定し大規模訓練 負傷者の救助など初動対応を確認 | 岡山・香川のニュース | 天気 | RSK山陽放送",
-      "items": [
-        {
-          "url": "https://newsdig.tbs.co.jp/articles/rsk/3107858",
-          "title": "岡山空港で着陸時の事故想定し大規模訓練 負傷者の救助など初動対応を確認 | 岡山・香川のニュース | 天気 | RSK山陽放送",
-          "summary": "",
-          "publishedUtc": "2026-11-24T09:01Z",
-          "source": "TBS NEWS DIG",
-          "sourceKey": "japansafety"
-        },
-        {
-          "url": "https://news.yahoo.co.jp/articles/df887b1f90527b3eb96b6986ebed42456da53031",
-          "title": "岡山空港で着陸時の事故想定し大規模訓練 負傷者の救助など初動対応を確認（RSK山陽放送）",
-          "summary": "",
-          "publishedUtc": "2026-11-24T09:02Z",
-          "source": "Yahoo!ニュース",
-          "sourceKey": "japansafety"
-        }
-      ]
-    },
     "8df3933c666975434a10ee1d": {
       "sourceUrls": [
         "https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/21077/pdf",
@@ -5516,6 +5484,40 @@
       "status": "waiting",
       "nextRetryUtc": "2026-11-26T18:36Z",
       "title": "Italian Rheinmetall technicians killed in Kuwaiti drone explosion"
+    },
+    "08e7d50957971567559359b6": {
+      "sourceUrls": [
+        "https://news.yahoo.co.jp/articles/df887b1f90527b3eb96b6986ebed42456da53031",
+        "https://newsdig.tbs.co.jp/articles/-/3107858",
+        "https://newsdig.tbs.co.jp/articles/rsk/3107858",
+        "https://newsdig.tbs.co.jp/articles/rsk/3107858?display=1"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 0,
+      "status": "ready",
+      "history": [
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 1,
+          "updatedUtc": "2026-11-24T15:40Z"
+        }
+      ],
+      "updatedUtc": "2026-11-26T17:06Z",
+      "nextRetryUtc": null
+    },
+    "07cc51c6ef9f93f881399101": {
+      "sourceUrls": [
+        "https://www.aerotime.aero/articles/emirates-etihad-a380-aircraft-easa-ordered-inspections"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-26T17:07Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-26T19:07Z",
+      "title": "Emirates and Etihad A380 aircraft among eight requiring EASA ordered inspections"
     }
   }
 }
