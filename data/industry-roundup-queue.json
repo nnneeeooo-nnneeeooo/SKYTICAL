@@ -1679,6 +1679,400 @@
         "evidenceVersion": 2
       },
       "publishedExcerptId": null
+    },
+    {
+      "enqueuedUtc": "2026-11-25T23:46Z",
+      "routeReason": "verified_short_update",
+      "sourceGroupId": "g-20261125-2346-1",
+      "eventKey": "",
+      "article": {
+        "id": "a-20261125-2346-ukraine-says-strike-on-russian-air-base",
+        "publishedUtc": "2026-11-25T23:46Z",
+        "cat": "mil",
+        "primarySource": "AeroTime",
+        "image": null,
+        "sourceImageCandidates": [],
+        "zh": {
+          "title": "烏克蘭稱攻擊俄羅斯空軍基地 5架軍機受損",
+          "summary": "烏克蘭稱攻擊俄羅斯空軍基地，3架MiG-31及2架Su-34受損。",
+          "body": [
+            "烏克蘭表示，烏方攻擊俄羅斯Savasleyka空軍基地，造成3架MiG-31戰鬥機及2架Su-34戰鬥轟炸機受損。",
+            "Savasleyka空軍基地位於俄羅斯下諾夫哥羅德地區，地處莫斯科以東。烏克蘭參謀總部表示，這次攻擊發生於2026年11月24日及隔夜至25日的一系列打擊行動期間。",
+            "初步評估認為，這5架軍機將有一段時間無法飛行。軍方表示，此次攻擊造成的受損程度及受波及的軍機數量仍在評估中。"
+          ]
+        },
+        "en": {
+          "title": "Ukraine says strike on Russian air base damaged five military jets",
+          "summary": "Ukraine says its strike on a Russian air base damaged three MiG-31s and two Su-34s.",
+          "body": [
+            "Ukraine said its strike on Russia’s Savasleyka air base damaged three MiG-31 fighters and two Su-34 fighter-bombers.",
+            "The Savasleyka air base is located in Russia’s Nizhny Novgorod region, to the east of Moscow. Ukraine’s General Staff said the attack took place during a series of strikes on November 24 and overnight into November 25, 2026.",
+            "The preliminary assessment indicated that all five of the aircraft would be unable to fly for some time. The military said it was still assessing the extent of the damage and the number of jets affected."
+          ]
+        },
+        "sources": [
+          {
+            "name": "AeroTime — Ukraine says strike on major Russian air base damaged five…",
+            "url": "https://www.aerotime.aero/articles/ukraine-says-strike-on-major-russian-air-base-damaged-five-military-jets"
+          },
+          {
+            "name": "Reuters — Ukraine says it struck a major Russian air base, damaging f…",
+            "url": "https://www.reuters.com/business/aerospace-defense/ukraine-says-it-struck-major-russian-air-base-damaging-five-planes-2026-11-25/"
+          }
+        ],
+        "articleFormat": "brief",
+        "sourcePublishedUtc": "2026-11-25T21:38Z",
+        "writer": "openai:gpt-6.1-terra",
+        "facts": [
+          {
+            "factId": "F1",
+            "claim": "Ukraine said its strike on Russia’s Savasleyka air base damaged three MiG-31 fighters.",
+            "sourceQuote": "Ukraine said it damaged three MiG-31 fighters and two Su-34 fighter-bombers in a strike on Russia’s Savasleyka air base",
+            "sourceUrl": "https://www.aerotime.aero/articles/ukraine-says-strike-on-major-russian-air-base-damaged-five-military-jets",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F2",
+            "claim": "Ukraine said its strike on Russia’s Savasleyka air base damaged two Su-34 fighter-bombers.",
+            "sourceQuote": "Ukraine said it damaged three MiG-31 fighters and two Su-34 fighter-bombers in a strike on Russia’s Savasleyka air base",
+            "sourceUrl": "https://www.aerotime.aero/articles/ukraine-says-strike-on-major-russian-air-base-damaged-five-military-jets",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F3",
+            "claim": "Savasleyka is in Russia’s Nizhny Novgorod region, east of Moscow.",
+            "sourceQuote": "Savasleyka is in Russia’s Nizhny Novgorod region, east of Moscow.",
+            "sourceUrl": "https://www.aerotime.aero/articles/ukraine-says-strike-on-major-russian-air-base-damaged-five-military-jets",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F4",
+            "claim": "Ukraine’s General Staff said the attack took place during a series of strikes on November 24 and overnight into November 25, 2026.",
+            "sourceQuote": "Ukraine’s General Staff said the attack took place during a series of strikes on November 24 and overnight into November 25, 2026.",
+            "sourceUrl": "https://www.aerotime.aero/articles/ukraine-says-strike-on-major-russian-air-base-damaged-five-military-jets",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F5",
+            "claim": "A preliminary assessment said all five aircraft would be unable to fly for some time.",
+            "sourceQuote": "Its preliminary assessment was that all five aircraft would be unable to fly for some time.",
+            "sourceUrl": "https://www.aerotime.aero/articles/ukraine-says-strike-on-major-russian-air-base-damaged-five-military-jets",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F6",
+            "claim": "The military said it was still assessing the extent of the damage and the number of jets affected.",
+            "sourceQuote": "The military said it was still assessing the extent of the damage and the number of jets affected.",
+            "sourceUrl": "https://www.aerotime.aero/articles/ukraine-says-strike-on-major-russian-air-base-damaged-five-military-jets",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          }
+        ],
+        "riskFlags": [
+          "unconfirmed_or_developing"
+        ],
+        "eventStatus": "preliminary",
+        "entities": {
+          "organizations": [
+            "Ukraine’s General Staff"
+          ],
+          "aircraft_models": [
+            "MiG-31",
+            "Su-34"
+          ],
+          "airports": [
+            "Savasleyka air base"
+          ],
+          "locations": [
+            "Ukraine",
+            "Russia",
+            "Nizhny Novgorod region",
+            "Moscow"
+          ],
+          "event_dates": [
+            "November 24 and overnight into November 25, 2026"
+          ]
+        },
+        "entityEvidence": [
+          {
+            "entityType": "organizations",
+            "value": "Ukraine’s General Staff",
+            "sourceQuote": "Ukraine’s General Staff said the attack took place during a series of strikes on November 24 and overnight into November 25, 2026.",
+            "sourceUrl": "https://www.aerotime.aero/articles/ukraine-says-strike-on-major-russian-air-base-damaged-five-military-jets"
+          },
+          {
+            "entityType": "aircraft_models",
+            "value": "MiG-31",
+            "sourceQuote": "three MiG-31 fighters and two Su-34 fighter-bombers",
+            "sourceUrl": "https://www.aerotime.aero/articles/ukraine-says-strike-on-major-russian-air-base-damaged-five-military-jets"
+          },
+          {
+            "entityType": "aircraft_models",
+            "value": "Su-34",
+            "sourceQuote": "three MiG-31 fighters and two Su-34 fighter-bombers",
+            "sourceUrl": "https://www.aerotime.aero/articles/ukraine-says-strike-on-major-russian-air-base-damaged-five-military-jets"
+          },
+          {
+            "entityType": "airports",
+            "value": "Savasleyka air base",
+            "sourceQuote": "in a strike on Russia’s Savasleyka air base",
+            "sourceUrl": "https://www.aerotime.aero/articles/ukraine-says-strike-on-major-russian-air-base-damaged-five-military-jets"
+          },
+          {
+            "entityType": "locations",
+            "value": "Ukraine",
+            "sourceQuote": "Ukraine said it damaged three MiG-31 fighters",
+            "sourceUrl": "https://www.aerotime.aero/articles/ukraine-says-strike-on-major-russian-air-base-damaged-five-military-jets"
+          },
+          {
+            "entityType": "locations",
+            "value": "Russia",
+            "sourceQuote": "Russia did not immediately comment.",
+            "sourceUrl": "https://www.aerotime.aero/articles/ukraine-says-strike-on-major-russian-air-base-damaged-five-military-jets"
+          },
+          {
+            "entityType": "locations",
+            "value": "Nizhny Novgorod region",
+            "sourceQuote": "Savasleyka is in Russia’s Nizhny Novgorod region, east of Moscow.",
+            "sourceUrl": "https://www.aerotime.aero/articles/ukraine-says-strike-on-major-russian-air-base-damaged-five-military-jets"
+          },
+          {
+            "entityType": "locations",
+            "value": "Moscow",
+            "sourceQuote": "Savasleyka is in Russia’s Nizhny Novgorod region, east of Moscow.",
+            "sourceUrl": "https://www.aerotime.aero/articles/ukraine-says-strike-on-major-russian-air-base-damaged-five-military-jets"
+          },
+          {
+            "entityType": "event_dates",
+            "value": "November 24 and overnight into November 25, 2026",
+            "sourceQuote": "Ukraine’s General Staff said the attack took place during a series of strikes on November 24 and overnight into November 25, 2026.",
+            "sourceUrl": "https://www.aerotime.aero/articles/ukraine-says-strike-on-major-russian-air-base-damaged-five-military-jets"
+          }
+        ],
+        "evidenceVersion": 2
+      },
+      "publishedExcerptId": null
+    },
+    {
+      "enqueuedUtc": "2026-11-25T23:46Z",
+      "routeReason": "verified_short_update",
+      "sourceGroupId": "g-20261125-2346-2",
+      "eventKey": "",
+      "article": {
+        "id": "a-20261125-2346-embraer-and-alada-sign-kc-390-and-a-29-g",
+        "publishedUtc": "2026-11-25T23:46Z",
+        "cat": "mil",
+        "primarySource": "AeroTime",
+        "image": null,
+        "sourceImageCandidates": [],
+        "zh": {
+          "title": "巴西航空工業與ALADA簽協議 推動KC-390與A-29政府間銷售",
+          "summary": "巴西航空工業與ALADA簽框架協議，擬拓展拉美及非洲政府間銷售。",
+          "body": [
+            "巴西航空工業與巴西國營航太公司ALADA於2026年11月25日在巴西利亞的Mostra BID簽署框架協議，擬透過政府對政府採購模式，推動KC-390 Millennium與A-29 Super Tucano的銷售。",
+            "協議為評估及發展拉丁美洲與非洲的潛在商機訂出指引。2026年4月7日，智利聖地牙哥的FIDAE航展期間曾簽署一份諒解備忘錄，當時兩家公司開始探討政府對政府銷售機會。",
+            "ALADA受巴西國防部委託協助政府對政府銷售。當外國政府對巴西國防裝備表達興趣時，國防部可指派ALADA處理交易、簽署出口合約，並協助買方選擇巴西供應商。"
+          ]
+        },
+        "en": {
+          "title": "Embraer and ALADA sign KC-390 and A-29 government-to-government sales framework",
+          "summary": "Embraer and ALADA sign a framework for potential government-to-government sales in Latin America and Africa.",
+          "body": [
+            "Embraer and Brazil’s state-owned aerospace company ALADA signed a framework agreement at Mostra BID in Brasília, Brazil, on November 25, 2026, to facilitate government-to-government sales of the KC-390 Millennium and A-29 Super Tucano.",
+            "The agreement sets guidelines for assessing and developing potential business opportunities in Latin America and Africa. A memorandum of understanding was signed at the FIDAE air show in Santiago, Chile, on April 7, 2026, when the two companies began exploring government-to-government sales opportunities.",
+            "ALADA has been tasked by Brazil’s Ministry of Defense with facilitating government-to-government sales. When a foreign government expresses interest in Brazilian defense equipment, the ministry can appoint ALADA to handle the transaction, sign export contracts and help the buyer select a Brazilian supplier."
+          ]
+        },
+        "sources": [
+          {
+            "name": "AeroTime — Embraer opens new export route for KC-390 and A-29 through…",
+            "url": "https://www.aerotime.aero/articles/embraer-brazil-kc-390-a-29-military-aircraft-exports"
+          },
+          {
+            "name": "Embraer 官方新聞室 — Embraer and ALADA Sign Agreement for Government-to-Governme…",
+            "url": "https://www.embraer.com/media-center/en/?mediatype=NEWS&detail=34074"
+          }
+        ],
+        "articleFormat": "brief",
+        "sourcePublishedUtc": "2026-11-25T21:14Z",
+        "writer": "openai:gpt-6.1-terra",
+        "facts": [
+          {
+            "factId": "F1",
+            "claim": "An agreement with ALADA, a Brazilian state-owned aerospace company, is intended to facilitate government-to-government sales of the KC-390 Millennium and A-29 Super Tucano.",
+            "sourceQuote": "agreement with Brazil’s state-owned aerospace company ALADA to facilitate sales of its KC-390 Millennium and A-29 Super Tucano through government-to-government (G2G) contracts",
+            "sourceUrl": "https://www.aerotime.aero/articles/embraer-brazil-kc-390-a-29-military-aircraft-exports",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F2",
+            "claim": "Embraer and ALADA signed a framework agreement on November 25, 2026, during Mostra BID in Brasília, Brazil.",
+            "sourceQuote": "Brasília, Brazil, November 25, 2026 – Embraer (NYSE: EMBJ / B3: EMBJ3) and ALADA – Empresa de Projetos Aeroespaciais do Brasil S.A. today signed a framework agreement during Mostra BID, in Brasília",
+            "sourceUrl": "https://www.embraer.com/media-center/en/?mediatype=NEWS&detail=34074",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F3",
+            "claim": "The partnership establishes guidelines for assessing and developing potential business opportunities in Latin America and Africa.",
+            "sourceQuote": "The partnership establishes guidelines for the assessment and development of potential business opportunities in Latin America and Africa.",
+            "sourceUrl": "https://www.embraer.com/media-center/en/?mediatype=NEWS&detail=34074",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F4",
+            "claim": "A memorandum of understanding was signed at FIDAE in Santiago, Chile, on April 7, 2026, when the two companies began exploring government-to-government sales opportunities.",
+            "sourceQuote": "memorandum of understanding (MoU) signed at the FIDAE air show in Santiago, Chile, on April 7, 2026, when the two companies began exploring G2G sales opportunities",
+            "sourceUrl": "https://www.aerotime.aero/articles/embraer-brazil-kc-390-a-29-military-aircraft-exports",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F5",
+            "claim": "ALADA, formally Empresa de Projetos Aeroespaciais do Brasil, has been tasked by Brazil’s Ministry of Defense with facilitating government-to-government sales.",
+            "sourceQuote": "ALADA, formally Empresa de Projetos Aeroespaciais do Brasil, has been tasked by Brazil’s Ministry of Defense with facilitating government-to-government sales",
+            "sourceUrl": "https://www.aerotime.aero/articles/embraer-brazil-kc-390-a-29-military-aircraft-exports",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F6",
+            "claim": "When a foreign government expresses interest in Brazilian defense equipment, the ministry can appoint ALADA to handle the transaction, sign export contracts and help the buyer select a Brazilian supplier.",
+            "sourceQuote": "When a foreign government expresses interest in Brazilian defense equipment, the ministry can appoint ALADA to handle the transaction, sign export contracts and help the buyer select a Brazilian supplier.",
+            "sourceUrl": "https://www.aerotime.aero/articles/embraer-brazil-kc-390-a-29-military-aircraft-exports",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          }
+        ],
+        "riskFlags": [
+          "financial_or_order_claim"
+        ],
+        "eventStatus": "confirmed",
+        "entities": {
+          "organizations": [
+            "Embraer",
+            "ALADA",
+            "Brazil’s Ministry of Defense"
+          ],
+          "aircraft_models": [
+            "KC-390 Millennium",
+            "A-29 Super Tucano"
+          ],
+          "locations": [
+            "Brasília",
+            "Brazil",
+            "Latin America",
+            "Africa",
+            "Santiago",
+            "Chile"
+          ],
+          "event_dates": [
+            "November 25, 2026",
+            "April 7, 2026"
+          ]
+        },
+        "entityEvidence": [
+          {
+            "entityType": "organizations",
+            "value": "Embraer",
+            "sourceQuote": "Embraer (NYSE: EMBJ / B3: EMBJ3) and ALADA",
+            "sourceUrl": "https://www.embraer.com/media-center/en/?mediatype=NEWS&detail=34074"
+          },
+          {
+            "entityType": "organizations",
+            "value": "ALADA",
+            "sourceQuote": "Brazil’s state-owned aerospace company ALADA",
+            "sourceUrl": "https://www.aerotime.aero/articles/embraer-brazil-kc-390-a-29-military-aircraft-exports"
+          },
+          {
+            "entityType": "organizations",
+            "value": "Brazil’s Ministry of Defense",
+            "sourceQuote": "ALADA, formally Empresa de Projetos Aeroespaciais do Brasil, has been tasked by Brazil’s Ministry of Defense",
+            "sourceUrl": "https://www.aerotime.aero/articles/embraer-brazil-kc-390-a-29-military-aircraft-exports"
+          },
+          {
+            "entityType": "aircraft_models",
+            "value": "KC-390 Millennium",
+            "sourceQuote": "its KC-390 Millennium and A-29 Super Tucano",
+            "sourceUrl": "https://www.aerotime.aero/articles/embraer-brazil-kc-390-a-29-military-aircraft-exports"
+          },
+          {
+            "entityType": "aircraft_models",
+            "value": "A-29 Super Tucano",
+            "sourceQuote": "its KC-390 Millennium and A-29 Super Tucano",
+            "sourceUrl": "https://www.aerotime.aero/articles/embraer-brazil-kc-390-a-29-military-aircraft-exports"
+          },
+          {
+            "entityType": "locations",
+            "value": "Brasília",
+            "sourceQuote": "Brasília, Brazil, November 25, 2026",
+            "sourceUrl": "https://www.embraer.com/media-center/en/?mediatype=NEWS&detail=34074"
+          },
+          {
+            "entityType": "locations",
+            "value": "Brazil",
+            "sourceQuote": "Brasília, Brazil, November 25, 2026",
+            "sourceUrl": "https://www.embraer.com/media-center/en/?mediatype=NEWS&detail=34074"
+          },
+          {
+            "entityType": "locations",
+            "value": "Latin America",
+            "sourceQuote": "potential business opportunities in Latin America and Africa",
+            "sourceUrl": "https://www.embraer.com/media-center/en/?mediatype=NEWS&detail=34074"
+          },
+          {
+            "entityType": "locations",
+            "value": "Africa",
+            "sourceQuote": "potential business opportunities in Latin America and Africa",
+            "sourceUrl": "https://www.embraer.com/media-center/en/?mediatype=NEWS&detail=34074"
+          },
+          {
+            "entityType": "locations",
+            "value": "Santiago",
+            "sourceQuote": "the FIDAE air show in Santiago, Chile, on April 7, 2026",
+            "sourceUrl": "https://www.aerotime.aero/articles/embraer-brazil-kc-390-a-29-military-aircraft-exports"
+          },
+          {
+            "entityType": "locations",
+            "value": "Chile",
+            "sourceQuote": "the FIDAE air show in Santiago, Chile, on April 7, 2026",
+            "sourceUrl": "https://www.aerotime.aero/articles/embraer-brazil-kc-390-a-29-military-aircraft-exports"
+          },
+          {
+            "entityType": "event_dates",
+            "value": "November 25, 2026",
+            "sourceQuote": "Brasília, Brazil, November 25, 2026",
+            "sourceUrl": "https://www.embraer.com/media-center/en/?mediatype=NEWS&detail=34074"
+          },
+          {
+            "entityType": "event_dates",
+            "value": "April 7, 2026",
+            "sourceQuote": "the FIDAE air show in Santiago, Chile, on April 7, 2026",
+            "sourceUrl": "https://www.aerotime.aero/articles/embraer-brazil-kc-390-a-29-military-aircraft-exports"
+          }
+        ],
+        "evidenceVersion": 2
+      },
+      "publishedExcerptId": null
     }
   ],
   "history": [
