@@ -75,10 +75,10 @@
     },
     "groq:qwen/qwen3.8-27b": {
       "status": "waiting",
-      "untilUtc": "2026-11-26T17:46Z",
-      "checkedUtc": "2026-11-26T11:46Z",
+      "untilUtc": "2026-11-27T00:20Z",
+      "checkedUtc": "2026-11-26T18:20Z",
       "failureClass": "unexpected",
-      "diagnostic": "zh.body[2] contains Simplified Chinese characters",
+      "diagnostic": "publish_brief body does not meet brief contract (zh=139 content characters, en=62 words, paragraphs=3/3)",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -300,8 +300,8 @@
     },
     "openrouter:google/gemma-4-31b-it:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-26T17:40Z",
-      "checkedUtc": "2026-11-26T17:39Z",
+      "untilUtc": "2026-11-26T18:21Z",
+      "checkedUtc": "2026-11-26T18:20Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
@@ -309,8 +309,8 @@
     },
     "openrouter:google/gemma-4-26b-a4b-it:free": {
       "status": "waiting",
-      "checkedUtc": "2026-11-26T17:39Z",
-      "untilUtc": "2026-11-26T17:40Z",
+      "checkedUtc": "2026-11-26T18:20Z",
+      "untilUtc": "2026-11-26T18:21Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
