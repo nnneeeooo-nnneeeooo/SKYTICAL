@@ -1,1 +1,49 @@
-[]
+[
+  {
+    "eventId": "fw-3be8e4ab42b95f75",
+    "queuedUtc": "2026-11-27T17:00:16Z",
+    "notBeforeUtc": "2026-11-27T17:30:16Z",
+    "bootstrap": false,
+    "primaryProvider": "ADSB.lol",
+    "crossCheck": "confirmed_by_primary_only",
+    "airport": {
+      "icao": "RCTP",
+      "iata": "TPE",
+      "name_zh": "臺灣桃園國際機場",
+      "name_en": "Taiwan Taoyuan International Airport"
+    },
+    "aircraft": {
+      "hex": "782293",
+      "registration": "B-227M",
+      "type": "B77L",
+      "type_name": "Boeing 777-200LR/F",
+      "callsign": "CKK261"
+    },
+    "operator": {
+      "icao": "CKK",
+      "iata": null,
+      "name": null,
+      "name_zh": null,
+      "country_or_region": null
+    },
+    "arrival": {
+      "status": "confirmed_arrival",
+      "firstSeenUtc": "2026-11-27T16:45:14Z",
+      "confirmedUtc": "2026-11-27T17:00:16Z",
+      "basis": "位於機場地理圍欄內且 alt_baro 為 ground",
+      "observations": 4
+    },
+    "rarity": {
+      "score": 60,
+      "reasons": [
+        "營運者 CKK 非 RCTP 常態業者 (+35)",
+        "過去 180 天無相同營運者+機型+機場紀錄 (+25)",
+        "過去 365 天此註冊號未曾抵達 RCTP (+15)",
+        "常見機型 (-15)"
+      ],
+      "watchlisted": false,
+      "combo180": 0,
+      "reg365": 0
+    }
+  }
+]
