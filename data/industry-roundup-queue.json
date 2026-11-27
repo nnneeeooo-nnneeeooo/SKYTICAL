@@ -4137,6 +4137,138 @@
         "evidenceVersion": 2
       },
       "publishedExcerptId": null
+    },
+    {
+      "enqueuedUtc": "2026-11-27T19:46Z",
+      "routeReason": "verified_short_update",
+      "sourceGroupId": "g-20261127-1946-2",
+      "eventKey": "",
+      "article": {
+        "id": "a-20261127-1946-reuters-reports-hackers-breached-us-air",
+        "publishedUtc": "2026-11-27T19:46Z",
+        "cat": "mil",
+        "primarySource": "AeroTime",
+        "image": null,
+        "sourceImageCandidates": [],
+        "zh": {
+          "title": "路透社報導美國空軍Cloud One平臺遭駭客入侵",
+          "summary": "路透社報導美國空軍Cloud One平臺遭入侵；空軍暫停部分遷移至平臺的計畫",
+          "body": [
+            "路透社於2026年11月27日報導，並引述三名熟悉這起入侵事件的人士稱，駭客侵入美國空軍的一個雲端平臺。這個平臺名為 Cloud One，託管一套用於監控北美空域的系統。",
+            "美國空軍暫停部分原定遷移至該平臺的計畫，並阻止已在平臺上運行的應用程式更新。",
+            "入侵事件的範圍仍不清楚，目前是否有任何資料遭竊也尚未明朗。"
+          ]
+        },
+        "en": {
+          "title": "Reuters reports hackers breached US Air Force Cloud One platform",
+          "summary": "Reuters reports a breach of the US Air Force's Cloud One platform; some planned migrations were paused.",
+          "body": [
+            "Reuters reported on November 27, 2026, citing three people familiar with the breach, that hackers broke into a US Air Force cloud platform. The platform is known as Cloud One and hosts a system for monitoring North American airspace.",
+            "The Air Force paused some planned migrations to the platform and blocked updates to applications already running on it.",
+            "The scope of the intrusion and whether any data was stolen remain unclear."
+          ]
+        },
+        "sources": [
+          {
+            "name": "AeroTime — Hackers breach US Air Force cloud platform used for air def…",
+            "url": "https://www.aerotime.aero/articles/us-air-force-cloud-one-cyberattack"
+          }
+        ],
+        "articleFormat": "brief",
+        "sourcePublishedUtc": "2026-11-27T19:28Z",
+        "writer": "openai:gpt-6-luna",
+        "facts": [
+          {
+            "factId": "F1",
+            "claim": "Reuters reported on November 27, 2026, citing three people familiar with the breach, that hackers broke into a US Air Force cloud platform.",
+            "sourceQuote": "Hackers broke into a US Air Force cloud platform that hosts a system for monitoring North American airspace, Reuters reported on November 27, 2026, citing three people familiar with the breach.",
+            "sourceUrl": "https://www.aerotime.aero/articles/us-air-force-cloud-one-cyberattack",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F2",
+            "claim": "The cloud platform hosts a system for monitoring North American airspace.",
+            "sourceQuote": "a US Air Force cloud platform that hosts a system for monitoring North American airspace",
+            "sourceUrl": "https://www.aerotime.aero/articles/us-air-force-cloud-one-cyberattack",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F3",
+            "claim": "The platform is known as Cloud One.",
+            "sourceQuote": "The platform, known as Cloud One",
+            "sourceUrl": "https://www.aerotime.aero/articles/us-air-force-cloud-one-cyberattack",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F4",
+            "claim": "The Air Force paused some planned migrations to the platform.",
+            "sourceQuote": "the Air Force paused some planned migrations to the platform",
+            "sourceUrl": "https://www.aerotime.aero/articles/us-air-force-cloud-one-cyberattack",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F5",
+            "claim": "The Air Force blocked updates to applications already running on the platform.",
+            "sourceQuote": "The intrusion was discovered during an upgrade, after which the Air Force paused some planned migrations to the platform and blocked updates to applications already running on it.",
+            "sourceUrl": "https://www.aerotime.aero/articles/us-air-force-cloud-one-cyberattack",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F6",
+            "claim": "The scope of the intrusion and whether any data was stolen remain unclear.",
+            "sourceQuote": "The scope of the intrusion and whether any data was stolen remain unclear.",
+            "sourceUrl": "https://www.aerotime.aero/articles/us-air-force-cloud-one-cyberattack",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          }
+        ],
+        "riskFlags": [
+          "unconfirmed_or_developing"
+        ],
+        "eventStatus": "preliminary",
+        "entities": {
+          "organizations": [
+            "US Air Force",
+            "Reuters"
+          ],
+          "locations": [
+            "North American airspace"
+          ]
+        },
+        "entityEvidence": [
+          {
+            "entityType": "organizations",
+            "value": "US Air Force",
+            "sourceQuote": "US Air Force",
+            "sourceUrl": "https://www.aerotime.aero/articles/us-air-force-cloud-one-cyberattack"
+          },
+          {
+            "entityType": "organizations",
+            "value": "Reuters",
+            "sourceQuote": "Reuters reported on November 27, 2026",
+            "sourceUrl": "https://www.aerotime.aero/articles/us-air-force-cloud-one-cyberattack"
+          },
+          {
+            "entityType": "locations",
+            "value": "North American airspace",
+            "sourceQuote": "North American airspace",
+            "sourceUrl": "https://www.aerotime.aero/articles/us-air-force-cloud-one-cyberattack"
+          }
+        ],
+        "evidenceVersion": 2
+      },
+      "publishedExcerptId": null
     }
   ],
   "history": [
