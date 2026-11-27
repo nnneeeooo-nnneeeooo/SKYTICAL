@@ -95,10 +95,10 @@ def run_with(provider, briefing=None, articles=None, old=None):
 
 
 configured = writer.make_provider()
-check("briefing writer sends Luna with MAX reasoning and generic callers keep Terra routing",
+check("briefing writer sends Luna with MAX reasoning and generic callers also use Luna",
       configured.model == "gpt-6-luna"
       and configured._effort(repair=False) == configured._effort(repair=True) == "max"
-      and OpenAIProvider("gpt-6-luna").model == "gpt-6.1-terra")
+      and OpenAIProvider("gpt-6-luna").model == "gpt-6-luna")
 
 # A valid batch writes every article after one MAX-effort provider call.
 provider = FakeProvider([encoded([valid_row()])])

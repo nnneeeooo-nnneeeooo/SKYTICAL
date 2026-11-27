@@ -354,7 +354,7 @@ def test_reasoning_tiers():
         == {"reasoning_effort": "max"},
         "Nemotron Ultra deep maps to maximum reasoning")
     check(manual_reasoning_profile(
-        "openai", "gpt-6.1-terra", "deep")["wire"]
+        "openai", "gpt-6-luna", "deep")["wire"]
         == {"reasoning": {"effort": "max"}},
         "GPT 6 deep maps to maximum reasoning")
     check(manual_reasoning_profile(
@@ -439,7 +439,7 @@ def test_openai_manual_provider_order():
                 os.environ.pop(key, None)
             else:
                 os.environ[key] = value
-    check([row.label for row in rows] == ["openai:gpt-6.1-terra"],
+    check([row.label for row in rows] == ["openai:gpt-6-luna"],
           "manual workbench exposes direct GPT 6 selection")
     check(all(row.reasoning_tier == "deep" for row in rows),
           "manual default deep tier reaches GPT 6 as MAX")
@@ -872,7 +872,7 @@ def test_static_security_contract():
     check('AVWIRE_FREE_FIRST: "true"' in hourly and "AVWIRE_PROVIDER_ORDER:" not in hourly
           and configured_order in briefing,
           "hourly publishing uses the shared free-first list; briefings retain their explicit order")
-    check("AVWIRE_PROVIDER_ORDER: ${{ vars.AVWIRE_PROVIDER_ORDER }},openai:gpt-6.1-terra"
+    check("AVWIRE_PROVIDER_ORDER: ${{ vars.AVWIRE_PROVIDER_ORDER }},openai:gpt-6-luna"
           in copilot,
           "Copilot appends GPT 6 after its configured provider order")
     check("secrets.OPENROUTER_API_KEY" in hourly

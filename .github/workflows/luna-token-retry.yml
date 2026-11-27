@@ -27,11 +27,11 @@ jobs:
           git fetch origin main
           git checkout origin/main -- data
           python pipeline/paid_budget_sync.py refresh
-      - name: Retry six token-limited stories with GPT 6.1 Terra MAX
+      - name: Retry six token-limited stories with GPT 6 Luna MAX
         env:
           AVWIRE_PAID_BUDGET_ENABLED: 'true'
-          AVWIRE_PROVIDER_ORDER: openai:gpt-6.1-terra
-          AVWIRE_OPENAI_MODEL: gpt-6.1-terra
+          AVWIRE_PROVIDER_ORDER: openai:gpt-6-luna
+          AVWIRE_OPENAI_MODEL: gpt-6-luna
           OPENAI_API_KEY: ${{ secrets.OPENAI_API }}
           GH_TOKEN: ${{ github.token }}
         run: python -u pipeline/retry_luna_token_failures.py

@@ -3,6 +3,7 @@
   "usdToTwd": 31.5,
   "models": {
     "gpt-6.1-terra": {"in": 1.0, "out": 5.0, "kind": "reference", "note": "OpenAI standard API list price, 2026-11; cached input $0.05/M; https://developers.openai.com/api/docs/models/gpt-6.1-terra"},
+    "gpt-6-luna": {"in": 0.1, "out": 0.5, "kind": "reference", "note": "OpenAI Luna standard API list price; cached input $0.01/M; https://developers.openai.com/api/docs/models/gpt-6-luna"},
     "gpt-6": {"in": 0.1, "out": 0.5, "kind": "reference", "note": "OpenAI standard API list price, 2026-10; cached input $0.01/M"},
     "gpt-5.6-sol": {"in": 5.0, "out": 30.0, "kind": "reference", "note": "OpenAI standard API list price, 2026-07; cached input $0.50/M"},
     "nemotron-3-ultra": {"in": 0.423, "out": 2.61, "kind": "reference", "note": "OpenRouter weighted avg, 2026-06"},

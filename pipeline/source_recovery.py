@@ -1,4 +1,4 @@
-"""Recover thin news with Terra search and independently fetched evidence."""
+"""Recover thin news with Luna search and independently fetched evidence."""
 from __future__ import annotations
 
 import json
@@ -14,7 +14,7 @@ import fulltext
 from companion import significant_tokens
 from model_config import model_route_allowed
 
-MODEL = "gpt-6.1-terra"
+MODEL = "gpt-6-luna"
 CACHE_PATH = DATA_DIR / "source-recovery.json"
 RETRY = timedelta(hours=6)
 
@@ -46,7 +46,7 @@ def _key(group):
 
 def _search(group):
     if not model_route_allowed("openai", MODEL):
-        raise RuntimeError("Terra model route is disabled")
+        raise RuntimeError("Luna model route is disabled")
     from paid_budget import post
     from providers import OPENAI_HTTP_TIMEOUT, extract_json
     key = os.environ.get("OPENAI_API_KEY")

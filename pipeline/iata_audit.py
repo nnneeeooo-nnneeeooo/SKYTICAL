@@ -272,7 +272,7 @@ class AuditProvider(OpenAIProvider):
     budget_purpose = "review"
 
     def __init__(self, state):
-        super().__init__(model="gpt-6.1-terra", reasoning_tier="deep")
+        super().__init__(model="gpt-6-luna", reasoning_tier="deep")
         self.state = state
         self.meter = {"calls": 0, "inputTokens": 0, "cachedInputTokens": 0, "outputTokens": 0, "reasoningTokens": 0, "estimatedUsd": 0.0}
 
@@ -372,7 +372,7 @@ def run(now=None):
             report["errorClass"] = type(exc).__name__
             save_json(path, report)
             raise RuntimeError("IATA audit incomplete; see saved report") from None
-    lines = ["# Airport IATA audit", "", "Model: GPT 6.1 Terra; reasoning: max; article changes: none", "",
+    lines = ["# Airport IATA audit", "", "Model: GPT 6 Luna; reasoning: max; article changes: none", "",
              "API usage (reasoning included in output): " + json.dumps(provider.meter), ""]
     save_json(output / "usage.json", provider.meter)
     for r in reports:

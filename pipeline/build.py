@@ -1139,8 +1139,8 @@ def normalize_image(raw_img, titles=()):
             "subjectEn": clean_description(raw_img.get("subjectEn")),
             "roundupItemNumber": (raw_img.get("roundupItemNumber")
                                   if type(raw_img.get("roundupItemNumber")) is int else None),
-            "selectionModel": ("gpt-6.1-terra"
-                               if raw_img.get("selectionModel") == "gpt-6.1-terra"
+            "selectionModel": (raw_img.get("selectionModel")
+                               if raw_img.get("selectionModel") in {"gpt-6.1-terra", "gpt-6-luna"}
                                else None),
             "kind": (kind
                      if kind in ("source_image", "illustration", "airframe_photo",
@@ -1186,6 +1186,8 @@ def _public_writer_model_name(value):
         return "GPT 6.1 Sol"
     if normalized in {"gpt6", "openaigpt6"}:
         return "GPT 6"
+    if normalized in {"gpt6luna", "openaigpt6luna"}:
+        return "GPT 6 Luna"
     if normalized in {"gpt61terra", "openaigpt61terra"}:
         return "GPT 6.1 Terra"
     if "deepseek" in normalized:
@@ -1194,6 +1196,7 @@ def _public_writer_model_name(value):
 
 
 _WRITER_MODELS = (
+    ("gpt-6-luna", "GPT 6 Luna"),
     ("gpt-6.1-terra", "GPT 6.1 Terra"),
     ("gpt-6.1-sol", "GPT 6.1 Sol"),
     ("gpt-6-sol", "GPT 6 Sol"),
@@ -1644,6 +1647,12 @@ def roundup_body_sections(body):
     return sections
 
 
+def image_model_label(photo):
+    return {"gpt-6.1-terra": "Image Powered By GPT 6.1 BETA",
+            "gpt-6-luna": "Image Powered By GPT 6 Luna BETA"}.get(
+                (photo or {}).get("selectionModel"), "")
+
+
 def art_view(a, lang: str):
     v = dict(a[lang])
     v["display_summary"] = notification_summary(
@@ -1664,8 +1673,8 @@ def art_view(a, lang: str):
             }
             if photo.get("kind") in kinds:
                 caption += " · " + kinds[photo["kind"]][0 if lang == "zh" else 1]
-        if photo and photo.get("selectionModel") == "gpt-6.1-terra":
-            caption += " · Image Powered By GPT 6.1 BETA"
+        if photo and photo.get("selectionModel") in {"gpt-6.1-terra", "gpt-6-luna"}:
+            caption += " · " + image_model_label(photo)
         if photo:
             caption += (" · 僅對應本則短訊，非整期事件現場" if lang == "zh"
                         else " · Illustrates this item only, not all events")
@@ -1694,13 +1703,13 @@ def art_view(a, lang: str):
             elif photo.get("kind") == "illustration":
                 caption += (" · 示意／合成圖，非實景照片" if lang == "zh"
                             else " · Illustration / composite; not a documentary photo")
-            if photo.get("selectionModel") == "gpt-6.1-terra":
-                caption += " · Image Powered By GPT 6.1 BETA"
+            if photo.get("selectionModel") in {"gpt-6.1-terra", "gpt-6-luna"}:
+                caption += " · " + image_model_label(photo)
             v["image_slides"].append({
                 "title": photo["subject"], "url": "#article-body", "image": photo,
                 "image_alt": photo["subject"], "image_caption": caption,
                 "kind_label": kind_labels.get(photo.get("kind"), ("", ""))[0 if lang == "zh" else 1],
-                "model_label": "Image Powered By GPT 6.1 BETA" if photo.get("selectionModel") == "gpt-6.1-terra" else "",
+                "model_label": image_model_label(photo),
             })
     v.update(
         id=a["id"], cat=a["cat"], tag_class=a["tag_class"],
