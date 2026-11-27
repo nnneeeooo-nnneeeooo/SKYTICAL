@@ -311,7 +311,7 @@ if usage:
     usage.record_providers = lambda providers: usage_calls.append(list(providers))
 os.environ["BRIEFING_GROUNDED_PROVIDER"] = "openai"
 os.environ["OPENAI_API_KEY"] = "offline-test-key"
-os.environ["BRIEFING_GROUNDED_MODEL"] = "gpt-6.1-terra"
+os.environ["BRIEFING_GROUNDED_MODEL"] = "gpt-6-luna"
 os.environ["AVWIRE_OPENAI_API_MODEL"] = "test-private-model"
 data, shim = grounded.call_grounded(window)
 openai_items, openai_warnings = grounded.sanitize_items(
@@ -324,7 +324,7 @@ check("OpenAI result maps only retrieved source URLs into citation chunks",
               for source in accepted[0]["sources"]))
 check("OpenAI call selects Fallback Responses web_search with bounded MAX reasoning",
       captured_openai["url"] == "https://api.openai.com/v1/responses"
-      and captured_openai["payload"]["model"] == "gpt-6.1-terra"
+      and captured_openai["payload"]["model"] == "gpt-6-luna"
       and captured_openai["payload"]["reasoning"] == {"effort": "max"}
       and captured_openai["timeout"] == (10, 1800)
       and "max_output_tokens" not in captured_openai["payload"]

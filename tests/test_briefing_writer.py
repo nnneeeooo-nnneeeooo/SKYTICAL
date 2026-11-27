@@ -17,7 +17,7 @@ _tmp = tempfile.TemporaryDirectory(prefix="avwire-briefing-writer-")
 os.environ["AVWIRE_DATA_DIR"] = _tmp.name
 sys.path.insert(0, str(REPO / "pipeline"))
 import briefing_writer as writer  # noqa: E402
-from providers import ProviderAuthError, ProviderQuotaError  # noqa: E402
+from providers import OpenAIProvider, ProviderAuthError, ProviderQuotaError  # noqa: E402
 
 CHECKS = FAILED = 0
 
@@ -60,7 +60,7 @@ def valid_row(article_id="art-1", **changes):
 
 
 class FakeProvider:
-    model = "gpt-6"
+    model = "gpt-6-luna"
 
     def __init__(self, replies):
         self.replies = list(replies)
@@ -93,6 +93,12 @@ def run_with(provider, briefing=None, articles=None, old=None):
         writer.make_provider = original
     return result, briefing
 
+
+configured = writer.make_provider()
+check("briefing writer sends Luna with MAX reasoning and generic callers keep Terra routing",
+      configured.model == "gpt-6-luna"
+      and configured._effort(repair=False) == configured._effort(repair=True) == "max"
+      and OpenAIProvider("gpt-6-luna").model == "gpt-6.1-terra")
 
 # A valid batch writes every article after one MAX-effort provider call.
 provider = FakeProvider([encoded([valid_row()])])
@@ -136,6 +142,14 @@ cached_ok = run_with(provider2, cached_brief, image_changed, old)[0]
 check("image-only change reuses writer cache and saved keyword without a call",
       cached_ok and not provider2.calls
       and cached_brief["sections"]["international_aviation"][0]["keyword_zh"] == "已保存關鍵字")
+
+terra_cache = copy.deepcopy(old)
+terra_cache["generation_model"]["model"] = "gpt-6.1-terra"
+luna_provider = FakeProvider([encoded([valid_row()])])
+cache_ok, refreshed = run_with(luna_provider, old=terra_cache)
+check("switching models refreshes an otherwise matching writer cache",
+      cache_ok and len(luna_provider.calls) == 1
+      and refreshed["generation_model"]["model"] == "gpt-6-luna")
 
 # Headline punctuation is normalized without touching valid summary punctuation.
 cached_semicolon = copy.deepcopy(old)

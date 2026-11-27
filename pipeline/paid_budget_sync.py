@@ -39,9 +39,10 @@ def _notify_daily_usage(repo, headers, ledger, now=None):
         if settled_usd_micro < threshold:
             continue
 
-        title = f"SKYTICAL Terra API daily USD 2 alert {day}"
+        title = f"SKYTICAL OpenAI API daily USD 2 alert {day}"
+        legacy_title = f"SKYTICAL Terra API daily USD 2 alert {day}"
         params = {
-            "q": f'repo:{repo} is:issue in:title "SKYTICAL Terra API daily USD 2 alert" {day}',
+            "q": f'repo:{repo} is:issue in:title "SKYTICAL" "API daily USD 2 alert" {day}',
             "per_page": 50,
         }
         found = requests.get(
@@ -49,11 +50,12 @@ def _notify_daily_usage(repo, headers, ledger, now=None):
             params=params, headers=headers, timeout=30,
         )
         found.raise_for_status()
-        if any(item.get("title") == title for item in found.json().get("items", [])):
+        if any(item.get("title") in {title, legacy_title}
+               for item in found.json().get("items", [])):
             continue
 
         body = (
-            f"SKYTICAL 的 Terra API 用量於 **{day}（臺灣時間）** "
+            f"SKYTICAL 的 OpenAI API 用量於 **{day}（臺灣時間）** "
             f"達到每日 **US$2** 提醒門檻。\n\n"
             f"截至本次結算，站內帳本估算的已結算支出為 "
             f"**US$ {settled_usd_micro / 1_000_000:.2f}**。\n\n"
@@ -75,7 +77,7 @@ def _notify_daily_usage(repo, headers, ledger, now=None):
             headers=headers, timeout=30,
         )
         created.raise_for_status()
-        print(f"::notice::Daily Terra US$2 GitHub alert created for {day}")
+        print(f"::notice::Daily OpenAI US$2 GitHub alert created for {day}")
 
 
 
