@@ -5089,29 +5089,6 @@
         }
       ]
     },
-    "a6d0b926ee8cb70b76f457e6": {
-      "sourceUrls": [
-        "https://www.mnd.gov.tw/news/plaact/88347"
-      ],
-      "contentFailures": 0,
-      "serviceFailures": 1,
-      "history": [],
-      "updatedUtc": "2026-11-26T06:46Z",
-      "failureClass": "source_insufficient",
-      "status": "waiting",
-      "nextRetryUtc": "2026-11-26T12:46Z",
-      "title": "全球資訊網- News Channel - PLA Activities - PLA activities in the waters and airspace around Taiwan",
-      "items": [
-        {
-          "url": "https://www.mnd.gov.tw/news/plaact/88347",
-          "title": "全球資訊網- News Channel - PLA Activities - PLA activities in the waters and airspace around Taiwan",
-          "summary": "",
-          "publishedUtc": "2026-11-25T10:41Z",
-          "source": "國防部・軍聞社",
-          "sourceKey": "mndnews"
-        }
-      ]
-    },
     "f33c629b0968826d6a404cac": {
       "sourceUrls": [
         "https://newsdig.tbs.co.jp/articles/itv/3111665",
@@ -6245,6 +6222,61 @@
       "status": "waiting",
       "nextRetryUtc": "2026-11-27T07:46Z",
       "title": "EASA adds eight Airbus A380s to accelerated wing crack checks News"
+    },
+    "a6d0b926ee8cb70b76f457e6": {
+      "sourceUrls": [
+        "https://www.mnd.gov.tw/news/plaact/88347",
+        "https://www.mnd.gov.tw/news/plaact/88359"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 0,
+      "status": "ready",
+      "history": [
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 1,
+          "updatedUtc": "2026-11-26T06:46Z"
+        }
+      ],
+      "updatedUtc": "2026-11-27T06:46Z",
+      "nextRetryUtc": null
+    },
+    "623fde24d8c6f2de2fd194f4": {
+      "sourceUrls": [
+        "https://www.cna.com.tw/news/aipl/202611270109.aspx"
+      ],
+      "contentFailures": 1,
+      "serviceFailures": 0,
+      "history": [],
+      "updatedUtc": "2026-11-27T06:46Z",
+      "failureClass": "content_validation",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-27T08:46Z",
+      "title": "26架次共機越中線配合共艦擾台 國軍嚴密掌握應處"
+    },
+    "00d8a27cb153e6cb3f06bce9": {
+      "sourceUrls": [
+        "https://simpleflying.com/american-airlines-oldest-aircraft-type-flying-2026"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-27T06:46Z",
+      "failureClass": "source_insufficient",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-27T12:46Z",
+      "title": "This Is American Airlines’ Oldest Aircraft Type Flying In 2026",
+      "items": [
+        {
+          "url": "https://simpleflying.com/american-airlines-oldest-aircraft-type-flying-2026/",
+          "title": "This Is American Airlines’ Oldest Aircraft Type Flying In 2026",
+          "summary": "A closer look at some of the veteran single-aisle twinjets keeping flyers on the move across the US every day.",
+          "publishedUtc": "2026-11-27T06:00Z",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ]
     }
   }
 }

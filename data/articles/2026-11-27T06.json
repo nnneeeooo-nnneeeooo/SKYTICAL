@@ -1,0 +1,446 @@
+{
+  "articles": [
+    {
+      "id": "a-20261127-0646-safety-roundup-three-independent-inciden",
+      "publishedUtc": "2026-11-27T06:46Z",
+      "cat": "safety",
+      "primarySource": "The Aviation Herald",
+      "sourceImageCandidates": [],
+      "zh": {
+        "title": "航空安全彙整：3起獨立事件 Fedex MD-11在邁阿密落地衝出跑道",
+        "summary": "Fedex MD-11於邁阿密落地衝出跑道；另2起事件各自獨立",
+        "body": [
+          "The Aviation Herald分別報導3起航空事件。這些事件彼此獨立，來源未指出三者有關聯。",
+          "1. Fedex一架MD-11（ICAO機型代碼MD11）於2026年11月25日在邁阿密落地時衝出跑道。",
+          "2. THY一架波音737-800（ICAO機型代碼B738）於2026年11月25日在巴統遭遇多次雷擊。",
+          "3. BAW一架波音787-10（ICAO機型代碼B78X）於2026年11月24日在格陵蘭上空發生引擎機油洩漏。"
+        ]
+      },
+      "en": {
+        "title": "Safety roundup: three independent incidents include Fedex MD-11 runway overrun in Miami",
+        "summary": "Fedex MD-11 overran a Miami runway while landing on November 25; two other incidents are independent.",
+        "body": [
+          "The Aviation Herald reported the following three aviation incidents separately. They are independent events, and no relationship between them was stated.",
+          "1. A Fedex MD-11 (ICAO type code MD11) overran a runway while it was landing in Miami on November 25, 2026.",
+          "2. A THY Boeing 737-800 (ICAO type code B738) was struck by lightning multiple times at Batumi on November 25, 2026.",
+          "3. A BAW Boeing 787-10 (ICAO type code B78X) experienced an engine oil leak while over Greenland on November 24, 2026."
+        ]
+      },
+      "sources": [
+        {
+          "name": "The Aviation Herald — Incident: Fedex MD11 at Miami on Nov 25th 2026, overran run…",
+          "url": "https://avherald.com/h?article=548813e0&opt=0"
+        },
+        {
+          "name": "The Aviation Herald — Incident: THY B738 at Batumi on Nov 25th 2026, multiple lig…",
+          "url": "https://avherald.com/h?article=54889307&opt=0"
+        },
+        {
+          "name": "The Aviation Herald — Incident: BAW B78X over Greenland on Nov 24th 2026, engine…",
+          "url": "https://avherald.com/h?article=548882cc&opt=0"
+        }
+      ],
+      "articleFormat": "roundup",
+      "sourcePublishedUtc": "2026-11-26T10:14Z",
+      "writer": "openai:gpt-6.1-terra",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "On November 25, 2026, a Fedex MD11 overran a runway while landing at Miami.",
+          "sourceQuote": "Incident: Fedex MD11 at Miami on Nov 25th 2026, overran runway on landing",
+          "sourceUrl": "https://avherald.com/h?article=548813e0&opt=0",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "On November 25, 2026, a THY B738 experienced multiple lightning strikes at Batumi.",
+          "sourceQuote": "Incident: THY B738 at Batumi on Nov 25th 2026, multiple lightning strikes",
+          "sourceUrl": "https://avherald.com/h?article=54889307&opt=0",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "On November 24, 2026, a BAW B78X had an engine oil leak over Greenland.",
+          "sourceQuote": "Incident: BAW B78X over Greenland on Nov 24th 2026, engine oil leak",
+          "sourceUrl": "https://avherald.com/h?article=548882cc&opt=0",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [],
+      "eventStatus": "confirmed",
+      "entities": {
+        "airlines": [
+          "Fedex",
+          "THY",
+          "BAW"
+        ],
+        "aircraft_models": [
+          "MD11",
+          "B738",
+          "B78X"
+        ],
+        "locations": [
+          "Miami",
+          "Batumi",
+          "Greenland"
+        ],
+        "event_dates": [
+          "Nov 25th 2026",
+          "Nov 24th 2026"
+        ]
+      },
+      "entityEvidence": [
+        {
+          "entityType": "airlines",
+          "value": "Fedex",
+          "sourceQuote": "Fedex MD11 at Miami",
+          "sourceUrl": "https://avherald.com/h?article=548813e0&opt=0"
+        },
+        {
+          "entityType": "airlines",
+          "value": "THY",
+          "sourceQuote": "THY B738 at Batumi",
+          "sourceUrl": "https://avherald.com/h?article=54889307&opt=0"
+        },
+        {
+          "entityType": "airlines",
+          "value": "BAW",
+          "sourceQuote": "BAW B78X over Greenland",
+          "sourceUrl": "https://avherald.com/h?article=548882cc&opt=0"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "MD11",
+          "sourceQuote": "Fedex MD11 at Miami",
+          "sourceUrl": "https://avherald.com/h?article=548813e0&opt=0"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "B738",
+          "sourceQuote": "THY B738 at Batumi",
+          "sourceUrl": "https://avherald.com/h?article=54889307&opt=0"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "B78X",
+          "sourceQuote": "BAW B78X over Greenland",
+          "sourceUrl": "https://avherald.com/h?article=548882cc&opt=0"
+        },
+        {
+          "entityType": "locations",
+          "value": "Miami",
+          "sourceQuote": "MD11 at Miami on Nov 25th 2026",
+          "sourceUrl": "https://avherald.com/h?article=548813e0&opt=0"
+        },
+        {
+          "entityType": "locations",
+          "value": "Batumi",
+          "sourceQuote": "B738 at Batumi on Nov 25th 2026",
+          "sourceUrl": "https://avherald.com/h?article=54889307&opt=0"
+        },
+        {
+          "entityType": "locations",
+          "value": "Greenland",
+          "sourceQuote": "B78X over Greenland on Nov 24th 2026",
+          "sourceUrl": "https://avherald.com/h?article=548882cc&opt=0"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "Nov 25th 2026",
+          "sourceQuote": "at Miami on Nov 25th 2026",
+          "sourceUrl": "https://avherald.com/h?article=548813e0&opt=0"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "Nov 24th 2026",
+          "sourceQuote": "over Greenland on Nov 24th 2026",
+          "sourceUrl": "https://avherald.com/h?article=548882cc&opt=0"
+        }
+      ],
+      "evidenceVersion": 2
+    },
+    {
+      "id": "a-20261127-0646-china-eastern-airlines-a330-300-arrives",
+      "publishedUtc": "2026-11-27T06:46Z",
+      "cat": "ops",
+      "primarySource": "Airplanes.live",
+      "image": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/China_Eastern_Airlines_Airbus_A330-300_B-300P_at_gate_D3_at_Taoyuan_May_2026.jpg/1280px-China_Eastern_Airlines_Airbus_A330-300_B-300P_at_gate_D3_at_Taoyuan_May_2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "link": "https://commons.wikimedia.org/wiki/Special:Redirect/page/194018797",
+        "credit": "4300streetcar",
+        "license": "CC BY 4.0",
+        "provider": "Wikimedia Commons",
+        "kind": "file_photo",
+        "matched": "China Eastern Airlines Airbus A330-300",
+        "subject": "China Eastern Airlines Airbus A330-300",
+        "description": "China Eastern Airlines Airbus A330-300 B-300P at gate D3 at Taoyuan May 2026",
+        "photoYear": 2026
+      },
+      "sourceImageCandidates": [],
+      "zh": {
+        "title": "中國東方航空 A330-300 抵桃園　本站180天未見同組合",
+        "summary": "中國東方航空 A330-300 於11月27日抵桃園；本站180天未見同組合",
+        "body": [
+          "公開 ADS-B 觀測資料顯示，中國東方航空一架 Airbus A330-300 於 2026 年 11 月 27 日抵達臺灣桃園國際機場（TPE）。本站監測系統記錄的確認抵達時間為 06:10:12 UTC，紀錄所列機場 ICAO 代碼為 RCTP。",
+          "這架航空器的註冊號為 B-8970，航空器 ICAO 機型代碼為 A333。觀測資料將營運者列為中國東方航空（China Eastern Airlines），其 ICAO 代碼為 CES、IATA 代碼為 MU，所屬國家或地區為中國。",
+          "本站監測系統在這次紀錄中共列出 6 筆有效觀測。系統的抵達判定依據是航空器位於機場地理圍欄內，且相關資料欄位標示 ground（地面狀態）。",
+          "本次紀錄使用的主要資料來源為 ADSB.lol，資料類型為公開 ADS-B 觀測。紀錄註明未使用獨立第二資料來源，因此抵達確認是根據主要來源所得，並沒有另一個獨立來源交叉確認。",
+          "依本站監測系統的統計，過去 180 天沒有相同營運者、機型與機場組合的紀錄；過去 365 天則沒有相同註冊號抵達該機場的紀錄。這兩項數字限於本站的觀測資料及各自時間範圍，不能推論更早以前的活動，也不能代表其他資料來源的紀錄。",
+          "監測系統列出的稀有度理由包括 CES 非 RCTP 常態業者加 35 分，前述 180 天組合及 365 天註冊號項目分別加 25 分、15 分，常見機型減 15 分；這些加減項目合計為 60 分。"
+        ]
+      },
+      "en": {
+        "title": "China Eastern Airlines A330-300 Arrives at Taoyuan; Site Had No Matching Combination in 180 Days",
+        "summary": "China Eastern Airlines A330-300 arrived at Taoyuan Airport Nov. 27; site logged no matching combination in 180 days.",
+        "body": [
+          "Public ADS-B data monitored by the site show a China Eastern Airlines Airbus A330-300 arriving at Taiwan Taoyuan International Airport (TPE) on Nov. 27, 2026. The system recorded the arrival confirmation at 06:10:12 UTC. The airport's ICAO code is RCTP.",
+          "The observation identifies the aircraft by registration B-8970 and lists its ICAO type code as A333. China Eastern Airlines is identified as an operator from China; its airline designators are CES for ICAO and MU for IATA.",
+          "The site's monitoring system counted six valid observations in this record. The arrival determination was based on two conditions stated in the observation: the aircraft was inside the airport's geographical fence, and the relevant data field was marked ground.",
+          "ADSB.lol is listed as the primary source of the public ADS-B data. The observation did not use an independent secondary source, so the confirmation rests on the primary source rather than on an independent cross-check.",
+          "During the preceding 180 days, the site's monitoring system recorded no matching combination of operator, aircraft type and airport. It also recorded no arrival at that airport by the same registration in the preceding 365 days. The figures are limited to the site's own records and the respective periods; they do not establish what other sources recorded or what happened outside those windows.",
+          "The site's rarity rationale assigns 35 points because CES is not a regular operator at RCTP. It assigns 25 and 15 points to the respective 180-day and 365-day measures, and subtracts 15 points because it considers the aircraft type common. The adjustments total 60 points."
+        ]
+      },
+      "sources": [
+        {
+          "name": "Airplanes.live — 公開 ADS-B 觀測：A333 抵達 臺灣桃園國際機場",
+          "url": "https://airplanes.live/"
+        }
+      ],
+      "articleFormat": "full",
+      "sourcePublishedUtc": "2026-11-27T06:10Z",
+      "writer": "openai:gpt-6.1-terra",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "China Eastern Airlines' Airbus A330-300 was confirmed arriving at Taiwan Taoyuan International Airport at 2026-11-27T06:10:12Z.",
+          "sourceQuote": "確認抵達時間：2026-11-27T06:10:12Z",
+          "sourceUrl": "https://airplanes.live/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The record is a public ADS-B observation.",
+          "sourceQuote": "資料類型：公開 ADS-B 觀測",
+          "sourceUrl": "https://airplanes.live/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "The arrival determination used the airport geofence and a data field marked ground.",
+          "sourceQuote": "確認依據：位於機場地理圍欄內且 alt_baro 為 ground",
+          "sourceUrl": "https://airplanes.live/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The record contains six valid observations.",
+          "sourceQuote": "有效觀測筆數：6",
+          "sourceUrl": "https://airplanes.live/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "No independent secondary data source was used.",
+          "sourceQuote": "第二資料來源：未使用獨立第二來源",
+          "sourceUrl": "https://airplanes.live/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "The site's rarity rationale lists no matching operator, aircraft type and airport combination in the preceding 180 days.",
+          "sourceQuote": "稀有度原因：營運者 CES 非 RCTP 常態業者 (+35)；過去 180 天無相同營運者+機型+機場紀錄 (+25)；過去 365 天此註冊號未曾抵達 RCTP (+15)；常見機型 (-15)",
+          "sourceUrl": "https://airplanes.live/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [
+        "unconfirmed_or_developing"
+      ],
+      "eventStatus": "confirmed",
+      "entities": {
+        "organizations": [
+          "ADSB.lol"
+        ],
+        "airlines": [
+          "China Eastern Airlines",
+          "中國東方航空",
+          "CES",
+          "MU"
+        ],
+        "aircraft_models": [
+          "Airbus A330-300",
+          "A333"
+        ],
+        "airports": [
+          "臺灣桃園國際機場",
+          "RCTP"
+        ],
+        "locations": [
+          "中國"
+        ],
+        "registration_numbers": [
+          "B-8970"
+        ],
+        "event_dates": [
+          "2026-11-27T06:10:12Z"
+        ]
+      },
+      "entityEvidence": [
+        {
+          "entityType": "organizations",
+          "value": "ADSB.lol",
+          "sourceQuote": "主要資料來源：ADSB.lol",
+          "sourceUrl": "https://adsb.lol/"
+        },
+        {
+          "entityType": "airlines",
+          "value": "China Eastern Airlines",
+          "sourceQuote": "營運者名稱：China Eastern Airlines",
+          "sourceUrl": "https://adsb.lol/"
+        },
+        {
+          "entityType": "airlines",
+          "value": "中國東方航空",
+          "sourceQuote": "營運者中文名稱：中國東方航空",
+          "sourceUrl": "https://adsb.lol/"
+        },
+        {
+          "entityType": "airlines",
+          "value": "CES",
+          "sourceQuote": "營運者 ICAO：CES",
+          "sourceUrl": "https://adsb.lol/"
+        },
+        {
+          "entityType": "airlines",
+          "value": "MU",
+          "sourceQuote": "營運者 IATA：MU",
+          "sourceUrl": "https://adsb.lol/"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "Airbus A330-300",
+          "sourceQuote": "機型顯示名稱：Airbus A330-300",
+          "sourceUrl": "https://adsb.lol/"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "A333",
+          "sourceQuote": "航空器 ICAO 機型：A333",
+          "sourceUrl": "https://adsb.lol/"
+        },
+        {
+          "entityType": "airports",
+          "value": "臺灣桃園國際機場",
+          "sourceQuote": "機場名稱：臺灣桃園國際機場",
+          "sourceUrl": "https://adsb.lol/"
+        },
+        {
+          "entityType": "airports",
+          "value": "RCTP",
+          "sourceQuote": "機場 ICAO：RCTP",
+          "sourceUrl": "https://adsb.lol/"
+        },
+        {
+          "entityType": "locations",
+          "value": "中國",
+          "sourceQuote": "營運者所屬國家或地區：中國",
+          "sourceUrl": "https://adsb.lol/"
+        },
+        {
+          "entityType": "registration_numbers",
+          "value": "B-8970",
+          "sourceQuote": "註冊號：B-8970",
+          "sourceUrl": "https://adsb.lol/"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "2026-11-27T06:10:12Z",
+          "sourceQuote": "確認抵達時間：2026-11-27T06:10:12Z",
+          "sourceUrl": "https://adsb.lol/"
+        }
+      ],
+      "evidenceVersion": 2,
+      "images": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/China_Eastern_Airlines_Airbus_A330-300_B-300P_at_gate_D3_at_Taoyuan_May_2026.jpg/1280px-China_Eastern_Airlines_Airbus_A330-300_B-300P_at_gate_D3_at_Taoyuan_May_2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "link": "https://commons.wikimedia.org/wiki/Special:Redirect/page/194018797",
+          "credit": "4300streetcar",
+          "license": "CC BY 4.0",
+          "provider": "Wikimedia Commons",
+          "kind": "file_photo",
+          "matched": "China Eastern Airlines Airbus A330-300",
+          "subject": "China Eastern Airlines Airbus A330-300",
+          "description": "China Eastern Airlines Airbus A330-300 B-300P at gate D3 at Taoyuan May 2026",
+          "photoYear": 2026
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/China_Eastern_Airlines_Airbus_A330-300_B-6096_landing_at_Taipei_Songshan_April_2026.jpg/1280px-China_Eastern_Airlines_Airbus_A330-300_B-6096_landing_at_Taipei_Songshan_April_2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "link": "https://commons.wikimedia.org/wiki/Special:Redirect/page/188457540",
+          "credit": "4300streetcar",
+          "license": "CC BY 4.0",
+          "provider": "Wikimedia Commons",
+          "kind": "file_photo",
+          "matched": "China Eastern Airlines Airbus A330-300",
+          "subject": "China Eastern Airlines Airbus A330-300",
+          "description": "China Eastern Airlines Airbus A330-300 B-6096 landing at Taipei Songshan April 2026",
+          "photoYear": 2026
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b0/China_Eastern_Airlines_Airbus_A330-300_B-6096_on_final_approach_to_Taipei_Songshan_April_2026_1.jpg/1280px-China_Eastern_Airlines_Airbus_A330-300_B-6096_on_final_approach_to_Taipei_Songshan_April_2026_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "link": "https://commons.wikimedia.org/wiki/Special:Redirect/page/188457514",
+          "credit": "4300streetcar",
+          "license": "CC BY 4.0",
+          "provider": "Wikimedia Commons",
+          "kind": "file_photo",
+          "matched": "China Eastern Airlines Airbus A330-300",
+          "subject": "China Eastern Airlines Airbus A330-300",
+          "description": "China Eastern Airlines Airbus A330-300 B-6096 on final approach to Taipei Songshan April 2026 1",
+          "photoYear": 2026
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/China_Eastern_Airlines_Airbus_A330-300_B-6096_on_final_approach_to_Taipei_Songshan_April_2026_2.jpg/1280px-China_Eastern_Airlines_Airbus_A330-300_B-6096_on_final_approach_to_Taipei_Songshan_April_2026_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "link": "https://commons.wikimedia.org/wiki/Special:Redirect/page/188457519",
+          "credit": "4300streetcar",
+          "license": "CC BY 4.0",
+          "provider": "Wikimedia Commons",
+          "kind": "file_photo",
+          "matched": "China Eastern Airlines Airbus A330-300",
+          "subject": "China Eastern Airlines Airbus A330-300",
+          "description": "China Eastern Airlines Airbus A330-300 B-6096 on final approach to Taipei Songshan April 2026 2",
+          "photoYear": 2026
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/China_Eastern_Airlines_Airbus_A330-300_B-6096_on_final_approach_to_Taipei_Songshan_April_2026_4.jpg/1280px-China_Eastern_Airlines_Airbus_A330-300_B-6096_on_final_approach_to_Taipei_Songshan_April_2026_4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "link": "https://commons.wikimedia.org/wiki/Special:Redirect/page/188457526",
+          "credit": "4300streetcar",
+          "license": "CC BY 4.0",
+          "provider": "Wikimedia Commons",
+          "kind": "file_photo",
+          "matched": "China Eastern Airlines Airbus A330-300",
+          "subject": "China Eastern Airlines Airbus A330-300",
+          "description": "China Eastern Airlines Airbus A330-300 B-6096 on final approach to Taipei Songshan April 2026 4",
+          "photoYear": 2026
+        }
+      ]
+    }
+  ]
+}
