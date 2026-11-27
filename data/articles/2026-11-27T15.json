@@ -731,6 +731,230 @@
         }
       ],
       "evidenceVersion": 2
+    },
+    {
+      "id": "a-20261127-1553-easyjet-airbus-a321neo-diverts-after-eng",
+      "publishedUtc": "2026-11-27T15:53Z",
+      "cat": "safety",
+      "primarySource": "Simple Flying",
+      "image": {
+        "url": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/11/g-uzmb_a321_easyjet_faro_13-04-19_48091111337-enhanced_cropped.jpg",
+        "link": "https://simpleflying.com/easyjet-a321neo-engine-shutdown-edinburgh-diversion/",
+        "provider": "Simple Flying",
+        "subject": "easyJet A321neo Takeoff",
+        "sourceCaption": "easyJet A321neo Takeoff",
+        "kind": "file_photo",
+        "matched": "source:caption",
+        "captionSource": "source-image-metadata"
+      },
+      "sourceImageCandidates": [
+        {
+          "url": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/11/g-uzmb_a321_easyjet_faro_13-04-19_48091111337-enhanced_cropped.jpg",
+          "sources": [
+            {
+              "url": "https://simpleflying.com/easyjet-a321neo-engine-shutdown-edinburgh-diversion/",
+              "name": "Simple Flying"
+            }
+          ]
+        }
+      ],
+      "zh": {
+        "title": "易捷航空空中巴士A321neo飛行兩分鐘後引擎失速並轉降",
+        "summary": "易捷航空空中巴士A321neo轉降；備用機已派出接送乘客前往目的地。",
+        "body": [
+          "Simple Flying報導，易捷航空一架空中巴士A321neo（ICAO機型代碼A21N）在飛行兩分鐘後發生引擎失速，隨後轉降。Simple Flying另報導該航班延誤六小時。",
+          "The Aviation Herald報導，易捷航空A21N於2026年11月26日在愛丁堡發生飛行中引擎關閉事件。Simple Flying表示，該機仍停在愛丁堡地面，易捷航空已派出備用飛機，讓乘客前往目的地。"
+        ]
+      },
+      "en": {
+        "title": "easyJet Airbus A321neo Diverts After Engine Stall Two Minutes Into Flight",
+        "summary": "easyJet's Airbus A321neo diverted; a spare jet was sent to get passengers to their destination.",
+        "body": [
+          "Simple Flying reported that an easyJet Airbus A321neo (ICAO type code A21N) diverted after an engine stall two minutes into the flight. It also reported a six-hour delay for the flight.",
+          "The Aviation Herald reported an in-flight engine shutdown involving an easyJet A21N at Edinburgh on Nov. 26, 2026. Simple Flying said the aircraft remained on the ground in Edinburgh and that easyJet had dispatched a spare jet to get the passengers to their destination."
+        ]
+      },
+      "sources": [
+        {
+          "name": "Simple Flying — 6-Hour Delay: easyJet Airbus A321neo Diverts After Engine S…",
+          "url": "https://simpleflying.com/easyjet-a321neo-engine-shutdown-edinburgh-diversion/"
+        },
+        {
+          "name": "The Aviation Herald — Incident: Easyjet A21N at Edinburgh on Nov 26th 2026, engin…",
+          "url": "https://avherald.com/h?article=54897139&opt=0"
+        }
+      ],
+      "articleFormat": "brief",
+      "sourcePublishedUtc": "2026-11-27T15:12Z",
+      "writer": "openai:gpt-6-luna",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Simple Flying reports that an easyJet Airbus A321neo diverted after an engine stall two minutes into the flight.",
+          "sourceQuote": "easyJet Airbus A321neo Diverts After Engine Stall 2 Minutes Into Flight",
+          "sourceUrl": "https://simpleflying.com/easyjet-a321neo-engine-shutdown-edinburgh-diversion/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Simple Flying reports a six-hour delay for the easyJet Airbus A321neo flight.",
+          "sourceQuote": "6-Hour Delay: easyJet Airbus A321neo Diverts After Engine Stall 2 Minutes Into Flight",
+          "sourceUrl": "https://simpleflying.com/easyjet-a321neo-engine-shutdown-edinburgh-diversion/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Simple Flying says the aircraft remains on the ground in Edinburgh.",
+          "sourceQuote": "The aircraft remains on the ground in Edinburgh today",
+          "sourceUrl": "https://simpleflying.com/easyjet-a321neo-engine-shutdown-edinburgh-diversion/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Simple Flying says easyJet dispatched a spare jet to get passengers to their destination.",
+          "sourceQuote": "easyJet having dispatched a spare jet to get the passengers to their destination",
+          "sourceUrl": "https://simpleflying.com/easyjet-a321neo-engine-shutdown-edinburgh-diversion/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "The Aviation Herald reports an Easyjet A21N incident at Edinburgh on Nov. 26, 2026.",
+          "sourceQuote": "Incident: Easyjet A21N at Edinburgh on Nov 26th 2026",
+          "sourceUrl": "https://avherald.com/h?article=54897139&opt=0",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "The Aviation Herald reports that the engine shut down in flight.",
+          "sourceQuote": "engine shut down in flight",
+          "sourceUrl": "https://avherald.com/h?article=54897139&opt=0",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [
+        "accident_or_serious_incident"
+      ],
+      "eventStatus": "confirmed",
+      "entities": {
+        "airlines": [
+          "easyJet"
+        ],
+        "aircraft_models": [
+          "Airbus A321neo",
+          "A21N"
+        ],
+        "locations": [
+          "Edinburgh"
+        ],
+        "event_dates": [
+          "Nov 26th 2026"
+        ]
+      },
+      "entityEvidence": [
+        {
+          "entityType": "airlines",
+          "value": "easyJet",
+          "sourceQuote": "easyJet Airbus A321neo",
+          "sourceUrl": "https://simpleflying.com/easyjet-a321neo-engine-shutdown-edinburgh-diversion/"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "Airbus A321neo",
+          "sourceQuote": "easyJet Airbus A321neo",
+          "sourceUrl": "https://simpleflying.com/easyjet-a321neo-engine-shutdown-edinburgh-diversion/"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "A21N",
+          "sourceQuote": "Easyjet A21N at Edinburgh",
+          "sourceUrl": "https://avherald.com/h?article=54897139&opt=0"
+        },
+        {
+          "entityType": "locations",
+          "value": "Edinburgh",
+          "sourceQuote": "The aircraft remains on the ground in Edinburgh today",
+          "sourceUrl": "https://simpleflying.com/easyjet-a321neo-engine-shutdown-edinburgh-diversion/"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "Nov 26th 2026",
+          "sourceQuote": "on Nov 26th 2026",
+          "sourceUrl": "https://avherald.com/h?article=54897139&opt=0"
+        }
+      ],
+      "evidenceVersion": 2,
+      "images": [
+        {
+          "url": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/11/g-uzmb_a321_easyjet_faro_13-04-19_48091111337-enhanced_cropped.jpg",
+          "link": "https://simpleflying.com/easyjet-a321neo-engine-shutdown-edinburgh-diversion/",
+          "provider": "Simple Flying",
+          "subject": "easyJet A321neo Takeoff",
+          "sourceCaption": "easyJet A321neo Takeoff",
+          "kind": "file_photo",
+          "matched": "source:caption",
+          "captionSource": "source-image-metadata"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/EasyJet_Europe_A321neo_%28OE-ISC%29_%40_MXP%2C_May_2022.jpg/1280px-EasyJet_Europe_A321neo_%28OE-ISC%29_%40_MXP%2C_May_2022.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "link": "https://commons.wikimedia.org/wiki/Special:Redirect/page/117893454",
+          "credit": "Ardfern",
+          "license": "CC BY-SA 4.0",
+          "provider": "Wikimedia Commons",
+          "kind": "file_photo",
+          "matched": "easyJet Airbus A321neo",
+          "subject": "easyJet Airbus A321neo",
+          "description": "EasyJet Europe A321neo (OE-ISC) @ MXP, May 2022",
+          "photoYear": 2022
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/EasyJet_Europe_A321neo_%28OE-ISE%29_%40_MXP%2C_May_2022.jpg/1280px-EasyJet_Europe_A321neo_%28OE-ISE%29_%40_MXP%2C_May_2022.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "link": "https://commons.wikimedia.org/wiki/Special:Redirect/page/117891430",
+          "credit": "Ardfern",
+          "license": "CC BY-SA 4.0",
+          "provider": "Wikimedia Commons",
+          "kind": "file_photo",
+          "matched": "easyJet Airbus A321neo",
+          "subject": "easyJet Airbus A321neo",
+          "description": "EasyJet Europe A321neo (OE-ISE) @ MXP, May 2022",
+          "photoYear": 2022
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/EasyJet_A321neo_at_BFS.jpg/1280px-EasyJet_A321neo_at_BFS.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "link": "https://commons.wikimedia.org/wiki/Special:Redirect/page/126943661",
+          "credit": "M901QX",
+          "license": "CC BY-SA 4.0",
+          "provider": "Wikimedia Commons",
+          "kind": "file_photo",
+          "matched": "easyJet Airbus A321neo",
+          "subject": "easyJet Airbus A321neo",
+          "description": "EasyJet A321neo at BFS",
+          "photoYear": 2021
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/EASYJET_AIRBUS_A321NEO_G-UZMD_%2851687019226%29.jpg/1280px-EASYJET_AIRBUS_A321NEO_G-UZMD_%2851687019226%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "link": "https://commons.wikimedia.org/wiki/Special:Redirect/page/176970499",
+          "credit": "simon butler from halesowen, uk",
+          "license": "CC BY 2.0",
+          "provider": "Wikimedia Commons",
+          "kind": "file_photo",
+          "matched": "easyJet Airbus A321neo",
+          "subject": "easyJet Airbus A321neo",
+          "description": "EASYJET AIRBUS A321NEO G-UZMD (51687019226)",
+          "photoYear": 2021
+        }
+      ]
     }
   ]
 }
