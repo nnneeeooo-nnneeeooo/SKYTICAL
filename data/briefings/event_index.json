@@ -1015,6 +1015,7 @@
         "https://avherald.com/h?article=54872d75&opt=0",
         "https://avherald.com/h?article=548738db&opt=0",
         "https://avherald.com/h?article=548813e0",
+        "https://avherald.com/h?article=548813e0&opt=0",
         "https://avherald.com/h?article=54888f16&opt=0",
         "https://avherald.com/h?article=54889307&opt=0",
         "https://avherald.com/h?article=54889bdb&opt=0"
@@ -1022,14 +1023,16 @@
       "section": "aviation_incidents",
       "cat": "safety",
       "first_seen": "2026-11-25T23:15:27.808649+00:00",
-      "last_seen": "2026-11-26T23:42:24.136948+00:00",
+      "last_seen": "2026-11-27T07:30:57.082420+00:00",
       "first_briefing_id": "2026-11-26-morning",
       "article_ids": [
         "a-20261125-1946-safety-roundup-four-independent-incident",
+        "a-20261126-2048-six-incident-aviation-roundup-fedex-airc",
         "a-20261126-2048-six-incident-aviation-roundup-fedex-airc"
       ],
       "fact_keys": [
         "a fedex md11 overran a runway while landing at miami on november 25, 2026.",
+        "a fedex md11 overran the runway on landing at miami on november 25, 2026.",
         "a france b773 had an engine electronic control problem near paris on november 25, 2026.",
         "a thy b738 experienced multiple lightning strikes at batumi on november 25, 2026.",
         "a western global b744 had a runway excursion while backtracking at tokyo on november 25, 2026.",
@@ -1050,6 +1053,12 @@
             "A France B773 had an engine electronic control problem near Paris on November 25, 2026.",
             "A THY B738 experienced multiple lightning strikes at Batumi on November 25, 2026.",
             "An American B788 had a flat tyre at Amsterdam on November 24, 2026."
+          ]
+        },
+        "2026-11-27-afternoon": {
+          "article_id": "a-20261126-2048-six-incident-aviation-roundup-fedex-airc",
+          "new_information": [
+            "A Fedex MD11 overran the runway on landing at Miami on November 25, 2026."
           ]
         }
       },
@@ -1108,7 +1117,7 @@
       "section": "international_aviation",
       "cat": "ops",
       "first_seen": "2026-11-26T07:15:20.551192+00:00",
-      "last_seen": "2026-11-26T23:42:24.136948+00:00",
+      "last_seen": "2026-11-27T07:30:57.082420+00:00",
       "first_briefing_id": "2026-11-26-afternoon",
       "article_ids": [
         "a-pia-uk-flights-own-boeing-777-norse-wet-lease-20261125"
@@ -1152,7 +1161,7 @@
       "section": "international_aviation",
       "cat": "ops",
       "first_seen": "2026-11-26T15:15:24.425610+00:00",
-      "last_seen": "2026-11-26T23:42:24.136948+00:00",
+      "last_seen": "2026-11-27T07:30:57.082420+00:00",
       "first_briefing_id": "2026-11-26-evening",
       "article_ids": [
         "a-20261126-1246-norse-atlantic-suspends-all-flights-sche"
@@ -1178,7 +1187,7 @@
       "section": "international_aviation",
       "cat": "biz",
       "first_seen": "2026-11-26T15:15:24.425610+00:00",
-      "last_seen": "2026-11-26T23:42:24.136948+00:00",
+      "last_seen": "2026-11-27T07:30:57.082420+00:00",
       "first_briefing_id": "2026-11-26-evening",
       "article_ids": [
         "a-jetblue-most-frequent-a320-routes-20261126"
@@ -1196,7 +1205,7 @@
       "section": "international_aviation",
       "cat": "mil",
       "first_seen": "2026-11-26T23:42:24.136948+00:00",
-      "last_seen": "2026-11-26T23:42:24.136948+00:00",
+      "last_seen": "2026-11-27T07:30:57.082420+00:00",
       "first_briefing_id": "2026-11-27-morning",
       "article_ids": [
         "a-russia-aerospace-forces-grekhov-detention-20261127"
@@ -1241,7 +1250,51 @@
       "fact_keys": [],
       "updates": {},
       "retain_until": "2026-12-26T23:42:24.136948+00:00"
+    },
+    "ev-b9ef73776a965118": {
+      "fingerprint": "b9ef73776a96511834c989ca522607957198b0652c7c44836cdb9c8aee68cc3e",
+      "urls": [
+        "https://airplanes.live"
+      ],
+      "section": "taiwan_aviation",
+      "cat": "ops",
+      "first_seen": "2026-11-27T07:30:57.082420+00:00",
+      "last_seen": "2026-11-27T07:30:57.082420+00:00",
+      "first_briefing_id": "2026-11-27-afternoon",
+      "article_ids": [
+        "a-20261127-0646-china-eastern-airlines-a330-300-arrives"
+      ],
+      "fact_keys": [
+        "china eastern airlines' airbus a330-300 was confirmed arriving at taiwan taoyuan international airport at 2026-11-27t06:10:12z.",
+        "no independent secondary data source was used.",
+        "the arrival determination used the airport geofence and a data field marked ground.",
+        "the record contains six valid observations.",
+        "the record is a public ads-b observation.",
+        "the site's rarity rationale lists no matching operator, aircraft type and airport combination in the preceding 180 days."
+      ],
+      "updates": {},
+      "retain_until": "2026-11-30T07:30:57.082420+00:00"
+    },
+    "ev-090590fd1fd7bb35": {
+      "fingerprint": "090590fd1fd7bb359090a6f6bbd871eef8b6a2cbc101ff89126c0472c86d89db",
+      "urls": [
+        "https://simpleflying.com/southwest-airlines-longest-transcontinental-boeing-737-routes-in-2026"
+      ],
+      "section": "international_aviation",
+      "cat": "biz",
+      "first_seen": "2026-11-27T07:30:57.082420+00:00",
+      "last_seen": "2026-11-27T07:30:57.082420+00:00",
+      "first_briefing_id": "2026-11-27-afternoon",
+      "article_ids": [
+        "a-southwest-longest-transcontinental-737-routes-20261126"
+      ],
+      "fact_keys": [],
+      "updates": {},
+      "retain_until": "2026-11-30T07:30:57.082420+00:00"
     }
   },
-  "grounded_seen": {}
+  "grounded_seen": {
+    "d2f7f68d409a757b": "2026-11-30T07:30:57.082420+00:00",
+    "cb612fb7d63aae67": "2026-11-30T07:30:57.082420+00:00"
+  }
 }
