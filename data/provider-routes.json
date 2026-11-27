@@ -12,19 +12,19 @@
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-27T17:46Z",
-      "checkedUtc": "2026-11-27T11:46Z",
-      "failureClass": "unexpected",
-      "diagnostic": "zh.body[1] contains Simplified Chinese characters",
+      "untilUtc": "2026-11-27T23:54Z",
+      "checkedUtc": "2026-11-27T17:54Z",
+      "failureClass": "connection",
+      "diagnostic": "ConnectionError",
       "probeVersion": 3,
       "schemaMode": null
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "untilUtc": "2026-11-27T17:46Z",
-      "checkedUtc": "2026-11-27T11:46Z",
+      "untilUtc": "2026-11-27T23:54Z",
+      "checkedUtc": "2026-11-27T17:54Z",
       "failureClass": "unexpected",
-      "diagnostic": "entity value '13 June–8 October 2026' is not verbatim in its sourceQuote",
+      "diagnostic": "F1 claim date is not supported by its sourceQuote",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -47,22 +47,22 @@
       "schemaMode": null
     },
     "gemini:gemini-3.6-flash": {
-      "status": "verified",
-      "untilUtc": "2026-11-28T17:34Z",
-      "checkedUtc": "2026-11-27T17:34Z",
-      "failureClass": null,
-      "diagnostic": null,
+      "status": "waiting",
+      "untilUtc": "2026-11-28T00:03Z",
+      "checkedUtc": "2026-11-27T18:03Z",
+      "failureClass": "quota",
+      "diagnostic": "HTTP 429 (free-tier quota exhausted?)",
       "probeVersion": 3,
-      "schemaMode": "prompt"
+      "schemaMode": null
     },
     "gemini:gemini-3.5-flash": {
-      "status": "verified",
-      "untilUtc": "2026-11-28T11:46Z",
-      "checkedUtc": "2026-11-27T11:46Z",
-      "failureClass": null,
-      "diagnostic": null,
+      "status": "waiting",
+      "checkedUtc": "2026-11-27T18:05Z",
+      "untilUtc": "2026-11-28T00:05Z",
+      "failureClass": "quota",
+      "diagnostic": "HTTP 429 (free-tier quota exhausted?)",
       "probeVersion": 3,
-      "schemaMode": "prompt"
+      "schemaMode": null
     },
     "cloudflare:@cf/openai/gpt-oss-120b": {
       "status": "verified",
@@ -93,8 +93,8 @@
     },
     "gemini:gemini-4-hydrogen": {
       "status": "waiting",
-      "untilUtc": "2026-11-27T17:46Z",
-      "checkedUtc": "2026-11-27T11:46Z",
+      "untilUtc": "2026-11-27T23:54Z",
+      "checkedUtc": "2026-11-27T17:54Z",
       "failureClass": "http_error",
       "diagnostic": "HTTP 503 code=UNAVAILABLE",
       "probeVersion": 3,
@@ -147,8 +147,8 @@
     },
     "nvidia:z-ai/glm-5.3-flash": {
       "status": "waiting",
-      "checkedUtc": "2026-11-27T17:34Z",
       "untilUtc": "2026-11-27T23:34Z",
+      "checkedUtc": "2026-11-27T17:34Z",
       "failureClass": "timeout",
       "diagnostic": "ReadTimeout",
       "probeVersion": 3,
@@ -219,10 +219,10 @@
     },
     "groq:openai/gpt-oss-20b": {
       "status": "waiting",
-      "untilUtc": "2026-11-27T17:46Z",
-      "checkedUtc": "2026-11-27T11:46Z",
+      "untilUtc": "2026-11-27T23:54Z",
+      "checkedUtc": "2026-11-27T17:54Z",
       "failureClass": "unexpected",
-      "diagnostic": "publish_brief body does not meet brief contract (zh=186 content characters, en=60 words, paragraphs=3/3)",
+      "diagnostic": "F2 claim date is not supported by its sourceQuote",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -282,19 +282,19 @@
     },
     "openrouter:nvidia/nemotron-3.5-super-vl:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-27T17:46Z",
-      "checkedUtc": "2026-11-27T11:46Z",
-      "failureClass": "unexpected",
-      "diagnostic": "zh.body[1] contains Simplified Chinese characters",
+      "untilUtc": "2026-11-27T23:54Z",
+      "checkedUtc": "2026-11-27T17:54Z",
+      "failureClass": "truncated",
+      "diagnostic": "response truncated (length)",
       "probeVersion": 3,
       "schemaMode": null
     },
     "openrouter:nvidia/nemotron-3.5-lightning:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-27T17:46Z",
-      "checkedUtc": "2026-11-27T11:46Z",
-      "failureClass": "truncated",
-      "diagnostic": "response truncated (length)",
+      "untilUtc": "2026-11-27T23:54Z",
+      "checkedUtc": "2026-11-27T17:54Z",
+      "failureClass": "connection",
+      "diagnostic": "ConnectionError",
       "probeVersion": 3,
       "schemaMode": null
     },

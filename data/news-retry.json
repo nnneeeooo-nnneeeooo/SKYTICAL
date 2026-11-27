@@ -43,19 +43,6 @@
       "nextRetryUtc": "2026-10-31T04:02Z",
       "title": "Boeing sees demand for nearly 3,000 freighters as cargo traffic doubles by 2045"
     },
-    "4d54cb49c80543aea665643f": {
-      "sourceUrls": [
-        "https://simpleflying.com/frontier-airlines-is-becoming-americas-last-true-ulcc-is-the-model-still-working"
-      ],
-      "contentFailures": 1,
-      "serviceFailures": 0,
-      "history": [],
-      "updatedUtc": "2026-10-28T17:42Z",
-      "failureClass": "content_validation",
-      "status": "waiting",
-      "nextRetryUtc": "2026-10-28T19:42Z",
-      "title": "Frontier Airlines Is Becoming America's Last True ULCC: Is The Model Still Working?"
-    },
     "4abed8f7d83fec0605684578": {
       "sourceUrls": [
         "https://www.airbus.com/en/newsroom/press-releases/2026-10-airbus-reports-nine-month-9m-2026-results"
@@ -6282,8 +6269,8 @@
         "https://www.ntsb.gov/_layouts/ntsb.aviation/Results.aspx?queryId=d46ded6a-42ab-4716-ae4b-59cccbaf35c1"
       ],
       "contentFailures": 0,
-      "serviceFailures": 0,
-      "status": "ready",
+      "serviceFailures": 1,
+      "status": "waiting",
       "history": [
         {
           "status": "waiting",
@@ -6316,8 +6303,10 @@
           "updatedUtc": "2026-11-27T10:46Z"
         }
       ],
-      "updatedUtc": "2026-11-27T11:46Z",
-      "nextRetryUtc": null
+      "updatedUtc": "2026-11-27T17:54Z",
+      "nextRetryUtc": "2026-11-27T19:54Z",
+      "failureClass": "provider_failure",
+      "title": "- NTSB (.gov)"
     },
     "43d5974e77352f980a3b1c0c": {
       "sourceUrls": [
@@ -6343,12 +6332,12 @@
         "https://simpleflying.com/mcdonnell-douglas-designs-survived-at-boeing"
       ],
       "contentFailures": 0,
-      "serviceFailures": 1,
+      "serviceFailures": 2,
       "history": [],
-      "updatedUtc": "2026-11-27T11:46Z",
-      "failureClass": "source_insufficient",
+      "updatedUtc": "2026-11-27T17:54Z",
+      "failureClass": "provider_failure",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-27T17:46Z",
+      "nextRetryUtc": "2026-11-27T23:54Z",
       "title": "5 McDonnell Douglas Engineering Decisions That Became Permanent Features Of Boeing Aircraft After The 1997 Merger",
       "items": [
         {
@@ -6438,12 +6427,12 @@
         "https://www.aerotime.aero/articles/france-air-force-drone-squadrons-interceptors-2027"
       ],
       "contentFailures": 0,
-      "serviceFailures": 1,
+      "serviceFailures": 2,
       "history": [],
-      "updatedUtc": "2026-11-27T15:53Z",
+      "updatedUtc": "2026-11-27T17:54Z",
       "failureClass": "provider_failure",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-27T17:53Z",
+      "nextRetryUtc": "2026-11-27T23:54Z",
       "title": "France to stand up drone and high-altitude squadrons as interceptors arrive"
     },
     "a8ee903827b7bcd9627ef4ee": {
@@ -6517,6 +6506,37 @@
       "status": "waiting",
       "nextRetryUtc": "2026-11-27T19:34Z",
       "title": "How Munich Airport Clears A Runway Of Snow In Just 30 Minutes With 175 Vehicles"
+    },
+    "3f00d405ab436613fd8e0242": {
+      "sourceUrls": [
+        "https://avherald.com/h?article=54872d75",
+        "https://avherald.com/h?article=548813e0&opt=0",
+        "https://avherald.com/h?article=54888f16&opt=0",
+        "https://avherald.com/h?article=54889307&opt=0",
+        "https://avherald.com/h?article=54889bdb&opt=0",
+        "https://avherald.com/h?article=5489a52e&opt=0"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-27T17:54Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-27T19:54Z",
+      "title": "Incident: Fedex MD11 at Miami on Nov 25th 2026, overran runway on landing"
+    },
+    "accc31e8ec6759c3989a0288": {
+      "sourceUrls": [
+        "https://simpleflying.com/united-airlines-oldest-aircraft-30-years-old-still-going-strong-2026"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-27T17:54Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-27T19:54Z",
+      "title": "United Airlines’ Oldest Aircraft Is Over 30 Years Old & It’s Still Going Strong In 2026"
     }
   }
 }
