@@ -6182,23 +6182,6 @@
       "nextRetryUtc": "2026-11-27T10:46Z",
       "title": "Boeing wins order for 15 more KC-46 tankers amid debate over USAF refuelling strategy News"
     },
-    "12c9dac112dbc9c4c662cd8c": {
-      "sourceUrls": [
-        "https://avherald.com/h?article=54872d75&opt=0",
-        "https://avherald.com/h?article=548813e0&opt=0",
-        "https://avherald.com/h?article=54888f16&opt=0",
-        "https://avherald.com/h?article=54889307",
-        "https://avherald.com/h?article=54889bdb"
-      ],
-      "contentFailures": 0,
-      "serviceFailures": 2,
-      "history": [],
-      "updatedUtc": "2026-11-27T11:46Z",
-      "failureClass": "provider_failure",
-      "status": "waiting",
-      "nextRetryUtc": "2026-11-27T17:46Z",
-      "title": "Incident: Fedex MD11 at Miami on Nov 25th 2026, overran runway on landing"
-    },
     "5a3387d1605ff1e96e8ea912": {
       "sourceUrls": [
         "https://simpleflying.com/rolls-royce-tripled-the-time-between-boeing-787-engine-overhauls-1-blade-redesign"
@@ -6227,13 +6210,23 @@
         "https://simpleflying.com/boeing-poised-win-qantas-long-haul-order-787-dreamliners"
       ],
       "contentFailures": 0,
-      "serviceFailures": 1,
+      "serviceFailures": 2,
       "history": [],
-      "updatedUtc": "2026-11-27T10:16Z",
-      "failureClass": "provider_failure",
+      "updatedUtc": "2026-11-27T12:46Z",
+      "failureClass": "source_insufficient",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-27T12:16Z",
-      "title": "Boeing Reportedly Poised To Win Most Of Qantas' Long-Haul Order With 787 Dreamliners"
+      "nextRetryUtc": "2026-11-27T18:46Z",
+      "title": "Boeing Reportedly Poised To Win Most Of Qantas' Long-Haul Order With 787 Dreamliners",
+      "items": [
+        {
+          "url": "https://simpleflying.com/boeing-poised-win-qantas-long-haul-order-787-dreamliners/",
+          "title": "Boeing Reportedly Poised To Win Most Of Qantas' Long-Haul Order With 787 Dreamliners",
+          "summary": "The Australian flag carrier is already a key operator of Boeing's modern widebody twinjet.",
+          "publishedUtc": "2026-11-27T09:50Z",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ]
     },
     "3b4fe08ea4e589b26b6e4285": {
       "sourceUrls": [
@@ -6380,6 +6373,67 @@
       "status": "waiting",
       "nextRetryUtc": "2026-11-27T13:46Z",
       "title": "Boeing to win lion’s share of Qantas widebody order over Airbus: Bloomberg"
+    },
+    "12c9dac112dbc9c4c662cd8c": {
+      "sourceUrls": [
+        "https://avherald.com/h?article=54872d75&opt=0",
+        "https://avherald.com/h?article=548813e0&opt=0",
+        "https://avherald.com/h?article=54888f16&opt=0",
+        "https://avherald.com/h?article=54889307",
+        "https://avherald.com/h?article=54889bdb",
+        "https://avherald.com/h?article=54897139"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "status": "waiting",
+      "history": [
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 2,
+          "updatedUtc": "2026-11-27T11:46Z"
+        }
+      ],
+      "updatedUtc": "2026-11-27T12:46Z",
+      "nextRetryUtc": "2026-11-27T14:46Z",
+      "failureClass": "provider_failure",
+      "title": "Incident: Easyjet A21N at Edinburgh on Nov 26th 2026, engine shut down in flight"
+    },
+    "fd91d3f7703dd959ff6c1eb0": {
+      "sourceUrls": [
+        "https://simpleflying.com/indigo-cancels-all-flights-to-9-international-destinations-see-full-list-now"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-27T12:46Z",
+      "failureClass": "source_insufficient",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-27T18:46Z",
+      "title": "IndiGo Cancels All Flights To 9 International Destinations: See Full List Now",
+      "items": [
+        {
+          "url": "https://simpleflying.com/indigo-cancels-all-flights-to-9-international-destinations-see-full-list-now/",
+          "title": "IndiGo Cancels All Flights To 9 International Destinations: See Full List Now",
+          "summary": "Three were to Europe and the rest within Asia. Find them all now!",
+          "publishedUtc": "2026-11-27T12:00Z",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ]
+    },
+    "d055ecfded2fd6c13422519d": {
+      "sourceUrls": [
+        "https://www.cna.com.tw/news/afe/202611270243.aspx"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-27T12:46Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-27T14:46Z",
+      "title": "星宇航空決議辦理現增發行3億股 用於償還銀行借款"
     }
   }
 }
