@@ -4637,8 +4637,8 @@
         "https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/37872/pdf"
       ],
       "contentFailures": 0,
-      "serviceFailures": 0,
-      "status": "ready",
+      "serviceFailures": 1,
+      "status": "waiting",
       "history": [
         {
           "status": "waiting",
@@ -4647,8 +4647,36 @@
           "updatedUtc": "2026-11-24T15:40Z"
         }
       ],
-      "updatedUtc": "2026-11-25T16:46Z",
-      "nextRetryUtc": null
+      "updatedUtc": "2026-11-26T23:57Z",
+      "nextRetryUtc": "2026-11-27T05:57Z",
+      "failureClass": "source_insufficient",
+      "title": "MIA92WA146 Preliminary Report",
+      "items": [
+        {
+          "url": "https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/33163/pdf",
+          "title": "MIA92WA146 Preliminary Report",
+          "summary": "",
+          "publishedUtc": "2026-11-24T03:34Z",
+          "source": "NTSB",
+          "sourceKey": "ntsb"
+        },
+        {
+          "url": "https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/11963/pdf",
+          "title": "BFO93WA145 Preliminary Report",
+          "summary": "",
+          "publishedUtc": "2026-11-22T03:24Z",
+          "source": "NTSB",
+          "sourceKey": "ntsb"
+        },
+        {
+          "url": "https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/15906/pdf",
+          "title": "DCA88WA048 Preliminary Report",
+          "summary": "",
+          "publishedUtc": "2026-11-25T04:55Z",
+          "source": "NTSB",
+          "sourceKey": "ntsb"
+        }
+      ]
     },
     "1ee465a6ac643f93c7697a0f": {
       "sourceUrls": [
@@ -5310,12 +5338,12 @@
         "https://www.aerotime.aero/articles/heathrow-expansion-uk-government-fails-third-runway"
       ],
       "contentFailures": 0,
-      "serviceFailures": 2,
+      "serviceFailures": 3,
       "history": [],
-      "updatedUtc": "2026-11-26T17:39Z",
+      "updatedUtc": "2026-11-26T23:57Z",
       "failureClass": "provider_failure",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-26T23:39Z",
+      "nextRetryUtc": "2026-11-27T23:57Z",
       "title": "Heathrow expansion in jeopardy as government fails to make case for third runway"
     },
     "5282f93ebab9aff9b9991264": {
@@ -5785,6 +5813,52 @@
           "title": "China eyes mergers, tougher rules to help struggling airlines, SCMP says",
           "summary": "",
           "publishedUtc": "2026-11-25T06:37Z",
+          "source": "Reuters",
+          "sourceKey": "reuters"
+        }
+      ]
+    },
+    "924d9f85e94a59ce66430491": {
+      "sourceUrls": [
+        "https://simpleflying.com/united-airlines-pilot-suspended-tsa-orders-terror-group"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-26T23:57Z",
+      "failureClass": "source_insufficient",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-27T05:57Z",
+      "title": "United Airlines Pilot Suspended On TSA Orders Over Support For Terror Group, Report Says",
+      "items": [
+        {
+          "url": "https://simpleflying.com/united-airlines-pilot-suspended-tsa-orders-terror-group/",
+          "title": "United Airlines Pilot Suspended On TSA Orders Over Support For Terror Group, Report Says",
+          "summary": "United's reported pilot suspension comes amid growing concerns over insider threats to aviation and renewed scrutiny of airline security.",
+          "publishedUtc": "2026-11-26T23:56Z",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ]
+    },
+    "d0855bb8004065c6fc91ad48": {
+      "sourceUrls": [
+        "https://www.reuters.com/business/global-airports-court-private-capital-fund-upgrades-raising-cost-concerns-2026-11-25"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-26T23:57Z",
+      "failureClass": "source_insufficient",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-27T05:57Z",
+      "title": "Global airports court private capital to fund upgrades, raising cost concerns",
+      "items": [
+        {
+          "url": "https://www.reuters.com/business/global-airports-court-private-capital-fund-upgrades-raising-cost-concerns-2026-11-25/",
+          "title": "Global airports court private capital to fund upgrades, raising cost concerns",
+          "summary": "",
+          "publishedUtc": "2026-11-25T05:02Z",
           "source": "Reuters",
           "sourceKey": "reuters"
         }
