@@ -101,13 +101,13 @@
       "schemaMode": null
     },
     "gemini:gemini-3.8-flash": {
-      "status": "verified",
-      "untilUtc": "2026-11-27T03:27Z",
-      "checkedUtc": "2026-11-26T03:27Z",
-      "failureClass": null,
-      "diagnostic": null,
+      "status": "waiting",
+      "untilUtc": "2026-11-27T09:36Z",
+      "checkedUtc": "2026-11-27T03:36Z",
+      "failureClass": "timeout",
+      "diagnostic": "ReadTimeout",
       "probeVersion": 3,
-      "schemaMode": "prompt"
+      "schemaMode": null
     },
     "gemini:gemini-3.5-flash-lite": {
       "status": "waiting",
@@ -300,8 +300,8 @@
     },
     "openrouter:google/gemma-4-31b-it:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-27T03:22Z",
-      "checkedUtc": "2026-11-27T03:21Z",
+      "untilUtc": "2026-11-27T03:37Z",
+      "checkedUtc": "2026-11-27T03:36Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
@@ -309,8 +309,8 @@
     },
     "openrouter:google/gemma-4-26b-a4b-it:free": {
       "status": "waiting",
-      "checkedUtc": "2026-11-27T03:21Z",
-      "untilUtc": "2026-11-27T03:22Z",
+      "checkedUtc": "2026-11-27T03:36Z",
+      "untilUtc": "2026-11-27T03:37Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
