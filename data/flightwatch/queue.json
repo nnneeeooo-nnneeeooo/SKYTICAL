@@ -1,1 +1,49 @@
-[]
+[
+  {
+    "eventId": "fw-7e04a7cac265ea48",
+    "queuedUtc": "2026-11-27T09:55:14Z",
+    "notBeforeUtc": "2026-11-27T10:25:14Z",
+    "bootstrap": false,
+    "primaryProvider": "ADSB.lol",
+    "crossCheck": "confirmed_by_primary_only",
+    "airport": {
+      "icao": "RCSS",
+      "iata": "TSA",
+      "name_zh": "臺北松山機場",
+      "name_en": "Taipei Songshan Airport"
+    },
+    "aircraft": {
+      "hex": "7818dd",
+      "registration": "B-30DZ",
+      "type": "A20N",
+      "type_name": "Airbus A320neo",
+      "callsign": "CSC8183"
+    },
+    "operator": {
+      "icao": "CSC",
+      "iata": null,
+      "name": null,
+      "name_zh": null,
+      "country_or_region": null
+    },
+    "arrival": {
+      "status": "confirmed_arrival",
+      "firstSeenUtc": "2026-11-27T09:45:13Z",
+      "confirmedUtc": "2026-11-27T09:55:14Z",
+      "basis": "位於機場地理圍欄內且 alt_baro 為 ground",
+      "observations": 3
+    },
+    "rarity": {
+      "score": 60,
+      "reasons": [
+        "營運者 CSC 非 RCSS 常態業者 (+35)",
+        "過去 180 天無相同營運者+機型+機場紀錄 (+25)",
+        "過去 365 天此註冊號未曾抵達 RCSS (+15)",
+        "常見機型 (-15)"
+      ],
+      "watchlisted": false,
+      "combo180": 0,
+      "reg365": 0
+    }
+  }
+]
