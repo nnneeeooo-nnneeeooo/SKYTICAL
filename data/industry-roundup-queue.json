@@ -4402,6 +4402,144 @@
         "evidenceVersion": 2
       },
       "publishedExcerptId": null
+    },
+    {
+      "enqueuedUtc": "2026-11-27T13:51Z",
+      "routeReason": "verified_short_update",
+      "sourceGroupId": "g-20261127-1350-1",
+      "eventKey": "",
+      "article": {
+        "id": "a-20261127-1351-frontier-a321neo-declares-mayday-and-div",
+        "publishedUtc": "2026-11-27T13:51Z",
+        "cat": "safety",
+        "primarySource": "Simple Flying",
+        "image": null,
+        "sourceImageCandidates": [
+          {
+            "url": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/11/frontier-flooded.jpg",
+            "sources": [
+              {
+                "url": "https://simpleflying.com/video/mayday-at-33-000-feet-leaky-faucet-floods-frontier-airlines-airbus-a321neo-cabin/",
+                "name": "Simple Flying"
+              }
+            ]
+          }
+        ],
+        "zh": {
+          "title": "Frontier Airlines A321neo水龍頭漏水淹客艙 巡航宣告Mayday轉降芝加哥",
+          "summary": "Frontier Airlines航機因水龍頭漏水；高空宣告Mayday轉降芝加哥",
+          "body": [
+            "在 11 月上中旬，一架 Frontier Airlines 的空中巴士 A321neo 客機在執行從丹佛國際機場（DEN）飛往底特律都會韋恩縣機場的航程中，因客艙內的水龍頭發生漏水並淹沒客艙地板，導致航機必須轉降至芝加哥奧黑爾國際機場（ORD）。",
+            "當航機於愛荷華州東部上空 33,000 呎高度巡航期間，機師向空中交通管制人員宣告「Mayday」求救訊號。航機隨後已安全降落於芝加哥奧黑爾國際機場。"
+          ]
+        },
+        "en": {
+          "title": "Frontier A321neo Declares Mayday And Diverts To Chicago After Cabin Faucet Leaks",
+          "summary": "Frontier Airlines Airbus A321neo declared mayday and diverted to Chicago O'Hare after a cabin faucet leak.",
+          "body": [
+            "In early-to-mid-November, a Frontier Airlines Airbus A321neo passenger aircraft flying from Denver International Airport (DEN) to Detroit Metropolitan Wayne County Airport (BJJ) was forced to divert to Chicago O'Hare International Airport (ORD). The diversion occurred after a leaky faucet flooded the floor of the passenger cabin.",
+            "While cruising at an altitude of 33,000 feet over eastern Iowa, the flight crew declared a \"mayday\" emergency to air traffic control. Following the emergency declaration, the aircraft landed safely at Chicago O'Hare International Airport."
+          ]
+        },
+        "sources": [
+          {
+            "name": "Simple Flying — Mayday At 33,000 Feet: Leaky Faucet Floods Frontier Airline…",
+            "url": "https://simpleflying.com/video/mayday-at-33-000-feet-leaky-faucet-floods-frontier-airlines-airbus-a321neo-cabin/"
+          }
+        ],
+        "articleFormat": "brief",
+        "sourcePublishedUtc": "2026-11-27T13:29Z",
+        "writer": "gemini:gemini-3.5-flash",
+        "facts": [
+          {
+            "factId": "F1",
+            "claim": "In early-mid-November, a Frontier Airlines Airbus A321neo flying from Denver International to Detroit Metropolitan Wayne County diverted to Chicago O'Hare after a leaky faucet flooded the floor of the passenger cabin.",
+            "sourceQuote": "In early-mid-November, a Frontier Airlines Airbus A321neo flying from Denver International to Detroit Metropolitan Wayne County had to divert to Chicago O'Hare after a leaky faucet flooded the floor of the passenger cabin.",
+            "sourceUrl": "https://simpleflying.com/video/mayday-at-33-000-feet-leaky-faucet-floods-frontier-airlines-airbus-a321neo-cabin/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F2",
+            "claim": "The pilots declared 'mayday' to air traffic control while cruising at 33,000 feet over eastern Iowa, and subsequently landed safely at Chicago O'Hare.",
+            "sourceQuote": "The pilots declared 'mayday' to air traffic control while cruising at 33,000 feet over eastern Iowa, and subsequently landed safely at Chicago O'Hare.",
+            "sourceUrl": "https://simpleflying.com/video/mayday-at-33-000-feet-leaky-faucet-floods-frontier-airlines-airbus-a321neo-cabin/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          }
+        ],
+        "riskFlags": [
+          "accident_or_serious_incident"
+        ],
+        "eventStatus": "confirmed",
+        "entities": {
+          "airlines": [
+            "Frontier Airlines"
+          ],
+          "aircraft_models": [
+            "Airbus A321neo"
+          ],
+          "airports": [
+            "Denver International",
+            "Detroit Metropolitan Wayne County",
+            "Chicago O'Hare"
+          ],
+          "locations": [
+            "eastern Iowa"
+          ],
+          "event_dates": [
+            "early-mid-November"
+          ]
+        },
+        "entityEvidence": [
+          {
+            "entityType": "airlines",
+            "value": "Frontier Airlines",
+            "sourceQuote": "Frontier Airlines",
+            "sourceUrl": "https://simpleflying.com/video/mayday-at-33-000-feet-leaky-faucet-floods-frontier-airlines-airbus-a321neo-cabin/"
+          },
+          {
+            "entityType": "aircraft_models",
+            "value": "Airbus A321neo",
+            "sourceQuote": "Airbus A321neo",
+            "sourceUrl": "https://simpleflying.com/video/mayday-at-33-000-feet-leaky-faucet-floods-frontier-airlines-airbus-a321neo-cabin/"
+          },
+          {
+            "entityType": "airports",
+            "value": "Denver International",
+            "sourceQuote": "Denver International",
+            "sourceUrl": "https://simpleflying.com/video/mayday-at-33-000-feet-leaky-faucet-floods-frontier-airlines-airbus-a321neo-cabin/"
+          },
+          {
+            "entityType": "airports",
+            "value": "Detroit Metropolitan Wayne County",
+            "sourceQuote": "Detroit Metropolitan Wayne County",
+            "sourceUrl": "https://simpleflying.com/video/mayday-at-33-000-feet-leaky-faucet-floods-frontier-airlines-airbus-a321neo-cabin/"
+          },
+          {
+            "entityType": "airports",
+            "value": "Chicago O'Hare",
+            "sourceQuote": "Chicago O'Hare",
+            "sourceUrl": "https://simpleflying.com/video/mayday-at-33-000-feet-leaky-faucet-floods-frontier-airlines-airbus-a321neo-cabin/"
+          },
+          {
+            "entityType": "locations",
+            "value": "eastern Iowa",
+            "sourceQuote": "eastern Iowa",
+            "sourceUrl": "https://simpleflying.com/video/mayday-at-33-000-feet-leaky-faucet-floods-frontier-airlines-airbus-a321neo-cabin/"
+          },
+          {
+            "entityType": "event_dates",
+            "value": "early-mid-November",
+            "sourceQuote": "early-mid-November",
+            "sourceUrl": "https://simpleflying.com/video/mayday-at-33-000-feet-leaky-faucet-floods-frontier-airlines-airbus-a321neo-cabin/"
+          }
+        ],
+        "evidenceVersion": 2
+      },
+      "publishedExcerptId": null
     }
   ],
   "history": [
