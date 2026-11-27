@@ -57,8 +57,8 @@
     },
     "gemini:gemini-3.5-flash": {
       "status": "waiting",
-      "checkedUtc": "2026-11-27T18:05Z",
       "untilUtc": "2026-11-28T00:05Z",
+      "checkedUtc": "2026-11-27T18:05Z",
       "failureClass": "quota",
       "diagnostic": "HTTP 429 (free-tier quota exhausted?)",
       "probeVersion": 3,
@@ -75,8 +75,8 @@
     },
     "groq:qwen/qwen3.8-27b": {
       "status": "waiting",
-      "untilUtc": "2026-11-27T18:46Z",
-      "checkedUtc": "2026-11-27T12:46Z",
+      "untilUtc": "2026-11-28T00:46Z",
+      "checkedUtc": "2026-11-27T18:46Z",
       "failureClass": "unexpected",
       "diagnostic": "zh.body[2] contains Simplified Chinese characters",
       "probeVersion": 3,
@@ -300,8 +300,8 @@
     },
     "openrouter:google/gemma-4-31b-it:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-27T15:25Z",
-      "checkedUtc": "2026-11-27T15:24Z",
+      "untilUtc": "2026-11-27T18:47Z",
+      "checkedUtc": "2026-11-27T18:46Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
@@ -309,19 +309,19 @@
     },
     "openrouter:google/gemma-4-26b-a4b-it:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-27T15:25Z",
-      "checkedUtc": "2026-11-27T15:24Z",
+      "checkedUtc": "2026-11-27T18:46Z",
+      "untilUtc": "2026-11-27T18:47Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
       "schemaMode": null
     },
     "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free": {
-      "status": "waiting",
-      "untilUtc": "2026-11-27T17:46Z",
-      "checkedUtc": "2026-11-27T11:46Z",
-      "failureClass": "connection",
-      "diagnostic": "ConnectionError",
+      "status": "verified",
+      "untilUtc": "2026-11-28T18:46Z",
+      "checkedUtc": "2026-11-27T18:46Z",
+      "failureClass": null,
+      "diagnostic": null,
       "probeVersion": 3,
       "schemaMode": null
     },
