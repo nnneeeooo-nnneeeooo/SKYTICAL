@@ -58,6 +58,7 @@ from model_config import (
     MODEL_ORDER,
 )
 from image_captions import clean_description
+from search_prompts import is_search_question
 from article_schema import normalize_article_record
 from admin_page import render_admin_page, editorial_article
 from text_spacing import compact_html
@@ -232,15 +233,14 @@ L = {
         "newsSub": "依發布時間排列的本站航空新聞索引。",
         "paginationLabel": "新聞分頁", "previousPage": "上一頁",
         "nextPage": "下一頁", "pageLabel": "第 {page} / {pages} 頁",
-        "headerSearchPlaceholder": "搜尋班號，例如 CI100",
-        "headerSearchPlaceholders": [
-            "搜尋班號，例如 CI100",
-            "搜尋航空公司",
-            "搜尋機場或城市",
-            "搜尋機型，例如 A350",
-            "隨意搜尋想看的 SKYTICAL 內容",
-            "今天想看什麼航空新聞？",
-        ],
+        "headerSearchHintQueries": {
+            "輸入「JX」查看星宇航空的新聞。": "JX",
+            "輸入「CAL」用 ICAO 代碼查華航新聞。": "CAL",
+            "輸入「AA1494」查這個航班的新聞。": "AA1494",
+            "輸入「A350」找這款機型的新聞。": "A350",
+            "輸入「TPE」找桃園機場的新聞。": "TPE",
+            "輸入「GPT 6.1 Sol」查這個模型撰寫的新聞。": "GPT 6.1 Sol",
+        },
         "searchSub": "搜尋標題、摘要、全文、來源、日期、航班、機型、機場代碼、航空公司 IATA／ICAO 代碼與撰稿模型（例如 GPT 6.1 Terra、GPT 6.1 Sol）；航空公司正式名稱與常用簡稱可互相查找。",
         "searchHelpGroups": [
             {"label": "新聞內容", "terms": ["標題", "摘要", "全文", "來源", "日期"]},
@@ -388,15 +388,14 @@ L = {
         "newsSub": "An archive of SKYTICAL aviation news, ordered by publication time.",
         "paginationLabel": "News pagination", "previousPage": "Previous",
         "nextPage": "Next", "pageLabel": "Page {page} of {pages}",
-        "headerSearchPlaceholder": "Search a flight number, e.g. CI100",
-        "headerSearchPlaceholders": [
-            "Search a flight number, e.g. CI100",
-            "Search an airline",
-            "Search an airport or city",
-            "Search an aircraft type, e.g. A350",
-            "Explore anything on SKYTICAL",
-            "What aviation news are you looking for?",
-        ],
+        "headerSearchHintQueries": {
+            "Enter “JX” to find STARLUX Airlines news.": "JX",
+            "Enter “CAL” to find China Airlines news by ICAO code.": "CAL",
+            "Enter “AA1494” to find news about this flight.": "AA1494",
+            "Enter “A350” to find news about this aircraft type.": "A350",
+            "Enter “TPE” to find news about Taoyuan Airport.": "TPE",
+            "Enter “GPT 6.1 Sol” to find articles written by that model.": "GPT 6.1 Sol",
+        },
         "searchSub": "Search titles, summaries, full text, sources, dates, flights, aircraft types, airport codes, airline IATA/ICAO codes and writing models (e.g. GPT 6.1 Terra, GPT 6.1 Sol). Official airline names and common short names are interchangeable.",
         "searchHelpGroups": [
             {"label": "News content", "terms": ["Titles", "summaries", "full text", "sources", "dates"]},
@@ -1476,7 +1475,7 @@ def daily_search_prompt_rows() -> tuple[tuple[str, str, str], ...]:
     if not all(isinstance(values, list)
                for values in (source_ids, zh_prompts, en_prompts)):
         return ()
-    if not 2 <= len(source_ids) <= 8 \
+    if not 1 <= len(source_ids) <= 8 \
             or not len(source_ids) == len(zh_prompts) == len(en_prompts):
         return ()
 
@@ -1530,12 +1529,13 @@ def search_prompt_alias_rows() -> tuple[tuple[str, str, str], ...]:
 
 @lru_cache(maxsize=2)
 def header_search_placeholders(lang: str) -> tuple[str, ...]:
-    """Load article-backed daily prompts, with non-actionable hints as fallback."""
-    rows = daily_search_prompt_rows()
-    if rows:
-        prompt_index = 1 if lang == "zh" else 2
-        return tuple(row[prompt_index] for row in rows)
-    return tuple(L[lang]["headerSearchPlaceholders"])
+    """Offer daily questions and examples of the search box's query formats."""
+    prompt_index = 1 if lang == "zh" else 2
+    questions = (
+        row[prompt_index] for row in daily_search_prompt_rows()
+        if is_search_question(row[1], "zh") and is_search_question(row[2], "en")
+    )
+    return (*questions, *L[lang]["headerSearchHintQueries"])
 
 
 def notification_summary(value: str, lang: str, title: str = "") -> str:
@@ -3903,7 +3903,6 @@ def base_ctx(lang, page, sub, *, title, description, ticker, build,
     prompts = list(header_search_placeholders(lang))
     t["headerSearchPlaceholders"] = prompts
     t["headerSearchPlaceholder"] = prompts[0]
-    t["headerSearchSuggestionEnabled"] = bool(daily_search_prompt_rows())
     nav_defs = [("home", ""), ("news", "news/"), ("briefings", "briefings/"),
                 ("radar", "radar/"),
                 ("incidents", "incidents/"),

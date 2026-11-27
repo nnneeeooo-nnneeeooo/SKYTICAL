@@ -1,10 +1,10 @@
 {
-  "version": 2,
-  "generatedUtc": "2026-11-26T16:31Z",
+  "version": 3,
+  "generatedUtc": "2026-11-27T03:00Z",
   "targetDateTpe": "2026-11-27",
   "sourceWindow": "month_to_date",
-  "generationMode": "llm",
-  "provider": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+  "generationMode": "editorial",
+  "provider": null,
   "sourceArticleIds": [
     "a-20261126-1246-norse-atlantic-suspends-all-flights-sche",
     "a-20261126-industry-roundup-18",
@@ -15,20 +15,20 @@
   ],
   "prompts": {
     "zh": [
-      "查詢 Norse Atlantic 航班",
-      "查詢 美國航空 珍珠港包機",
-      "查詢 JetBlue A320 奧蘭多 聖胡安",
-      "查詢 台灣民航局 離島航班",
-      "查詢 Alliance Airlines 準點率",
-      "查詢 AA1494 鳳凰城 轉降"
+      "Norse Atlantic在11月26日停飛哪些航班？",
+      "美國航空如何紀念珍珠港事件85週年？",
+      "捷藍航空2026年最繁忙的A320航線是哪一條？",
+      "選舉返鄉期間，離島航班的訂位情況如何？",
+      "Alliance Airlines在2026財年的準點率是多少？",
+      "美國航空AA1494為何改降鳳凰城？"
     ],
     "en": [
-      "Check Norse Atlantic flight status",
-      "Search American Airlines Pearl Harbor charter",
-      "Find JetBlue A320 Orlando San Juan routes",
-      "Check Taiwan CAA island flights",
-      "Search Alliance Airlines on-time performance",
-      "Track AA1494 diversion to Phoenix"
+      "Which flights did Norse Atlantic suspend on November 26?",
+      "How will American Airlines mark Pearl Harbor’s 85th anniversary?",
+      "What is JetBlue’s busiest A320 route in 2026?",
+      "How full are island flights for election travel?",
+      "How punctual was Alliance Airlines in its 2026 financial year?",
+      "Why did American Airlines flight AA1494 divert to Phoenix?"
     ]
   }
 }

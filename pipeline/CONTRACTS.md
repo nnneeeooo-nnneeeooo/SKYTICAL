@@ -433,15 +433,17 @@ does not invalidate the rest of the batch.
 
 ## data/search-prompts.json  (written by search_prompts.py, read by build.py)
 
-One daily set of six bilingual search-box suggestions. `targetDateTpe` prevents
-more than one generation per Taipei calendar day; `generationMode` is `llm`
-only after every suggestion passes article-ID, length, safety, uniqueness and
-title-anchor validation. `sourceArticleIds` records the published articles used.
+A daily set of up to six bilingual search-box questions. `targetDateTpe` prevents
+repeat generation for the current version on the same Taipei calendar day.
+`generationMode` is `llm` only after every question passes article-ID, question
+form, safety, uniqueness and title-anchor validation. A manually curated set
+uses `editorial`. `sourceArticleIds` records the published articles used.
 The three ordered lists (`sourceArticleIds`, `prompts.zh`, and `prompts.en`) are
-one-to-one; malformed mappings fall back to the built-in search hints.
-Built-in hints are never submitted as suggested queries.
-When no provider is available or model output is invalid, deterministic prompts
-are built from those article titles instead. No model reasoning is stored.
+one-to-one. If all providers fail, the generator uses complete titles that fit
+a question in both languages, which can yield fewer than six pairs.
+The site also shows built-in search examples with explicit query values. An
+empty submission uses the displayed question or the example’s query value.
+No model reasoning is stored.
 
 ## data/search-prompt-aliases.json  (written by search_prompts.py, read by build.py)
 

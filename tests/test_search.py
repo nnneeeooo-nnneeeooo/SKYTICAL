@@ -186,6 +186,20 @@ assert.ok(
     matchIds: result.matches.map(({record}) => record.id)
   })
 );
+const electionId = "a-20261126-0847-taiwan-caa-says-some-island-flights-are";
+for (const [lang, question] of [
+  ["zh", "選舉返鄉期間，離島航班的訂位情況如何？"],
+  ["en", "How full are island flights for election travel?"]
+]) {
+  const {matches} = search.searchRecords(index.items, question, index.airlineCodes, lang);
+  assert.equal(matches[0]?.record.id, electionId, question);
+}
+for (const query of ["JX", "CAL", "AA1494", "A350", "TPE", "GPT 6.1 Sol"]) {
+  for (const lang of ["zh", "en"]) {
+    const {matches} = search.searchRecords(index.items, query, index.airlineCodes, lang);
+    assert.ok(matches.length, query + " (" + lang + ")");
+  }
+}
 """,
         ],
         cwd=ROOT,
@@ -225,18 +239,23 @@ assert.ok(
 
     assert 'id="news-search-input"' in zh
     assert 'data-search-placeholders=' in zh
-    assert 'data-search-suggestion-enabled="true"' in zh
     zh_placeholders = json.loads(re.search(
         r"data-search-placeholders='([^']+)'", zh).group(1))
     en_placeholders = json.loads(re.search(
         r"data-search-placeholders='([^']+)'", en).group(1))
     assert zh_placeholders == list(build.header_search_placeholders("zh"))
     assert en_placeholders == list(build.header_search_placeholders("en"))
-    assert len(zh_placeholders) == len(en_placeholders) == 6
-    assert all(suggestion_has_result(prompt, payload["items"])
-               for prompt in zh_placeholders + en_placeholders)
+    for lang, page, placeholders in (
+        ("zh", zh, zh_placeholders), ("en", en, en_placeholders),
+    ):
+        hints = json.loads(re.search(
+            r"data-search-hint-queries='([^']+)'", page).group(1))
+        assert hints == build.L[lang]["headerSearchHintQueries"]
+        assert set(hints.values()) == {"JX", "CAL", "AA1494", "A350", "TPE", "GPT 6.1 Sol"}
+        questions = [prompt for prompt in placeholders if prompt not in hints]
+        assert all(build.is_search_question(prompt, lang) for prompt in questions)
+        assert all(suggestion_has_result(prompt, payload["items"]) for prompt in questions)
     prompt_rows = build.daily_search_prompt_rows()
-    assert len(prompt_rows) == len(zh_placeholders) == len(en_placeholders)
     for article_id, zh_prompt, en_prompt in prompt_rows:
         article_id = build.public_article_id(article_id)
         assert article_id in items_by_id
@@ -345,11 +364,8 @@ assert.ok(
     assert "JSON.parse" in app_script
     assert "Math.floor(Math.random() * searchPlaceholders.length)" in app_script
     assert 'headerSearchForm.addEventListener("submit"' in app_script
-    assert "queryFromSearchPlaceholder" in app_script
-    assert "搜尋|查詢|尋找|看看|想看|探索|了解" in app_script
-    assert "Search|Explore|Find|Look\\s+up|Show\\s+me" in app_script
+    assert 'getAttribute("data-search-hint-queries")' in app_script
     assert "if (headerSearchInput.value.trim()) return" in app_script
-    assert 'dataset.searchSuggestionEnabled !== "true"' in app_script
     assert "headerSearchInput.value = suggestedQuery" in app_script
     assert 'document.getElementById("news-search-app")' in app_script
     assert "event.preventDefault()" in app_script
@@ -395,7 +411,7 @@ assert.ok(
             assert "保留這筆推薦詞" in isolated["items"][0]["search"]
             assert "缺少來源文章" not in isolated["items"][0]["search"]
             assert build.header_search_placeholders("zh") == tuple(
-                build.L["zh"]["headerSearchPlaceholders"])
+                build.L["zh"]["headerSearchHintQueries"])
     finally:
         build.DATA_DIR = original_data_dir
         build.daily_search_prompt_rows.cache_clear()
