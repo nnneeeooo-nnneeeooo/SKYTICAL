@@ -39,8 +39,8 @@
     },
     "nvidia:qwen/qwen3.5-397b-a17b": {
       "status": "unavailable",
-      "untilUtc": "2026-11-27T03:58Z",
-      "checkedUtc": "2026-11-26T03:58Z",
+      "untilUtc": "2026-11-28T04:15Z",
+      "checkedUtc": "2026-11-27T04:15Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
       "probeVersion": 3,
@@ -120,10 +120,10 @@
     },
     "gemini:gemini-3.1-flash-lite": {
       "status": "waiting",
-      "untilUtc": "2026-11-27T03:46Z",
-      "checkedUtc": "2026-11-26T21:46Z",
+      "untilUtc": "2026-11-27T10:15Z",
+      "checkedUtc": "2026-11-27T04:15Z",
       "failureClass": "unexpected",
-      "diagnostic": "F2 claim adds high-risk atom '10' not present in its own sourceQuote",
+      "diagnostic": "verified factId values must be sequential F1..Fn",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -147,8 +147,8 @@
     },
     "nvidia:z-ai/glm-5.3-flash": {
       "status": "waiting",
-      "untilUtc": "2026-11-27T03:46Z",
-      "checkedUtc": "2026-11-26T21:46Z",
+      "untilUtc": "2026-11-27T10:15Z",
+      "checkedUtc": "2026-11-27T04:15Z",
       "failureClass": "timeout",
       "diagnostic": "ReadTimeout",
       "probeVersion": 3,
@@ -300,8 +300,8 @@
     },
     "openrouter:google/gemma-4-31b-it:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-27T03:37Z",
-      "checkedUtc": "2026-11-27T03:36Z",
+      "untilUtc": "2026-11-27T04:16Z",
+      "checkedUtc": "2026-11-27T04:15Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
@@ -309,8 +309,8 @@
     },
     "openrouter:google/gemma-4-26b-a4b-it:free": {
       "status": "waiting",
-      "checkedUtc": "2026-11-27T03:36Z",
-      "untilUtc": "2026-11-27T03:37Z",
+      "checkedUtc": "2026-11-27T04:15Z",
+      "untilUtc": "2026-11-27T04:16Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
