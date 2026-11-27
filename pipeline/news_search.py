@@ -1,7 +1,7 @@
 """Bounded OpenAI news discovery; only independently fetched pages enter dedupe.
 
 Search summaries and model-supplied dates are never article evidence. Calls
-and provenance use the actual gpt-6.1-terra model identifier.
+and provenance use the actual gpt-6-luna model identifier.
 """
 from __future__ import annotations
 import json
@@ -99,7 +99,7 @@ def fetch_candidate(url, now, *, max_age=timedelta(hours=24)):
     source_key, source_name = _source_identity(url)
     return {'title': title, 'url': url, 'publishedUtc': iso_minute(date),
             'source': source_name, 'sourceKey': source_key,
-            'summary': '', 'fulltext': text, 'discoveredBy': 'openai:gpt-6.1-terra+search'}
+            'summary': '', 'fulltext': text, 'discoveredBy': 'openai:gpt-6-luna+search'}
 
 
 def cached_items(now=None, path=None):

@@ -215,7 +215,7 @@ def rejection_reason(article, raw, captions=None):
             and re.search(r"踩線|旅遊業者|觀光|tourism|travel agents|travel trade|familiarization", head, re.I)
             and re.search(r"aircraft|aeroplane|airplane|boeing|airbus|\b[7A]\d{2,3}[- ]\d+\b|客機|飛機", ev, re.I)):
         return "tourism-event-aircraft-stock"
-    if (stock and airline and not model and im.get("selectionModel") == "gpt-6.1-terra"
+    if (stock and airline and not model and im.get("selectionModel") in {"gpt-6.1-terra", "gpt-6-luna"}
             and im.get("provider") == "Wikimedia Commons"
             and re.search(r"踩線|旅遊業者|觀光|tourism|travel agents|travel trade|familiarization", head, re.I)):
         # A visually reviewed Commons destination/activity photo may illustrate

@@ -66,7 +66,7 @@ except ImportError:  # pragma: no cover - anthropic is in requirements.txt
 DEFAULT_ORDER = DEFAULT_PROVIDER_ORDER
 # 550B-class NIM models regularly need >120s on the free tier.
 HTTP_TIMEOUT = (10, 180)  # (connect, read) seconds
-# Terra has no processing deadline, but a response that never arrives must not
+# Luna has no processing deadline, but a response that never arrives must not
 # hold the paid-API queue until the runner's six-hour limit.
 OPENAI_HTTP_TIMEOUT = (10, 1800)
 
@@ -1734,7 +1734,7 @@ class OpenAIProvider(OpenCodeProvider):
         }
 
     def _responses_output_tokens(self, repair: bool) -> None:
-        # Owner policy: omit the client cap for every Terra call and repair.
+        # Owner policy: omit the client cap for every Luna call and repair.
         return None
 
     def _effort(self, repair: bool) -> str:
@@ -1758,7 +1758,7 @@ _REGISTRY = {
 
 
 def _is_fallback_route(token: str) -> bool:
-    """Recognize an OpenAI route that resolves to GPT 6.1 Terra."""
+    """Recognize an OpenAI route that resolves to GPT 6 Luna."""
     name, _, model = token.partition(":")
     if name.strip().lower() != "openai":
         return False

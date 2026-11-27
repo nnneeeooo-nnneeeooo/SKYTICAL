@@ -1,4 +1,4 @@
-"""Terra-assisted, licence-verified Commons image search for recent news.
+"""Luna-assisted, licence-verified Commons image search for recent news.
 
 The model proposes search terms and reviews candidate thumbnails. Wikimedia's
 own metadata supplies the licence, author and file URL; model claims never do.
@@ -22,7 +22,7 @@ from common import DATA_DIR, USER_AGENT, load_json, now_utc, parse_iso, save_jso
 from image_selection import MAX_STOCK_REUSE, image_key, rejection_reason, stock_usage, manual_image
 from model_config import model_route_allowed
 
-MODEL = "gpt-6.1-terra"
+MODEL = "gpt-6-luna"
 CACHE_PATH = DATA_DIR / "terra-images.json"
 API_URL = "https://api.openai.com/v1/responses"
 COMMONS_API = "https://commons.wikimedia.org/w/api.php"
@@ -36,7 +36,7 @@ FREE_LICENSE = re.compile(
 def _text(response):
     data = response.json()
     if response.status_code != 200 or data.get("status") != "completed":
-        raise ValueError("Terra response incomplete")
+        raise ValueError("Luna response incomplete")
     parts = [part.get("text", "") for row in data.get("output", [])
              if row.get("type") == "message" for part in row.get("content", [])
              if part.get("type") == "output_text"]
@@ -45,13 +45,13 @@ def _text(response):
 
 def _ask(content, *, max_output_tokens=2048):
     if not model_route_allowed("openai", MODEL):
-        raise RuntimeError("Terra model route is disabled")
+        raise RuntimeError("Luna model route is disabled")
     key = os.environ.get("OPENAI_API_KEY")
     if not key:
         raise RuntimeError("OPENAI_API_KEY unavailable")
     payload = {
         "model": MODEL, "store": False,
-        "reasoning": {"effort": "high"},
+        "reasoning": {"effort": "max"},
         "max_output_tokens": max_output_tokens,
         "input": [{"role": "user", "content": content}],
         "text": {"format": {"type": "json_object"}},

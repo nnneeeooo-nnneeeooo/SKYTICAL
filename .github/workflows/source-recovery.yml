@@ -30,10 +30,10 @@ jobs:
           # that commit so its article/queue changes are not replayed as ours.
           git checkout -B source-recovery-runtime origin/main
           python pipeline/paid_budget_sync.py refresh
-      - name: Recover the five missed stories with Terra search
+      - name: Recover the five missed stories with Luna search
         env:
-          AVWIRE_PROVIDER_ORDER: openai:gpt-6.1-terra
-          AVWIRE_OPENAI_MODEL: gpt-6.1-terra
+          AVWIRE_PROVIDER_ORDER: openai:gpt-6-luna
+          AVWIRE_OPENAI_MODEL: gpt-6-luna
           AVWIRE_PAID_BUDGET_ENABLED: 'true'
           AVWIRE_LUNA_EDITORIAL: 'true'
           OPENAI_API_KEY: ${{ secrets.OPENAI_API }}
@@ -47,7 +47,7 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add data
           if ! git diff --cached --quiet; then
-            git commit -m 'news: recover thin-source stories with Terra search'
+            git commit -m 'news: recover thin-source stories with Luna search'
             pushed=""
             python pipeline/data_merge.py install
             for i in 1 2 3; do

@@ -34,7 +34,7 @@ ALLOWED_MODEL_ROUTES = frozenset({
     "openrouter:google/gemma-4-26b-a4b-it:free",
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
     "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
-    "openai:gpt-6.1-terra",
+    "openai:gpt-6-luna",
 })
 
 
@@ -59,15 +59,15 @@ FREE_HOSTED_MODEL_ORDER = (
     "cloudflare:@cf/openai/gpt-oss-120b",
 )
 
-OPENAI_DEFAULT_MODEL = "gpt-6.1-terra"
+OPENAI_DEFAULT_MODEL = "gpt-6-luna"
 
 
 def openai_runtime_model(model=None, *, briefing=False):
-    """Keep the legacy Terra mapping unless briefing explicitly selects Luna."""
+    """Migrate legacy OpenAI routes to Luna, including stale environment settings."""
     selected = str(model or OPENAI_DEFAULT_MODEL).strip()
     if briefing and selected == BRIEFING_OPENAI_MODEL:
         return selected
-    return (OPENAI_DEFAULT_MODEL if selected in {"gpt-6", BRIEFING_OPENAI_MODEL}
+    return (OPENAI_DEFAULT_MODEL if selected in {"gpt-6", "gpt-6.1-terra", BRIEFING_OPENAI_MODEL}
             else selected)
 
 
@@ -123,7 +123,7 @@ _MANUAL_MODEL_ORDER = (
     *FREE_HOSTED_MODEL_ORDER,
 )
 
-# Baseline order. Article-specific Terra routing can promote GPT 6.1 Terra after
+# Baseline order. Article-specific Luna routing can promote GPT 6 Luna after
 # primary/two-platform failure while retaining this order for other callers.
 _AUTOMATIC_MODEL_ORDER = (
     DIRECT_MODEL_ORDER[0],
@@ -222,7 +222,6 @@ MODEL_DISPLAY_NAMES = {
     "openrouter:liquid/lfm-3-1.7b:free": "OpenRouter · Liquid LFM 3 1.7B",
     FREE_HOSTED_MODEL_ORDER[0]: "Groq · OpenAI GPT-OSS 120B",
     "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8": "Cloudflare Workers AI · Qwen3 30B A3B",
-    "openai:gpt-6.1-terra": "GPT 6.1 Terra",
     f"openai:{BRIEFING_OPENAI_MODEL}": "GPT 6 Luna",
     "wechat:Deepseek-v4-flash":
         "WeChat Coding Plan · DeepSeek V4 Flash",

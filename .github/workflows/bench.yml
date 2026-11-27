@@ -49,7 +49,7 @@ jobs:
           WECHAT_API_KEY: ${{ secrets.DeepSeekV4Flash_API }}
         run: |
           if [ -n "$OPENAI_API_KEY" ]; then
-            echo "== OpenAI models (GPT 6.1 Terra) =="
+            echo "== OpenAI models (GPT 6 Luna) =="
             echo "OpenAI model selection is configured privately."
           fi
           if [ -n "$OPENCODE_API_KEY" ] && PYTHONPATH=pipeline python -c 'import sys; from model_config import ALLOWED_MODEL_ROUTES; sys.exit(not any(route.startswith("opencode:") for route in ALLOWED_MODEL_ROUTES))'; then

@@ -46,10 +46,10 @@ def test_terra_selection_requires_commons_license_and_visual_choice(monkeypatch)
     calls = iter([{"queries": ["Pingtung tourism"]}, {"index": 0}])
     monkeypatch.setattr(terra, "_ask", lambda *args, **kwargs: next(calls))
     result = terra.find_image(ARTICLE, {})
-    assert result["selectionModel"] == "gpt-6.1-terra"
+    assert result["selectionModel"] == "gpt-6-luna"
     assert result["credit"] == "Photographer"
     assert result["license"] == "CC BY 4.0"
-    assert build.normalize_image(result)["selectionModel"] == "gpt-6.1-terra"
+    assert build.normalize_image(result)["selectionModel"] == "gpt-6-luna"
     assert build.normalize_image(AIRCRAFT_IMAGE)["selectionModel"] is None
 
 
@@ -69,3 +69,16 @@ def test_terra_can_decline_image(monkeypatch):
     calls = iter([{"queries": ["Pingtung tourism"]}, {"index": None}])
     monkeypatch.setattr(terra, "_ask", lambda *args, **kwargs: next(calls))
     assert terra.find_image(ARTICLE, {}) is None
+
+
+def test_image_requests_use_luna_max(monkeypatch):
+    monkeypatch.setenv("OPENAI_API_KEY", "offline-test-key")
+    response = Mock(status_code=200)
+    response.json.return_value = {"status": "completed", "output": [
+        {"type": "message", "content": [{"type": "output_text", "text": '{"queries": []}'}]}]}
+    post = Mock(return_value=response)
+    monkeypatch.setattr(terra.requests, "post", post)
+    assert terra._ask([{"type": "input_text", "text": "source"}]) == {"queries": []}
+    payload = post.call_args.kwargs["json"]
+    assert payload["model"] == "gpt-6-luna"
+    assert payload["reasoning"] == {"effort": "max"}

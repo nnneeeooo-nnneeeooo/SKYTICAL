@@ -155,14 +155,14 @@ def test_model_priority_defaults():
         "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
         "groq:openai/gpt-oss-120b",
         "cloudflare:@cf/openai/gpt-oss-120b",
-        "openai:gpt-6.1-terra",
+        "openai:gpt-6-luna",
     )
     check(AUTOMATIC_MODEL_ORDER == active
           and providers.DEFAULT_ORDER == ",".join(active),
           "GPT 6 is last after all preferred production routes")
     check(providers.GEMINI_DEFAULT_MODEL == "gemini-3.6-flash",
           "Gemini 3.6 Flash is the default model")
-    check(providers.OPENAI_DEFAULT_MODEL == "gpt-6.1-terra",
+    check(providers.OPENAI_DEFAULT_MODEL == "gpt-6-luna",
           "GPT 6 is the direct OpenAI default model")
     check(providers.NVIDIA_DEFAULT_MODEL
           == "nvidia/nemotron-3-ultra-550b-a55b",
@@ -182,7 +182,7 @@ def test_fallback_last_with_environment_override():
     keys = ("AVWIRE_PROVIDER_ORDER", "OPENAI_API_KEY", "GEMINI_API_KEY")
     saved = {key: os.environ.get(key) for key in keys}
     os.environ["AVWIRE_PROVIDER_ORDER"] = (
-        "openai:gpt-6.1-terra,gemini:gemini-3.6-flash,openai:gpt-6.1-terra")
+        "openai:gpt-6-luna,gemini:gemini-3.6-flash,openai:gpt-6-luna")
     os.environ["OPENAI_API_KEY"] = "test-openai-key-not-real"
     os.environ["GEMINI_API_KEY"] = "test-gemini-key-not-real"
     try:
@@ -193,7 +193,7 @@ def test_fallback_last_with_environment_override():
                 os.environ.pop(key, None)
             else:
                 os.environ[key] = value
-    check(labels == ["gemini:gemini-3.6-flash", "openai:gpt-6.1-terra"],
+    check(labels == ["gemini:gemini-3.6-flash", "openai:gpt-6-luna"],
           "environment overrides keep Fallback last and deduplicate it")
     print("test_fallback_last_with_environment_override: done")
 
@@ -557,7 +557,7 @@ def test_openai_responses_api():
     provider = providers.OpenAIProvider()
     check(not provider.available(), "OpenAI is unavailable without its key")
     os.environ["OPENAI_API_KEY"] = "test-openai-key-not-real"
-    os.environ["AVWIRE_PROVIDER_ORDER"] = "openai:gpt-6.1-terra"
+    os.environ["AVWIRE_PROVIDER_ORDER"] = "openai:gpt-6-luna"
     os.environ["AVWIRE_OPENAI_API_MODEL"] = "test-private-model"
     try:
         provider = providers.OpenAIProvider()
@@ -583,7 +583,7 @@ def test_openai_responses_api():
         check(provider.available() and result == {"ok": 1},
               "OpenAI Responses draft succeeds with configured key")
         check(url == "https://api.openai.com/v1/responses"
-              and payload["model"] == "gpt-6.1-terra",
+              and payload["model"] == "gpt-6-luna",
               "GPT 6 uses the direct OpenAI Responses endpoint")
         check(payload["reasoning"] == {"effort": "max"}
               and provider.reasoning_effective == "reasoning.effort=max"
@@ -617,19 +617,19 @@ def test_openai_responses_api():
         except providers.ProviderQuotaError:
             check(True, "OpenAI insufficient quota disables this provider run")
         rows = providers.build_providers()
-        check([row.label for row in rows] == ["openai:gpt-6.1-terra"],
+        check([row.label for row in rows] == ["openai:gpt-6-luna"],
               "provider registry builds the configured OpenAI model")
         deep = providers.OpenAIProvider(
-            "gpt-6.1-terra", reasoning_tier="deep")
+            "gpt-6-luna", reasoning_tier="deep")
         check(deep._effort(repair=False) == "max",
               "manual deep reasoning maps to OpenAI MAX")
-        check(provider.model == "gpt-6.1-terra" and provider.label == "openai:gpt-6.1-terra"
+        check(provider.model == "gpt-6-luna" and provider.label == "openai:gpt-6-luna"
               and "test-private-model" not in json.dumps(provider.__dict__),
               "private wire model never enters provenance or telemetry")
         os.environ.pop("AVWIRE_OPENAI_API_MODEL", None)
         before = len(captured)
         with_post(fake_post, lambda: provider.draft("sys", "user", SCHEMA))
-        check(len(captured) == before + 1 and captured[-1][1]["model"] == "gpt-6.1-terra",
+        check(len(captured) == before + 1 and captured[-1][1]["model"] == "gpt-6-luna",
               "Terra calls the actual model directly without a private mapping")
 
         def hung_post(url, json=None, timeout=None, headers=None):

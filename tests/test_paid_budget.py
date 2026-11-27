@@ -44,7 +44,7 @@ def test_reserve_reconciles_reasoning_once_and_uses_taipei_day():
     assert row["days"]["2026-11-01"]["total"] >= 24000
     budget.settle(token, {"usage": {"input_tokens": 20000, "output_tokens": 10000,
                                   "output_tokens_details": {"reasoning_tokens": 9000}}})
-    assert read()["months"]["2026-11"]["total"] == 75000
+    assert read()["months"]["2026-11"]["total"] == 7500
     assert not read()["reservations"]
 
 
@@ -59,7 +59,7 @@ def test_uncapped_payload_reaches_http_and_settles_full_returned_usage(outputs):
         assert budget.post(sender, "unused", payload) is response
     assert sender.call_args.args[1] == {"input": "source"}
     assert "max_output_tokens" not in payload
-    assert read()["months"]["2026-11"]["total"] == 25000 + outputs * 5
+    assert read()["months"]["2026-11"]["total"] == 2500 + outputs // 2
     assert not read()["reservations"]
 
 
@@ -153,17 +153,17 @@ def test_search_and_unknown_model_are_bounded():
 
 
 def test_luna_usage_is_reserved_and_settled_at_luna_rates():
-    terra = budget.reserve(PAYLOAD, now=NOW)
+    default = budget.reserve(PAYLOAD, now=NOW)
     luna = budget.reserve(PAYLOAD, model="gpt-6-luna", now=NOW)
     holds = read()["reservations"]
-    assert holds[luna]["micros"] == (holds[terra]["micros"] + 9) // 10
+    assert holds[luna]["micros"] == holds[default]["micros"]
     budget.settle(luna, {"usage": {"input_tokens": 800, "output_tokens": 400}},
                   model="gpt-6-luna")
-    assert read()["days"]["2026-11-01"]["total"] == holds[terra]["micros"] + 300
+    assert read()["days"]["2026-11-01"]["total"] == holds[default]["micros"] + 300
 
 
 def test_two_dollar_settled_warning_is_emitted_once(capsys):
-    seed(day=1900000, month=1900000)
+    seed(day=1990000, month=1990000)
     for _ in range(3):
         token = budget.reserve(PAYLOAD, now=NOW)
         budget.settle(token, {"usage": {"input_tokens": 20000, "output_tokens": 10000}})
@@ -230,7 +230,7 @@ def test_shared_file_lock_tracks_parallel_uncapped_reservations():
     assert len(tokens) == len(set(tokens)) == 8
     assert row["days"]["2026-11-01"]["total"] == sum(
         hold["micros"] for hold in row["reservations"].values())
-    assert row["days"]["2026-11-01"]["total"] > 1500000
+    assert row["days"]["2026-11-01"]["total"] > 150000
 
 
 def test_ci_persists_every_request_hold_then_settled_usage(monkeypatch):
@@ -265,7 +265,7 @@ def test_ci_persists_every_request_hold_then_settled_usage(monkeypatch):
         put.json.return_value = {"content": {"sha": "settled"}}
         sync.sync("persist")
         outgoing = json.loads(base64.b64decode(send.call_args.kwargs["json"]["content"]))
-        assert outgoing["days"]["2026-11-01"]["total"] == 150000
+        assert outgoing["days"]["2026-11-01"]["total"] == 15000
         assert not outgoing["reservations"]
         assert json.loads(sync.BASE.read_text())["sha"] == "settled"
 
@@ -306,7 +306,7 @@ def test_first_shared_ledger_imports_existing_cloud_audit_cost(monkeypatch):
 
 def test_long_context_price_reservation_includes_premiums():
     cfg = budget.policy()
-    assert budget._cost(300000, 48000, 0, cfg) == 1110000
+    assert budget._cost(300000, 48000, 0, cfg) == 111000
 
 
 

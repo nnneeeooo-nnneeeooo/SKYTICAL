@@ -798,7 +798,7 @@ def test_free_only_news_never_calls_paid_fallback():
         common.save_json(DATA / "pending.json", pending)
         free = FakeProvider("nvidia", [providers.ProviderError("HTTP 503")])
         final_paid = FakeProvider("openai", [DRAFT_BIZ])
-        final_paid.model = "gpt-6.1-terra"
+        final_paid.model = "gpt-6-luna"
         subscription = FakeProvider("wechat", [DRAFT_BIZ])
         chain = ([free] if free_available else []) + [subscription, final_paid]
         with patch.object(write, "build_providers", return_value=chain):
@@ -821,7 +821,7 @@ def test_free_only_news_never_calls_paid_fallback():
     common.save_json(DATA / "pending.json", pending)
     free = FakeProvider("nvidia", [providers.ProviderError("HTTP 503")])
     final_paid = FakeProvider("openai", [DRAFT_SAFETY])
-    final_paid.model = "gpt-6.1-terra"
+    final_paid.model = "gpt-6-luna"
     with patch.object(write, "build_providers", return_value=[free, final_paid]):
         write.main()
     check(free.calls == final_paid.calls == 1 and len(all_articles()) == 1,
@@ -1090,7 +1090,7 @@ def test_final_paid_repairs_after_shared_fallback_repair_is_spent():
         fallback = FakeProvider("wechat", [bad])
 
         class FinalPaid(FakeProvider):
-            model = "gpt-6.1-terra"
+            model = "gpt-6-luna"
             max_attempt_seconds = 90
             group_budget_seconds = 180
 
@@ -1144,7 +1144,7 @@ def test_preferred_timeout_preserves_final_paid_and_run_budget():
     first = TimedProvider("gemini", [providers.ProviderError("ReadTimeout")])
     skipped = TimedProvider("wechat", [DRAFT_BIZ])
     final_paid = TimedProvider("openai", [bad, DRAFT_BIZ])
-    final_paid.model = "gpt-6.1-terra"
+    final_paid.model = "gpt-6-luna"
     final_paid.max_attempt_seconds = 90
     final_paid.group_budget_seconds = 180
 
@@ -1180,7 +1180,7 @@ def test_unlimited_luna_continues_after_the_free_run_deadline():
     common.save_json(DATA / "pending.json", pending)
     free = FakeProvider("gemini", [DRAFT_SAFETY])
     luna = FakeProvider("openai", [DRAFT_SAFETY])
-    luna.model = "gpt-6.1-terra"
+    luna.model = "gpt-6-luna"
     luna.unlimited_processing_time = True
     with patch.dict(os.environ, {"AVWIRE_LUNA_EDITORIAL": "false"}), \
             patch.object(write, "MAX_DRAFT_SECONDS_PER_RUN", -1), \
@@ -1308,9 +1308,9 @@ def test_source_insufficient_rejection_and_model_credit():
     check(row["failureClass"] == "source_insufficient" and row["status"] == "waiting",
           "source rejection has persistent nonterminal backoff")
     group["items"][0]["fulltext"] = group["items"][0]["summary"]
-    group["items"][0]["sourceRecoveryModel"] = "gpt-6.1-terra"
+    group["items"][0]["sourceRecoveryModel"] = "gpt-6-luna"
     article = write.build_article(DRAFT_BIZ, group, NOW, set(), "gemini:gemini-3.6-flash", [])
-    check(article["writerModels"] == ["Google Gemini 3.6 Flash", "GPT 6.1 Terra"],
+    check(article["writerModels"] == ["Google Gemini 3.6 Flash", "GPT 6 Luna"],
           "published article credits both writer and actual Terra source recovery")
 
 
@@ -1701,7 +1701,7 @@ def _luna_safety_fixture():
     group = pending["groups"][0]
     common.save_json(DATA / "pending.json", {**pending, "groups": [group]})
     luna = FakeProvider("openai", [DRAFT_SAFETY])
-    luna.model = "gpt-6.1-terra"
+    luna.model = "gpt-6-luna"
     luna.max_attempt_seconds = 90
     return group, luna
 

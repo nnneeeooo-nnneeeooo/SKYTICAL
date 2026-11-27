@@ -27,7 +27,7 @@ def test_verified_pages_only_and_credit(tmp_path):
          patch.object(news_search, "fetch_candidate", return_value=item) as fetch:
         assert recovery.recover(group)
         assert fetch.call_count == 1
-        assert group["items"][-1]["sourceRecoveryModel"] == "gpt-6.1-terra"
+        assert group["items"][-1]["sourceRecoveryModel"] == "gpt-6-luna"
         assert group["items"][-1]["fulltext"].startswith("Verified")
         assert not recovery.recover(group)
         cache = json.loads((tmp_path / "cache.json").read_text())
@@ -57,7 +57,7 @@ def test_model_typed_url_without_tool_source_is_discarded():
          patch("usage.record_providers"):
         assert recovery._search(story()) == ["https://www.iata.org/news/real"]
         payload = call.call_args.args[2]
-        assert payload["model"] == "gpt-6.1-terra"
+        assert payload["model"] == "gpt-6-luna"
         assert "max_output_tokens" not in payload
         assert payload["tool_choice"] == "required"
 

@@ -1659,7 +1659,7 @@ def _provider_group_budget(provider) -> float:
 
 def _is_fallback_provider(provider) -> bool:
     return (getattr(provider, "name", None) == "openai"
-            and getattr(provider, "model", None) == "gpt-6.1-terra")
+            and getattr(provider, "model", None) == "gpt-6-luna")
 
 
 def _fallback_reserve_seconds(providers) -> float:
@@ -1671,7 +1671,7 @@ def _fallback_reserve_seconds(providers) -> float:
 
 
 def _provider_chain_budget(providers) -> float:
-    """Leave room for each preferred route before GPT 6.1 Terra."""
+    """Leave room for each preferred route before GPT 6 Luna."""
     providers = tuple(providers)
     if any(getattr(p, "unlimited_processing_time", False) is True for p in providers):
         return float("inf")
@@ -2454,10 +2454,13 @@ def build_article(draft: dict, group: dict, now, used_ids: set, writer=None,
         article["writer"] = writer  # provenance: "provider:model"
     recovery_models = {item.get("sourceRecoveryModel") for item in items
                        if item.get("fulltext") and item.get("sourceRecoveryModel")}
-    if source_recovery.MODEL in recovery_models:
+    recovery_credits = [label for model, label in (
+        ("gpt-6.1-terra", "GPT 6.1 Terra"), (source_recovery.MODEL, "GPT 6 Luna"))
+        if model in recovery_models]
+    if recovery_credits:
         from model_config import MODEL_DISPLAY_NAMES
         article["writerModels"] = list(dict.fromkeys(
-            [MODEL_DISPLAY_NAMES.get(writer, writer), "GPT 6.1 Terra"]))
+            [MODEL_DISPLAY_NAMES.get(writer, writer), *recovery_credits]))
     if announcement:
         article["generationMode"] = "rules"
         article["ruleVersion"] = "announcement-v1"
@@ -3482,7 +3485,7 @@ def main() -> None:
                 print("write: drafting time budget reached; saving completed drafts")
                 run_trace.finish("retry_pending", "retry_pending")
                 if any(getattr(p, "unlimited_processing_time", False) is True for p in alive):
-                    continue  # A later eligible story can still use Terra.
+                    continue  # A later eligible story can still use Luna.
                 break
             if not story_providers:
                 retry_ledger.failure(group, content=False)
@@ -3520,7 +3523,7 @@ def main() -> None:
                   f"{policy.priority}/{policy.reason}; paid={paid_allowed}")
             group_budget = _provider_chain_budget(story_providers)
             # The run budget gates new groups. Finish an already-started free
-            # chain so that a run deadline cannot move Terra ahead of a route.
+            # chain so that a run deadline cannot move Luna ahead of a route.
             group_deadline = (float("inf") if unlimited_story or free_count else min(
                 draft_deadline, time.monotonic() + group_budget))
             preferred_started = time.monotonic() if luna_editorial.enabled() else None
