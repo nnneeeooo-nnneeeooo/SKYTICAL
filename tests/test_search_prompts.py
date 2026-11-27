@@ -26,13 +26,14 @@ class FakeProvider:
     def draft(self, system_prompt, user_prompt, schema):
         self.calls += 1
         assert "ONLY the supplied published articles" in system_prompt
+        assert "specific event or circumstance" in system_prompt
         assert schema == search_prompts.PROMPT_SCHEMA
         candidates = json.loads(user_prompt)
         return {"prompts": [
             {
                 "articleId": row["id"],
-                "zh": f"關注：{row['zhTitle']}",
-                "en": f"Explore {row['enTitle']}",
+                "zh": f"「{row['zhTitle']}」是怎麼回事？",
+                "en": f"What's the story behind “{row['enTitle']}”?",
             }
             for row in candidates[:6]
         ]}
@@ -96,6 +97,22 @@ def main() -> None:
         assert [row["id"] for row in branded_candidates] == [branded["id"]]
 
         provider = FakeProvider()
+        draft = provider.draft(
+            search_prompts.SYSTEM_PROMPT, json.dumps(candidates),
+            search_prompts.PROMPT_SCHEMA)
+        provider.calls = 0
+        assert search_prompts.validate_llm_prompts(draft, candidates)
+        draft["prompts"][0]["zh"] = "查詢航空7 A327"
+        assert search_prompts.validate_llm_prompts(draft, candidates) is None
+        draft["prompts"][0]["zh"] += "？"
+        assert search_prompts.validate_llm_prompts(draft, candidates) is None
+        assert not search_prompts.is_search_question(
+            "What happened? How did the flight land?", "en")
+        assert search_prompts.is_search_question(
+            "Which routes did GPT 6.1 Sol cover?", "en")
+        assert search_prompts.is_search_question(
+            "選舉返鄉期間，離島航班的訂位情況如何？", "zh")
+
         (data_dir / search_prompts.ALIAS_HISTORY_NAME).write_text(
             "[]", encoding="utf-8")
         changed = search_prompts.update_daily_prompts(
@@ -169,7 +186,14 @@ def main() -> None:
             (fallback_dir / "search-prompts.json").read_text(encoding="utf-8"))
         assert fallback["generationMode"] == "deterministic"
         assert fallback["provider"] is None
-        assert fallback["prompts"]["zh"][0].startswith("搜尋：航空7 A327")
+        assert fallback["prompts"]["zh"][0] == "「航空7 A327 抵達桃園」是怎麼回事？"
+        assert fallback["prompts"]["en"][0].endswith("arrives at Taoyuan”?")
+        one_pair, one_id = search_prompts.deterministic_prompts([candidates[0]])
+        assert one_id == [candidates[0]["id"]]
+        assert len(one_pair["zh"]) == len(one_pair["en"]) == 1
+        long_title = dict(candidates[0], enTitle="Long " * 30)
+        assert search_prompts.deterministic_prompts([long_title]) == (
+            {"zh": [], "en": []}, [])
 
         # A bad key can expose several models from one platform.  Only the
         # first model from each API platform may consume the daily budget.

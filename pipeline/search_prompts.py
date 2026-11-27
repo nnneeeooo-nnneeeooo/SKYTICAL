@@ -28,14 +28,14 @@ from common import (  # noqa: E402
 
 TPE = timezone(timedelta(hours=8), "UTC+8")
 OUTPUT_NAME = "search-prompts.json"
-OUTPUT_VERSION = 2
+OUTPUT_VERSION = 3
 ALIAS_HISTORY_NAME = "search-prompt-aliases.json"
 ALIAS_HISTORY_VERSION = 1
 MAX_ALIAS_HISTORY_ROWS = 4096
 PROMPT_COUNT = 6
 MAX_CANDIDATES = 12
-MAX_ZH_CHARS = 26
-MAX_EN_CHARS = 58
+MAX_ZH_CHARS = 32
+MAX_EN_CHARS = 72
 
 PROMPT_SCHEMA = {
     "type": "object",
@@ -58,15 +58,21 @@ PROMPT_SCHEMA = {
     "additionalProperties": False,
 }
 
-SYSTEM_PROMPT = """You create six short search-box suggestions for SKYTICAL.
+SYSTEM_PROMPT = f"""You create six short search-box questions for SKYTICAL.
 Use ONLY the supplied published articles. Pick six distinct article IDs and
-return JSON matching the schema. Each suggestion must clearly reuse a named
-airline, flight number, airport, city, aircraft type, registration or other
-searchable entity from that article's title. Do not add facts, dates, numbers,
-causes or conclusions. Traditional Chinese must use Taiwan wording and be at
-most 26 characters; English must be at most 58 characters. Do not use URLs,
-HTML, markdown, relative-time words such as today/yesterday, or generic prompts.
-The suggestions should feel friendly and natural, not like headlines."""
+return JSON matching the schema. Write one natural, complete question per
+language about the same thing. Each question must name the aviation subject and
+include the specific event or circumstance that makes it newsworthy. Ask one
+thing the title or summary can answer. For a roundup, pick one development.
+Use a searchable term from the title and take context from the title or summary.
+When space is tight, keep the event and omit the reporting organisation.
+Example: 「選舉返鄉期間，離島航班的訂位情況如何？」 pairs with
+“How full are island flights for election travel?”
+Use Taiwan Traditional Chinese (up to {MAX_ZH_CHARS} characters), ending in ？,
+and English (up to {MAX_EN_CHARS} characters), ending in ?. Put the aviation
+subject and event early. Use only facts, dates and numbers supported by the
+article. Avoid generic queries, instructions, keyword lists, vague status
+checks, URLs, HTML, markdown and relative dates such as today or yesterday."""
 
 _SPACE_RE = re.compile(r"\s+")
 _ASCII_TOKEN_RE = re.compile(r"[A-Za-z0-9][A-Za-z0-9-]{1,}")
@@ -167,6 +173,24 @@ def _shares_anchor(prompt: str, title: str) -> bool:
     return False
 
 
+def is_search_question(value: str, lang: str) -> bool:
+    """Check the form of a single question before publishing it."""
+    mark, minimum, maximum, question_pattern = {
+        "zh": ("？", 4, MAX_ZH_CHARS,
+               r"何|哪|怎|什麼|多少|幾|是否|可否|有多|會不會|能不能|有沒有|可不可以|是不是|了嗎|嗎$|呢$"),
+        "en": ("?", 8, MAX_EN_CHARS,
+               r"\b(?:who|what|when|where|why|which|whose|how|can|could|did|do|does|has|have|had|is|are|was|were|will|would|should|may)\b"),
+    }[lang]
+    body = value[:-1]
+    return (
+        minimum <= len(value) <= maximum
+        and value.endswith(mark)
+        and not re.search(r"[?？!！。]|\.[\s]+[A-Z]", body)
+        and not _UNSAFE_RE.search(value)
+        and re.search(question_pattern, body, re.IGNORECASE) is not None
+    )
+
+
 def validate_llm_prompts(draft, candidates: list[dict]) -> tuple[dict, list[str]] | None:
     rows = draft.get("prompts") if isinstance(draft, dict) else None
     if not isinstance(rows, list) or len(rows) != PROMPT_COUNT:
@@ -182,9 +206,7 @@ def validate_llm_prompts(draft, candidates: list[dict]) -> tuple[dict, list[str]
         source = source_by_id.get(article_id)
         if source is None or article_id in seen_ids:
             return None
-        if not (4 <= len(zh) <= MAX_ZH_CHARS and 8 <= len(en) <= MAX_EN_CHARS):
-            return None
-        if _UNSAFE_RE.search(zh) or _UNSAFE_RE.search(en):
+        if not (is_search_question(zh, "zh") and is_search_question(en, "en")):
             return None
         if not _shares_anchor(zh, source["zhTitle"]):
             return None
@@ -199,15 +221,16 @@ def validate_llm_prompts(draft, candidates: list[dict]) -> tuple[dict, list[str]
     return {"zh": zh_prompts, "en": en_prompts}, source_ids
 
 
-def _truncate(text: str, limit: int) -> str:
-    return text if len(text) <= limit else text[:limit - 1].rstrip() + "…"
-
-
 def deterministic_prompts(candidates: list[dict]) -> tuple[dict, list[str]]:
     zh, en, source_ids = [], [], []
     for row in candidates:
-        zh_prompt = _truncate(f"搜尋：{row['zhTitle']}", MAX_ZH_CHARS)
-        en_prompt = _truncate(f"Explore: {row['enTitle']}", MAX_EN_CHARS)
+        zh_title = row["zhTitle"].rstrip("。.")
+        en_title = row["enTitle"].rstrip("。.")
+        zh_prompt = f"「{zh_title}」是怎麼回事？"
+        en_prompt = f"What's the story behind “{en_title}”?"
+        if not (is_search_question(zh_prompt, "zh")
+                and is_search_question(en_prompt, "en")):
+            continue
         if zh_prompt in zh or en_prompt in en:
             continue
         zh.append(zh_prompt)
@@ -215,22 +238,6 @@ def deterministic_prompts(candidates: list[dict]) -> tuple[dict, list[str]]:
         source_ids.append(row["id"])
         if len(zh) >= PROMPT_COUNT:
             break
-    generic_zh = [
-        "搜尋班號，例如 CI100", "搜尋航空公司", "搜尋機場或城市",
-        "搜尋機型，例如 A350", "探索本月航空新聞", "看看最新航空動態",
-    ]
-    generic_en = [
-        "Search a flight number, e.g. CI100", "Search an airline",
-        "Search an airport or city", "Search an aircraft type, e.g. A350",
-        "Explore this month's aviation news", "See the latest aviation news",
-    ]
-    for zh_prompt, en_prompt in zip(generic_zh, generic_en):
-        if len(zh) >= PROMPT_COUNT:
-            break
-        if zh_prompt in zh or en_prompt in en:
-            continue
-        zh.append(zh_prompt)
-        en.append(en_prompt)
     return {"zh": zh, "en": en}, source_ids
 
 
@@ -267,7 +274,7 @@ def _daily_prompt_rows(payload) -> tuple[tuple[str, str, str], ...]:
     if not all(isinstance(values, list)
                for values in (source_ids, zh_prompts, en_prompts)):
         return ()
-    if not 2 <= len(source_ids) <= 8 \
+    if not 1 <= len(source_ids) <= 8 \
             or not len(source_ids) == len(zh_prompts) == len(en_prompts):
         return ()
 

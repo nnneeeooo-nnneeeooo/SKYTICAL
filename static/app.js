@@ -118,14 +118,7 @@
   var headerSearchForm = document.getElementById("news-search-form");
   var headerSearchInput = document.getElementById("news-search-input");
   var headerSearchClear = document.getElementById("news-search-clear");
-  function queryFromSearchPlaceholder(value) {
-    return String(value || "")
-      .replace(
-        /^(?:搜尋|查詢|尋找|看看|想看|探索|了解|Search|Explore|Find|Look\s+up|Show\s+me)\s*[：:]?\s*/i,
-        ""
-      )
-      .trim();
-  }
+  var suggestedQuery = "";
   if (headerSearchInput) {
     var desktopSearchPlaceholder = headerSearchInput.placeholder;
     try {
@@ -137,16 +130,20 @@
         desktopSearchPlaceholder = searchPlaceholders[randomPlaceholder];
       }
     } catch (e) { /* keep the server-rendered fallback */ }
-    headerSearchInput.dataset.searchSuggestion = desktopSearchPlaceholder;
     headerSearchInput.placeholder = desktopSearchPlaceholder;
+    suggestedQuery = desktopSearchPlaceholder;
+    try {
+      var hintQueries = JSON.parse(
+        headerSearchInput.getAttribute("data-search-hint-queries") || "{}"
+      );
+      if (Object.prototype.hasOwnProperty.call(hintQueries, desktopSearchPlaceholder)) {
+        suggestedQuery = hintQueries[desktopSearchPlaceholder];
+      }
+    } catch (e) { /* keep the displayed question as the query */ }
   }
   if (headerSearchForm && headerSearchInput) {
     headerSearchForm.addEventListener("submit", function (event) {
       if (headerSearchInput.value.trim()) return;
-      if (headerSearchInput.dataset.searchSuggestionEnabled !== "true") return;
-      var suggestedQuery = queryFromSearchPlaceholder(
-        headerSearchInput.dataset.searchSuggestion || headerSearchInput.placeholder
-      );
       if (!suggestedQuery) return;
       headerSearchInput.value = suggestedQuery;
       headerSearchInput.dispatchEvent(new Event("input", { bubbles: true }));

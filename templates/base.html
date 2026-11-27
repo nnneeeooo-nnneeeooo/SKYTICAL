@@ -124,8 +124,8 @@ gtag('config', '{{ ga4_measurement_id }}', {
              type="search" autocomplete="off" enterkeyhint="search"
              placeholder="{{ t.headerSearchPlaceholder }}"
              data-mobile-placeholder="{{ t.searchButton }}"
-             data-search-suggestion-enabled="{{ 'true' if t.headerSearchSuggestionEnabled else 'false' }}"
-             data-search-placeholders='{{ t.headerSearchPlaceholders | tojson }}'>
+             data-search-placeholders='{{ t.headerSearchPlaceholders | tojson }}'
+             data-search-hint-queries='{{ t.headerSearchHintQueries | tojson }}'>
       <button id="news-search-clear" class="header-search-clear" type="button"
               aria-label="{{ t.searchClear }}" title="{{ t.searchClear }}">×</button>
       <button class="header-search-submit" type="submit"
