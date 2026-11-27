@@ -282,8 +282,8 @@ class ProviderError(Exception):
     """Transient failure of a single call; try the next provider."""
 
 
-def _require_model_route(provider: str, model: str) -> None:
-    if not model_route_allowed(provider, model):
+def _require_model_route(provider: str, model: str, *, briefing=False) -> None:
+    if not model_route_allowed(provider, model, briefing=briefing):
         raise ProviderError(f"Model route is not allowed: {provider}:{model}")
 
 
@@ -1366,6 +1366,7 @@ class OpenCodeProvider(NvidiaProvider):
     """
 
     name = "opencode"
+    briefing_model = False
     http_timeout = HTTP_TIMEOUT
 
     def __init__(self, model=None, reasoning_tier=None) -> None:
@@ -1408,7 +1409,8 @@ class OpenCodeProvider(NvidiaProvider):
 
     def _post_json(self, url: str, payload: dict, headers: dict,
                    repair: bool):
-        _require_model_route(self.name, payload.get("model", self.model))
+        _require_model_route(self.name, payload.get("model", self.model),
+                             briefing=self.briefing_model)
         self.http_calls += 1
         if repair:
             self.repair_calls += 1
@@ -1679,16 +1681,16 @@ class OpenAIProvider(OpenCodeProvider):
             model or os.environ.get("AVWIRE_OPENAI_MODEL")
             or OPENAI_DEFAULT_MODEL
         )
-        super().__init__(openai_runtime_model(selected_model), reasoning_tier)
+        super().__init__(openai_runtime_model(selected_model, briefing=self.briefing_model),
+                         reasoning_tier)
 
     def available(self) -> bool:
         return bool(os.environ.get("OPENAI_API_KEY"))
 
     def _post_json(self, url: str, payload: dict, headers: dict,
                    repair: bool):
-        _require_model_route(self.name, self.model)
-        # Send the actual model ID. A stale private Luna mapping must never
-        # redirect Terra calls while provenance claims a different model.
+        _require_model_route(self.name, self.model, briefing=self.briefing_model)
+        # Send the same model ID recorded in the request provenance.
         payload = {**payload, "model": self.model}
         from paid_budget import BudgetDenied, post
         try:

@@ -159,12 +159,14 @@ def _validate(draft, evidence: dict, window_start: str | None = None) -> dict:
 
 def make_provider():
     # Rendering and extractive fallbacks need no provider import or API key.
+    from model_config import BRIEFING_OPENAI_MODEL
     from providers import OpenAIProvider
 
     class BriefingWriterProvider(OpenAIProvider):
         budget_purpose = "summary"
+        briefing_model = True
 
-    return BriefingWriterProvider(model=os.environ.get("BRIEFING_WRITER_MODEL") or "gpt-6.1-terra")
+    return BriefingWriterProvider(model=os.environ.get("BRIEFING_WRITER_MODEL") or BRIEFING_OPENAI_MODEL)
 
 
 def write_briefing(briefing: dict, articles: list[dict], old: dict | None = None) -> bool:
@@ -183,7 +185,11 @@ def write_briefing(briefing: dict, articles: list[dict], old: dict | None = None
         return False
     evidence = {item["article_id"]: _evidence(lookup[item["article_id"]]) for item in items}
     digest = hashlib.sha256(json.dumps(evidence, ensure_ascii=False, sort_keys=True).encode()).hexdigest()
-    if old and old.get("writer_input_digest") == digest and old.get("generation_mode") == "model_written":
+    provider = make_provider()
+    generation_model = {"provider": "openai", "model": provider.model, "reasoning_effort": "max"}
+    if (old and old.get("writer_input_digest") == digest
+            and old.get("generation_mode") == "model_written"
+            and old.get("generation_model") == generation_model):
         cached = {item.get("article_id"): item for section in (old.get("sections") or {}).values() for item in section}
         cached_headlines = {key: normalize_zh_headline(value.get("headline"))
                             for key, value in cached.items()}
@@ -197,7 +203,6 @@ def write_briefing(briefing: dict, articles: list[dict], old: dict | None = None
             for key in ("generation_mode", "generation_model", "writer_input_digest"):
                 briefing[key] = old[key]
             return True
-    provider = make_provider()
     if not provider.available():
         briefing["warnings"].append("briefing writer unavailable; retained verified article copy")
         briefing["status"] = "partial"
@@ -223,7 +228,7 @@ def write_briefing(briefing: dict, articles: list[dict], old: dict | None = None
                         item[target_key] = clean_copy(row[source_key])
                     item["writer_evidence"] = row["evidence"]
                 briefing["generation_mode"] = "model_written"
-                briefing["generation_model"] = {"provider": "openai", "model": provider.model, "reasoning_effort": "max"}
+                briefing["generation_model"] = generation_model
                 briefing["writer_input_digest"] = digest
                 return True
             except (ProviderAuthError, ProviderQuotaError):

@@ -1,4 +1,4 @@
-"""Pre-request, persistent USD reservations for the site's Terra API budget.
+"""Pre-request, persistent USD reservations for the site's OpenAI API budget.
 
 Only enabled by AVWIRE_PAID_BUDGET_ENABLED=true (production workflows opt in).
 Unknown/aborted requests keep their entire reservation. No prompts, secrets,
@@ -15,11 +15,11 @@ from contextlib import contextmanager
 from datetime import datetime, timedelta, timezone
 
 from common import DATA_DIR, ROOT, save_json
+from model_config import BRIEFING_OPENAI_MODEL, OPENAI_DEFAULT_MODEL
 
 CONFIG_PATH = ROOT / "config" / "luna_policy.json"
 TPE = timezone(timedelta(hours=8))
-# Accounting only; never sent as a request cap. Terra's documented native output
-# capacity: https://developers.openai.com/api/docs/models/gpt-6.1-terra
+# Accounting only; both configured OpenAI models have this native output capacity.
 OPENAI_OUTPUT_RESERVATION_TOKENS = 128_000
 
 
@@ -118,21 +118,29 @@ def output_reservation_tokens(payload):
     return outputs
 
 
-def reserve(payload, purpose="draft", model="gpt-6.1-terra", now=None):
+def _model_policy(model):
+    cfg = policy()
+    if model == OPENAI_DEFAULT_MODEL:
+        return cfg
+    if model == BRIEFING_OPENAI_MODEL:
+        # https://developers.openai.com/api/docs/models/gpt-6-luna
+        return {**cfg, "input_usd_per_million": 0.10, "output_usd_per_million": 0.50}
+    raise BudgetDenied("no configured budget price for this OpenAI model")
+
+
+def reserve(payload, purpose="draft", model=OPENAI_DEFAULT_MODEL, now=None):
     if not enabled():
         return None
-    if model != "gpt-6.1-terra":
-        raise BudgetDenied("no configured budget price for this OpenAI model")
     if purpose not in {"draft", "review", "summary"}:
         raise BudgetDenied("unknown paid budget purpose")
-    cfg = policy()
+    cfg = _model_policy(model)
     tools = payload.get("max_tool_calls", 0) if payload.get("tools") else 0
     if payload.get("tools") and not tools:
         raise BudgetDenied("unbounded paid tools")
     # UTF-8 bytes conservatively bound prompt tokens, with room for framing.
     inputs = len(json.dumps(payload, ensure_ascii=False).encode("utf-8")) + 4096
     if tools:
-        inputs += 1_050_000  # bound dynamic search context by Terra's context window
+        inputs += 1_050_000  # bound dynamic search context by the model context window
     outputs = output_reservation_tokens(payload)
     amount = _cost(inputs, outputs, tools, cfg)
     local = (now or datetime.now(timezone.utc)).astimezone(TPE)
@@ -157,13 +165,13 @@ def reserve(payload, purpose="draft", model="gpt-6.1-terra", now=None):
     return token
 
 
-def settle(token, data):
+def settle(token, data, *, model=OPENAI_DEFAULT_MODEL):
     if token is None:
         return
     meta = data.get("usage") or {}
     if not all(type(meta.get(key)) is int and meta[key] >= 0 for key in ("input_tokens", "output_tokens")):
         return  # uncertain spend remains fully charged
-    cfg = policy()
+    cfg = _model_policy(model)
     tool_calls = sum(1 for item in data.get("output", [])
                      if isinstance(item, dict) and item.get("type") == "web_search_call")
     actual = _cost(meta["input_tokens"], meta["output_tokens"], tool_calls, cfg)
@@ -185,18 +193,18 @@ def settle(token, data):
         confirmed = daily["total"] - outstanding
         if confirmed >= _micros(cfg["daily_warning_usd"]) and not daily.get("warned_usd2"):
             daily["warned_usd2"] = 1
-            print(f"::warning::SKYTICAL Terra API confirmed daily usage reached "
+            print(f"::warning::SKYTICAL OpenAI API confirmed daily usage reached "
                   f"US${cfg['daily_warning_usd']:.2f} on {hold['day']} Taipei time; "
                   "this is a notification, not a spending cap")
         save_json(_path(), row)
 
 
-def post(sender, url, payload, *, purpose="draft", model="gpt-6.1-terra", **kwargs):
+def post(sender, url, payload, *, purpose="draft", model=OPENAI_DEFAULT_MODEL, **kwargs):
     token = reserve(payload, purpose, model)
     response = sender(url, payload, **kwargs)
     try:
         data = response.json()
     except (ValueError, TypeError):
         return response  # retain the full hold for unaccounted errors
-    settle(token, data)
+    settle(token, data, model=model)
     return response

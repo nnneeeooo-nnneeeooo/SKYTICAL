@@ -132,12 +132,12 @@ jobs:
           AVWIRE_OPENAI_MODEL: ${{ vars.AVWIRE_OPENAI_MODEL }}
           AVWIRE_PROVIDER_ORDER: gemini:gemini-3.6-flash,gemini:gemini-3.5-flash,nvidia:nvidia/nemotron-3-ultra-550b-a55b,openrouter:nvidia/nemotron-3-ultra-550b-a55b:free,groq:openai/gpt-oss-120b,cloudflare:@cf/openai/gpt-oss-120b,openai:gpt-6.1-terra
           BRIEFING_WRITER: "true"
-          BRIEFING_WRITER_MODEL: gpt-6.1-terra
+          BRIEFING_WRITER_MODEL: gpt-6-luna
           BRIEFING_WRITER_EFFORT: max
           BRIEFING_WRITER_CALLS_MAX: '2'
           BRIEFING_GROUNDED: "true"
           BRIEFING_GROUNDED_PROVIDER: openai
-          BRIEFING_GROUNDED_MODEL: gpt-6.1-terra
+          BRIEFING_GROUNDED_MODEL: gpt-6-luna
           BRIEFING_GROUNDED_EFFORT: max
           BRIEFING_LLM_INTRO: "false"
           BRIEFING_MAX_ITEMS: ${{ vars.BRIEFING_MAX_ITEMS }}

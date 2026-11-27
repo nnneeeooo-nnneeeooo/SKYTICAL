@@ -152,6 +152,16 @@ def test_search_and_unknown_model_are_bounded():
         budget.reserve(PAYLOAD, model="unpriced-model", now=NOW)
 
 
+def test_luna_usage_is_reserved_and_settled_at_luna_rates():
+    terra = budget.reserve(PAYLOAD, now=NOW)
+    luna = budget.reserve(PAYLOAD, model="gpt-6-luna", now=NOW)
+    holds = read()["reservations"]
+    assert holds[luna]["micros"] == (holds[terra]["micros"] + 9) // 10
+    budget.settle(luna, {"usage": {"input_tokens": 800, "output_tokens": 400}},
+                  model="gpt-6-luna")
+    assert read()["days"]["2026-11-01"]["total"] == holds[terra]["micros"] + 300
+
+
 def test_two_dollar_settled_warning_is_emitted_once(capsys):
     seed(day=1900000, month=1900000)
     for _ in range(3):
@@ -312,11 +322,11 @@ def test_two_dollar_issue_notification_is_assigned_and_deduplicated(monkeypatch)
         sync._notify_daily_usage(repo, headers, read(), now=NOW)
         assert post.call_count == 1
         notice = post.call_args.kwargs["json"]
-        assert notice["title"] == "SKYTICAL Terra API daily USD 2 alert 2026-11-01"
+        assert notice["title"] == "SKYTICAL OpenAI API daily USD 2 alert 2026-11-01"
         assert notice["assignees"] == ["owner"]
         assert "不會限制或停止 API" in notice["body"]
 
-        found.json.return_value = {"items": [{"title": notice["title"]}]}
+        found.json.return_value = {"items": [{"title": "SKYTICAL Terra API daily USD 2 alert 2026-11-01"}]}
         sync._notify_daily_usage(repo, headers, read(), now=NOW)
         assert post.call_count == 1
         assert get.call_count == 2
