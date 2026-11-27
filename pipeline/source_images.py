@@ -17,7 +17,7 @@ from common import USER_AGENT, load_json
 from image_captions import clean_description, source_description, image_identity
 
 
-PARSER_VERSION = 5
+PARSER_VERSION = 6
 _AEROTIME_STOCK_CREDIT_RE = re.compile(
     r"Shutterstock|Wikimedia Commons|Getty Images?|Adobe Stock|"
     r"Unsplash|Pexels|Flickr", re.I)
@@ -43,6 +43,45 @@ def official_provider(url):
     return None
 
 
+def _image_url(img, page_url):
+    """Return one real lazy/srcset/src image URL, resolved to an absolute URL."""
+    for attr in ("data-lazy-src", "data-src", "data-original", "src"):
+        value = img.get(attr)
+        if not isinstance(value, str) or not value.strip():
+            continue
+        url = urljoin(page_url, unescape(value.strip()))
+        identity = image_identity(url)
+        if (identity[0] and not re.search(
+                r"(?:^|[/_.-])(?:placeholder|spacer|blank|pixel|loading)(?:[/_.-]|$)",
+                identity[1], re.I)):
+            return url
+    for attr in ("data-srcset", "srcset"):
+        value = img.get(attr)
+        if not isinstance(value, str):
+            continue
+        # A srcset is a set of sizes for one image; use its largest declared
+        # candidate and never turn the responsive variants into a gallery.
+        options = []
+        for item in value.split(","):
+            pieces = item.strip().split()
+            if not pieces:
+                continue
+            width = 0
+            if len(pieces) > 1:
+                match = re.fullmatch(r"(\d+(?:\.\d+)?)(w|x)", pieces[1])
+                if match:
+                    width = float(match.group(1)) * (100000 if match.group(2) == "x" else 1)
+            options.append((width, pieces[0]))
+        for _, raw in sorted(options, reverse=True):
+            url = urljoin(page_url, unescape(raw))
+            identity = image_identity(url)
+            if (identity[0] and not re.search(
+                    r"(?:^|[/_.-])(?:placeholder|spacer|blank|pixel|loading)(?:[/_.-]|$)",
+                    identity[1], re.I)):
+                return url
+    return ""
+
+
 def parse_official_photo(html, source_url):
     """Accept official airline/airport pictures without a license-text gate.
 
@@ -58,9 +97,11 @@ def parse_official_photo(html, source_url):
     for meta in soup.select('meta[property="og:image"], meta[name="twitter:image"]'):
         candidates.append(meta.get("content", ""))
     for img in soup.select("article img, main img"):
-        candidates.append(img.get("src") or img.get("data-src") or "")
+        candidates.append(_image_url(img, source_url))
     seen = set()
     for raw in candidates:
+        if not isinstance(raw, str) or not raw.strip():
+            continue
         url = urljoin(source_url, unescape(raw))
         identity = image_identity(url)
         if not identity[0] or identity in seen:
@@ -76,8 +117,13 @@ def parse_official_photo(html, source_url):
         subject = description["subject"]
         credit = provider
         for img in soup.find_all("img"):
-            if not any(image_identity(img.get(key, ""), source_url) == identity
-                       for key in ("src", "data-src", "data-lazy-src")):
+            img_urls = [img.get(key, "") for key in
+                        ("src", "data-src", "data-lazy-src", "data-original")]
+            for key in ("srcset", "data-srcset"):
+                img_urls.extend(part.strip().split()[0] for part in
+                                str(img.get(key, "")).split(",") if part.strip())
+            if not any(image_identity(value, source_url) == identity
+                       for value in img_urls):
                 continue
             figure = img.find_parent("figure")
             caption = figure.find("figcaption") if figure else None
@@ -342,11 +388,19 @@ def lookup_source_photos(article):
                     img = figure.find("img")
                     if not img or not figure.find("figcaption"):
                         continue
-                    image_url = next((img.get(k) for k in ("src", "data-src", "data-lazy-src")
-                                      if str(img.get(k, "")).startswith("https://")), "")
+                    # Publishers often leave a tracking/placeholder URL in src
+                    # while the actual image lives in a lazy-loading attribute.
+                    # Use the best real image field, resolving relative URLs
+                    # against the cited page. The adapters below still enforce
+                    # each publisher's exact image host/path and caption rules.
+                    image_url = _image_url(img, url)
                     if not image_url:
                         continue
                     fragment = BeautifulSoup(str(figure), "html.parser")
+                    fragment_img = fragment.find("img")
+                    # Bind the adapter to the chosen real image, regardless of
+                    # a stale placeholder src retained by the publisher.
+                    fragment_img["src"] = image_url
                     if not cna:
                         fragment.find("figure")["class"] = ["cs-entry__post-media"]
                     meta = fragment.new_tag("meta", property="og:image", content=image_url)

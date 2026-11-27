@@ -72,7 +72,8 @@ def source_description(html: str, image_url: str, source_url: str,
 
     for img in soup.find_all("img"):
         urls = [img.get(k, "") for k in
-                ("src", "data-src", "data-lazy-src", "data-img-url")]
+                ("src", "data-src", "data-lazy-src", "data-img-url",
+                 "data-original")]
         for key in ("srcset", "data-srcset"):
             urls.extend(part.strip().split()[0] for part in
                         str(img.get(key, "")).split(",") if part.strip())
