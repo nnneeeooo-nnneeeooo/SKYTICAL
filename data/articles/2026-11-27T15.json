@@ -333,6 +333,404 @@
           "photoYear": 2026
         }
       ]
+    },
+    {
+      "id": "a-20261127-1524-five-independent-aviation-events-a-round",
+      "publishedUtc": "2026-11-27T15:24Z",
+      "cat": "safety",
+      "primarySource": "The Aviation Herald",
+      "sourceImageCandidates": [],
+      "zh": {
+        "title": "五起獨立航空事件彙整：衝出跑道、跑道偏出及風擋裂痕",
+        "summary": "Fedex MD-11在Miami降落時衝出跑道，另有四起獨立航空事件",
+        "body": [
+          "以下五起航空事件彼此獨立，沒有資料指出它們互相關聯。",
+          "1. Fedex 的 MD-11（ICAO機型代碼MD11）於2026年11月25日在Miami降落時衝出跑道。",
+          "2. Western Global 的波音747-400（ICAO機型代碼B744）於2026年11月25日在Tokyo反向滑行（backtrack）時發生跑道偏出。",
+          "3. Eastern 的波音777-200（ICAO機型代碼B772）於2026年11月25日在大西洋上空出現風擋裂痕。",
+          "4. France B773（波音777-300，ICAO機型代碼B773）於2026年11月25日在Paris附近出現引擎電子控制問題。",
+          "5. THY 的波音737-800（ICAO機型代碼B738）於2026年11月25日在Batumi發生多次雷擊。"
+        ]
+      },
+      "en": {
+        "title": "Five independent aviation events: a roundup of runway and aircraft incidents",
+        "summary": "Fedex MD-11 overran a runway at Miami; four other independent aviation events were reported.",
+        "body": [
+          "The five events are independent, with no stated relationship between them.",
+          "1. Fedex's MD-11 (ICAO type code MD11) overran a runway on landing at Miami on Nov. 25, 2026.",
+          "2. Western Global's Boeing 747-400 (ICAO type code B744) had a runway excursion while backtracking at Tokyo on Nov. 25, 2026.",
+          "3. Eastern's Boeing 777-200 (ICAO type code B772) had a cracked windshield over the Atlantic on Nov. 25, 2026.",
+          "4. France B773 (Boeing 777-300, ICAO type code B773) had an engine electronic control problem near Paris on Nov. 25, 2026.",
+          "5. THY's Boeing 737-800 (ICAO type code B738) experienced multiple lightning strikes at Batumi on Nov. 25, 2026."
+        ]
+      },
+      "sources": [
+        {
+          "name": "The Aviation Herald — Incident: Fedex MD11 at Miami on Nov 25th 2026, overran run…",
+          "url": "https://avherald.com/h?article=548813e0&opt=0"
+        },
+        {
+          "name": "The Aviation Herald — Incident: Western Global B744 at Tokyo on Nov 25th 2026, ru…",
+          "url": "https://avherald.com/h?article=54872d75"
+        },
+        {
+          "name": "The Aviation Herald — Incident: Eastern B772 over Atlantic on Nov 25th 2026, crac…",
+          "url": "https://avherald.com/h?article=54888f16&opt=0"
+        },
+        {
+          "name": "The Aviation Herald — Incident: France B773 near Paris on Nov 25th 2026, engine e…",
+          "url": "https://avherald.com/h?article=54889bdb"
+        },
+        {
+          "name": "The Aviation Herald — Incident: THY B738 at Batumi on Nov 25th 2026, multiple lig…",
+          "url": "https://avherald.com/h?article=54889307"
+        }
+      ],
+      "articleFormat": "roundup",
+      "sourcePublishedUtc": "2026-11-26T10:14Z",
+      "writer": "openai:gpt-6-luna",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Fedex MD11於2026年11月25日在Miami降落時衝出跑道。",
+          "sourceQuote": "Incident: Fedex MD11 at Miami on Nov 25th 2026, overran runway on landing",
+          "sourceUrl": "https://avherald.com/h?article=548813e0&opt=0",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Western Global B744於2026年11月25日在Tokyo反向滑行時發生跑道偏出。",
+          "sourceQuote": "Incident: Western Global B744 at Tokyo on Nov 25th 2026, runway excursion on backtrack",
+          "sourceUrl": "https://avherald.com/h?article=54872d75",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Eastern B772於2026年11月25日在大西洋上空出現風擋裂痕。",
+          "sourceQuote": "Incident: Eastern B772 over Atlantic on Nov 25th 2026, cracked windshield",
+          "sourceUrl": "https://avherald.com/h?article=54888f16&opt=0",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "France B773於2026年11月25日在Paris附近出現引擎電子控制問題。",
+          "sourceQuote": "Incident: France B773 near Paris on Nov 25th 2026, engine electronic control problem",
+          "sourceUrl": "https://avherald.com/h?article=54889bdb",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "THY B738於2026年11月25日在Batumi發生多次雷擊。",
+          "sourceQuote": "Incident: THY B738 at Batumi on Nov 25th 2026, multiple lightning strikes",
+          "sourceUrl": "https://avherald.com/h?article=54889307",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [
+        "accident_or_serious_incident"
+      ],
+      "eventStatus": "confirmed",
+      "entities": {
+        "airlines": [
+          "Fedex",
+          "Western Global",
+          "Eastern",
+          "France",
+          "THY"
+        ],
+        "aircraft_models": [
+          "MD11",
+          "B744",
+          "B772",
+          "B773",
+          "B738"
+        ],
+        "locations": [
+          "Miami",
+          "Tokyo",
+          "Atlantic",
+          "Paris",
+          "Batumi"
+        ],
+        "event_dates": [
+          "Nov 25th 2026"
+        ]
+      },
+      "entityEvidence": [
+        {
+          "entityType": "airlines",
+          "value": "Fedex",
+          "sourceQuote": "Incident: Fedex MD11 at Miami on Nov 25th 2026, overran runway on landing",
+          "sourceUrl": "https://avherald.com/h?article=548813e0&opt=0"
+        },
+        {
+          "entityType": "airlines",
+          "value": "Western Global",
+          "sourceQuote": "Incident: Western Global B744 at Tokyo on Nov 25th 2026, runway excursion on backtrack",
+          "sourceUrl": "https://avherald.com/h?article=54872d75"
+        },
+        {
+          "entityType": "airlines",
+          "value": "Eastern",
+          "sourceQuote": "Incident: Eastern B772 over Atlantic on Nov 25th 2026, cracked windshield",
+          "sourceUrl": "https://avherald.com/h?article=54888f16&opt=0"
+        },
+        {
+          "entityType": "airlines",
+          "value": "France",
+          "sourceQuote": "Incident: France B773 near Paris on Nov 25th 2026, engine electronic control problem",
+          "sourceUrl": "https://avherald.com/h?article=54889bdb"
+        },
+        {
+          "entityType": "airlines",
+          "value": "THY",
+          "sourceQuote": "Incident: THY B738 at Batumi on Nov 25th 2026, multiple lightning strikes",
+          "sourceUrl": "https://avherald.com/h?article=54889307"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "MD11",
+          "sourceQuote": "Incident: Fedex MD11 at Miami on Nov 25th 2026, overran runway on landing",
+          "sourceUrl": "https://avherald.com/h?article=548813e0&opt=0"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "B744",
+          "sourceQuote": "Incident: Western Global B744 at Tokyo on Nov 25th 2026, runway excursion on backtrack",
+          "sourceUrl": "https://avherald.com/h?article=54872d75"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "B772",
+          "sourceQuote": "Incident: Eastern B772 over Atlantic on Nov 25th 2026, cracked windshield",
+          "sourceUrl": "https://avherald.com/h?article=54888f16&opt=0"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "B773",
+          "sourceQuote": "Incident: France B773 near Paris on Nov 25th 2026, engine electronic control problem",
+          "sourceUrl": "https://avherald.com/h?article=54889bdb"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "B738",
+          "sourceQuote": "Incident: THY B738 at Batumi on Nov 25th 2026, multiple lightning strikes",
+          "sourceUrl": "https://avherald.com/h?article=54889307"
+        },
+        {
+          "entityType": "locations",
+          "value": "Miami",
+          "sourceQuote": "Incident: Fedex MD11 at Miami on Nov 25th 2026, overran runway on landing",
+          "sourceUrl": "https://avherald.com/h?article=548813e0&opt=0"
+        },
+        {
+          "entityType": "locations",
+          "value": "Tokyo",
+          "sourceQuote": "Incident: Western Global B744 at Tokyo on Nov 25th 2026, runway excursion on backtrack",
+          "sourceUrl": "https://avherald.com/h?article=54872d75"
+        },
+        {
+          "entityType": "locations",
+          "value": "Atlantic",
+          "sourceQuote": "Incident: Eastern B772 over Atlantic on Nov 25th 2026, cracked windshield",
+          "sourceUrl": "https://avherald.com/h?article=54888f16&opt=0"
+        },
+        {
+          "entityType": "locations",
+          "value": "Paris",
+          "sourceQuote": "Incident: France B773 near Paris on Nov 25th 2026, engine electronic control problem",
+          "sourceUrl": "https://avherald.com/h?article=54889bdb"
+        },
+        {
+          "entityType": "locations",
+          "value": "Batumi",
+          "sourceQuote": "Incident: THY B738 at Batumi on Nov 25th 2026, multiple lightning strikes",
+          "sourceUrl": "https://avherald.com/h?article=54889307"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "Nov 25th 2026",
+          "sourceQuote": "Incident: Fedex MD11 at Miami on Nov 25th 2026, overran runway on landing",
+          "sourceUrl": "https://avherald.com/h?article=548813e0&opt=0"
+        }
+      ],
+      "evidenceVersion": 2
+    },
+    {
+      "id": "a-20261127-1524-norse-atlantics-norwegian-subsidiary-to",
+      "publishedUtc": "2026-11-27T15:24Z",
+      "cat": "biz",
+      "primarySource": "Aerospace Global News",
+      "image": null,
+      "sourceImageCandidates": [
+        {
+          "url": "https://aerospaceglobalnews.com/wp-content/uploads/2025/10/AdobeStock_1197878845_Editorial_Use_Only-scaled.jpeg",
+          "sources": [
+            {
+              "url": "https://aerospaceglobalnews.com/news/norse-atlantics-norwegian-airline-to-file-for-bankruptcy/",
+              "name": "Aerospace Global News"
+            }
+          ]
+        }
+      ],
+      "zh": {
+        "title": "Norse Atlantic挪威營運子公司將聲請破產 所有航班取消",
+        "summary": "Norse Atlantic挪威營運子公司將聲請破產，所有航班已取消。",
+        "body": [
+          "Norse Atlantic Airways於11月27日確認，其挪威營運子公司將聲請破產；在籌措足以維持航空公司營運的資金未果後，Norse Atlantic Airways AS 董事會已決定向挪威的 Agder District Court 提出破產聲請。",
+          "這項破產決定適用於 Norse Atlantic 的挪威營運公司，而非整個航空集團；上市母公司 Norse Atlantic ASA 與英國營運子公司不在已宣佈的破產程序之列。Norse Atlantic 已取消所有航班並停止售票，已有訂位的旅客可能需要另作旅行安排；航班目前尚無確認的恢復日期。"
+        ]
+      },
+      "en": {
+        "title": "Norse Atlantic’s Norwegian subsidiary to file for bankruptcy; all flights cancelled",
+        "summary": "Norse Atlantic's Norwegian subsidiary is to file for bankruptcy; all flights are cancelled and ticket sales have stopped.",
+        "body": [
+          "Norse Atlantic Airways confirmed on 27 November that its Norwegian operating subsidiary is to file for bankruptcy after attempts to secure enough funding to keep the airline flying failed. The board of Norse Atlantic Airways AS has decided to file a bankruptcy petition with Agder District Court in Norway.",
+          "The bankruptcy decision applies to Norse Atlantic’s Norwegian operating company, not the entire airline group. Norse Atlantic ASA and the UK operating subsidiary are not included in the announced proceedings. Norse Atlantic has cancelled all flights and stopped selling tickets, leaving passengers with existing bookings facing the prospect of having to make alternative travel arrangements. No date has been confirmed for flights to resume."
+        ]
+      },
+      "sources": [
+        {
+          "name": "Aerospace Global News — Norse Atlantic’s Norwegian airline to file for bankruptcy:…",
+          "url": "https://aerospaceglobalnews.com/news/norse-atlantics-norwegian-airline-to-file-for-bankruptcy/"
+        }
+      ],
+      "articleFormat": "brief",
+      "sourcePublishedUtc": "2026-11-27T00:00Z",
+      "writer": "openai:gpt-6-luna",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "On 27 November, Norse Atlantic Airways confirmed that its Norwegian operating subsidiary is to file for bankruptcy after attempts to secure enough funding to keep the airline flying failed.",
+          "sourceQuote": "Norse Atlantic Airways confirmed today (27 November) that its Norwegian operating subsidiary is to file for bankruptcy after attempts to secure enough funding to keep the airline flying failed.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/norse-atlantics-norwegian-airline-to-file-for-bankruptcy/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The board of Norse Atlantic Airways AS decided to file a bankruptcy petition with Agder District Court in Norway.",
+          "sourceQuote": "The board of Norse Atlantic Airways AS has decided to file a bankruptcy petition with Agder District Court in Norway.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/norse-atlantics-norwegian-airline-to-file-for-bankruptcy/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Norse Atlantic cancelled all flights and stopped selling tickets, leaving passengers with existing bookings facing alternative travel arrangements.",
+          "sourceQuote": "Norse Atlantic has now cancelled all flights and stopped selling tickets, leaving passengers with existing bookings facing the prospect of having to make alternative travel arrangements.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/norse-atlantics-norwegian-airline-to-file-for-bankruptcy/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The bankruptcy decision applies to Norse Atlantic’s Norwegian operating company, rather than the entire airline group.",
+          "sourceQuote": "The bankruptcy decision applies to Norse Atlantic’s Norwegian operating company, rather than the entire airline group.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/norse-atlantics-norwegian-airline-to-file-for-bankruptcy/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "Norse Atlantic ASA and the UK operating subsidiary are not included in the announced bankruptcy proceedings.",
+          "sourceQuote": "Its listed parent company, Norse Atlantic ASA, and UK operating subsidiary are not included in the announced bankruptcy proceedings.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/norse-atlantics-norwegian-airline-to-file-for-bankruptcy/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "There is currently no confirmed date for flights to resume.",
+          "sourceQuote": "However, there is currently no confirmed date for flights to resume.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/norse-atlantics-norwegian-airline-to-file-for-bankruptcy/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [
+        "financial_or_order_claim",
+        "unconfirmed_or_developing"
+      ],
+      "eventStatus": "planned",
+      "entities": {
+        "organizations": [
+          "Norse Atlantic Airways AS",
+          "Norse Atlantic ASA",
+          "Agder District Court"
+        ],
+        "airlines": [
+          "Norse Atlantic Airways"
+        ],
+        "locations": [
+          "Norway",
+          "UK"
+        ],
+        "event_dates": [
+          "27 November"
+        ]
+      },
+      "entityEvidence": [
+        {
+          "entityType": "organizations",
+          "value": "Norse Atlantic Airways AS",
+          "sourceQuote": "The board of Norse Atlantic Airways AS has decided to file a bankruptcy petition with Agder District Court in Norway.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/norse-atlantics-norwegian-airline-to-file-for-bankruptcy/"
+        },
+        {
+          "entityType": "organizations",
+          "value": "Norse Atlantic ASA",
+          "sourceQuote": "Its listed parent company, Norse Atlantic ASA, and UK operating subsidiary are not included in the announced bankruptcy proceedings.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/norse-atlantics-norwegian-airline-to-file-for-bankruptcy/"
+        },
+        {
+          "entityType": "organizations",
+          "value": "Agder District Court",
+          "sourceQuote": "The board of Norse Atlantic Airways AS has decided to file a bankruptcy petition with Agder District Court in Norway.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/norse-atlantics-norwegian-airline-to-file-for-bankruptcy/"
+        },
+        {
+          "entityType": "airlines",
+          "value": "Norse Atlantic Airways",
+          "sourceQuote": "Norse Atlantic Airways confirmed today (27 November) that its Norwegian operating subsidiary is to file for bankruptcy after attempts to secure enough funding to keep the airline flying failed.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/norse-atlantics-norwegian-airline-to-file-for-bankruptcy/"
+        },
+        {
+          "entityType": "locations",
+          "value": "Norway",
+          "sourceQuote": "The board of Norse Atlantic Airways AS has decided to file a bankruptcy petition with Agder District Court in Norway.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/norse-atlantics-norwegian-airline-to-file-for-bankruptcy/"
+        },
+        {
+          "entityType": "locations",
+          "value": "UK",
+          "sourceQuote": "Its listed parent company, Norse Atlantic ASA, and UK operating subsidiary are not included in the announced bankruptcy proceedings.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/norse-atlantics-norwegian-airline-to-file-for-bankruptcy/"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "27 November",
+          "sourceQuote": "Norse Atlantic Airways confirmed today (27 November)",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/norse-atlantics-norwegian-airline-to-file-for-bankruptcy/"
+        }
+      ],
+      "evidenceVersion": 2
     }
   ]
 }
