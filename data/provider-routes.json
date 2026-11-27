@@ -47,13 +47,13 @@
       "schemaMode": null
     },
     "gemini:gemini-3.6-flash": {
-      "status": "waiting",
-      "untilUtc": "2026-11-27T16:16Z",
-      "checkedUtc": "2026-11-27T10:16Z",
-      "failureClass": "timeout",
-      "diagnostic": "ReadTimeout",
+      "status": "verified",
+      "untilUtc": "2026-11-28T17:34Z",
+      "checkedUtc": "2026-11-27T17:34Z",
+      "failureClass": null,
+      "diagnostic": null,
       "probeVersion": 3,
-      "schemaMode": null
+      "schemaMode": "prompt"
     },
     "gemini:gemini-3.5-flash": {
       "status": "verified",
@@ -102,37 +102,37 @@
     },
     "gemini:gemini-3.8-flash": {
       "status": "waiting",
-      "untilUtc": "2026-11-27T16:16Z",
-      "checkedUtc": "2026-11-27T10:16Z",
-      "failureClass": "http_error",
-      "diagnostic": "HTTP 503 code=UNAVAILABLE",
+      "untilUtc": "2026-11-27T23:34Z",
+      "checkedUtc": "2026-11-27T17:34Z",
+      "failureClass": "timeout",
+      "diagnostic": "ReadTimeout",
       "probeVersion": 3,
       "schemaMode": null
     },
     "gemini:gemini-3.5-flash-lite": {
       "status": "waiting",
-      "untilUtc": "2026-11-27T16:16Z",
-      "checkedUtc": "2026-11-27T10:16Z",
-      "failureClass": "http_error",
-      "diagnostic": "HTTP 503 code=UNAVAILABLE",
+      "untilUtc": "2026-11-27T23:34Z",
+      "checkedUtc": "2026-11-27T17:34Z",
+      "failureClass": "unexpected",
+      "diagnostic": "publish_brief body does not meet brief contract (zh=153 content characters, en=63 words, paragraphs=2/2)",
       "probeVersion": 3,
       "schemaMode": null
     },
     "gemini:gemini-3.1-flash-lite": {
       "status": "waiting",
-      "untilUtc": "2026-11-27T16:16Z",
-      "checkedUtc": "2026-11-27T10:16Z",
+      "untilUtc": "2026-11-27T23:34Z",
+      "checkedUtc": "2026-11-27T17:34Z",
       "failureClass": "unexpected",
-      "diagnostic": "F1 claim date is not supported by its sourceQuote",
+      "diagnostic": "F2 claim date is not supported by its sourceQuote",
       "probeVersion": 3,
       "schemaMode": null
     },
     "gemini:gemma-4-31b-it": {
       "status": "waiting",
-      "untilUtc": "2026-11-27T16:16Z",
-      "checkedUtc": "2026-11-27T10:16Z",
-      "failureClass": "unexpected",
-      "diagnostic": "publish_brief must have an empty decisionReason",
+      "untilUtc": "2026-11-27T23:34Z",
+      "checkedUtc": "2026-11-27T17:34Z",
+      "failureClass": "http_error",
+      "diagnostic": "HTTP 503 code=UNAVAILABLE",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -147,8 +147,8 @@
     },
     "nvidia:z-ai/glm-5.3-flash": {
       "status": "waiting",
-      "untilUtc": "2026-11-27T16:16Z",
-      "checkedUtc": "2026-11-27T10:16Z",
+      "checkedUtc": "2026-11-27T17:34Z",
+      "untilUtc": "2026-11-27T23:34Z",
       "failureClass": "timeout",
       "diagnostic": "ReadTimeout",
       "probeVersion": 3,
@@ -246,8 +246,8 @@
     },
     "cloudflare:@cf/openai/gpt-oss-20b": {
       "status": "waiting",
-      "checkedUtc": "2026-11-27T15:53Z",
       "untilUtc": "2026-11-27T21:53Z",
+      "checkedUtc": "2026-11-27T15:53Z",
       "failureClass": "timeout",
       "diagnostic": "ReadTimeout",
       "probeVersion": 3,
