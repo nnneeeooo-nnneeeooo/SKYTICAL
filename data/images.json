@@ -14267,7 +14267,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-27T14:58:15.099863+00:00"
+      "checked_utc": "2026-11-27T15:21:12.079799+00:00"
     },
     "a-20261122-industry-roundup-12-image-1": {
       "status": "none",
@@ -14304,7 +14304,7 @@
         "kind": "file_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-27T14:58:15.099863+00:00"
+      "checked_utc": "2026-11-27T15:21:12.079799+00:00"
     },
     "a-20261123-industry-roundup-00-image-1": {
       "status": "matched",
@@ -14366,7 +14366,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-27T14:58:15.099863+00:00"
+      "checked_utc": "2026-11-27T15:21:12.079799+00:00"
     },
     "a-20261124-industry-roundup-18-image-2": {
       "status": "none",
@@ -14586,7 +14586,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-27T14:58:15.099863+00:00"
+      "checked_utc": "2026-11-27T15:21:12.079799+00:00"
     },
     "a-20261125-industry-roundup-18-image-1": {
       "status": "matched",
@@ -14628,7 +14628,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-27T14:58:15.099863+00:00"
+      "checked_utc": "2026-11-27T15:21:12.079799+00:00"
     },
     "a-20261126-industry-roundup-00-image-1": {
       "status": "none",
@@ -14752,7 +14752,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-27T14:58:15.099863+00:00"
+      "checked_utc": "2026-11-27T15:21:12.079799+00:00"
     },
     "a-20261126-industry-roundup-12-image-3": {
       "status": "matched",
@@ -15006,7 +15006,34 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-27T14:58:15.099863+00:00"
+      "checked_utc": "2026-11-27T15:21:12.079799+00:00"
+    },
+    "a-20261127-1501-norse-atlantic-s-norwegian-operating-sub": {
+      "status": "none",
+      "attempts": 1,
+      "rejection_reasons": [
+        "source-photo:no-event-photo",
+        "lookup_official_source_photo:no-result",
+        "topic_image:no-result"
+      ],
+      "checked_utc": "2026-11-27T15:21:12.079799+00:00",
+      "next_retry_utc": "2026-11-27T21:21:12.079799+00:00"
+    },
+    "a-20261127-1501-starlux-airlines-plans-a-300-million-sha": {
+      "status": "matched",
+      "image": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Starlux_Airlines_Airbus_A350-900_B-58509_at_Taoyuan_February_2026.jpg/1280px-Starlux_Airlines_Airbus_A350-900_B-58509_at_Taoyuan_February_2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "link": "https://commons.wikimedia.org/wiki/Special:Redirect/page/188129487",
+        "credit": "4300streetcar",
+        "license": "CC BY 4.0",
+        "provider": "Wikimedia Commons",
+        "kind": "file_photo",
+        "matched": "STARLUX Airlines Airbus A350-900",
+        "subject": "STARLUX Airlines Airbus A350-900",
+        "description": "Starlux Airlines Airbus A350-900 B-58509 at Taoyuan February 2026",
+        "photoYear": 2026
+      },
+      "checked_utc": "2026-11-27T15:21:12.079799+00:00"
     }
   },
   "sources": {
@@ -19084,6 +19111,12 @@
       "rejection_reason": null,
       "parser_version": 6,
       "next_retry_utc": "2026-11-27T16:40:44.033659+00:00"
+    },
+    "https://www.aerotime.aero/articles/norse-atlantic-airways-files-for-bankruptcy": {
+      "image": null,
+      "rejection_reason": "no-event-photo",
+      "parser_version": 6,
+      "next_retry_utc": "2026-11-27T21:21:12.079799+00:00"
     }
   }
 }

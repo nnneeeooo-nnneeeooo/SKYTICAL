@@ -4419,12 +4419,12 @@
         "https://www.evaair.com/zh-tw/about-eva-air/news/news-releases/2026-11-25-esg-iata.html"
       ],
       "contentFailures": 0,
-      "serviceFailures": 6,
+      "serviceFailures": 7,
       "history": [],
-      "updatedUtc": "2026-11-27T08:46Z",
+      "updatedUtc": "2026-11-27T15:01Z",
       "failureClass": "source_insufficient",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-27T14:46Z",
+      "nextRetryUtc": "2026-11-27T21:01Z",
       "title": "本公司展現ESG領航實力 榮獲七項企業永續大獎 簽約IATA永續採購計畫 成台灣首家航空公司",
       "items": [
         {
@@ -6374,31 +6374,6 @@
       "nextRetryUtc": "2026-11-27T13:46Z",
       "title": "Boeing to win lion’s share of Qantas widebody order over Airbus: Bloomberg"
     },
-    "12c9dac112dbc9c4c662cd8c": {
-      "sourceUrls": [
-        "https://avherald.com/h?article=54872d75&opt=0",
-        "https://avherald.com/h?article=548813e0&opt=0",
-        "https://avherald.com/h?article=54888f16&opt=0",
-        "https://avherald.com/h?article=54889307",
-        "https://avherald.com/h?article=54889bdb",
-        "https://avherald.com/h?article=54897139"
-      ],
-      "contentFailures": 0,
-      "serviceFailures": 1,
-      "status": "waiting",
-      "history": [
-        {
-          "status": "waiting",
-          "contentFailures": 0,
-          "serviceFailures": 2,
-          "updatedUtc": "2026-11-27T11:46Z"
-        }
-      ],
-      "updatedUtc": "2026-11-27T12:46Z",
-      "nextRetryUtc": "2026-11-27T14:46Z",
-      "failureClass": "provider_failure",
-      "title": "Incident: Easyjet A21N at Edinburgh on Nov 26th 2026, engine shut down in flight"
-    },
     "fd91d3f7703dd959ff6c1eb0": {
       "sourceUrls": [
         "https://simpleflying.com/indigo-cancels-all-flights-to-9-international-destinations-see-full-list-now"
@@ -6421,19 +6396,6 @@
           "sourceKey": "simpleflying"
         }
       ]
-    },
-    "d055ecfded2fd6c13422519d": {
-      "sourceUrls": [
-        "https://www.cna.com.tw/news/afe/202611270243.aspx"
-      ],
-      "contentFailures": 0,
-      "serviceFailures": 1,
-      "history": [],
-      "updatedUtc": "2026-11-27T12:46Z",
-      "failureClass": "provider_failure",
-      "status": "waiting",
-      "nextRetryUtc": "2026-11-27T14:46Z",
-      "title": "星宇航空決議辦理現增發行3億股 用於償還銀行借款"
     },
     "3ac2708913a10acdc5434b02": {
       "sourceUrls": [
@@ -6470,6 +6432,62 @@
       "status": "waiting",
       "nextRetryUtc": "2026-11-27T15:51Z",
       "title": "Korean Air turns to smartphones to screen pilots and cabin crew for sleep apnea"
+    },
+    "12c9dac112dbc9c4c662cd8c": {
+      "sourceUrls": [
+        "https://avherald.com/h?article=54872d75",
+        "https://avherald.com/h?article=54872d75&opt=0",
+        "https://avherald.com/h?article=548813e0&opt=0",
+        "https://avherald.com/h?article=54888f16&opt=0",
+        "https://avherald.com/h?article=54889307",
+        "https://avherald.com/h?article=54889bdb",
+        "https://avherald.com/h?article=54897139",
+        "https://avherald.com/h?article=54897139&opt=0"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "status": "waiting",
+      "history": [
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 2,
+          "updatedUtc": "2026-11-27T11:46Z"
+        },
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 1,
+          "updatedUtc": "2026-11-27T12:46Z"
+        }
+      ],
+      "updatedUtc": "2026-11-27T15:01Z",
+      "nextRetryUtc": "2026-11-27T17:01Z",
+      "failureClass": "provider_failure",
+      "title": "Incident: Easyjet A21N at Edinburgh on Nov 26th 2026, engine shut down in flight"
+    },
+    "aa31c917d03e3c9a557a42c0": {
+      "sourceUrls": [
+        "https://www.reuters.com/business/aerospace-defense/norse-atlantic-says-lessors-terminate-aircraft-agreements-2026-11-27"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-27T15:01Z",
+      "failureClass": "source_insufficient",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-27T21:01Z",
+      "title": "Norse Atlantic's Norwegian unit files for bankruptcy as Iran war jolts airlines",
+      "items": [
+        {
+          "url": "https://www.reuters.com/business/aerospace-defense/norse-atlantic-says-lessors-terminate-aircraft-agreements-2026-11-27/",
+          "title": "Norse Atlantic's Norwegian unit files for bankruptcy as Iran war jolts airlines",
+          "summary": "",
+          "publishedUtc": "2026-11-27T07:39Z",
+          "source": "Reuters",
+          "sourceKey": "reuters"
+        }
+      ]
     }
   }
 }
