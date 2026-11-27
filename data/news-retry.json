@@ -4445,12 +4445,12 @@
         "https://www.evaair.com/zh-tw/about-eva-air/news/news-releases/2026-11-25-esg-iata.html"
       ],
       "contentFailures": 0,
-      "serviceFailures": 5,
+      "serviceFailures": 6,
       "history": [],
-      "updatedUtc": "2026-11-27T02:46Z",
+      "updatedUtc": "2026-11-27T08:46Z",
       "failureClass": "source_insufficient",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-27T08:46Z",
+      "nextRetryUtc": "2026-11-27T14:46Z",
       "title": "本公司展現ESG領航實力 榮獲七項企業永續大獎 簽約IATA永續採購計畫 成台灣首家航空公司",
       "items": [
         {
@@ -6229,8 +6229,8 @@
         "https://www.mnd.gov.tw/news/plaact/88359"
       ],
       "contentFailures": 0,
-      "serviceFailures": 0,
-      "status": "ready",
+      "serviceFailures": 1,
+      "status": "waiting",
       "history": [
         {
           "status": "waiting",
@@ -6239,20 +6239,32 @@
           "updatedUtc": "2026-11-26T06:46Z"
         }
       ],
-      "updatedUtc": "2026-11-27T06:46Z",
-      "nextRetryUtc": null
+      "updatedUtc": "2026-11-27T08:46Z",
+      "nextRetryUtc": "2026-11-27T14:46Z",
+      "failureClass": "source_insufficient",
+      "title": "全球資訊網- News Channel - PLA Activities - PLA activities in the waters and airspace around Taiwan",
+      "items": [
+        {
+          "url": "https://www.mnd.gov.tw/news/plaact/88359",
+          "title": "全球資訊網- News Channel - PLA Activities - PLA activities in the waters and airspace around Taiwan",
+          "summary": "",
+          "publishedUtc": "2026-11-27T02:36Z",
+          "source": "國防部・軍聞社",
+          "sourceKey": "mndnews"
+        }
+      ]
     },
     "623fde24d8c6f2de2fd194f4": {
       "sourceUrls": [
         "https://www.cna.com.tw/news/aipl/202611270109.aspx"
       ],
-      "contentFailures": 1,
+      "contentFailures": 2,
       "serviceFailures": 0,
       "history": [],
-      "updatedUtc": "2026-11-27T06:46Z",
+      "updatedUtc": "2026-11-27T08:46Z",
       "failureClass": "content_validation",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-27T08:46Z",
+      "nextRetryUtc": "2026-11-27T14:46Z",
       "title": "26架次共機越中線配合共艦擾台 國軍嚴密掌握應處"
     },
     "00d8a27cb153e6cb3f06bce9": {
@@ -6300,6 +6312,42 @@
           "sourceKey": "simpleflying"
         }
       ]
+    },
+    "630bfbfcaf6cff5469211360": {
+      "sourceUrls": [
+        "https://topics.smt.docomo.ne.jp/article/mrt/region/mrt-3115325"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-27T08:46Z",
+      "failureClass": "source_insufficient",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-27T14:46Z",
+      "title": "日航機が宮崎空港で着陸をやり直そうとした際、地表に接近 国交省が「重大インシデント」に認定",
+      "items": [
+        {
+          "url": "https://topics.smt.docomo.ne.jp/article/mrt/region/mrt-3115325",
+          "title": "日航機が宮崎空港で着陸をやり直そうとした際、地表に接近 国交省が「重大インシデント」に認定",
+          "summary": "",
+          "publishedUtc": "2026-11-26T12:15Z",
+          "source": "ｄメニューニュース",
+          "sourceKey": "japansafety"
+        }
+      ]
+    },
+    "1a33775f26b801a2b3a57074": {
+      "sourceUrls": [
+        "https://aerospaceglobalnews.com/news/boeing-us-air-force-contract-15-kc-46a-pegasus-tankers"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-27T08:46Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-27T10:46Z",
+      "title": "Boeing wins order for 15 more KC-46 tankers amid debate over USAF refuelling strategy News"
     }
   }
 }
