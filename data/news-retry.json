@@ -6146,12 +6146,12 @@
         "https://simpleflying.com/indigo-cancels-all-flights-to-9-international-destinations-see-full-list-now"
       ],
       "contentFailures": 0,
-      "serviceFailures": 3,
+      "serviceFailures": 4,
       "history": [],
-      "updatedUtc": "2026-11-28T00:46Z",
+      "updatedUtc": "2026-11-28T06:46Z",
       "failureClass": "source_insufficient",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-28T06:46Z",
+      "nextRetryUtc": "2026-11-28T12:46Z",
       "title": "IndiGo Cancels All Flights To 9 International Destinations: See Full List Now",
       "items": [
         {
@@ -6537,12 +6537,12 @@
         "https://simpleflying.com/lawmakers-criticize-faa-deploying-new-untested-ai-tool-days-before-nationwide-grounding"
       ],
       "contentFailures": 0,
-      "serviceFailures": 1,
+      "serviceFailures": 2,
       "history": [],
-      "updatedUtc": "2026-11-27T23:53Z",
+      "updatedUtc": "2026-11-28T06:46Z",
       "failureClass": "source_insufficient",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-28T05:53Z",
+      "nextRetryUtc": "2026-11-28T12:46Z",
       "title": "Lawmakers Criticize FAA Deploying New “Untested” AI Tool Days Before Nationwide Grounding",
       "items": [
         {
@@ -6675,26 +6675,6 @@
           "sourceKey": "simpleflying"
         }
       ]
-    },
-    "2e84a6befb5b9e3950faf6f8": {
-      "sourceUrls": [
-        "https://news.infoseek.co.jp/amp/article/globalnewsasia_12241",
-        "https://news.infoseek.co.jp/article/globalnewsasia_12240",
-        "https://news.nicovideo.jp/watch/nw20035689?news_ref=top_newComments"
-      ],
-      "contentFailures": 0,
-      "serviceFailures": 0,
-      "status": "ready",
-      "history": [
-        {
-          "status": "waiting",
-          "contentFailures": 0,
-          "serviceFailures": 1,
-          "updatedUtc": "2026-11-26T20:48Z"
-        }
-      ],
-      "updatedUtc": "2026-11-28T03:46Z",
-      "nextRetryUtc": null
     },
     "7495cbee8a3373be7e25bc49": {
       "sourceUrls": [
@@ -6969,6 +6949,79 @@
       "status": "waiting",
       "nextRetryUtc": "2026-11-28T07:46Z",
       "title": "Russia teases Su-75 Checkmate again, but fighter’s future remains uncertain News"
+    },
+    "2e84a6befb5b9e3950faf6f8": {
+      "sourceUrls": [
+        "https://news.infoseek.co.jp/amp/article/globalnewsasia_12240",
+        "https://news.infoseek.co.jp/amp/article/globalnewsasia_12241",
+        "https://news.infoseek.co.jp/article/globalnewsasia_12240",
+        "https://news.nicovideo.jp/watch/nw20035689?news_ref=top_newComments"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 0,
+      "status": "ready",
+      "history": [
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 1,
+          "updatedUtc": "2026-11-26T20:48Z"
+        },
+        {
+          "status": "ready",
+          "contentFailures": 0,
+          "serviceFailures": 0,
+          "updatedUtc": "2026-11-28T03:46Z"
+        }
+      ],
+      "updatedUtc": "2026-11-28T06:46Z",
+      "nextRetryUtc": null
+    },
+    "e1ca5356dcc76d8dac50ef35": {
+      "sourceUrls": [
+        "https://www.cnn.co.jp/usa/35255540.html"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-28T06:46Z",
+      "failureClass": "source_insufficient",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-28T12:46Z",
+      "title": "アメリカン航空の旅客機2機、地上走行中に主翼が接触 「ウィングレット」脱落",
+      "items": [
+        {
+          "url": "https://www.cnn.co.jp/usa/35255540.html",
+          "title": "アメリカン航空の旅客機2機、地上走行中に主翼が接触 「ウィングレット」脱落",
+          "summary": "",
+          "publishedUtc": "2026-11-28T05:36Z",
+          "source": "CNN.co.jp",
+          "sourceKey": "japansafety"
+        }
+      ]
+    },
+    "3d2a37b4f03c5570ea13b555": {
+      "sourceUrls": [
+        "https://www.reuters.com/world/drone-briefly-violates-latvian-airspace-latvian-armed-forces-say-2026-11-27"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-28T06:46Z",
+      "failureClass": "source_insufficient",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-28T12:46Z",
+      "title": "Drone briefly violates Latvian airspace, Latvian armed forces say",
+      "items": [
+        {
+          "url": "https://www.reuters.com/world/drone-briefly-violates-latvian-airspace-latvian-armed-forces-say-2026-11-27/",
+          "title": "Drone briefly violates Latvian airspace, Latvian armed forces say",
+          "summary": "",
+          "publishedUtc": "2026-11-27T04:59Z",
+          "source": "Reuters",
+          "sourceKey": "reuters"
+        }
+      ]
     }
   }
 }
