@@ -2713,12 +2713,12 @@
         "https://simpleflying.com/wwii-bomber-article-title-tbc"
       ],
       "contentFailures": 0,
-      "serviceFailures": 15,
+      "serviceFailures": 16,
       "history": [],
-      "updatedUtc": "2026-11-27T22:47Z",
+      "updatedUtc": "2026-11-28T04:47Z",
       "failureClass": "source_insufficient",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-28T04:47Z",
+      "nextRetryUtc": "2026-11-28T10:47Z",
       "title": "A Japanese WWII Bomber & A Crashed Continental Boeing 727: The Unlikely Wrecks Hidden In A Pacific Jungle",
       "items": [
         {
@@ -4322,19 +4322,6 @@
           "sourceKey": "japansafety"
         }
       ]
-    },
-    "76fa162e04db014c4f5f6755": {
-      "sourceUrls": [
-        "https://www.cna.com.tw/news/afe/202611250268.aspx"
-      ],
-      "contentFailures": 0,
-      "serviceFailures": 4,
-      "history": [],
-      "updatedUtc": "2026-11-26T21:46Z",
-      "failureClass": "provider_failure",
-      "status": "waiting",
-      "nextRetryUtc": "2026-11-27T21:46Z",
-      "title": "長榮航：客貨運雙引擎抗油價、AI空運明年續旺"
     },
     "1a033919861732ac1b67bfcb": {
       "sourceUrls": [
@@ -6654,8 +6641,8 @@
         "https://www.mnd.gov.tw/news/plaact/88365"
       ],
       "contentFailures": 0,
-      "serviceFailures": 0,
-      "status": "ready",
+      "serviceFailures": 1,
+      "status": "waiting",
       "history": [
         {
           "status": "waiting",
@@ -6664,8 +6651,28 @@
           "updatedUtc": "2026-11-27T03:21Z"
         }
       ],
-      "updatedUtc": "2026-11-28T01:46Z",
-      "nextRetryUtc": null
+      "updatedUtc": "2026-11-28T04:47Z",
+      "nextRetryUtc": "2026-11-28T10:47Z",
+      "failureClass": "source_insufficient",
+      "title": "全球資訊網 - 新聞與公告 - 區域動態 - 中共解放軍臺海周邊海、空域動態",
+      "items": [
+        {
+          "url": "https://www.mnd.gov.tw/news/plaact/88358",
+          "title": "全球資訊網 - 新聞與公告 - 區域動態 - 中共解放軍臺海周邊海、空域動態",
+          "summary": "",
+          "publishedUtc": "2026-11-27T01:28Z",
+          "source": "國防部・軍聞社",
+          "sourceKey": "mndnews"
+        },
+        {
+          "url": "https://www.mnd.gov.tw/news/plaact/88365",
+          "title": "全球資訊網 - 新聞與公告 - 區域動態 - 中共解放軍臺海周邊海、空域動態",
+          "summary": "",
+          "publishedUtc": "2026-11-28T01:18Z",
+          "source": "國防部・軍聞社",
+          "sourceKey": "mndnews"
+        }
+      ]
     },
     "1ca945d9b475d5032fa1ab72": {
       "sourceUrls": [
@@ -6789,6 +6796,44 @@
           "publishedUtc": "2026-11-28T03:12Z",
           "source": "Simple Flying",
           "sourceKey": "simpleflying"
+        }
+      ]
+    },
+    "8c33b78851e4471c4c54d1de": {
+      "sourceUrls": [
+        "https://air.mnd.gov.tw/TW/News/News_Detail.aspx?CID=213&ID=59421",
+        "https://air.mnd.gov.tw/TW/News/News_Detail.aspx?CID=213&ID=59423",
+        "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2605&lang=1"
+      ],
+      "contentFailures": 1,
+      "serviceFailures": 0,
+      "history": [],
+      "updatedUtc": "2026-11-28T04:47Z",
+      "failureClass": "content_validation",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-28T06:47Z",
+      "title": "選舉返鄉需求踴躍，空運部分航班訂位近滿，建議善用海運船班"
+    },
+    "f5977d1a5175fad274a27ccd": {
+      "sourceUrls": [
+        "https://www.reuters.com/legal/litigation/spanish-airline-plus-ultra-lay-off-entire-workforce-union-says-2026-11-27"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-28T04:47Z",
+      "failureClass": "source_insufficient",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-28T10:47Z",
+      "title": "Spanish airline Plus Ultra to lay off entire workforce, union says",
+      "items": [
+        {
+          "url": "https://www.reuters.com/legal/litigation/spanish-airline-plus-ultra-lay-off-entire-workforce-union-says-2026-11-27/",
+          "title": "Spanish airline Plus Ultra to lay off entire workforce, union says",
+          "summary": "",
+          "publishedUtc": "2026-11-27T14:16Z",
+          "source": "Reuters",
+          "sourceKey": "reuters"
         }
       ]
     }
