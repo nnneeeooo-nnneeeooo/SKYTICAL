@@ -4100,6 +4100,162 @@
         "evidenceVersion": 2
       },
       "publishedExcerptId": null
+    },
+    {
+      "enqueuedUtc": "2026-11-28T07:46Z",
+      "routeReason": "verified_short_update",
+      "sourceGroupId": "g-20261128-0746-4",
+      "eventKey": "",
+      "article": {
+        "id": "a-20261128-0746-american-and-regional-partners-plan-7-02",
+        "publishedUtc": "2026-11-28T07:46Z",
+        "cat": "ops",
+        "primarySource": "Aerospace Global News",
+        "image": null,
+        "sourceImageCandidates": [
+          {
+            "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/01/American-Airlines-aircraft-at-Dallas-Fort-Worth.jpg",
+            "sources": [
+              {
+                "url": "https://aerospaceglobalnews.com/news/how-us-airlines-prepare-thanksgiving-sunday-rush/",
+                "name": "Aerospace Global News"
+              }
+            ]
+          }
+        ],
+        "zh": {
+          "title": "美國航空及區域夥伴規劃週日7,021班 Southwest排定逾4,600班出發",
+          "summary": "美國航空及區域夥伴週日規劃7,021班；Southwest排定逾4,600班出發",
+          "body": [
+            "美國航空及其區域合作夥伴計畫於週日執行7,021班航班。美國航空預期，週日上午11時（美國中部時間）將有1,130班航班同時營運。",
+            "美國航空為週日航班表所做的準備工作數月前已開始；美國航空的 Integrated Operations Centre 將有近500人值勤。",
+            "Southwest排定11月29日（週日）在其航網內執行超過4,600班出發。路透社報導，美國運輸安全管理局預期，感恩節假期安檢最繁忙的週日將檢查超過300萬人次。"
+          ]
+        },
+        "en": {
+          "title": "American and regional partners plan 7,021 Sunday flights; Southwest schedules over 4,600 departures",
+          "summary": "American and regional partners plan 7,021 Sunday flights; Southwest schedules over 4,600 departures.",
+          "body": [
+            "American Airlines and its regional partners have 7,021 flights planned for Sunday. American Airlines expects 1,130 flights to be operating at once at 11 a.m. Central Time on Sunday.",
+            "Preparations for American's Sunday schedule began months ago. Nearly 500 people will be on duty at American Airlines' Integrated Operations Centre.",
+            "Southwest's schedule for Sunday, November 29, includes more than 4,600 departures across the network. Reuters reported that the US Transportation Security Administration expects to screen more than three million people on Sunday, the Thanksgiving holiday's busiest day at security checkpoints."
+          ]
+        },
+        "sources": [
+          {
+            "name": "Aerospace Global News — Why Thanksgiving Sunday is the busiest day for US airlines…",
+            "url": "https://aerospaceglobalnews.com/news/how-us-airlines-prepare-thanksgiving-sunday-rush/"
+          }
+        ],
+        "articleFormat": "brief",
+        "sourcePublishedUtc": "2026-11-27T00:00Z",
+        "writer": "openai:gpt-6-luna",
+        "facts": [
+          {
+            "factId": "F1",
+            "claim": "American and its regional partners have 7,021 flights planned for Sunday.",
+            "sourceQuote": "American and its regional partners have 7,021 flights planned for Sunday",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/how-us-airlines-prepare-thanksgiving-sunday-rush/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F2",
+            "claim": "American Airlines expects 1,130 flights to be operating at once at 11 a.m. Central Time on Sunday.",
+            "sourceQuote": "At 11 am Central Time on Sunday, November 29 November, American Airlines expects to have 1,130 flights operating at once",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/how-us-airlines-prepare-thanksgiving-sunday-rush/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F3",
+            "claim": "American began preparations for the Sunday schedule months ago.",
+            "sourceQuote": "At American, preparations for the Sunday schedule began months ago.",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/how-us-airlines-prepare-thanksgiving-sunday-rush/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F4",
+            "claim": "Southwest's schedule for Sunday 29 November includes more than 4,600 departures across the network.",
+            "sourceQuote": "Southwest’s schedule for Sunday 29 November includes more than 4,600 departures across the network.",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/how-us-airlines-prepare-thanksgiving-sunday-rush/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F5",
+            "claim": "Nearly 500 people will be on duty at American Airlines' Integrated Operations Centre.",
+            "sourceQuote": "American Airlines expects to have 1,130 flights operating at once .\n\nNearly 500 people will be on duty at its Integrated Operations Centre",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/how-us-airlines-prepare-thanksgiving-sunday-rush/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F6",
+            "claim": "Reuters reported that the US Transportation Security Administration expects to screen more than three million people on Sunday, the Thanksgiving holiday’s busiest day at security checkpoints.",
+            "sourceQuote": "The US Transportation Security Administration expects to screen more than three million people on Sunday, the Thanksgiving holiday’s busiest day at security checkpoints, as Reuters reported.",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/how-us-airlines-prepare-thanksgiving-sunday-rush/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          }
+        ],
+        "riskFlags": [],
+        "eventStatus": "planned",
+        "entities": {
+          "organizations": [
+            "US Transportation Security Administration",
+            "Reuters"
+          ],
+          "airlines": [
+            "American Airlines",
+            "Southwest"
+          ],
+          "event_dates": [
+            "Sunday 29 November"
+          ]
+        },
+        "entityEvidence": [
+          {
+            "entityType": "organizations",
+            "value": "US Transportation Security Administration",
+            "sourceQuote": "The US Transportation Security Administration expects to screen more than three million people on Sunday, the Thanksgiving holiday’s busiest day at security checkpoints, as Reuters reported.",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/how-us-airlines-prepare-thanksgiving-sunday-rush/"
+          },
+          {
+            "entityType": "organizations",
+            "value": "Reuters",
+            "sourceQuote": "The US Transportation Security Administration expects to screen more than three million people on Sunday, the Thanksgiving holiday’s busiest day at security checkpoints, as Reuters reported.",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/how-us-airlines-prepare-thanksgiving-sunday-rush/"
+          },
+          {
+            "entityType": "airlines",
+            "value": "American Airlines",
+            "sourceQuote": "American Airlines expects to have 1,130 flights operating at once",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/how-us-airlines-prepare-thanksgiving-sunday-rush/"
+          },
+          {
+            "entityType": "airlines",
+            "value": "Southwest",
+            "sourceQuote": "Southwest’s schedule for Sunday 29 November includes more than 4,600 departures across the network.",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/how-us-airlines-prepare-thanksgiving-sunday-rush/"
+          },
+          {
+            "entityType": "event_dates",
+            "value": "Sunday 29 November",
+            "sourceQuote": "Southwest’s schedule for Sunday 29 November includes more than 4,600 departures across the network.",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/how-us-airlines-prepare-thanksgiving-sunday-rush/"
+          }
+        ],
+        "evidenceVersion": 2
+      },
+      "publishedExcerptId": null
     }
   ],
   "history": [
@@ -4337,6 +4493,11 @@
       "articleId": "a-southwest-longest-transcontinental-737-routes-20261126",
       "atUtc": "2026-11-27T03:21Z",
       "reason": "invalid_published_excerpt"
+    },
+    {
+      "articleId": "a-20261128-0746-us-air-force-awards-boeing-a-2-82-billio",
+      "atUtc": "2026-11-28T07:46Z",
+      "reason": "already_published"
     }
   ]
 }
