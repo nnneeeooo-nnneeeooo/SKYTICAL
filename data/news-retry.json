@@ -6600,12 +6600,12 @@
         "https://simpleflying.com/american-airlines-737s-collide-taxiway-reagan-national-loses-winglet"
       ],
       "contentFailures": 0,
-      "serviceFailures": 1,
+      "serviceFailures": 2,
       "history": [],
-      "updatedUtc": "2026-11-28T03:46Z",
-      "failureClass": "source_insufficient",
+      "updatedUtc": "2026-11-28T09:46Z",
+      "failureClass": "provider_failure",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-28T09:46Z",
+      "nextRetryUtc": "2026-11-28T15:46Z",
       "title": "Two American Airlines 737s Collide On Taxiway At Reagan National, One Loses Winglet",
       "items": [
         {
@@ -6640,21 +6640,6 @@
           "sourceKey": "simpleflying"
         }
       ]
-    },
-    "8c33b78851e4471c4c54d1de": {
-      "sourceUrls": [
-        "https://air.mnd.gov.tw/TW/News/News_Detail.aspx?CID=213&ID=59421",
-        "https://air.mnd.gov.tw/TW/News/News_Detail.aspx?CID=213&ID=59423",
-        "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2605&lang=1"
-      ],
-      "contentFailures": 1,
-      "serviceFailures": 0,
-      "history": [],
-      "updatedUtc": "2026-11-28T04:47Z",
-      "failureClass": "content_validation",
-      "status": "waiting",
-      "nextRetryUtc": "2026-11-28T06:47Z",
-      "title": "選舉返鄉需求踴躍，空運部分航班訂位近滿，建議善用海運船班"
     },
     "f5977d1a5175fad274a27ccd": {
       "sourceUrls": [
@@ -6760,33 +6745,6 @@
       "status": "waiting",
       "nextRetryUtc": "2026-11-28T07:46Z",
       "title": "Russia teases Su-75 Checkmate again, but fighter’s future remains uncertain News"
-    },
-    "2e84a6befb5b9e3950faf6f8": {
-      "sourceUrls": [
-        "https://news.infoseek.co.jp/amp/article/globalnewsasia_12240",
-        "https://news.infoseek.co.jp/amp/article/globalnewsasia_12241",
-        "https://news.infoseek.co.jp/article/globalnewsasia_12240",
-        "https://news.nicovideo.jp/watch/nw20035689?news_ref=top_newComments"
-      ],
-      "contentFailures": 0,
-      "serviceFailures": 0,
-      "status": "ready",
-      "history": [
-        {
-          "status": "waiting",
-          "contentFailures": 0,
-          "serviceFailures": 1,
-          "updatedUtc": "2026-11-26T20:48Z"
-        },
-        {
-          "status": "ready",
-          "contentFailures": 0,
-          "serviceFailures": 0,
-          "updatedUtc": "2026-11-28T03:46Z"
-        }
-      ],
-      "updatedUtc": "2026-11-28T06:46Z",
-      "nextRetryUtc": null
     },
     "e1ca5356dcc76d8dac50ef35": {
       "sourceUrls": [
@@ -6942,8 +6900,8 @@
         "https://www.ntsb.gov/_layouts/ntsb.aviation/Results.aspx?queryId=d46ded6a-42ab-4716-ae4b-59cccbaf35c1"
       ],
       "contentFailures": 0,
-      "serviceFailures": 0,
-      "status": "ready",
+      "serviceFailures": 1,
+      "status": "waiting",
       "history": [
         {
           "status": "waiting",
@@ -6976,8 +6934,60 @@
           "updatedUtc": "2026-11-28T05:46Z"
         }
       ],
-      "updatedUtc": "2026-11-28T08:46Z",
-      "nextRetryUtc": null
+      "updatedUtc": "2026-11-28T09:46Z",
+      "nextRetryUtc": "2026-11-28T15:46Z",
+      "failureClass": "source_insufficient",
+      "title": "- NTSB (.gov)",
+      "items": [
+        {
+          "url": "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FPages%2Fbrief%2Easpx%3Fev%25255Fid%3D13882%26key%3D0",
+          "title": "- NTSB (.gov)",
+          "summary": "",
+          "publishedUtc": "2026-11-27T09:32Z",
+          "source": "NTSB",
+          "sourceKey": "ntsb"
+        },
+        {
+          "url": "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FPages%2Fhome%2Easpx",
+          "title": "- NTSB (.gov)",
+          "summary": "",
+          "publishedUtc": "2026-11-27T20:39Z",
+          "source": "NTSB",
+          "sourceKey": "ntsb"
+        },
+        {
+          "url": "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FPages%2Fbrief%2Easpx%3Fev%25255Fid%3D47905%26key%3D0",
+          "title": "- NTSB (.gov)",
+          "summary": "",
+          "publishedUtc": "2026-11-25T10:28Z",
+          "source": "NTSB",
+          "sourceKey": "ntsb"
+        },
+        {
+          "url": "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2Fpublictn%2Fpublictn%2Ehtm",
+          "title": "- NTSB (.gov)",
+          "summary": "",
+          "publishedUtc": "2026-11-27T09:22Z",
+          "source": "NTSB",
+          "sourceKey": "ntsb"
+        },
+        {
+          "url": "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FPages%2Fbrief%2Easpx%3Fev%25255Fid%3D82636%26key%3D0",
+          "title": "- NTSB (.gov)",
+          "summary": "",
+          "publishedUtc": "2026-11-28T03:47Z",
+          "source": "NTSB",
+          "sourceKey": "ntsb"
+        },
+        {
+          "url": "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FPages%2Fbrief%2Easpx%3Fev%25255Fid%3D38404%26key%3D0",
+          "title": "- NTSB (.gov)",
+          "summary": "",
+          "publishedUtc": "2026-11-28T06:28Z",
+          "source": "NTSB",
+          "sourceKey": "ntsb"
+        }
+      ]
     },
     "f58ebe4683e114e0eb1aa511": {
       "sourceUrls": [
@@ -6991,6 +7001,76 @@
       "status": "waiting",
       "nextRetryUtc": "2026-11-28T10:46Z",
       "title": "航空機に乱気流知らせる注意情報1000件余 事故防ぐ対策に課題"
+    },
+    "2e84a6befb5b9e3950faf6f8": {
+      "sourceUrls": [
+        "https://news.infoseek.co.jp/amp/article/globalnewsasia_12240",
+        "https://news.infoseek.co.jp/amp/article/globalnewsasia_12241",
+        "https://news.infoseek.co.jp/article/globalnewsasia_12240",
+        "https://news.nicovideo.jp/watch/nw20035689?news_ref=top_newComments",
+        "https://news.nicovideo.jp/watch/nw20036555?news_ref=search_search"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 0,
+      "status": "ready",
+      "history": [
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 1,
+          "updatedUtc": "2026-11-26T20:48Z"
+        },
+        {
+          "status": "ready",
+          "contentFailures": 0,
+          "serviceFailures": 0,
+          "updatedUtc": "2026-11-28T03:46Z"
+        },
+        {
+          "status": "ready",
+          "contentFailures": 0,
+          "serviceFailures": 0,
+          "updatedUtc": "2026-11-28T06:46Z"
+        }
+      ],
+      "updatedUtc": "2026-11-28T09:46Z",
+      "nextRetryUtc": null
+    },
+    "1e6c510f5f129f12d8620b03": {
+      "sourceUrls": [
+        "https://simpleflying.com/why-delta-air-lines-oldest-airbuses-tail-numbers-airline-doesnt-exist"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-28T09:46Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-28T11:46Z",
+      "title": "Delta Air Lines’ Oldest Airbuses Have Tail Numbers From An Airline That Doesn’t Exist"
+    },
+    "d7f451de2acb6bd0f6cdf0a8": {
+      "sourceUrls": [
+        "https://www.reuters.com/business/aerospace-defense/russia-says-it-downed-1246-ukrainian-drones-overnight-2026-11-28"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-28T09:46Z",
+      "failureClass": "source_insufficient",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-28T15:46Z",
+      "title": "Russia says it downed 1,246 Ukrainian drones overnight",
+      "items": [
+        {
+          "url": "https://www.reuters.com/business/aerospace-defense/russia-says-it-downed-1246-ukrainian-drones-overnight-2026-11-28/",
+          "title": "Russia says it downed 1,246 Ukrainian drones overnight",
+          "summary": "",
+          "publishedUtc": "2026-11-28T07:25Z",
+          "source": "Reuters",
+          "sourceKey": "reuters"
+        }
+      ]
     }
   }
 }
