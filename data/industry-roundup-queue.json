@@ -3846,6 +3846,135 @@
         }
       },
       "publishedExcerptId": "a-latam-e195-e2-route-sales-20261126"
+    },
+    {
+      "enqueuedUtc": "2026-11-28T02:46Z",
+      "routeReason": "verified_short_update",
+      "sourceGroupId": "g-20261128-0246-2",
+      "eventKey": "",
+      "article": {
+        "id": "a-20261128-0246-five-mid-sized-us-airports-are-adding-ga",
+        "publishedUtc": "2026-11-28T02:46Z",
+        "cat": "ops",
+        "primarySource": "Simple Flying",
+        "image": null,
+        "sourceImageCandidates": [
+          {
+            "url": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/11/1795436371481.jpg",
+            "sources": [
+              {
+                "url": "https://simpleflying.com/5-mid-sized-us-airport-projects-quietly-adding-gates-merging-security-checkpoints-2026/",
+                "name": "Simple Flying"
+              }
+            ]
+          }
+        ],
+        "zh": {
+          "title": "美國五座中型機場2026年增設登機門並整併安檢檢查點",
+          "summary": "美國五座中型機場2026年增設登機門並整併安檢檢查點",
+          "body": [
+            "報導指出，2026年有五座美國中型機場正在增設登機門並整併安檢檢查點。這組工程的工作內容包括登機門新增，以及安檢檢查點整併。",
+            "列出的例子包括Omaha的新登機門，以及Spokane的$335 million Central Hall。Omaha與登機門增設相連，Spokane則與Central Hall及所列金額相連；兩地都是五座中型機場工程中的具名案例。"
+          ]
+        },
+        "en": {
+          "title": "Five Mid-Sized US Airports Are Adding Gates and Merging Security Checkpoints in 2026",
+          "summary": "Five mid-sized US airports are adding gates and merging security checkpoints in 2026.",
+          "body": [
+            "The report says five mid-sized US airports are adding gates and merging security checkpoints in 2026. The stated work covers gate additions and security-checkpoint mergers across the airport-project group.",
+            "Examples include Omaha’s new gates and Spokane’s $335 million Central Hall. Omaha is linked to gate additions, while Spokane is associated with Central Hall and the stated amount; both places are named examples within the five-airport group described for 2026 overall."
+          ]
+        },
+        "sources": [
+          {
+            "name": "Simple Flying — 5 Mid-Sized US Airport Projects Quietly Adding Gates & Merg…",
+            "url": "https://simpleflying.com/5-mid-sized-us-airport-projects-quietly-adding-gates-merging-security-checkpoints-2026/"
+          }
+        ],
+        "articleFormat": "brief",
+        "sourcePublishedUtc": "2026-11-28T02:00Z",
+        "writer": "openai:gpt-6-luna",
+        "facts": [
+          {
+            "factId": "F1",
+            "claim": "Five mid-sized US airports are adding gates and merging security checkpoints.",
+            "sourceQuote": "five mid-sized US airports are adding gates and merging security checkpoints.",
+            "sourceUrl": "https://simpleflying.com/5-mid-sized-us-airport-projects-quietly-adding-gates-merging-security-checkpoints-2026/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F2",
+            "claim": "The airport projects are identified as 2026 projects.",
+            "sourceQuote": "5 Mid-Sized US Airport Projects Quietly Adding Gates & Merging Security Checkpoints In 2026",
+            "sourceUrl": "https://simpleflying.com/5-mid-sized-us-airport-projects-quietly-adding-gates-merging-security-checkpoints-2026/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F3",
+            "claim": "Omaha is mentioned in connection with new gates.",
+            "sourceQuote": "Omaha’s new gates",
+            "sourceUrl": "https://simpleflying.com/5-mid-sized-us-airport-projects-quietly-adding-gates-merging-security-checkpoints-2026/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F4",
+            "claim": "Spokane is associated with Central Hall and a $335 million figure.",
+            "sourceQuote": "Spokane’s $335 million Central Hall",
+            "sourceUrl": "https://simpleflying.com/5-mid-sized-us-airport-projects-quietly-adding-gates-merging-security-checkpoints-2026/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          }
+        ],
+        "riskFlags": [
+          "financial_or_order_claim"
+        ],
+        "eventStatus": "confirmed",
+        "entities": {
+          "locations": [
+            "US",
+            "Omaha",
+            "Spokane"
+          ],
+          "event_dates": [
+            "2026"
+          ]
+        },
+        "entityEvidence": [
+          {
+            "entityType": "locations",
+            "value": "US",
+            "sourceQuote": "US",
+            "sourceUrl": "https://simpleflying.com/5-mid-sized-us-airport-projects-quietly-adding-gates-merging-security-checkpoints-2026/"
+          },
+          {
+            "entityType": "locations",
+            "value": "Omaha",
+            "sourceQuote": "Omaha",
+            "sourceUrl": "https://simpleflying.com/5-mid-sized-us-airport-projects-quietly-adding-gates-merging-security-checkpoints-2026/"
+          },
+          {
+            "entityType": "locations",
+            "value": "Spokane",
+            "sourceQuote": "Spokane",
+            "sourceUrl": "https://simpleflying.com/5-mid-sized-us-airport-projects-quietly-adding-gates-merging-security-checkpoints-2026/"
+          },
+          {
+            "entityType": "event_dates",
+            "value": "2026",
+            "sourceQuote": "2026",
+            "sourceUrl": "https://simpleflying.com/5-mid-sized-us-airport-projects-quietly-adding-gates-merging-security-checkpoints-2026/"
+          }
+        ],
+        "evidenceVersion": 2
+      },
+      "publishedExcerptId": null
     }
   ],
   "history": [
