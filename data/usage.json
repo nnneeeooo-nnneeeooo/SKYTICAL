@@ -1,5 +1,5 @@
 {
-  "updatedUtc": "2026-11-28T08:09Z",
+  "updatedUtc": "2026-11-28T09:03Z",
   "trackingSinceUtc": "2026-09-12T01:05Z",
   "models": {
     "gemini:gemini-3.6-flash": {
@@ -9,9 +9,9 @@
       "unknownCalls": 871
     },
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
-      "calls": 1902,
-      "inputTokens": 8240613,
-      "outputTokens": 4486926,
+      "calls": 1903,
+      "inputTokens": 8248011,
+      "outputTokens": 4490659,
       "unknownCalls": 745
     },
     "wechat:Deepseek-v4-flash": {
@@ -81,10 +81,10 @@
       "unknownCalls": 0
     },
     "cloudflare:@cf/openai/gpt-oss-120b": {
-      "calls": 82,
+      "calls": 83,
       "inputTokens": 323416,
       "outputTokens": 217780,
-      "unknownCalls": 36
+      "unknownCalls": 37
     },
     "groq:qwen/qwen3.8-27b": {
       "calls": 37,
@@ -207,22 +207,22 @@
       "unknownCalls": 3
     },
     "openrouter:google/gemma-4-31b-it:free": {
-      "calls": 112,
+      "calls": 113,
       "inputTokens": 0,
       "outputTokens": 0,
-      "unknownCalls": 112
+      "unknownCalls": 113
     },
     "openrouter:google/gemma-4-26b-a4b-it:free": {
-      "calls": 132,
+      "calls": 133,
       "inputTokens": 0,
       "outputTokens": 0,
-      "unknownCalls": 132
+      "unknownCalls": 133
     },
     "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free": {
-      "calls": 37,
+      "calls": 38,
       "inputTokens": 158750,
       "outputTokens": 337597,
-      "unknownCalls": 15
+      "unknownCalls": 16
     },
     "openrouter:particle-ai/particle-1:free": {
       "calls": 5,
@@ -255,9 +255,9 @@
       "unknownCalls": 0
     },
     "openai:gpt-6-luna": {
-      "calls": 105,
-      "inputTokens": 524247,
-      "outputTokens": 3265977,
+      "calls": 107,
+      "inputTokens": 538465,
+      "outputTokens": 3368759,
       "unknownCalls": 6
     }
   },
@@ -648,12 +648,305 @@
       "outputTokens": 3160954
     },
     "2026-11-28": {
-      "calls": 124,
-      "inputTokens": 584148,
-      "outputTokens": 1696866
+      "calls": 131,
+      "inputTokens": 605764,
+      "outputTokens": 1803381
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-11-28T08:46Z",
+      "finishedUtc": "2026-11-28T08:46Z",
+      "workflow": "provider_probe",
+      "taskType": "article_probe",
+      "editorialTier": "niche",
+      "routeReason": "routine_development_or_military_test",
+      "paidFallbackAllowed": true,
+      "groupId": "free-provider-probe-h140-v1",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "Aerospace Global News",
+      "result": "probe_failed",
+      "articleId": null,
+      "finalStatus": "retry_pending",
+      "finalModel": "openrouter:google/gemma-4-31b-it:free",
+      "fallbackUsed": false,
+      "attemptCount": 1,
+      "httpCallCount": 1,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": null,
+        "promptAssembly": 287,
+        "drafting": 541,
+        "validation": null,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 542
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "openrouter",
+          "model": "google/gemma-4-31b-it:free",
+          "label": "openrouter:google/gemma-4-31b-it:free",
+          "startedUtc": "2026-11-28T08:46Z",
+          "durationMs": 541,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 253,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
+    {
+      "startedUtc": "2026-11-28T08:46Z",
+      "finishedUtc": "2026-11-28T08:46Z",
+      "workflow": "provider_probe",
+      "taskType": "article_probe",
+      "editorialTier": "niche",
+      "routeReason": "routine_development_or_military_test",
+      "paidFallbackAllowed": true,
+      "groupId": "free-provider-probe-h140-v1",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "Aerospace Global News",
+      "result": "probe_failed",
+      "articleId": null,
+      "finalStatus": "retry_pending",
+      "finalModel": "openrouter:google/gemma-4-26b-a4b-it:free",
+      "fallbackUsed": false,
+      "attemptCount": 1,
+      "httpCallCount": 1,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": null,
+        "promptAssembly": 2,
+        "drafting": 139,
+        "validation": null,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 139
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "openrouter",
+          "model": "google/gemma-4-26b-a4b-it:free",
+          "label": "openrouter:google/gemma-4-26b-a4b-it:free",
+          "startedUtc": "2026-11-28T08:46Z",
+          "durationMs": 139,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 137,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
+    {
+      "startedUtc": "2026-11-28T08:46Z",
+      "finishedUtc": "2026-11-28T09:03Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "editorialTier": "standard",
+      "routeReason": "ordinary_news",
+      "paidFallbackAllowed": true,
+      "groupId": "g-20261128-0846-1",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "NHKニュース",
+      "result": "retry_pending",
+      "articleId": null,
+      "finalStatus": "retry_pending",
+      "finalModel": null,
+      "fallbackUsed": true,
+      "attemptCount": 5,
+      "httpCallCount": 5,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 5007,
+        "promptAssembly": 5,
+        "drafting": 969640,
+        "validation": 1,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 995817
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "nvidia",
+          "model": "nvidia/nemotron-3-ultra-550b-a55b",
+          "label": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+          "startedUtc": "2026-11-28T08:46Z",
+          "durationMs": 65665,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 65661,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "invalid_schema",
+          "failureStage": "validation",
+          "failureMessage": "publish_brief body does not meet brief contract (zh=121 content characters, en=55 words, paragraphs=2/2)",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 2,
+          "provider": "cloudflare",
+          "model": "@cf/openai/gpt-oss-120b",
+          "label": "cloudflare:@cf/openai/gpt-oss-120b",
+          "startedUtc": "2026-11-28T08:47Z",
+          "durationMs": 120002,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 120000,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "timeout",
+          "failureStage": "draft",
+          "failureMessage": "ReadTimeout",
+          "retryPlanned": false,
+          "disabledForRun": true
+        },
+        {
+          "sequence": 3,
+          "provider": "openai",
+          "model": "gpt-6-luna",
+          "label": "openai:gpt-6-luna",
+          "startedUtc": "2026-11-28T08:49Z",
+          "durationMs": 414676,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 413222,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "invalid_schema",
+          "failureStage": "validation",
+          "failureMessage": "zh contains editorial-process narration",
+          "retryPlanned": true,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 4,
+          "provider": "openai",
+          "model": "gpt-6-luna",
+          "label": "openai:gpt-6-luna",
+          "startedUtc": "2026-11-28T08:56Z",
+          "durationMs": 249300,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 247786,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "invalid_schema",
+          "failureStage": "validation",
+          "failureMessage": "publish_brief body does not meet brief contract (zh=83 content characters, en=35 words, paragraphs=2/2)",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 5,
+          "provider": "openrouter",
+          "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+          "label": "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+          "startedUtc": "2026-11-28T09:01Z",
+          "durationMs": 120002,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 120000,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "connection",
+          "failureStage": "draft",
+          "failureMessage": "ConnectionError",
+          "retryPlanned": false,
+          "disabledForRun": true
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
+    {
+      "startedUtc": "2026-11-28T08:46Z",
+      "finishedUtc": "2026-11-28T09:03Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "editorialTier": "standard",
+      "routeReason": "ordinary_news",
+      "paidFallbackAllowed": true,
+      "groupId": "g-20261128-0846-2",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "Reuters",
+      "result": "retry_pending",
+      "articleId": null,
+      "finalStatus": "retry_pending",
+      "finalModel": null,
+      "fallbackUsed": false,
+      "attemptCount": 0,
+      "httpCallCount": 0,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 4918,
+        "promptAssembly": null,
+        "drafting": null,
+        "validation": null,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 991050
+      },
+      "attempts": [],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
     {
       "startedUtc": "2026-11-28T07:51Z",
       "finishedUtc": "2026-11-28T07:51Z",
@@ -63820,246 +64113,6 @@
         "total": 1490467
       },
       "attempts": [],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-11-24T17:07Z",
-      "finishedUtc": "2026-11-24T17:41Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "editorialTier": "standard",
-      "routeReason": "ordinary_news",
-      "paidFallbackAllowed": true,
-      "groupId": "g-20261124-1707-12",
-      "eventId": null,
-      "sourceCount": 2,
-      "primarySource": "AeroTime",
-      "result": "queued_for_roundup",
-      "articleId": null,
-      "finalStatus": "verified_short_update",
-      "finalModel": "openai:gpt-6.1-terra",
-      "fallbackUsed": false,
-      "attemptCount": 1,
-      "httpCallCount": 1,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 6183,
-        "promptAssembly": 3,
-        "drafting": 480074,
-        "validation": 1,
-        "factVerification": 0,
-        "evidenceBinding": 1,
-        "glossaryCheck": 0,
-        "fabricationCheck": 0,
-        "articleBuild": 33,
-        "total": 2015780
-      },
-      "attempts": [
-        {
-          "sequence": 1,
-          "provider": "openai",
-          "model": "gpt-6.1-terra",
-          "label": "openai:gpt-6.1-terra",
-          "startedUtc": "2026-11-24T17:32Z",
-          "durationMs": 480078,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 478744,
-          "repairDurationMs": 0,
-          "outcome": "success",
-          "failureClass": null,
-          "failureStage": null,
-          "failureMessage": null,
-          "retryPlanned": false,
-          "disabledForRun": false
-        }
-      ],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-11-24T16:29Z",
-      "finishedUtc": "2026-11-24T16:29Z",
-      "workflow": "provider_probe",
-      "taskType": "article_probe",
-      "editorialTier": "niche",
-      "routeReason": "routine_development_or_military_test",
-      "paidFallbackAllowed": true,
-      "groupId": "free-provider-probe-h140-v1",
-      "eventId": null,
-      "sourceCount": 1,
-      "primarySource": "Aerospace Global News",
-      "result": "probe_failed",
-      "articleId": null,
-      "finalStatus": "retry_pending",
-      "finalModel": "groq:qwen/qwen3.8-27b",
-      "fallbackUsed": false,
-      "attemptCount": 1,
-      "httpCallCount": 1,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": null,
-        "promptAssembly": 316,
-        "drafting": 4511,
-        "validation": 0,
-        "factVerification": null,
-        "evidenceBinding": null,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
-        "articleBuild": null,
-        "total": 4514
-      },
-      "attempts": [
-        {
-          "sequence": 1,
-          "provider": "groq",
-          "model": "qwen/qwen3.8-27b",
-          "label": "groq:qwen/qwen3.8-27b",
-          "startedUtc": "2026-11-24T16:29Z",
-          "durationMs": 4512,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 4192,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "invalid_schema",
-          "failureStage": "validation",
-          "failureMessage": "zh.body[2] contains Simplified Chinese characters",
-          "retryPlanned": false,
-          "disabledForRun": false
-        }
-      ],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-11-24T16:29Z",
-      "finishedUtc": "2026-11-24T16:29Z",
-      "workflow": "provider_probe",
-      "taskType": "article_probe",
-      "editorialTier": "niche",
-      "routeReason": "routine_development_or_military_test",
-      "paidFallbackAllowed": true,
-      "groupId": "free-provider-probe-h140-v1",
-      "eventId": null,
-      "sourceCount": 1,
-      "primarySource": "Aerospace Global News",
-      "result": "probe_failed",
-      "articleId": null,
-      "finalStatus": "retry_pending",
-      "finalModel": "openrouter:google/gemma-4-31b-it:free",
-      "fallbackUsed": false,
-      "attemptCount": 1,
-      "httpCallCount": 1,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": null,
-        "promptAssembly": 2,
-        "drafting": 290,
-        "validation": null,
-        "factVerification": null,
-        "evidenceBinding": null,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
-        "articleBuild": null,
-        "total": 291
-      },
-      "attempts": [
-        {
-          "sequence": 1,
-          "provider": "openrouter",
-          "model": "google/gemma-4-31b-it:free",
-          "label": "openrouter:google/gemma-4-31b-it:free",
-          "startedUtc": "2026-11-24T16:29Z",
-          "durationMs": 290,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 288,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        }
-      ],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-11-24T16:29Z",
-      "finishedUtc": "2026-11-24T16:29Z",
-      "workflow": "provider_probe",
-      "taskType": "article_probe",
-      "editorialTier": "niche",
-      "routeReason": "routine_development_or_military_test",
-      "paidFallbackAllowed": true,
-      "groupId": "free-provider-probe-h140-v1",
-      "eventId": null,
-      "sourceCount": 1,
-      "primarySource": "Aerospace Global News",
-      "result": "probe_failed",
-      "articleId": null,
-      "finalStatus": "retry_pending",
-      "finalModel": "openrouter:google/gemma-4-26b-a4b-it:free",
-      "fallbackUsed": false,
-      "attemptCount": 1,
-      "httpCallCount": 1,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": null,
-        "promptAssembly": 2,
-        "drafting": 255,
-        "validation": null,
-        "factVerification": null,
-        "evidenceBinding": null,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
-        "articleBuild": null,
-        "total": 255
-      },
-      "attempts": [
-        {
-          "sequence": 1,
-          "provider": "openrouter",
-          "model": "google/gemma-4-26b-a4b-it:free",
-          "label": "openrouter:google/gemma-4-26b-a4b-it:free",
-          "startedUtc": "2026-11-24T16:29Z",
-          "durationMs": 255,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 253,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        }
-      ],
       "resourceUsage": {
         "actualUsd": 0.0,
         "models": []
