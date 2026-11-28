@@ -5782,29 +5782,6 @@
         }
       ]
     },
-    "458e4220ad3d3b785fc7895c": {
-      "sourceUrls": [
-        "https://www.mnd.gov.tw/news/plaact/88358"
-      ],
-      "contentFailures": 0,
-      "serviceFailures": 1,
-      "history": [],
-      "updatedUtc": "2026-11-27T03:21Z",
-      "failureClass": "source_insufficient",
-      "status": "waiting",
-      "nextRetryUtc": "2026-11-27T09:21Z",
-      "title": "全球資訊網 - 新聞與公告 - 區域動態 - 中共解放軍臺海周邊海、空域動態",
-      "items": [
-        {
-          "url": "https://www.mnd.gov.tw/news/plaact/88358",
-          "title": "全球資訊網 - 新聞與公告 - 區域動態 - 中共解放軍臺海周邊海、空域動態",
-          "summary": "",
-          "publishedUtc": "2026-11-27T01:28Z",
-          "source": "國防部・軍聞社",
-          "sourceKey": "mndnews"
-        }
-      ]
-    },
     "ad65edf10ffbcbbbc784b408": {
       "sourceUrls": [
         "https://www.reuters.com/world/us/im-going-drive-faa-outage-high-fares-reshape-thanksgiving-travel-plans-2026-11-25"
@@ -6702,6 +6679,61 @@
           "sourceKey": "simpleflying"
         }
       ]
+    },
+    "458e4220ad3d3b785fc7895c": {
+      "sourceUrls": [
+        "https://www.mnd.gov.tw/news/plaact/88358",
+        "https://www.mnd.gov.tw/news/plaact/88365"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 0,
+      "status": "ready",
+      "history": [
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 1,
+          "updatedUtc": "2026-11-27T03:21Z"
+        }
+      ],
+      "updatedUtc": "2026-11-28T01:46Z",
+      "nextRetryUtc": null
+    },
+    "1ca945d9b475d5032fa1ab72": {
+      "sourceUrls": [
+        "https://simpleflying.com/airbus-a380-burns-3000-gallons-hour-pays-off-emirates"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-28T01:46Z",
+      "failureClass": "source_insufficient",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-28T07:46Z",
+      "title": "The Airbus A380 Burns Over 3,000 Gallons An Hour & Still Pays Off For Emirates",
+      "items": [
+        {
+          "url": "https://simpleflying.com/airbus-a380-burns-3000-gallons-hour-pays-off-emirates/",
+          "title": "The Airbus A380 Burns Over 3,000 Gallons An Hour & Still Pays Off For Emirates",
+          "summary": "Even with a staggering fuel burn, the A380 still lives on at Emirates.",
+          "publishedUtc": "2026-11-28T00:01Z",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ]
+    },
+    "007b14bd2ad53f10885ba173": {
+      "sourceUrls": [
+        "https://simpleflying.com/how-much-rolls-royce-trent-1000-engine-cost"
+      ],
+      "contentFailures": 1,
+      "serviceFailures": 0,
+      "history": [],
+      "updatedUtc": "2026-11-28T01:46Z",
+      "failureClass": "content_validation",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-28T03:46Z",
+      "title": "How Much Does A Rolls-Royce Trent 1000 Engine Cost?"
     }
   }
 }
