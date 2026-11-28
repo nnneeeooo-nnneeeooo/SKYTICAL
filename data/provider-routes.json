@@ -3,10 +3,10 @@
   "routes": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
       "status": "waiting",
-      "untilUtc": "2026-11-28T15:46Z",
-      "checkedUtc": "2026-11-28T09:46Z",
+      "untilUtc": "2026-11-28T21:46Z",
+      "checkedUtc": "2026-11-28T15:46Z",
       "failureClass": "unexpected",
-      "diagnostic": "publish_brief must have an empty decisionReason",
+      "diagnostic": "zh.body[0] contains Simplified Chinese characters",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -138,10 +138,10 @@
     },
     "gemini:gemma-4-26b-a4b-it": {
       "status": "waiting",
-      "checkedUtc": "2026-11-28T15:07Z",
-      "untilUtc": "2026-11-28T15:08Z",
-      "failureClass": "rate_limit",
-      "diagnostic": "HTTP 429 (per-minute rate limit)",
+      "checkedUtc": "2026-11-28T15:46Z",
+      "untilUtc": "2026-11-28T21:46Z",
+      "failureClass": "http_error",
+      "diagnostic": "HTTP 503 code=UNAVAILABLE",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -300,8 +300,8 @@
     },
     "openrouter:google/gemma-4-31b-it:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-28T15:07Z",
-      "checkedUtc": "2026-11-28T15:06Z",
+      "untilUtc": "2026-11-28T15:47Z",
+      "checkedUtc": "2026-11-28T15:46Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
