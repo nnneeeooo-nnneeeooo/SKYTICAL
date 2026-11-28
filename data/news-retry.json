@@ -69,29 +69,6 @@
       "nextRetryUtc": "2026-10-30T14:50Z",
       "title": "MQ-9B drone tracks fighter jets at long range with Saab’s LoyalEye radar"
     },
-    "8158bec57bef6d46c714d803": {
-      "sourceUrls": [
-        "https://simpleflying.com/alaska-airlines-cancels-all-flights-to-3-destinations",
-        "https://simpleflying.com/jetblue-cancels-all-flights-to-4-international-destinations",
-        "https://simpleflying.com/sun-country-cancels-all-flights-to-25-destinations",
-        "https://simpleflying.com/westjet-cancels-all-flights-15-destinations"
-      ],
-      "contentFailures": 1,
-      "serviceFailures": 1,
-      "status": "waiting",
-      "history": [
-        {
-          "status": "waiting",
-          "contentFailures": 1,
-          "serviceFailures": 0,
-          "updatedUtc": "2026-10-28T17:57Z"
-        }
-      ],
-      "updatedUtc": "2026-10-29T12:57Z",
-      "nextRetryUtc": "2026-10-29T14:57Z",
-      "failureClass": "provider_failure",
-      "title": "Sun Country Cancels All Flights To 25 Destinations: See Full List Now"
-    },
     "0288146a853169a960a16a17": {
       "sourceUrls": [
         "https://www.airbus.com/en/newsroom/stories/2026-10-airbus-a350f-freighter-the-livery-designed-by-the-public-now-in-flight"
@@ -104,19 +81,6 @@
       "status": "waiting",
       "nextRetryUtc": "2026-10-30T14:50Z",
       "title": "Airbus A350F freighter: the livery designed by the public, now in flight"
-    },
-    "9b034aba4df302f7ce27cb4a": {
-      "sourceUrls": [
-        "https://simpleflying.com/video/delta-airbus-a350-winglet-wedged-in-air-canada-boeing-777-s-tail-after-lax-collision"
-      ],
-      "contentFailures": 0,
-      "serviceFailures": 1,
-      "history": [],
-      "updatedUtc": "2026-10-29T12:57Z",
-      "failureClass": "provider_failure",
-      "status": "waiting",
-      "nextRetryUtc": "2026-10-29T14:57Z",
-      "title": "Delta Airbus A350 Winglet Wedged In Air Canada Boeing 777's Tail After LAX Collision"
     },
     "4a142d38ced88172aa583c77": {
       "sourceUrls": [
@@ -6551,12 +6515,12 @@
         "https://simpleflying.com/airbus-a350-unique-cabin-design-that-sets-it-apart-others-how"
       ],
       "contentFailures": 0,
-      "serviceFailures": 1,
+      "serviceFailures": 2,
       "history": [],
-      "updatedUtc": "2026-11-28T02:46Z",
-      "failureClass": "source_insufficient",
+      "updatedUtc": "2026-11-28T13:46Z",
+      "failureClass": "provider_failure",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-28T08:46Z",
+      "nextRetryUtc": "2026-11-28T19:46Z",
       "title": "The Airbus A350’s Unique Cabin Design That Sets It Apart From Others",
       "items": [
         {
@@ -7194,6 +7158,65 @@
       "status": "waiting",
       "nextRetryUtc": "2026-11-28T14:46Z",
       "title": "How Much Does An Ultralight Aircraft Cost In The US?"
+    },
+    "6b64891280016d5d5629d01c": {
+      "sourceUrls": [
+        "https://simpleflying.com/gta-vi-real-world-planes-aircraft-based-on"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-28T13:46Z",
+      "failureClass": "source_insufficient",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-28T19:46Z",
+      "title": "The Real-World Planes GTA VI's Aircraft Are Based On",
+      "items": [
+        {
+          "url": "https://simpleflying.com/gta-vi-real-world-planes-aircraft-based-on/",
+          "title": "The Real-World Planes GTA VI's Aircraft Are Based On",
+          "summary": "The planes in the new GTA game have fictional names, but they are clearly based on real world aircraft.",
+          "publishedUtc": "2026-11-28T13:00Z",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ]
+    },
+    "cba8474029112867ac1bfd9d": {
+      "sourceUrls": [
+        "https://aerospaceglobalnews.com/news/runway-to-recovery-syria-widebody-foreign-airlines"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-28T13:46Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-28T15:46Z",
+      "title": "Runway to recovery: Syrian Airlines plots widebody expansion as foreign airlines return to Damascus News"
+    },
+    "2ab21a01d6c52538a1a1296d": {
+      "sourceUrls": [
+        "https://www.reuters.com/world/hackers-breach-us-air-force-flagship-cloud-one-computing-platform-2026-11-27"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-28T13:46Z",
+      "failureClass": "source_insufficient",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-28T19:46Z",
+      "title": "EXCLUSIVE: Hackers breach US Air Force flagship Cloud One computing platform",
+      "items": [
+        {
+          "url": "https://www.reuters.com/world/hackers-breach-us-air-force-flagship-cloud-one-computing-platform-2026-11-27/",
+          "title": "EXCLUSIVE: Hackers breach US Air Force flagship Cloud One computing platform",
+          "summary": "",
+          "publishedUtc": "2026-11-27T11:01Z",
+          "source": "Reuters",
+          "sourceKey": "reuters"
+        }
+      ]
     }
   }
 }
