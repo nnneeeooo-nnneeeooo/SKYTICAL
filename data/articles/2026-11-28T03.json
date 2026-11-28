@@ -1,0 +1,157 @@
+{
+  "articles": [
+    {
+      "id": "a-20261128-0346-aviation-roundup-three-independent-event",
+      "publishedUtc": "2026-11-28T03:46Z",
+      "cat": "safety",
+      "primarySource": "The Aviation Herald",
+      "sourceImageCandidates": [],
+      "zh": {
+        "title": "三起獨立航空事件彙整：雷擊、擋風玻璃裂損與雪梨重飛",
+        "summary": "THY事件涉及多次雷擊；Eastern的擋風玻璃出現裂損；澳洲航空於雪梨重飛",
+        "body": [
+          "三起航空事件彼此獨立，資料未指出三者之間有關聯。",
+          "1. THY的波音737-800（ICAO機型代碼B738）於2026年11月25日在Batumi發生事件，涉及多次雷擊。",
+          "2. Eastern的波音777-200（ICAO機型代碼B772）於2026年11月25日在大西洋上空發生擋風玻璃裂損事件。",
+          "3. 澳洲航空的波音737-800（ICAO機型代碼B738）於2026年11月25日在雪梨重飛。"
+        ]
+      },
+      "en": {
+        "title": "Aviation Roundup: Three Independent Events Involving Lightning, a Cracked Windshield and a Go-Around",
+        "summary": "THY's incident involved multiple lightning strikes; Eastern's Boeing 777-200 had a cracked windshield; Qantas went around at Sydney.",
+        "body": [
+          "Three aviation events are independent, and no relationship among them is stated.",
+          "1. A THY Boeing 737-800 (ICAO type code B738) was at Batumi on Nov. 25, 2026, in an incident involving multiple lightning strikes.",
+          "2. An Eastern Boeing 777-200 (ICAO type code B772) was over the Atlantic on Nov. 25, 2026, in an incident involving a cracked windshield.",
+          "3. A Qantas Boeing 737-800 (ICAO type code B738) went around at Sydney on Nov. 25, 2026."
+        ]
+      },
+      "sources": [
+        {
+          "name": "The Aviation Herald — Incident: THY B738 at Batumi on Nov 25th 2026, multiple lig…",
+          "url": "https://avherald.com/h?article=54889307&opt=0"
+        },
+        {
+          "name": "The Aviation Herald — Incident: Eastern B772 over Atlantic on Nov 25th 2026, crac…",
+          "url": "https://avherald.com/h?article=54888f16&opt=0"
+        },
+        {
+          "name": "The Aviation Herald — Incident: Qantas B738 at Sydney on Nov 25th 2026, go around…",
+          "url": "https://avherald.com/h?article=54899c4c&opt=0"
+        }
+      ],
+      "articleFormat": "roundup",
+      "sourcePublishedUtc": "2026-11-25T08:00Z",
+      "writer": "openai:gpt-6-luna",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "A THY B738 was at Batumi on Nov 25th 2026 in an incident involving multiple lightning strikes.",
+          "sourceQuote": "Incident: THY B738 at Batumi on Nov 25th 2026, multiple lightning strikes",
+          "sourceUrl": "https://avherald.com/h?article=54889307&opt=0",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "An Eastern B772 was over the Atlantic on Nov 25th 2026 in an incident with a cracked windshield.",
+          "sourceQuote": "Incident: Eastern B772 over Atlantic on Nov 25th 2026, cracked windshield",
+          "sourceUrl": "https://avherald.com/h?article=54888f16&opt=0",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "A Qantas B738 went around at Sydney on Nov 25th 2026.",
+          "sourceQuote": "Incident: Qantas B738 at Sydney on Nov 25th 2026, go around",
+          "sourceUrl": "https://avherald.com/h?article=54899c4c&opt=0",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [
+        "accident_or_serious_incident"
+      ],
+      "eventStatus": "confirmed",
+      "entities": {
+        "airlines": [
+          "THY",
+          "Eastern",
+          "Qantas"
+        ],
+        "aircraft_models": [
+          "B738",
+          "B772"
+        ],
+        "locations": [
+          "Batumi",
+          "Atlantic",
+          "Sydney"
+        ],
+        "event_dates": [
+          "Nov 25th 2026"
+        ]
+      },
+      "entityEvidence": [
+        {
+          "entityType": "airlines",
+          "value": "THY",
+          "sourceQuote": "THY B738 at Batumi on Nov 25th 2026, multiple lightning strikes",
+          "sourceUrl": "https://avherald.com/h?article=54889307&opt=0"
+        },
+        {
+          "entityType": "airlines",
+          "value": "Eastern",
+          "sourceQuote": "Eastern B772 over Atlantic on Nov 25th 2026, cracked windshield",
+          "sourceUrl": "https://avherald.com/h?article=54888f16&opt=0"
+        },
+        {
+          "entityType": "airlines",
+          "value": "Qantas",
+          "sourceQuote": "Qantas B738 at Sydney on Nov 25th 2026, go around",
+          "sourceUrl": "https://avherald.com/h?article=54899c4c&opt=0"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "B738",
+          "sourceQuote": "THY B738 at Batumi on Nov 25th 2026, multiple lightning strikes",
+          "sourceUrl": "https://avherald.com/h?article=54889307&opt=0"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "B772",
+          "sourceQuote": "Eastern B772 over Atlantic on Nov 25th 2026, cracked windshield",
+          "sourceUrl": "https://avherald.com/h?article=54888f16&opt=0"
+        },
+        {
+          "entityType": "locations",
+          "value": "Batumi",
+          "sourceQuote": "THY B738 at Batumi on Nov 25th 2026, multiple lightning strikes",
+          "sourceUrl": "https://avherald.com/h?article=54889307&opt=0"
+        },
+        {
+          "entityType": "locations",
+          "value": "Atlantic",
+          "sourceQuote": "Eastern B772 over Atlantic on Nov 25th 2026, cracked windshield",
+          "sourceUrl": "https://avherald.com/h?article=54888f16&opt=0"
+        },
+        {
+          "entityType": "locations",
+          "value": "Sydney",
+          "sourceQuote": "Qantas B738 at Sydney on Nov 25th 2026, go around",
+          "sourceUrl": "https://avherald.com/h?article=54899c4c&opt=0"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "Nov 25th 2026",
+          "sourceQuote": "THY B738 at Batumi on Nov 25th 2026, multiple lightning strikes",
+          "sourceUrl": "https://avherald.com/h?article=54889307&opt=0"
+        }
+      ],
+      "evidenceVersion": 2
+    }
+  ]
+}
